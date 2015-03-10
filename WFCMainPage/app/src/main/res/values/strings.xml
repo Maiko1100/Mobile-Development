@@ -18,4 +18,10 @@
     <string name="bezoekadres_title">Bezoekadres</string>
     <string name="bezoekadres_text">Koningin Wilhelminaplein 13 <br /><br /><br />1062 HH  Amsterdam &#xA;The Netherlands &#xA;Toren 2 &#xA;Etage 8 &#xA;Ruimte 6</string>
 
+    //strings activity_facilities
+    <string name="customRowText_Medium">Medium Text</string>
+    <string name="customTextRow_Small">Small Text</string>
+    <string name="customImage_view">customImageView</string>
+    <string name="title_activity_facilities">Facilities</string>
+
 </resources>
