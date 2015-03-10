@@ -6,7 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- *
+ * @author Remco Hilbert & Fren de Haan
+ * activity om informatie over het WFC te laten zien.
  */
 public class InfoActivity extends ActionBarActivity {
 

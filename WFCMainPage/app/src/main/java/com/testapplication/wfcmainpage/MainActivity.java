@@ -1,5 +1,9 @@
 package com.testapplication.wfcmainpage;
 
+		/**
+		* @author Remco Hilbert & Fren de Haan
+		* Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
+		*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,6 +28,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		setContentView(R.layout.activity_main);
 		setTitle(getString(R.string.main_banner_text));
 
+		// knoppen declareren
 		Button infoButton = (Button) findViewById(R.id.infoButton);
 		Button facilitiesButton = (Button) findViewById(R.id.facilitiesButton);
 		Button navigationButton = (Button) findViewById(R.id.navigationButton);
@@ -31,6 +36,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		ImageButton prevButton = (ImageButton) findViewById(R.id.prevButton);
 		ImageButton nextButton = (ImageButton) findViewById(R.id.nextButton);
 
+		//onclick listener initialiseren
 		infoButton.setOnClickListener(this);
 		facilitiesButton.setOnClickListener(this);
 		navigationButton.setOnClickListener(this);
@@ -53,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		runOnUiThread(Timer_Tick);
 
 	}
-
+// method die om de 7 seconden het carrouselplaatje wisselt
 	private Runnable Timer_Tick = new Runnable() {
 		@Override
 		public void run() {
@@ -83,6 +89,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		}
 	};
 
+
 	public void showInfo(View v) {
 		Intent showInfo = new Intent(this, InfoActivity.class);
 		startActivity(showInfo);
@@ -102,6 +109,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		//todo code for the rent button
 	}
 
+    // Method die het volgende carrouselplaatje aanroept.
 	public void nextImage(View v) {
 		ImageView img1 = (ImageView) findViewById(R.id.imageView);
 
@@ -124,7 +132,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			default:
 				img1.setImageResource(R.drawable.image1);
 		}
-
+		//Reset de timer
 		mCarrouselTimer.cancel();
 		mCarrouselTimer = new Timer();
 		mCarrouselTimer.schedule(new TimerTask() {
@@ -134,7 +142,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			}
 		}, 7000, 7000);
 	}
-
+	// Method die het vorige carrouselplaatje aanroept.
 	public void prevImage(View v) {
 		ImageView img = (ImageView) findViewById(R.id.imageView);
 
@@ -157,7 +165,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			default:
 				System.out.println(mCurrentImage);
 		}
-
+		//Reset de timer
 		mCarrouselTimer.cancel();
 		mCarrouselTimer = new Timer();
 		mCarrouselTimer.schedule(new TimerTask() {
