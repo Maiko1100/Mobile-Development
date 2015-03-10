@@ -19,7 +19,7 @@ public class FacilitiesDetails extends ActionBarActivity {
         Intent intent = getIntent();
         String iInfo = intent.getStringExtra("info");
         String tTitle = intent.getStringExtra("title");
-        int icon2 = intent.getIntExtra("test",0);
+        int icon2 = intent.getIntExtra("icon",0);
 
         TextView info,title;
         ImageView icon;
@@ -28,8 +28,7 @@ public class FacilitiesDetails extends ActionBarActivity {
         icon = (ImageView) findViewById(R.id.icon);
         info.setText(iInfo);
         title.setText(tTitle);
-
-        //icon.setImageResource(test);
+        icon.setImageResource(icon2);
 
     }
 
