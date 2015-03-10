@@ -6,6 +6,7 @@
     <string name="main_title_text">World Fashion Centre</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_activityDetails">FacilitiesDetails</string>
     <string name="history_text">Ruim 40 jaar is het World Fashion Centre ‘the meeting point’ voor de internationale modebusiness. Er bestaat geen enkele fashion locatie van deze allure in Nederland, waar modemerken, winkels en groothandel elkaar kunnen ontmoeten, zaken doen en de nieuwste modetrends uitwisselen. </string>
     <string name="history_title">History</string>
     <string name="mijlpaal_title">Mijlpalen</string>

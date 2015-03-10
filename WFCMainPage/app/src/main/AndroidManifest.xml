@@ -34,6 +34,10 @@
             android:name=".FacilitiesActivity"
             android:label="@string/title_activity_facilities" >
         </activity>
+        <activity
+            android:name=".FacilitiesDetails"
+            android:label="@string/title_activity_activityDetails" >
+        </activity>
         <meta-data android:name="com.google.android.gms.version"
                    android:value="@integer/google_play_services_version" />
         <meta-data
