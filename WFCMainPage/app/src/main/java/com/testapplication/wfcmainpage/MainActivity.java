@@ -143,6 +143,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         startActivity(i);
     }
 
+	public void showMaps(View view) {
+		Intent i = new Intent(this, MapsActivity.class);
+		startActivity(i);
+	}
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
