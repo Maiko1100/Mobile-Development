@@ -28,7 +28,6 @@
         android:src="@android:drawable/ic_media_next"
         android:background="@null"
         android:layout_marginTop="45dp"
-        android:onClick="nextImage"
         android:layout_alignTop="@+id/imageView"
         android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView" />

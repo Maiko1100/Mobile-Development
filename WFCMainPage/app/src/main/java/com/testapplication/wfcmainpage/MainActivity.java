@@ -1,6 +1,7 @@
 package com.testapplication.wfcmainpage;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
     private Timer myTimer;
     private int currentImage = 0;
@@ -25,6 +26,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.setTitle("WFC App");
+
+	    int[] carrouselIds = getResources().getIntArray(R.array.carrouselImages);
 
         myTimer = new Timer();
         myTimer.schedule(new TimerTask() {
@@ -162,5 +165,9 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+	@Override
+	public void onClick(View v) {
+
+	}
 }
 

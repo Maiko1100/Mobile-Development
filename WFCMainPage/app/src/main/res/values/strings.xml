@@ -15,6 +15,6 @@
     <string name="facilities_button_text">Facilities</string>
     <string name="navigation_button_text">Navigation</string>
     <string name="bezoekadres_title">Bezoekadres</string>
-    <string name="bezoekadres_text">Koningin Wilhelminaplein 13 &#xA;1062 HH  Amsterdam &#xA;The Netherlands &#xA;Toren 2 &#xA;Etage 8 &#xA;Ruimte 6</string>
+    <string name="bezoekadres_text">Koningin Wilhelminaplein 13 <br /><br /><br />1062 HH  Amsterdam &#xA;The Netherlands &#xA;Toren 2 &#xA;Etage 8 &#xA;Ruimte 6</string>
 
 </resources>
