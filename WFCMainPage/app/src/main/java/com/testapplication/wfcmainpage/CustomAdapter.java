@@ -33,6 +33,7 @@ public class CustomAdapter extends ArrayAdapter<Facility> {
         ImageView customImage = (ImageView)customView.findViewById(R.id.customImageView);
         TextView mediumRowText = (TextView) customView.findViewById(R.id.mediumRowText);
 
+
         Facility facility = data[position];
         customRowText.setText(facility.title);
         customImage.setImageResource(facility.icon);

@@ -5,7 +5,9 @@ package com.testapplication.wfcmainpage;
  * Deze class is de main van de facilities page.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +43,7 @@ public class FacilitiesActivity extends ActionBarActivity{
                 new Facility(R.drawable.bedrijf4, "Maxima Trends BV", "Women,Accessoiries,Shoes"),
                 new Facility(R.drawable.bedrijf5, "DC Design & Concept GmbH", "Men,Accessoiries"),
                 new Facility(R.drawable.logowfcsmall, "Insolita Moda Internazionale", "Men,Accessoiries")
+
         };
 
         //convert array to list items.
@@ -52,9 +55,15 @@ public class FacilitiesActivity extends ActionBarActivity{
         facilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //doet nog niets
-                        String sFacility = String.valueOf(parent.getItemAtPosition(position));
+                    public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
+                        Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
+                        myIntent.putExtra("info",sFacilities[pPosition].info.toString());
+                        myIntent.putExtra("title",sFacilities[pPosition].title.toString());
+                        myIntent.putExtra("icon",sFacilities[pPosition].icon);
+
+                        FacilitiesActivity.this.startActivity(myIntent);
+
+
                     }
                 }
         );
