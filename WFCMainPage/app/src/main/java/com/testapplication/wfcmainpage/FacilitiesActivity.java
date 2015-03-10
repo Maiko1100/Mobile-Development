@@ -7,7 +7,6 @@ package com.testapplication.wfcmainpage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,10 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
-import com.testapplication.wfcmainpage.CustomAdapter;
-import com.testapplication.wfcmainpage.Facility;
-import com.testapplication.wfcmainpage.R;
 
 
 public class FacilitiesActivity extends ActionBarActivity{
@@ -57,13 +52,11 @@ public class FacilitiesActivity extends ActionBarActivity{
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("info",sFacilities[pPosition].info.toString());
-                        myIntent.putExtra("title",sFacilities[pPosition].title.toString());
+                        myIntent.putExtra("info",sFacilities[pPosition].info);
+                        myIntent.putExtra("title",sFacilities[pPosition].title);
                         myIntent.putExtra("icon",sFacilities[pPosition].icon);
 
                         FacilitiesActivity.this.startActivity(myIntent);
-
-
                     }
                 }
         );
