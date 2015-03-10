@@ -29,6 +29,7 @@
         android:background="@null"
         android:layout_marginTop="45dp"
         android:layout_alignTop="@+id/imageView"
+        android:onClick="nextImage"
         android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView" />
 

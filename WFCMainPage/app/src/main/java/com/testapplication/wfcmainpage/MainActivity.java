@@ -1,45 +1,40 @@
 package com.testapplication.wfcmainpage;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
-    private Timer myTimer;
-    private int currentImage = 0;
+    private Timer mCarrouselTimer;
+    private int mCurrentImage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.setTitle("WFC App");
+        setTitle(getString(R.string.main_banner_text));
 
 	    int[] carrouselIds = getResources().getIntArray(R.array.carrouselImages);
 
-        myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                TimerMethod();
-            }
+        mCarrouselTimer = new Timer();
+        mCarrouselTimer.schedule(new TimerTask() {
+	        @Override
+	        public void run() {
+		        TimerMethod();
+	        }
         }, 0, 7000);
     }
 
     private void TimerMethod() {
-        this.runOnUiThread(Timer_Tick);
+        runOnUiThread(Timer_Tick);
 
     }
 
@@ -49,13 +44,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
             ImageView img = (ImageView) findViewById(R.id.imageView);
 
-            currentImage++;
+            mCurrentImage++;
 
-            if(currentImage>=4 || currentImage<=0){
-                currentImage =1;
+            if(mCurrentImage>=4 || mCurrentImage<=0){
+                mCurrentImage =1;
             }
 
-            switch (currentImage) {
+            switch (mCurrentImage) {
                 case 1:
                     img.setImageResource(R.drawable.image1);
                     break;
@@ -64,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     break;
                 case 3:
                     img.setImageResource(R.drawable.image3);
-                    currentImage = 0;
+                    mCurrentImage = 0;
                     break;
                 default:
                     img.setImageResource(R.drawable.image1);
@@ -73,15 +68,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     };
 
     public void nextImage(View view){
-        currentImage++;
+        mCurrentImage++;
 
         ImageView img = (ImageView) findViewById(R.id.imageView);
 
-        if(currentImage>=4 || currentImage<=0){
-            currentImage =1;
+        if(mCurrentImage>=4 || mCurrentImage<=0){
+            mCurrentImage =1;
         }
 
-        switch (currentImage) {
+        switch (mCurrentImage) {
             case 1:
                 img.setImageResource(R.drawable.image1);
                 break;
@@ -95,26 +90,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 img.setImageResource(R.drawable.image1);
         }
 
-        myTimer.cancel();
-        myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                TimerMethod();
-            }
+        mCarrouselTimer.cancel();
+        mCarrouselTimer = new Timer();
+        mCarrouselTimer.schedule(new TimerTask() {
+	        @Override
+	        public void run() {
+		        TimerMethod();
+	        }
         }, 7000, 7000);
     }
 
     public void prevImage(View view){
-        currentImage--;
+        mCurrentImage--;
 
         ImageView img = (ImageView) findViewById(R.id.imageView);
 
-        if(currentImage>=4 || currentImage<=0){
-            currentImage =3;
+        if(mCurrentImage>=4 || mCurrentImage<=0){
+            mCurrentImage =3;
         }
 
-        switch (currentImage) {
+        switch (mCurrentImage) {
             case 1:
                 img.setImageResource(R.drawable.image1);
                 break;
@@ -125,16 +120,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 img.setImageResource(R.drawable.image3);
                 break;
             default:
-                System.out.println(currentImage);
+                System.out.println(mCurrentImage);
         }
 
-        myTimer.cancel();
-        myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                TimerMethod();
-            }
+        mCarrouselTimer.cancel();
+        mCarrouselTimer = new Timer();
+        mCarrouselTimer.schedule(new TimerTask() {
+	        @Override
+	        public void run() {
+		        TimerMethod();
+	        }
         }, 7000, 7000);
     }
 

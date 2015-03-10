@@ -14,7 +14,7 @@ public class InfoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
-		setTitle("Information");
+		setTitle(getString(R.string.info_banner_text));
 	}
 
 	@Override

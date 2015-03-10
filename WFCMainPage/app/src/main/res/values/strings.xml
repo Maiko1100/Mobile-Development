@@ -23,5 +23,7 @@
     <string name="customTextRow_Small">Small Text</string>
     <string name="customImage_view">customImageView</string>
     <string name="title_activity_facilities">Facilities</string>
+    <string name="main_banner_text">WFC App</string>
+    <string name="info_banner_text">Information</string>
 
 </resources>
