@@ -2,15 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.testapplication.wfcmainpage" >
 
-    <permission android:name="om.testapplication.wfcmainpage.permission.MAPS_RECEIVE"
-                android:protectionLevel="signature"/>
-    <uses-permission android:name="om.testapplication.wfcmainpage.mapsdemopermission.MAPS_RECEIVE"/>
+    <permission
+        android:name="om.testapplication.wfcmainpage.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="om.testapplication.wfcmainpage.mapsdemopermission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -38,19 +39,33 @@
             android:name=".FacilitiesDetails"
             android:label="@string/title_activity_activityDetails" >
         </activity>
-        <meta-data android:name="com.google.android.gms.version"
-                   android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBzEMuuFojQw1tRpOYg09zwkxtUtdIW_JM"/>
-
+            android:value="AIzaSyBzEMuuFojQw1tRpOYg09zwkxtUtdIW_JM" />
 
         <uses-feature
             android:glEsVersion="0x00020000"
-            android:required="true"/>
+            android:required="true" />
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" >
+        </activity>
+        <activity
+            android:name=".FacilityRentActivity"
+            android:label="@string/title_activity_facility_rent" >
+        </activity>
+        <activity
+            android:name=".CustomFacilityRentAdapter"
+            android:label="@string/title_activity_custom_facility_rent_adapter" >
+        </activity>
+        <activity
+            android:name=".FacilitiesRentDetails"
+            android:label="@string/title_activity_facilities_rent_details" >
         </activity>
     </application>
 

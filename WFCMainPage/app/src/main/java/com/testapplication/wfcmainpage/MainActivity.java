@@ -106,7 +106,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 
 	public void showRent(View v) {
-		//todo code for the rent button
+        Intent showRentFacilities = new Intent(this, FacilityRentActivity.class);
+        startActivity(showRentFacilities);
 	}
 
     // Method die het volgende carrouselplaatje aanroept.
