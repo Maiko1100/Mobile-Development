@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="carrouselImages">
+    <integer-array name="carrouselImages">
         <item>@drawable/image1</item>
-    </array>
+        <item>@drawable/image2</item>
+        <item>@drawable/image3</item>
+    </integer-array>
 </resources>

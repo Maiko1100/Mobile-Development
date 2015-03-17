@@ -5,6 +5,7 @@ package com.testapplication.wfcmainpage;
 		* Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
 		*/
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -19,7 +20,11 @@ import java.util.TimerTask;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
 	private Timer mCarrouselTimer;
-	private int mCurrentImage = 0;
+	private int mCurrentImage = -1;
+    private ImageView mCarrouselImage;
+    //final int[] imageIds1 = {R.drawable.image1, R.drawable.image2, R.drawable.image3};
+
+
 
 
 	@Override
@@ -44,7 +49,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		prevButton.setOnClickListener(this);
 		nextButton.setOnClickListener(this);
 
-		// int[] carrouselIds = getResources().getIntArray(R.array.carrouselImages);
 
 		mCarrouselTimer = new Timer();
 		mCarrouselTimer.schedule(new TimerTask() {
@@ -57,35 +61,33 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 	private void TimerMethod() {
 		runOnUiThread(Timer_Tick);
-
 	}
+
 // method die om de 7 seconden het carrouselplaatje wisselt
 	private Runnable Timer_Tick = new Runnable() {
 		@Override
 		public void run() {
+            TypedArray carrouselImages = getResources().obtainTypedArray(R.array.carrouselImages);
+            int arrayLength = carrouselImages.length();
 
-			ImageView img = (ImageView) findViewById(R.id.imageView);
+            int[] imageId = new int[arrayLength];
 
-			mCurrentImage++;
+            for(int i = 0; i < arrayLength; i++)
+            {
+                imageId[i] = carrouselImages.getResourceId(i,0);
+            }
 
-			if (mCurrentImage >= 4 || mCurrentImage <= 0) {
-				mCurrentImage = 1;
-			}
+            carrouselImages.recycle();
 
-			switch (mCurrentImage) {
-				case 1:
-					img.setImageResource(R.drawable.image1);
-					break;
-				case 2:
-					img.setImageResource(R.drawable.image2);
-					break;
-				case 3:
-					img.setImageResource(R.drawable.image3);
-					mCurrentImage = 0;
-					break;
-				default:
-					img.setImageResource(R.drawable.image1);
-			}
+            mCurrentImage++;
+
+            mCarrouselImage = (ImageView) findViewById(R.id.imageView);
+
+            if(mCurrentImage >= arrayLength)
+            {
+                mCurrentImage = 0;
+            }
+            mCarrouselImage.setImageResource(imageId[mCurrentImage]);
 		}
 	};
 
@@ -111,27 +113,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     // Method die het volgende carrouselplaatje aanroept.
 	public void nextImage(View v) {
-		ImageView img1 = (ImageView) findViewById(R.id.imageView);
+        runOnUiThread(Timer_Tick);
 
-		mCurrentImage++;
-
-		if (mCurrentImage >= 4 || mCurrentImage <= 0) {
-			mCurrentImage = 1;
-		}
-
-		switch (mCurrentImage) {
-			case 1:
-				img1.setImageResource(R.drawable.image1);
-				break;
-			case 2:
-				img1.setImageResource(R.drawable.image2);
-				break;
-			case 3:
-				img1.setImageResource(R.drawable.image3);
-				break;
-			default:
-				img1.setImageResource(R.drawable.image1);
-		}
 		//Reset de timer
 		mCarrouselTimer.cancel();
 		mCarrouselTimer = new Timer();
@@ -144,27 +127,29 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 	// Method die het vorige carrouselplaatje aanroept.
 	public void prevImage(View v) {
-		ImageView img = (ImageView) findViewById(R.id.imageView);
+        TypedArray carrouselImages = getResources().obtainTypedArray(R.array.carrouselImages);
+        int arrayLength = carrouselImages.length();
 
-		mCurrentImage--;
+        int[] imageId = new int[arrayLength];
 
-		if (mCurrentImage >= 4 || mCurrentImage <= 0) {
-			mCurrentImage = 3;
-		}
+        for(int i = 0; i < arrayLength; i++)
+        {
+            imageId[i] = carrouselImages.getResourceId(i,0);
+        }
 
-		switch (mCurrentImage) {
-			case 1:
-				img.setImageResource(R.drawable.image1);
-				break;
-			case 2:
-				img.setImageResource(R.drawable.image2);
-				break;
-			case 3:
-				img.setImageResource(R.drawable.image3);
-				break;
-			default:
-				System.out.println(mCurrentImage);
-		}
+        carrouselImages.recycle();
+
+        mCarrouselImage = (ImageView) findViewById(R.id.imageView);
+
+        mCurrentImage--;
+
+        if(mCurrentImage <= -1)
+        {
+            mCurrentImage = arrayLength -1;
+        }
+        mCarrouselImage.setImageResource(imageId[mCurrentImage]);
+
+
 		//Reset de timer
 		mCarrouselTimer.cancel();
 		mCarrouselTimer = new Timer();
