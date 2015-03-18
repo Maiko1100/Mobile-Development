@@ -24,14 +24,16 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:src="@drawable/image1"/>
+        android:src="@drawable/image1"
+        android:contentDescription="@string/content_imageview_for_carrousel" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/content_imageview2_for_carrousel" />
 
     <ImageButton
         android:id="@+id/nextButton"
@@ -42,7 +44,8 @@
         android:layout_alignTop="@+id/imageView"
         android:layout_marginTop="45dp"
         android:background="@null"
-        android:src="@android:drawable/ic_media_next"/>
+        android:src="@android:drawable/ic_media_next"
+        android:contentDescription="@string/content_next_button_carrousel" />
 
     <ImageButton
         android:id="@+id/prevButton"
@@ -52,13 +55,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/nextButton"
         android:background="@null"
-        android:src="@android:drawable/ic_media_previous"/>
+        android:src="@android:drawable/ic_media_previous"
+        android:contentDescription="@string/content_previous_button_carrousel" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/imageView"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="match_parent"
