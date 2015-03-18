@@ -1,5 +1,4 @@
 package com.testapplication.wfcmainpage;
-
 		/**
 		* @author Remco Hilbert & Fren de Haan
 		* Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
@@ -8,42 +7,27 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.transition.TransitionManager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-
 	private Timer mCarrouselTimer;
-	private int mCurrentImage = -1;
-    private int mPreviousImage = 3;
-    private int mNextImage =0;
+	private int mCurrentImage;
+    private int mOtherImage;
     private ImageView mCarrouselImage;
     private ImageView mCarrouselImage2;
-
-//    // animation
-//
-//    final Animation slideOutRight = AnimationUtils.loadAnimation(this, R.anim.slide_out_right);
-//    final Animation slideInRight = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
-//    final Animation slideOutLeft = AnimationUtils.loadAnimation(this, R.anim.slide_out_left);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setTitle(getString(R.string.main_banner_text));
-
-
 
 		// knoppen declareren
 		Button infoButton = (Button) findViewById(R.id.infoButton);
@@ -53,6 +37,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		ImageButton prevButton = (ImageButton) findViewById(R.id.prevButton);
 		ImageButton nextButton = (ImageButton) findViewById(R.id.nextButton);
 
+        //ImageViews voor Carrousel declareren
+        mCarrouselImage = (ImageView) findViewById(R.id.imageView);
+        mCarrouselImage2 = (ImageView) findViewById(R.id.imageView2);
+
 		//onclick listener initialiseren
 		infoButton.setOnClickListener(this);
 		facilitiesButton.setOnClickListener(this);
@@ -61,21 +49,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		prevButton.setOnClickListener(this);
 		nextButton.setOnClickListener(this);
 
-
 		mCarrouselTimer = new Timer();
 		mCarrouselTimer.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				TimerMethod();
 			}
-		}, 0, 7000);
+		}, 7000, 7000);
 	}
 
 	private void TimerMethod() {
 		runOnUiThread(Timer_Tick);
 	}
 
-// method die om de 7 seconden het carrouselplaatje wisselt
+// method die om de 7 seconden het carrouselplaatje wisselt. Wordt ook gebruikt voor nextImage button
 	private Runnable Timer_Tick = new Runnable() {
 		@Override
 		public void run() {
@@ -92,59 +79,28 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             carrouselImages.recycle();
 
             mCurrentImage++;
-            mPreviousImage++;
-            mNextImage++;
-
-            mCarrouselImage = (ImageView) findViewById(R.id.imageView);
-            mCarrouselImage2 = (ImageView) findViewById(R.id.imageView2);
+            mOtherImage = mCurrentImage - 1;
 
             if(mCurrentImage >= arrayLength)
             {
                 mCurrentImage = 0;
             }
 
-            if(mPreviousImage >= arrayLength)
+            if(mOtherImage >= arrayLength)
             {
-                mPreviousImage = 0;
-            }
-
-            if(mNextImage >= arrayLength)
-            {
-                mNextImage = 0;
+                mOtherImage = 0;
             }
 
             // animation
             final Animation slideOutLeft = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_out_left);
             mCarrouselImage.startAnimation(slideOutLeft);
-
-            mCarrouselImage.setImageResource(imageId[mCurrentImage]);
-            mCarrouselImage2.setImageResource(imageId[mNextImage]);
-
             final Animation slideInRight = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_in_right);
             mCarrouselImage2.startAnimation(slideInRight);
+
+            mCarrouselImage.setImageResource(imageId[mOtherImage]);
+            mCarrouselImage2.setImageResource(imageId[mCurrentImage]);
 		}
 	};
-
-
-	public void showInfo(View v) {
-		Intent showInfo = new Intent(this, InfoActivity.class);
-		startActivity(showInfo);
-	}
-
-	public void showMaps(View v) {
-		Intent showMaps = new Intent(this, MapsActivity.class);
-		startActivity(showMaps);
-	}
-
-	public void showFacilities(View v) {
-		Intent showFacilities = new Intent(this, FacilitiesActivity.class);
-		startActivity(showFacilities);
-	}
-
-	public void showRent(View v) {
-        Intent showRentFacilities = new Intent(this, FacilityRentActivity.class);
-        startActivity(showRentFacilities);
-	}
 
     // Method die het volgende carrouselplaatje aanroept.
 	public void nextImage(View v) {
@@ -174,37 +130,27 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         carrouselImages.recycle();
 
-        mCarrouselImage = (ImageView) findViewById(R.id.imageView);
-        mCarrouselImage2 = (ImageView) findViewById(R.id.imageView2);
-
         mCurrentImage--;
-        mPreviousImage--;
-        mNextImage--;
+        mOtherImage = mCurrentImage + 1;
 
         if(mCurrentImage <= -1)
         {
             mCurrentImage = arrayLength -1;
         }
 
-        if(mPreviousImage <= -1)
+        if(mOtherImage <= -1)
         {
-            mPreviousImage = arrayLength -1;
-        }
-
-        if(mNextImage <= -1)
-        {
-            mNextImage = arrayLength -1;
+            mOtherImage = arrayLength -1;
         }
 
         // animation
         final Animation slideOutRight = AnimationUtils.loadAnimation(this, R.anim.slide_out_right);
         mCarrouselImage.startAnimation(slideOutRight);
-
-        mCarrouselImage.setImageResource(imageId[mNextImage]);
-        mCarrouselImage2.setImageResource(imageId[mPreviousImage]);
-
         final Animation slideInLeft = AnimationUtils.loadAnimation(this, R.anim.slide_in_left);
         mCarrouselImage2.startAnimation(slideInLeft);
+
+        mCarrouselImage2.setImageResource(imageId[mCurrentImage]);
+        mCarrouselImage.setImageResource(imageId[mOtherImage]);
 
 		//Reset de timer
 		mCarrouselTimer.cancel();
@@ -216,6 +162,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			}
 		}, 7000, 7000);
 	}
+
+    public void showInfo(View v) {
+        Intent showInfo = new Intent(this, InfoActivity.class);
+        startActivity(showInfo);
+    }
+
+    public void showMaps(View v) {
+        Intent showMaps = new Intent(this, MapsActivity.class);
+        startActivity(showMaps);
+    }
+
+    public void showFacilities(View v) {
+        Intent showFacilities = new Intent(this, FacilitiesActivity.class);
+        startActivity(showFacilities);
+    }
+
+    public void showRent(View v) {
+        Intent showRentFacilities = new Intent(this, FacilityRentActivity.class);
+        startActivity(showRentFacilities);
+    }
 
 	@Override
 	public void onClick(View v) {
@@ -250,4 +216,3 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		}
 	}
 }
-
