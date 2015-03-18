@@ -38,5 +38,9 @@ Ruimte 6</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_custom_facility_rent_adapter">CustomFacilityRentAdapter</string>
     <string name="title_activity_facilities_rent_details">FacilitiesRentDetails</string>
+    <string name="maps_activity_info_banner">
+        World Fashion Centre is de plek, waar bestaande en opkomende modemerken/labels zich presenteren.
+        U kunt hier uit een ruim en actueel fashion aanbod uw collectie samenstellen.
+		</string>
 
 </resources>
