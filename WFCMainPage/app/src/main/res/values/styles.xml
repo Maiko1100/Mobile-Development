@@ -7,6 +7,6 @@
 
     <style name="TextDefault">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/red</item>
+        <item name="android:textColor">@color/text_color</item>
     </style>
 </resources>

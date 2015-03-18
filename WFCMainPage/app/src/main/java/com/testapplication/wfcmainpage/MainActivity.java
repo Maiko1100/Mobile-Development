@@ -1,8 +1,5 @@
 package com.testapplication.wfcmainpage;
-		/**
-		* @author Remco Hilbert & Fren de Haan
-		* Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
-		*/
+
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -16,6 +13,10 @@ import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author Remco Hilbert & Fren de Haan
+ * Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
+ */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 	private Timer mCarrouselTimer;
 	private int mCurrentImage;
@@ -62,7 +63,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		runOnUiThread(Timer_Tick);
 	}
 
-// method die om de 7 seconden het carrouselplaatje wisselt. Wordt ook gebruikt voor nextImage button
+    /**
+     * method die om de 7 seconden het carrouselplaatje wisselt. Wordt ook gebruikt voor nextImage button
+     */
 	private Runnable Timer_Tick = new Runnable() {
 		@Override
 		public void run() {

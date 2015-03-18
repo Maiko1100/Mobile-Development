@@ -11,23 +11,14 @@
     <string name="history_text">Ruim 40 jaar is het World Fashion Centre ‘the meeting point’ voor de internationale modebusiness. Er bestaat geen enkele fashion locatie van deze allure in Nederland, waar modemerken, winkels en groothandel elkaar kunnen ontmoeten, zaken doen en de nieuwste modetrends uitwisselen. </string>
     <string name="history_title">History</string>
     <string name="mijlpaal_title">Mijlpalen</string>
-    <string name="mijlpaal_text">1968 Opening World Fashion Centre (WFC)
-1977 Eerste uitbreiding WFC: Toren 3
-1993 Nieuw initiatief voor WFC-experience: opening Fashion Garden
-2002 Opening parkeergarage
-2005 Vernieuwing centrale hal en opening eventlocatie Beursplaza
-2008 40-jarig jubileum: terugblik en viering van 40 jaar fashion in WFC</string>
+    <string name="mijlpaal_text">1968 Opening World Fashion Centre (WFC)\n1977 Eerste uitbreiding WFC: Toren 3\n1993 Nieuw initiatief voor WFC-experience: opening Fashion Garden\n2002 Opening parkeergarage\n2005 Vernieuwing centrale hal en opening eventlocatie Beursplaza\n2008 40-jarig jubileum: terugblik en viering van 40 jaar fashion in WFC</string>
     <string name="management_title_text">WFC Management</string>
     <string name="management_text">Het World Fashion Centre-managementteam staat altijd garant voor bezoekers én showroomhouders. Onze professionaliteit, service, expertise en creativiteit zorgen voor een optimale samenwerking met showroomhouders. Wij zorgen voor de voorwaarden, waardoor de showroomhouders zichzelf optimaal kunnen presenteren: qua ruimte, faciliteiten en sfeer. Daarnaast bieden wij de overall service aan bezoekers, zodat zij graag en veelvuldig het World Fashion Centre bezoeken. Wij besteden veel aandacht aan de ontvangst, de verzorging van de exclusieve WFC-toegangspas en de overige faciliteiten, waardoor een bezoek aan WFC als zeer aangenaam wordt ervaren.</string>
     <string name="rent_button_text">Rent</string>
     <string name="facilities_button_text">Facilities</string>
     <string name="navigation_button_text">Navigation</string>
     <string name="bezoekadres_title">Bezoekadres</string>
-    <string name="bezoekadres_text">Koningin Wilhelminaplein 13 <br /><br /><br />1062 HH  Amsterdam 
-The Netherlands 
-Toren 2 
-Etage 8 
-Ruimte 6</string>
+    <string name="bezoekadres_text">Koningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands\n\nToren 2\nEtage 8\nRuimte 6\n</string>
     //strings activity_facilities            <string name="customRowText_Medium">Medium Text</string>
     <string name="customTextRow_Small">Small Text</string>
     <string name="customImage_view">customImageView</string>
@@ -35,12 +26,15 @@ Ruimte 6</string>
     <string name="main_banner_text">WFC App</string>
     <string name="info_banner_text">Information</string>
     <string name="title_activity_facility_rent">FacilityRentActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_custom_facility_rent_adapter">CustomFacilityRentAdapter</string>
     <string name="title_activity_facilities_rent_details">FacilitiesRentDetails</string>
     <string name="maps_activity_info_banner">
         World Fashion Centre is de plek, waar bestaande en opkomende modemerken/labels zich presenteren.
         U kunt hier uit een ruim en actueel fashion aanbod uw collectie samenstellen.
 		</string>
+    <string name="content_imageview_for_carrousel">ImageView voor Carrousel</string>
+    <string name="content_imageview2_for_carrousel">ImageView2 voor Carrousel, helpt met de animatie</string>
+    <string name="content_next_button_carrousel">Next Button Carrousel</string>
+    <string name="content_previous_button_carrousel">Previous Button Carrousel</string>
 
 </resources>
