@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends Activity{
 
 	private final LatLng LOCATION_WFC = new LatLng(52.354484, 4.841304);
-	GoogleMap mMap;
+	private GoogleMap mMap;
 
 
 	@Override
@@ -60,13 +60,11 @@ public class MapsActivity extends Activity{
 
 		MarkerOptions markerOptions = new MarkerOptions();
 		markerOptions.position(LOCATION_WFC);
-		mMap.animateCamera(start);
-		mMap.moveCamera(start);
-
 		Marker marker = mMap.addMarker(markerOptions);
-
 		marker.showInfoWindow();
 
+		mMap.animateCamera(start);
+		mMap.moveCamera(start);
 		mMap.setMyLocationEnabled(true);
 	}
 

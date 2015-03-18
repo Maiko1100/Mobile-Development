@@ -16,11 +16,11 @@ import android.widget.TextView;
 
 public class CustomFacilityRentAdapter extends ArrayAdapter<FacilityRent> {
 
-    FacilityRent data[] = null;
+    private FacilityRent mData[] = null;
 
     public CustomFacilityRentAdapter(Context context, FacilityRent[] pData) {
         super(context, R.layout.activity_custom_facility_rent_adapter,pData);
-        data = pData;
+	    mData = pData;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class CustomFacilityRentAdapter extends ArrayAdapter<FacilityRent> {
         TextView mediumRowText = (TextView) customView.findViewById(R.id.mediumRowText);
 
 
-        FacilityRent facilityRent = data[position];
+        FacilityRent facilityRent = mData[position];
         customRowText.setText(facilityRent.title);
         customImage.setImageResource(facilityRent.icon);
         mediumRowText.setText(facilityRent.info);
