@@ -36,6 +36,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+        setTitle(getString(R.string.main_title_text));
 
 		TypedArray mResources = getResources().obtainTypedArray(R.array.carrouselImages);
 		arrayLength = mResources.length();
