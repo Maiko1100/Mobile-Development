@@ -4,7 +4,6 @@
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:background="@color/background"
             tools:context="com.testapplication.wfcmainpage.InfoActivity">
 
     <LinearLayout
