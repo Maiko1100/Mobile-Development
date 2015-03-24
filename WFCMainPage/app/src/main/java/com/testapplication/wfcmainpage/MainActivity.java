@@ -2,46 +2,59 @@ package com.testapplication.wfcmainpage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import java.util.Timer;
 
 /**
  * @author Remco Hilbert & Fren de Haan
  *         Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
  */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-	private Timer mCarrouselTimer;
-	private int mCurrentImage;
-	private int mOtherImage;
-	private ImageView mCarrouselImage;
-	private ImageView mCarrouselImage2;
 	CustomPagerAdapter mCustomPagerAdapter;
 	ViewPager mViewPager;
-	public int[] mResources = {
-			R.drawable.image1,
-			R.drawable.image2,
-			R.drawable.image3
-	};
+	private int[] imageId;
+	private int arrayLength;
+	private int dotsCount;
+	private TextView[] dots;
+	private LinearLayout dotsLayout;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mCustomPagerAdapter = new CustomPagerAdapter(this);
+		TypedArray mResources = getResources().obtainTypedArray(R.array.carrouselImages);
+		arrayLength = mResources.length();
 
+		imageId = new int[arrayLength];
+
+		for(int i = 0; i < arrayLength; i++)
+		{
+			imageId[i] = mResources.getResourceId(i,0);
+		}
+
+		mResources.recycle();
+
+		mCustomPagerAdapter = new CustomPagerAdapter(this);
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mCustomPagerAdapter);
+		mViewPager.setOnPageChangeListener(new MyPageChangeListener());
+
+		setUiPageViewController();
+
 
 		// knoppen declareren
 		Button infoButton = (Button) findViewById(R.id.infoButton);
@@ -49,11 +62,28 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		Button navigationButton = (Button) findViewById(R.id.navigationButton);
 		Button rentButton = (Button) findViewById(R.id.rentButton);
 
+
 		//onclick listener initialiseren
 		infoButton.setOnClickListener(this);
 		facilitiesButton.setOnClickListener(this);
 		navigationButton.setOnClickListener(this);
 		rentButton.setOnClickListener(this);
+	}
+
+	private void setUiPageViewController() {
+		dotsLayout = (LinearLayout)findViewById(R.id.viewPagerCountDots);
+		dotsCount = mCustomPagerAdapter.getCount();
+		dots = new TextView[dotsCount];
+
+		for (int i = 0; i < dotsCount; i++) {
+			dots[i] = new TextView(this);
+			dots[i].setText(Html.fromHtml("&#8226;"));
+			dots[i].setTextSize(40);
+			dots[i].setTextColor(getResources().getColor(android.R.color.darker_gray));
+			dotsLayout.addView(dots[i]);
+		}
+
+		dots[0].setTextColor(getResources().getColor(R.color.dot_selected));
 	}
 
 
@@ -108,14 +138,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		Context mContext;
 		LayoutInflater mLayoutInflater;
 
+
 		public CustomPagerAdapter(Context context) {
 			mContext = context;
 			mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		}
+					}
+
 
 		@Override
 		public int getCount() {
-			return mResources.length;
+			return imageId.length;
 		}
 
 		@Override
@@ -128,7 +160,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
 
 			ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
-			imageView.setImageResource(mResources[position]);
+			imageView.setImageResource(imageId[position]);
 
 			container.addView(itemView);
 
@@ -140,4 +172,28 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			container.removeView((LinearLayout) object);
 		}
 	}
-}
+	public class MyPageChangeListener implements ViewPager.OnPageChangeListener {
+		@SuppressWarnings("static-access")
+		@Override
+		public void onPageScrollStateChanged(int state) {
+
+		}
+
+		@Override
+		public void onPageScrolled(int position, float positionOffset,
+		                           int positionOffsetPixel) {
+		}
+
+		@Override
+		public void onPageSelected(int position) {
+			// making everything as un selected
+			for (int i = 0; i < dotsCount; i++){
+				dots[i].setTextColor(getResources().getColor(android.R.color.darker_gray));
+			}
+			// only one selected
+			dots[position].setTextColor(getResources().getColor(R.color.dot_selected));
+		}
+		}
+	}
+
+

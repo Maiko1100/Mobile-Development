@@ -2,7 +2,10 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:textColor="@android:color/white"
+    >
+
     <item>
 
         <shape
@@ -12,8 +15,8 @@
 
             <gradient
                 android:angle="270"
-                android:startColor="#C41298"
-                android:endColor="#FF00BF"
+                android:startColor="#2F5C9F"
+                android:endColor="#25497F"
                 android:type="linear"
                 />
         </shape>
