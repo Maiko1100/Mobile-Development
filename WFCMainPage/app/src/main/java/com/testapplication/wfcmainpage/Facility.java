@@ -18,9 +18,9 @@ public class Facility {
 
 	/**
 	 *
-	 * @param pIcon
-	 * @param pTitle
-	 * @param pInfo
+	 * @param pIcon holds the image of a facility in the listview
+	 * @param pTitle holds the title of a facility in the listview
+	 * @param pInfo holds the info a facility in the listview
 	 */
 	public Facility(int pIcon, String pTitle, String pInfo) {
 		super();

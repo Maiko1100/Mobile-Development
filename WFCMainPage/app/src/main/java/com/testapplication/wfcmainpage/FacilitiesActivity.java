@@ -46,7 +46,6 @@ public class FacilitiesActivity extends ActionBarActivity{
         facilityList = (ListView) findViewById(R.id.facilitiesList);
         facilityList.setAdapter(facilityAdapter);
 
-
         facilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
