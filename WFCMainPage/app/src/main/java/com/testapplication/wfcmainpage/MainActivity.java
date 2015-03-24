@@ -1,15 +1,20 @@
 package com.testapplication.wfcmainpage;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -37,6 +42,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
         setTitle(getString(R.string.main_title_text));
+
+        try {
+            android.support.v7.app.ActionBar bar = getSupportActionBar();
+            bar.setBackgroundDrawable(new ColorDrawable(Color.RED));
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
 
 		TypedArray mResources = getResources().obtainTypedArray(R.array.carrouselImages);
 		arrayLength = mResources.length();
@@ -76,6 +90,28 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		navigationButton.setOnClickListener(this);
 		rentButton.setOnClickListener(this);
 	}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_info, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 	private void setUiPageViewController() {
 		dotsLayout = (LinearLayout)findViewById(R.id.viewPagerCountDots);
