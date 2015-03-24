@@ -43,13 +43,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		setContentView(R.layout.activity_main);
         setTitle(getString(R.string.main_title_text));
 
-        try {
-            android.support.v7.app.ActionBar bar = getSupportActionBar();
-            bar.setBackgroundDrawable(new ColorDrawable(Color.RED));
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
+//        try {
+//            android.support.v7.app.ActionBar bar = getSupportActionBar();
+//            bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8A076D")));
+//        }
+//        catch (Exception e){
+//            System.out.println(e);
+//        }
 
 
 		TypedArray mResources = getResources().obtainTypedArray(R.array.carrouselImages);

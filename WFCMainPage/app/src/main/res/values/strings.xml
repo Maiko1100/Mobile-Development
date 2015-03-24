@@ -3,8 +3,11 @@
 
     <string name="app_name">WFC</string>
     <string name="action_settings">Settings</string>
-    <string name="info_button_text">Info</string>
+    <string name="info_button_text">Information</string>
     <string name="main_title_text">World Fashion Centre</string>
+    <string name="maps_title_text">Navigation</string>
+    <string name="rent_title_text">Rent</string>
+    <string name="info_title_text">Information</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_activityDetails">FacilitiesDetails</string>
@@ -26,7 +29,6 @@
     <string name="customImage_view">customImageView</string>
     <string name="title_activity_facilities">Facilities</string>
     <string name="main_banner_text">WFC App</string>
-    <string name="info_banner_text">Information</string>
     <string name="title_activity_facility_rent">FacilityRentActivity</string>
     <string name="title_activity_custom_facility_rent_adapter">CustomFacilityRentAdapter</string>
     <string name="title_activity_facilities_rent_details">FacilitiesRentDetails</string>

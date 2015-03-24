@@ -1,5 +1,7 @@
 package com.testapplication.wfcmainpage;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -15,7 +17,11 @@ public class InfoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
-		setTitle(getString(R.string.info_banner_text));
+
+        android.support.v7.app.ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8A076D")));
+
+		setTitle(getString(R.string.info_title_text));
 	}
 
 	@Override

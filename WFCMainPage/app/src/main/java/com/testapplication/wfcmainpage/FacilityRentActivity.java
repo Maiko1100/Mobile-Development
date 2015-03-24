@@ -6,6 +6,8 @@ package com.testapplication.wfcmainpage;
  */
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -29,6 +31,10 @@ public class FacilityRentActivity extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facility_rent);
+        setTitle(getString(R.string.rent_title_text));
+
+        android.support.v7.app.ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#20699C")));
 
         //Array voor facility names. vervangen door database items.
         sRentFacilities = new FacilityRent[]{
