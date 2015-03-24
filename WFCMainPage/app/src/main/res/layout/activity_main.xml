@@ -56,7 +56,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_rent_background"
                 android:text="@string/rent_button_text"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/infoButton"
@@ -66,7 +67,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_info_background"
                 android:text="@string/info_button_text"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +84,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_facilities_background"
                 android:text="@string/facilities_button_text"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/navigationButton"
@@ -93,7 +96,7 @@
                 android:background="@drawable/btn_navigation_background"
                 android:text="@string/navigation_button_text"
                 android:textColor="@android:color/white"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

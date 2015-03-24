@@ -3,6 +3,7 @@ package com.testapplication.wfcmainpage;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -52,15 +53,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mCustomPagerAdapter);
 		mViewPager.setOnPageChangeListener(new MyPageChangeListener());
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
 
 		setUiPageViewController();
 
 
 		// knoppen declareren
 		Button infoButton = (Button) findViewById(R.id.infoButton);
+        infoButton.setTypeface(face);
 		Button facilitiesButton = (Button) findViewById(R.id.facilitiesButton);
+        facilitiesButton.setTypeface(face);
 		Button navigationButton = (Button) findViewById(R.id.navigationButton);
+        navigationButton.setTypeface(face);
 		Button rentButton = (Button) findViewById(R.id.rentButton);
+        rentButton.setTypeface(face);
 
 
 		//onclick listener initialiseren
