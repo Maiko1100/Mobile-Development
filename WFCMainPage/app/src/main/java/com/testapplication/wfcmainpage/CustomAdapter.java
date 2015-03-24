@@ -3,7 +3,8 @@ package com.testapplication.wfcmainpage;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Deze class wordt toegepast op alle items in de list om de sFacility array te converteren naar een list.
+ * Provides een custom adapter die alle items uit de sFacility array converteerd naar een list.
+ *
  */
 
 import android.content.Context;
