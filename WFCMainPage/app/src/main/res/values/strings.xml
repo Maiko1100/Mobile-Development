@@ -19,7 +19,9 @@
     <string name="navigation_button_text">Navigation</string>
     <string name="bezoekadres_title">Bezoekadres</string>
     <string name="bezoekadres_text">Koningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands\n\nToren 2\nEtage 8\nRuimte 6\n</string>
-    //strings activity_facilities            <string name="customRowText_Medium">Medium Text</string>
+
+    //strings activity_facilities
+    <string name="customRowText_Medium">Medium Text</string>
     <string name="customTextRow_Small">Small Text</string>
     <string name="customImage_view">customImageView</string>
     <string name="title_activity_facilities">Facilities</string>
@@ -36,5 +38,8 @@
     <string name="content_imageview2_for_carrousel">ImageView2 voor Carrousel, helpt met de animatie</string>
     <string name="content_next_button_carrousel">Next Button Carrousel</string>
     <string name="content_previous_button_carrousel">Previous Button Carrousel</string>
+
+    //strings activity_maps
+    <string name="bezoekadres_maps_text">Koningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
 
 </resources>
