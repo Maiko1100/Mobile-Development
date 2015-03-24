@@ -58,10 +58,10 @@ public class MapsActivity extends Activity{
 			}
 		});
 
-		MarkerOptions markerOptions = new MarkerOptions();
-		markerOptions.position(LOCATION_WFC);
-		Marker marker = mMap.addMarker(markerOptions);
-		marker.showInfoWindow();
+		MarkerOptions tempMarkerOptions = new MarkerOptions();
+		tempMarkerOptions.position(LOCATION_WFC);
+		Marker tempMarker = mMap.addMarker(tempMarkerOptions);
+		tempMarker.showInfoWindow();
 
 		mMap.animateCamera(start);
 		mMap.moveCamera(start);
