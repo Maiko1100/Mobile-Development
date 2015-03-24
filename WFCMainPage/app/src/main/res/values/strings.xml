@@ -40,6 +40,6 @@
     <string name="content_previous_button_carrousel">Previous Button Carrousel</string>
 
     //strings activity_maps
-    <string name="bezoekadres_maps_text">Koningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
+    <string name="bezoekadres_maps_text"><b>World Fashion Center</b>\nKoningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
 
 </resources>

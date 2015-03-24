@@ -9,10 +9,13 @@ package com.testapplication.wfcmainpage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -23,12 +26,15 @@ public class FacilitiesActivity extends ActionBarActivity{
      *
      * @param facilityAdapter custom adapter om items uit de array naar list te zetten
      * @param facilityList List View volledige pagina
-     * @param sFacilities Array van Facilities objects
+     * @param mFacilities Array van Facilities objects
+     * @param searchInput edittext object voor de zoekfunctie
      */
 
     ListAdapter facilityAdapter;
     ListView facilityList;
-    Facility sFacilities[];
+    private Facility mFacilities[];
+    EditText searchInput;
+
 
 
     @Override
@@ -37,7 +43,7 @@ public class FacilitiesActivity extends ActionBarActivity{
         setContentView(R.layout.activity_facilities);
 
         //Array voor facility names. vervangen door database items.
-        sFacilities = new Facility[]{
+        mFacilities = new Facility[]{
                 new Facility(R.drawable.bedrijf1, "Max Fashion Labels", "Women, Accessoiries"),
                 new Facility(R.drawable.bedrijf2, "Mar-XS B.V.", "Men,Accessoiries"),
                 new Facility(R.drawable.bedrijf3, "Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"),
@@ -47,19 +53,39 @@ public class FacilitiesActivity extends ActionBarActivity{
 
         };
 
-        //convert array to list items.
-        facilityAdapter = new CustomAdapter(getBaseContext(), sFacilities);
+        //initialize
+        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
         facilityList = (ListView) findViewById(R.id.facilitiesList);
+        searchInput = (EditText)findViewById(R.id.searchInput);
+
         facilityList.setAdapter(facilityAdapter);
+        //adds filterable input
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //When user changes inputtext
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         facilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("info",sFacilities[pPosition].info);
-                        myIntent.putExtra("title",sFacilities[pPosition].title);
-                        myIntent.putExtra("icon",sFacilities[pPosition].icon);
+                        myIntent.putExtra("info", mFacilities[pPosition].info);
+                        myIntent.putExtra("title", mFacilities[pPosition].title);
+                        myIntent.putExtra("icon", mFacilities[pPosition].icon);
 
                         FacilitiesActivity.this.startActivity(myIntent);
                     }
@@ -67,6 +93,8 @@ public class FacilitiesActivity extends ActionBarActivity{
         );
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
