@@ -2,7 +2,8 @@ package com.testapplication.wfcmainpage;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Deze class is de main van de facilities page.
+ * Provides de facility page met hierin de faciliteiten van het world fashion centre,
+ * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker
  */
 
 import android.content.Intent;
@@ -18,10 +19,15 @@ import android.widget.ListView;
 
 public class FacilitiesActivity extends ActionBarActivity{
 
+    /**
+     *
+     * @param facilityAdapter custom adapter om items uit de array naar list te zetten
+     * @param facilityList List View volledige pagina
+     * @param sFacilities Array van Facilities objects
+     */
+
     ListAdapter facilityAdapter;
-    //List View volledige pagina
     ListView facilityList;
-    //Array van Facility objects
     Facility sFacilities[];
 
 

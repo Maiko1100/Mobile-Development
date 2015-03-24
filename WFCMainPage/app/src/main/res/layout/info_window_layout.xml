@@ -8,6 +8,6 @@
         android:id="@+id/tv_info_window_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/maps_activity_info_banner"/>
+        android:text="@string/bezoekadres_maps_text"/>
 
 </LinearLayout>

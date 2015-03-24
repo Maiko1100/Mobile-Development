@@ -27,7 +27,7 @@ public class MapsActivity extends Activity{
 
 
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+		mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
 		CameraUpdate start = CameraUpdateFactory.newLatLngZoom(LOCATION_WFC, 18);
 
@@ -62,6 +62,7 @@ public class MapsActivity extends Activity{
 		tempMarkerOptions.position(LOCATION_WFC);
 		Marker tempMarker = mMap.addMarker(tempMarkerOptions);
 		tempMarker.showInfoWindow();
+		tempMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.kleinlogo));
 
 		mMap.animateCamera(start);
 		mMap.moveCamera(start);

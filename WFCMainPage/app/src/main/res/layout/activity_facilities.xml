@@ -6,12 +6,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context=".FacilitiesActivity">
 
+    <!-- Search bar voor text input -->
+    <EditText
+        android:id="@+id/searchInput"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FFF"
+        />
+
 
     <!-- List View for facility items on page-->
     <ListView
         android:id="@+id/facilitiesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/searchInput"
         />
 
 </RelativeLayout>
