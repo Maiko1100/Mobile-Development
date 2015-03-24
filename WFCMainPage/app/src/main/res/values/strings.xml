@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">World Fashion Centre</string>
+    <string name="app_name">WFC</string>
     <string name="action_settings">Settings</string>
     <string name="info_button_text">Info</string>
     <string name="main_title_text">World Fashion Centre</string>
@@ -40,6 +40,6 @@
     <string name="content_previous_button_carrousel">Previous Button Carrousel</string>
 
     //strings activity_maps
-    <string name="bezoekadres_maps_text">Koningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
+    <string name="bezoekadres_maps_text"><b>World Fashion Center</b>\nKoningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
 
 </resources>

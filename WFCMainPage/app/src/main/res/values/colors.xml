@@ -2,4 +2,5 @@
 <resources>
     <color name="text_color">#ff696969</color>
     <color name="background">#8c9ecec6</color>
+    <color name="dot_selected">#B40A8F</color>
 </resources>

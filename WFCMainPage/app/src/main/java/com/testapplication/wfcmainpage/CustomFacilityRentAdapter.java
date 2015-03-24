@@ -28,11 +28,9 @@ public class CustomFacilityRentAdapter extends ArrayAdapter<FacilityRent> {
         LayoutInflater customInflater = LayoutInflater.from(getContext());
         View customView = customInflater.inflate(R.layout.activity_custom_facility_rent_adapter, parent, false);
 
-
         TextView customRowText = (TextView)customView.findViewById(R.id.customRowText);
         ImageView customImage = (ImageView)customView.findViewById(R.id.customImageView);
         TextView mediumRowText = (TextView) customView.findViewById(R.id.mediumRowText);
-
 
         FacilityRent facilityRent = mData[position];
         customRowText.setText(facilityRent.title);
