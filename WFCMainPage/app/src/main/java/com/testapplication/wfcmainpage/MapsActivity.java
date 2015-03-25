@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -35,9 +36,15 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
 
-        Button buttonNav = (Button) findViewById(R.id.buttonNav);
-        buttonNav.setTypeface(face);
-        buttonNav.setOnClickListener(this);
+        ImageButton buttonCar = (ImageButton) findViewById(R.id.buttonCar);
+        buttonCar.setOnClickListener(this);
+
+        ImageButton buttonWalk = (ImageButton) findViewById(R.id.buttonWalk);
+        buttonWalk.setOnClickListener(this);
+
+        ImageButton buttonBicycle = (ImageButton) findViewById(R.id.buttonBicycle);
+        buttonBicycle.setOnClickListener(this);
+
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#25497F")));
@@ -82,9 +89,25 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
         mMap.setMyLocationEnabled(true);
     }
 
-    public void startNav(View v) {
+    public void startCar(View v) {
         //Start Google Maps, Navigate immediately
         Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
+    public void startWalk(View v) {
+        //Start Google Maps, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304&mode=w");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
+    public void startBicycle(View v) {
+        //Start Google Maps, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304&mode=b");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
@@ -95,8 +118,14 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
         int id = v.getId();
         switch (id) {
-            case R.id.buttonNav:
-                startNav(v);
+            case R.id.buttonCar:
+                startCar(v);
+                break;
+            case R.id.buttonWalk:
+                startWalk(v);
+                break;
+            case R.id.buttonBicycle:
+                startBicycle(v);
                 break;
 
         }
