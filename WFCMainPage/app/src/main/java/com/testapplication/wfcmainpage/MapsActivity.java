@@ -45,6 +45,9 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
         ImageButton buttonBicycle = (ImageButton) findViewById(R.id.buttonBicycle);
         buttonBicycle.setOnClickListener(this);
 
+        ImageButton buttonOV = (ImageButton) findViewById(R.id.buttonOV);
+        buttonOV.setOnClickListener(this);
+
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#25497F")));
@@ -113,10 +116,18 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
         startActivity(mapIntent);
     }
 
+    public void startOV(View v) {
+        //Start Google Maps, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304&mode=r");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
     @Override
     public void onClick(View v) {
-
         int id = v.getId();
+
         switch (id) {
             case R.id.buttonCar:
                 startCar(v);
@@ -127,7 +138,9 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.buttonBicycle:
                 startBicycle(v);
                 break;
-
+            case R.id.buttonOV:
+                startOV(v);
+                break;
         }
     }
 
