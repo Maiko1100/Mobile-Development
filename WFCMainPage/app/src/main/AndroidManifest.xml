@@ -29,11 +29,13 @@
         </activity>
         <activity
             android:name=".InfoActivity"
-            android:label="@string/title_activity_info" >
+            android:label="@string/title_activity_info"
+            android:theme="@style/Theme.Info">
         </activity>
         <activity
             android:name=".FacilitiesActivity"
-            android:label="@string/title_activity_facilities" >
+            android:label="@string/title_activity_facilities"
+            android:theme="@style/Theme.Fac">
         </activity>
         <activity
             android:name=".FacilitiesDetails"
@@ -53,11 +55,13 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
+            android:label="@string/title_activity_maps"
+            android:theme="@style/Theme.Nav">
         </activity>
         <activity
             android:name=".FacilityRentActivity"
-            android:label="@string/title_activity_facility_rent" >
+            android:label="@string/title_activity_facility_rent"
+            android:theme="@style/Theme.Rent">
         </activity>
         <activity
             android:name=".CustomFacilityRentAdapter"

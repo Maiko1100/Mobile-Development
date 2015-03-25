@@ -34,10 +34,6 @@ public class FacilityRentActivity extends ActionBarActivity{
         setContentView(R.layout.activity_facility_rent);
         setTitle(getString(R.string.rent_title_text));
 
-        //ActionBar color
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#20699C")));
-
         //Array voor facility names. vervangen door database items.
         sRentFacilities = new FacilityRent[]{
                 new FacilityRent(R.drawable.bedrijf2, "Type: Showroom", "Grootte: 109 m2\n" +

@@ -17,12 +17,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 
 /**
  * @author Remco Hilbert & Fren de Haan
- *         Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
+ * Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
  */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     private CustomPagerAdapter mCustomPagerAdapter;
@@ -111,7 +112,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mDots[0].setTextColor(getResources().getColor(R.color.dot_selected));
     }
 
-
     public void showInfo(View v) {
         Intent showInfo = new Intent(this, InfoActivity.class);
         startActivity(showInfo);
@@ -135,7 +135,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-
         int id = v.getId();
         switch (id) {
             case R.id.infoButton:
@@ -153,9 +152,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.rentButton:
                 showRent(v);
                 break;
-
         }
-
     }
 
     class CustomPagerAdapter extends PagerAdapter {

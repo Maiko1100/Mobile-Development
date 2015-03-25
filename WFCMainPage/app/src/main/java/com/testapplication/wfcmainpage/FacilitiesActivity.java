@@ -44,9 +44,6 @@ public class FacilitiesActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
 
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#97102E")));
-
         //Array voor facility names. vervangen door database items.
         mFacilities = new Facility[]{
                 new Facility(R.drawable.bedrijf1, "Max Fashion Labels", "Women, Accessoiries"),

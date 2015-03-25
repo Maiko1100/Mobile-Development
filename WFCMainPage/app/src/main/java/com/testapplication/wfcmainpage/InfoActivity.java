@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class InfoActivity extends ActionBarActivity {
 
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,9 +38,6 @@ public class InfoActivity extends ActionBarActivity {
         bezoekTitle.setTypeface(face);
 
         setTitle(getString(R.string.info_title_text));
-
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8A076D")));
 	}
 
 	@Override

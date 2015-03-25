@@ -21,11 +21,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends ActionBarActivity implements View.OnClickListener {
-
     private final LatLng LOCATION_WFC = new LatLng(52.354484, 4.841304);
-    private GoogleMap mMap;
-	private final String LOCATION_WFC_STRING = new String("Koningin Wilhelminaplein 13 1062 HH Amsterdam");
-
+    private final String LOCATION_WFC_STRING = "Koningin Wilhelminaplein 13 1062 HH Amsterdam";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +31,16 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
         setTitle(getString(R.string.maps_title_text));
 
         ImageButton buttonCar = (ImageButton) findViewById(R.id.buttonCar);
-        buttonCar.setOnClickListener(this);
-
         ImageButton buttonWalk = (ImageButton) findViewById(R.id.buttonWalk);
-        buttonWalk.setOnClickListener(this);
-
         ImageButton buttonBicycle = (ImageButton) findViewById(R.id.buttonBicycle);
-        buttonBicycle.setOnClickListener(this);
-
         ImageButton buttonOV = (ImageButton) findViewById(R.id.buttonOV);
+
+        buttonCar.setOnClickListener(this);
+        buttonWalk.setOnClickListener(this);
+        buttonBicycle.setOnClickListener(this);
         buttonOV.setOnClickListener(this);
 
-
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#25497F")));
-
-        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        GoogleMap mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         CameraUpdate start = CameraUpdateFactory.newLatLngZoom(LOCATION_WFC, 18);
@@ -90,32 +81,32 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void startCar(View v) {
-        //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING);
+        //Start Google Maps Drive, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_WFC_STRING);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
 
     public void startWalk(View v) {
-        //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING+"&mode=w");
+        //Start Google Maps Walk, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_WFC_STRING + "&mode=w");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
 
     public void startBicycle(View v) {
-        //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING+"&mode=b");
+        //Start Google Maps Bike, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_WFC_STRING + "&mode=b");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
 
     public void startOV(View v) {
-        //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING+"&mode=r");
+        //Start Google Maps Public Transport, Navigate immediately
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_WFC_STRING + "&mode=r");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
@@ -140,5 +131,4 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
                 break;
         }
     }
-
 }

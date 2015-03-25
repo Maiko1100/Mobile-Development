@@ -3,4 +3,18 @@
     <color name="text_color">#ff696969</color>
     <color name="background">#8c9ecec6</color>
     <color name="dot_selected">#B40A8F</color>
+
+    <color name="info_light_color">#B40A8F</color>
+    <color name="info_dark_color">#8A076D</color>
+
+    <color name="nav_light_color">#2F5C9F</color>
+    <color name="nav_dark_color">#25497F</color>
+
+    <color name="rent_light_color">#3A8BB6</color>
+    <color name="rent_dark_color">#20699C</color>
+
+    <color name="fac_light_color">#B7173B</color>
+    <color name="fac_dark_color">#97102E</color>
+
+    <color name="white">#ffffffff</color>
 </resources>
