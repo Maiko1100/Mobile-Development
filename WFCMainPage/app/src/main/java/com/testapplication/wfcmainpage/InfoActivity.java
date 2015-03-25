@@ -1,11 +1,14 @@
 package com.testapplication.wfcmainpage;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 /**
  * @author Remco Hilbert & Fren de Haan
@@ -13,15 +16,30 @@ import android.view.MenuItem;
  */
 public class InfoActivity extends ActionBarActivity {
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
 
-        android.support.v7.app.ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8A076D")));
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
 
-		setTitle(getString(R.string.info_title_text));
+        TextView historyTitle = (TextView)findViewById(R.id.historyTitle);
+        historyTitle.setTypeface(face);
+
+        TextView mijlpaalTitle = (TextView)findViewById(R.id.mijlpaalTitle);
+        mijlpaalTitle.setTypeface(face);
+
+        TextView managementTitle = (TextView)findViewById(R.id.managementTitle);
+        managementTitle.setTypeface(face);
+
+        TextView bezoekTitle = (TextView)findViewById(R.id.bezoekTitle);
+        bezoekTitle.setTypeface(face);
+
+        setTitle(getString(R.string.info_title_text));
+
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8A076D")));
 	}
 
 	@Override
