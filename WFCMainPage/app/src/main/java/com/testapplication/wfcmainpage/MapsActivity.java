@@ -2,14 +2,12 @@ package com.testapplication.wfcmainpage;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,6 +24,7 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
     private final LatLng LOCATION_WFC = new LatLng(52.354484, 4.841304);
     private GoogleMap mMap;
+	private final String LOCATION_WFC_STRING = new String("Koningin Wilhelminaplein 13 1062 HH Amsterdam");
 
 
     @Override
@@ -33,8 +32,6 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         setTitle(getString(R.string.maps_title_text));
-
-        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
 
         ImageButton buttonCar = (ImageButton) findViewById(R.id.buttonCar);
         buttonCar.setOnClickListener(this);
@@ -94,7 +91,7 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
     public void startCar(View v) {
         //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304");
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
@@ -102,7 +99,7 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
     public void startWalk(View v) {
         //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304&mode=w");
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING+"&mode=w");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
@@ -110,7 +107,7 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
     public void startBicycle(View v) {
         //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304&mode=b");
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING+"&mode=b");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
@@ -118,7 +115,7 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 
     public void startOV(View v) {
         //Start Google Maps, Navigate immediately
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=52.354484, 4.841304&mode=r");
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+LOCATION_WFC_STRING+"&mode=r");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
