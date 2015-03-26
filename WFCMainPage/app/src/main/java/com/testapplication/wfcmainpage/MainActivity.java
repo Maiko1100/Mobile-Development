@@ -17,13 +17,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import android.widget.TextView;
 
 
 /**
  * @author Remco Hilbert & Fren de Haan
- * Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
+ *         Main activity voor de carrousel en de Info, Rent, Navigation & Facilities knoppen
  */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     private CustomPagerAdapter mCustomPagerAdapter;
@@ -56,7 +55,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         setUiPageViewController();
 
 
-        // knoppen declareren
+        // Declare buttons and add fonts
         Button infoButton = (Button) findViewById(R.id.infoButton);
         infoButton.setTypeface(face);
         Button facilitiesButton = (Button) findViewById(R.id.facilitiesButton);
@@ -67,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         rentButton.setTypeface(face);
 
 
-        //onclick listener initialiseren
+        //init onclick listener on buttons
         infoButton.setOnClickListener(this);
         facilitiesButton.setOnClickListener(this);
         navigationButton.setOnClickListener(this);
@@ -134,8 +133,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
         int id = v.getId();
+
         switch (id) {
             case R.id.infoButton:
                 showInfo(v);

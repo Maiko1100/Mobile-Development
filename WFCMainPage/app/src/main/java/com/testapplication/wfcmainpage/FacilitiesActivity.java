@@ -7,10 +7,7 @@ package com.testapplication.wfcmainpage;
  */
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,10 +20,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 
-public class FacilitiesActivity extends ActionBarActivity{
+public class FacilitiesActivity extends ActionBarActivity {
 
     /**
-     *
      * @param facilityAdapter custom adapter om items uit de array naar list te zetten
      * @param facilityList List View volledige pagina
      * @param mFacilities Array van Facilities objects
@@ -58,7 +54,7 @@ public class FacilitiesActivity extends ActionBarActivity{
         //initialize
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
         facilityList = (ListView) findViewById(R.id.facilitiesList);
-        searchInput = (EditText)findViewById(R.id.searchInput);
+        searchInput = (EditText) findViewById(R.id.searchInput);
 
         facilityList.setAdapter(facilityAdapter);
         //adds filterable input
@@ -95,7 +91,6 @@ public class FacilitiesActivity extends ActionBarActivity{
         );
 
     }
-
 
 
     @Override
