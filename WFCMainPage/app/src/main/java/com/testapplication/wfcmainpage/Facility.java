@@ -28,4 +28,28 @@ public class Facility {
 		title = pTitle;
 		info = pInfo;
 	}
+
+	public int getIcon() {
+		return 0;
+	}
+
+	public void setIcon(int icon) {
+		this.icon = icon;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
 }

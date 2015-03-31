@@ -7,9 +7,12 @@ package com.testapplication.wfcmainpage;
  */
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
@@ -21,6 +24,9 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import java.io.IOException;
+import java.util.List;
 
 
 public class FacilitiesActivity extends ActionBarActivity{
@@ -37,6 +43,8 @@ public class FacilitiesActivity extends ActionBarActivity{
     ListView facilityList;
     private Facility mFacilities[];
     EditText searchInput;
+	private List<Facility> items;
+	private MyDatabase db;
 
 
     @Override
@@ -48,54 +56,59 @@ public class FacilitiesActivity extends ActionBarActivity{
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#97102E")));
 
         //Array voor facility names. vervangen door database items.
-        mFacilities = new Facility[]{
-                new Facility(R.drawable.bedrijf1, "Max Fashion Labels", "Women, Accessoiries"),
-                new Facility(R.drawable.bedrijf2, "Mar-XS B.V.", "Men,Accessoiries"),
-                new Facility(R.drawable.bedrijf3, "Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"),
-                new Facility(R.drawable.bedrijf4, "Maxima Trends BV", "Women,Accessoiries,Shoes"),
-                new Facility(R.drawable.bedrijf5, "DC Design & Concept GmbH", "Men,Accessoiries"),
-                new Facility(R.drawable.logowfcsmall, "Insolita Moda Internazionale", "Men,Accessoiries")
+	    db = new MyDatabase(this);
+	    items = db.getAllFacilities();
 
-        };
 
-        //initialize
-        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
-        facilityList = (ListView) findViewById(R.id.facilitiesList);
-        searchInput = (EditText)findViewById(R.id.searchInput);
 
-        facilityList.setAdapter(facilityAdapter);
-        //adds filterable input
-        searchInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //When user changes inputtext
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        facilityList.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-                        Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("info", mFacilities[pPosition].info);
-                        myIntent.putExtra("title", mFacilities[pPosition].title);
-                        myIntent.putExtra("icon", mFacilities[pPosition].icon);
-
-                        FacilitiesActivity.this.startActivity(myIntent);
-                    }
-                }
-        );
+//        mFacilities = new Facility[]{
+//                new Facility(R.drawable.bedrijf1, "Max Fashion Labels", "Women, Accessoiries"),
+//                new Facility(R.drawable.bedrijf2, "Mar-XS B.V.", "Men,Accessoiries"),
+//                new Facility(R.drawable.bedrijf3, "Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"),
+//                new Facility(R.drawable.bedrijf4, "Maxima Trends BV", "Women,Accessoiries,Shoes"),
+//                new Facility(R.drawable.bedrijf5, "DC Design & Concept GmbH", "Men,Accessoiries"),
+//                new Facility(R.drawable.logowfcsmall, "Insolita Moda Internazionale", "Men,Accessoiries")
+//
+//        };
+//
+//        //initialize
+//        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+//        facilityList = (ListView) findViewById(R.id.facilitiesList);
+//        searchInput = (EditText)findViewById(R.id.searchInput);
+//
+//        facilityList.setAdapter(facilityAdapter);
+//        //adds filterable input
+//        searchInput.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                //When user changes inputtext
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
+//
+//        facilityList.setOnItemClickListener(
+//                new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
+//                        Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
+//                        myIntent.putExtra("info", mFacilities[pPosition].info);
+//                        myIntent.putExtra("title", mFacilities[pPosition].title);
+//                        myIntent.putExtra("icon", mFacilities[pPosition].icon);
+//
+//                        FacilitiesActivity.this.startActivity(myIntent);
+//                    }
+//                }
+//        );
 
     }
 
