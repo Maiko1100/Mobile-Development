@@ -28,9 +28,12 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
 
 	public CustomAdapter(Context context, ArrayList<Facility> pData) {
-		this.mData=pData;
-		this.mFilteredData=pData;
+		this.mData= new ArrayList<>();
+        mData.addAll(pData);
+		this.mFilteredData=new ArrayList<>();
+        mFilteredData.addAll(mData);
 		customInflater = LayoutInflater.from(context);
+        getFilter();
 	}
 
 	public int getCount() {
@@ -41,39 +44,46 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 		return mFilteredData.get(position);
 	}
 
-	public long getItemId(int position){
-		return position;
-	}
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-	static class ViewHolder{
+    static class ViewHolder{
 		TextView customRowText;
 		TextView mediumRowText;
 	}
 
+    public void resetData(){
+        mFilteredData = mData;
+    }
+
 	@Override
-	public View getView(int position, View view, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent) {
+        View view = null;
 
-		ViewHolder holder;
-		if (view==null){
-			view = customInflater.inflate(R.layout.custom_row, parent, false);
+        Facility filteredResults = mFilteredData.get(position);
+        ViewHolder viewHolder = null;
+        if (convertView == null){
+            view = customInflater.inflate(R.layout.custom_row, null);
+            viewHolder = new ViewHolder();
+            viewHolder.customRowText = (TextView)view.findViewById(R.id.customRowText);
+            viewHolder.mediumRowText = (TextView)view.findViewById(R.id.mediumRowText);
+            view.setTag(viewHolder);
+        }else{
+            view = convertView;
+            viewHolder = ((ViewHolder)view.getTag());
+        }
+        viewHolder.customRowText.setText(filteredResults.getFacilityNaam());
+        viewHolder.mediumRowText.setText(filteredResults.getWebsite());
 
-			holder = new ViewHolder();
-
-			holder.customRowText = (TextView)view.findViewById(R.id.customRowText);
-			holder.mediumRowText = (TextView)view.findViewById(R.id.mediumRowText);
-
-			view.setTag(holder);
-		}else{
-			holder = (ViewHolder)view.getTag();
-		}
-
-		Facility facility = mData.get(position);
-		holder.customRowText.setText(facility.getFacilityNaam());
-		holder.mediumRowText.setText(facility.getWebsite());
-		return view;
+        return view;
 	}
 
 	public Filter getFilter(){
+        if (facilityFilter == null){
+            facilityFilter = new FacilityFilter();
+        }
 		return facilityFilter;
 	}
 
@@ -83,25 +93,32 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
 			String filterString = constraint.toString().toLowerCase();
 			FilterResults results = new FilterResults();
+            if (filterString != null && filterString.length() > 0) {
 
-			final ArrayList<Facility> LIST = mData;
 
-			int count = LIST.size();
-			final ArrayList<Facility> NLIST = new ArrayList<>();
+                final ArrayList<Facility> NLIST = new ArrayList<>();
 
-			Facility filterableString;
+                Facility filterableString;
 
-			for (int i = 0; i < count; i++){
-				filterableString = LIST.get(i);
-				if (filterableString.getFacilityNaam().toLowerCase().contains(filterString)){
-					NLIST.add(filterableString);
-				}
-			}
-			results.values= NLIST;
-			results.count = NLIST.size();
-			return results;
+                for (int i = 0; i < mData.size(); i++) {
+                    filterableString = mData.get(i);
+                    if (filterableString.getFacilityNaam().toLowerCase().contains(filterString)) {
+                        NLIST.add(filterableString);
+                    }
+                }
+                results.values = NLIST;
+                results.count = NLIST.size();
+            }else {
+
+                synchronized (this){
+                    results.values = mData;
+                    results.count = mData.size();
+                }
+            }
+            return results;
 		}
 
+        @SuppressWarnings("unchecked")
 		@Override
 		protected void publishResults(CharSequence constraint, FilterResults results) {
 			mFilteredData = (ArrayList<Facility>) results.values;
