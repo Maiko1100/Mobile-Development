@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,10 +31,9 @@ public class FacilitiesActivity extends ActionBarActivity {
 	 * @param mFacilities Array van Facilities objects
 	 * @param searchInput edittext object voor de zoekfunctie
 	 */
-
-	ListAdapter facilityAdapter;
+	CustomAdapter facilityAdapter;
 	ListView facilityList;
-	private Facility mFacilities[];
+	ArrayList<Facility> mFacilities= new ArrayList<>();
 	EditText searchInput;
 	private List<Facility> items;
 	private MyDatabase db;
@@ -49,33 +49,30 @@ public class FacilitiesActivity extends ActionBarActivity {
 		db = new MyDatabase(this);
 		items = db.getAllFacilities();
 
-		mFacilities = new Facility[]{
-				new Facility(R.drawable.bedrijf1, "Max Fashion Labels", "Women, Accessoiries"),
-				new Facility(R.drawable.bedrijf2, "Mar-XS B.V.", "Men,Accessoiries"),
-				new Facility(R.drawable.bedrijf3, "Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"),
-				new Facility(R.drawable.bedrijf4, "Maxima Trends BV", "Women,Accessoiries,Shoes"),
-				new Facility(R.drawable.bedrijf5, "DC Design & Concept GmbH", "Men,Accessoiries"),
-				new Facility(R.drawable.logowfcsmall, "Insolita Moda Internazionale", "Men,Accessoiries")
+		for(int i=1; i<items.size(); i++){
+			mFacilities.add(new Facility(items.get(i).getFacilityNaam(),items.get(i).getTelefoonNummer(),items.get(i).getWebsite()));
+		}
 
-		};
+
+
+
 
 		//initialize
 		facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
 		facilityList = (ListView) findViewById(R.id.facilitiesList);
-		searchInput = (EditText) findViewById(R.id.searchInput);
+		searchInput = (EditText)findViewById(R.id.searchInput);
 
 		facilityList.setAdapter(facilityAdapter);
-		//adds filterable input
+
 		searchInput.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-				//When user changes inputtext
 
 			}
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+				facilityAdapter.getFilter().filter(s.toString());
 			}
 
 			@Override
@@ -84,22 +81,22 @@ public class FacilitiesActivity extends ActionBarActivity {
 			}
 		});
 
+
 		facilityList.setOnItemClickListener(
 				new AdapterView.OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
 						Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-						myIntent.putExtra("info", mFacilities[pPosition].info);
-						myIntent.putExtra("title", mFacilities[pPosition].title);
-						myIntent.putExtra("icon", mFacilities[pPosition].icon);
+						myIntent.putExtra("info", mFacilities.get(pPosition).getFacilityNaam());
+						myIntent.putExtra("title", mFacilities.get(pPosition).getWebsite());
 
 						FacilitiesActivity.this.startActivity(myIntent);
 					}
 				}
 		);
 
-
 	}
+
 
 
 	@Override

@@ -24,7 +24,7 @@ public class MyDatabase extends SQLiteAssetHelper {
 	}
 
 	public List<Facility> getAllFacilities() {
-		List<Facility> books = new LinkedList<Facility>();
+		List<Facility> facilities = new LinkedList<Facility>();
 
 		// 1. build the query
 		String query = "SELECT  * FROM facilities";
@@ -38,18 +38,19 @@ public class MyDatabase extends SQLiteAssetHelper {
 		if (cursor.moveToFirst()) {
 			do {
 				Facility = new Facility();
-				Facility.setIcon(0);
-				Facility.setTitle(cursor.getString(1));
-				Facility.setInfo(cursor.getString(2));
+				Facility.setId(Integer.parseInt(cursor.getString(0)));
+				Facility.setFacilityNaam(cursor.getString(1));
+				Facility.setTelefoonNummer(cursor.getString(2));
+				Facility.setWebsite(cursor.getString(3));
 
 				// Add book to books
-				books.add(Facility);
+				facilities.add(Facility);
 			} while (cursor.moveToNext());
 		}
 
-		Log.d("getAllFacilities()", books.toString());
+		Log.d("getAllFacilities()", facilities.toString());
 
 		// return books
-		return books;
+		return facilities;
 	}
 }
