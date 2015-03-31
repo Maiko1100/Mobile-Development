@@ -6,10 +6,7 @@ package com.testapplication.wfcmainpage;
  */
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 
-public class FacilityRentActivity extends ActionBarActivity{
+public class FacilityRentActivity extends ActionBarActivity {
 
     ListAdapter facilityRentAdapter;
     //List View volledige pagina
@@ -33,10 +30,6 @@ public class FacilityRentActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facility_rent);
         setTitle(getString(R.string.rent_title_text));
-
-        //ActionBar color
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#20699C")));
 
         //Array voor facility names. vervangen door database items.
         sRentFacilities = new FacilityRent[]{
@@ -64,9 +57,9 @@ public class FacilityRentActivity extends ActionBarActivity{
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Intent myIntent = new Intent(FacilityRentActivity.this, FacilitiesRentDetails.class);
-                        myIntent.putExtra("info",sRentFacilities[pPosition].info);
-                        myIntent.putExtra("title",sRentFacilities[pPosition].title);
-                        myIntent.putExtra("icon",sRentFacilities[pPosition].icon);
+                        myIntent.putExtra("info", sRentFacilities[pPosition].info);
+                        myIntent.putExtra("title", sRentFacilities[pPosition].title);
+                        myIntent.putExtra("icon", sRentFacilities[pPosition].icon);
 
                         FacilityRentActivity.this.startActivity(myIntent);
                     }

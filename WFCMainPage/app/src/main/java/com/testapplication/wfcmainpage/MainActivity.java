@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         setUiPageViewController();
 
 
-        // knoppen declareren
+        // Declare buttons and add fonts
         Button infoButton = (Button) findViewById(R.id.infoButton);
         infoButton.setTypeface(face);
         Button facilitiesButton = (Button) findViewById(R.id.facilitiesButton);
@@ -66,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         rentButton.setTypeface(face);
 
 
-        //onclick listener initialiseren
+        //init onclick listener on buttons
         infoButton.setOnClickListener(this);
         facilitiesButton.setOnClickListener(this);
         navigationButton.setOnClickListener(this);
@@ -111,7 +111,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mDots[0].setTextColor(getResources().getColor(R.color.dot_selected));
     }
 
-
     public void showInfo(View v) {
         Intent showInfo = new Intent(this, InfoActivity.class);
         startActivity(showInfo);
@@ -134,9 +133,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
-
         int id = v.getId();
+
         switch (id) {
             case R.id.infoButton:
                 showInfo(v);
@@ -153,9 +151,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.rentButton:
                 showRent(v);
                 break;
-
         }
-
     }
 
     class CustomPagerAdapter extends PagerAdapter {
