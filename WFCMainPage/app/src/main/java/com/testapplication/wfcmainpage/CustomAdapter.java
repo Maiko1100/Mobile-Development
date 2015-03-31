@@ -73,7 +73,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         }
         viewHolder.customRowText.setText(filteredResults.getFacilityNaam());
         viewHolder.mediumRowText.setText(filteredResults.getWebsite());
-
+		viewHolder.mediumRowText2.setText(filteredResults.getTelefoonNummer());
         return view;
 
     }
