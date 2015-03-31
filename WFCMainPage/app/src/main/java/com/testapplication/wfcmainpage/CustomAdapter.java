@@ -15,27 +15,30 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class CustomAdapter extends BaseAdapter implements Filterable {
 
-    private Facility mData[] = null;
-    private Facility mFilteredData[] = null;
+    private ArrayList<Facility> mData = null;
+    private ArrayList<Facility> mFilteredData = null;
+    //private Facility mFilteredData[] = null;
     private LayoutInflater customInflater;
     private FacilityFilter facilityFilter = new FacilityFilter();
 
 
-    public CustomAdapter(Context context, Facility[] pData) {
+    public CustomAdapter(Context context, ArrayList<Facility> pData) {
         this.mData=pData;
         this.mFilteredData=pData;
         customInflater = LayoutInflater.from(context);
     }
 
     public int getCount() {
-        return mFilteredData.length;
+        return mFilteredData.size();
     }
 
     public Object getItem(int position){
-        return mFilteredData[position];
+        return mFilteredData.get(position);
     }
 
     public long getItemId(int position){
@@ -64,7 +67,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             holder = (ViewHolder)view.getTag();
         }
 
-        Facility facility = mData[position];
+        Facility facility = mData.get(position);
         holder.customRowText.setText(facility.title);
         holder.mediumRowText.setText(facility.info);
         return view;
@@ -81,29 +84,27 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             String filterString = constraint.toString().toLowerCase();
             FilterResults results = new FilterResults();
 
-            final Facility LIST[] = mData;
+            final ArrayList<Facility> LIST = mData;
 
-            int count = LIST.length;
-            final Facility NLIST[] = new Facility[count];
+            int count = LIST.size();
+            final ArrayList<Facility> NLIST = new ArrayList<>(count);
 
-            Facility filterableString;
+            String filterableString;
 
             for (int i = 0; i < count; i++){
-                filterableString = LIST[i];
-                if (filterableString.toString().toLowerCase().contains(filterString)){
-                    NLIST = new Facility[]{
-                            new Facility(filterableString.getTitle(), filterableString.getInfo())
-                    };
+                filterableString = LIST.get(i).getTitle();
+                if (filterableString.toLowerCase().contains(filterString)){
+                    NLIST.add(new Facility(filterableString,null));
                 }
             }
             results.values= NLIST;
-            results.count = NLIST.length;
+            results.count = NLIST.size();
             return results;
         }
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            mFilteredData = (Facility[]) results.values;
+            mFilteredData = (ArrayList<Facility>) results.values;
             notifyDataSetChanged();
         }
     }
