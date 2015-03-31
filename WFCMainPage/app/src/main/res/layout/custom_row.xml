@@ -5,20 +5,11 @@
                 android:layout_height="match_parent"
                 tools:context=".FacilitiesActivity">
 
-    <ImageView
-        android:id="@+id/customImageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="5dp"
-        android:contentDescription="@string/customImage_view"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logowfcsmall"/>
 
     <TextView
         android:id="@+id/customRowText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
         android:layout_marginTop="5dp"
         android:text="@string/customRowText_Medium"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -29,7 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/customRowText"
-        android:layout_marginLeft="100dp"
         android:text="@string/customTextRow_Small"
         android:textAppearance="?android:attr/textAppearanceSmall"
         />

@@ -5,17 +5,17 @@ package com.testapplication.wfcmainpage;
  */
 public class FacilityRent {
 
-    public int icon;
     public String title;
     public String info;
-  //  public FacilityRent(){
-//        super();
-  //  }
+    public int icon;
+    public FacilityRent(){
+      super();
+   }
 
     public FacilityRent(int pIcon, String pTitle, String pInfo){
         super();
-        icon = pIcon;
         title = pTitle;
         info = pInfo;
+        icon=pIcon;
     }
 }

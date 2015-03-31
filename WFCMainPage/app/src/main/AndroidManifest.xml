@@ -34,10 +34,12 @@
         <activity
             android:name=".FacilitiesActivity"
             android:label="@string/title_activity_facilities" >
+
         </activity>
         <activity
             android:name=".FacilitiesDetails"
             android:label="@string/title_activity_activityDetails" >
+
         </activity>
 
         <meta-data
