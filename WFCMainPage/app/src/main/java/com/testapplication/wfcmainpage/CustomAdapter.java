@@ -94,7 +94,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             for (int i = 0; i < count; i++){
                 filterableString = LIST.get(i).getTitle();
                 if (filterableString.toLowerCase().contains(filterString)){
-                    NLIST.add(new Facility(filterableString,null));
+                    NLIST.add(new Facility(filterableString, null));
                 }
             }
             results.values= NLIST;

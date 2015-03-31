@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 
 
 public class FacilitiesActivity extends ActionBarActivity{
@@ -32,7 +33,7 @@ public class FacilitiesActivity extends ActionBarActivity{
 
     CustomAdapter facilityAdapter;
     ListView facilityList;
-    Facility mFacilities[];
+    ArrayList<Facility> mFacilities;
     EditText searchInput;
 
 
@@ -42,15 +43,24 @@ public class FacilitiesActivity extends ActionBarActivity{
         setContentView(R.layout.activity_facilities);
 
         //Array voor facility names. vervangen door database items.
-        mFacilities = new Facility[]{
-                new Facility("Max Fashion Labels", "Women, Accessoiries"),
-                new Facility("Mar-XS B.V.", "Men,Accessoiries"),
-                new Facility("Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"),
-                new Facility("Maxima Trends BV", "Women,Accessoiries,Shoes"),
-                new Facility("DC Design & Concept GmbH", "Men,Accessoiries"),
-                new Facility("Insolita Moda Internazionale", "Men,Accessoiries")
+//        mFacilities = new Facility[]{
+//                new Facility("Max Fashion Labels", "Women, Accessoiries"),
+//                new Facility("Mar-XS B.V.", "Men,Accessoiries"),
+//                new Facility("Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"),
+//                new Facility("Maxima Trends BV", "Women,Accessoiries,Shoes"),
+//                new Facility("DC Design & Concept GmbH", "Men,Accessoiries"),
+//                new Facility("Insolita Moda Internazionale", "Men,Accessoiries")
+//
+//        };
+        mFacilities.add(new Facility("Max Fashion Labels", "Women, Accessoiries"));
+        mFacilities.add(new Facility("Mar-XS B.V.", "Men,Accessoiries"));
+        mFacilities.add(new Facility("Demm Fashion Group B.V.", "Men,Women,Children,Accessoiries,Shoes,Other"));
+        mFacilities.add(new Facility("Maxima Trends BV", "Women,Accessoiries,Shoes"));
+        mFacilities.add(new Facility("DC Design & Concept GmbH", "Men,Accessoiries"));
+        mFacilities.add(new Facility("Insolita Moda Internazionale", "Men,Accessoiries"));
 
-        };
+
+
 
         //initialize
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
@@ -82,8 +92,8 @@ public class FacilitiesActivity extends ActionBarActivity{
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("info", mFacilities[pPosition].info);
-                        myIntent.putExtra("title", mFacilities[pPosition].title);
+                        myIntent.putExtra("info", mFacilities.get(pPosition).info);
+                        myIntent.putExtra("title", mFacilities.get(pPosition).title);
 
                         FacilitiesActivity.this.startActivity(myIntent);
                     }
