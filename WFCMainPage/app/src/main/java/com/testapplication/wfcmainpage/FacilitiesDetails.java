@@ -15,20 +15,22 @@ public class FacilitiesDetails extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities_details);
+        setTitle(getString(R.string.details_actionbar_text));
+
         Intent intent = getIntent();
         String iInfo = intent.getStringExtra("info");
         String tTitle = intent.getStringExtra("title");
-        int icon2 = intent.getIntExtra("icon",0);
+        String tFoon = intent.getStringExtra("telefoon");
 
-        TextView info,title;
-        ImageView icon;
+        TextView info,title,foon;
+
         info = (TextView) findViewById(R.id.txtInfo);
         title = (TextView) findViewById(R.id.txtTitle);
-        icon = (ImageView) findViewById(R.id.icon);
+        foon = (TextView) findViewById(R.id.txtFoon);
+
         info.setText(iInfo);
         title.setText(tTitle);
-        icon.setImageResource(icon2);
-
+        foon.setText(tFoon);
     }
 
 
