@@ -22,7 +22,6 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
 	private ArrayList<Facility> mData = null;
 	private ArrayList<Facility> mFilteredData = null;
-	//private Facility mFilteredData[] = null;
 	private LayoutInflater customInflater;
 	private FacilityFilter facilityFilter = new FacilityFilter();
 
@@ -55,17 +54,12 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         TextView mediumRowText2;
 	}
 
-
-    public void resetData(){
-        mFilteredData = mData;
-    }
-
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
+        View view;
 
         Facility filteredResults = mFilteredData.get(position);
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView == null) {
             view = customInflater.inflate(R.layout.custom_row, null);
             viewHolder = new ViewHolder();
