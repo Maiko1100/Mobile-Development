@@ -52,7 +52,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
     static class ViewHolder{
 		TextView customRowText;
 		TextView mediumRowText;
+        TextView mediumRowText2;
 	}
+
 
     public void resetData(){
         mFilteredData = mData;
@@ -64,21 +66,23 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
         Facility filteredResults = mFilteredData.get(position);
         ViewHolder viewHolder = null;
-        if (convertView == null){
+        if (convertView == null) {
             view = customInflater.inflate(R.layout.custom_row, null);
             viewHolder = new ViewHolder();
-            viewHolder.customRowText = (TextView)view.findViewById(R.id.customRowText);
-            viewHolder.mediumRowText = (TextView)view.findViewById(R.id.mediumRowText);
+            viewHolder.customRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
+            viewHolder.mediumRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
+            viewHolder.mediumRowText2 = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
             view.setTag(viewHolder);
-        }else{
+        } else {
             view = convertView;
-            viewHolder = ((ViewHolder)view.getTag());
+            viewHolder = ((ViewHolder) view.getTag());
         }
         viewHolder.customRowText.setText(filteredResults.getFacilityNaam());
         viewHolder.mediumRowText.setText(filteredResults.getWebsite());
 
         return view;
-	}
+
+    }
 
 	public Filter getFilter(){
         if (facilityFilter == null){

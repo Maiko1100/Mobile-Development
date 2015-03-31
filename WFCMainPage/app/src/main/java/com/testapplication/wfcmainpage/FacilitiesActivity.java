@@ -88,6 +88,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 					public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
 						Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
 						myIntent.putExtra("info", mFacilities.get(pPosition).getFacilityNaam());
+                        myIntent.putExtra("telefoon", mFacilities.get(pPosition).getTelefoonNummer());
 						myIntent.putExtra("title", mFacilities.get(pPosition).getWebsite());
 
 						FacilitiesActivity.this.startActivity(myIntent);

@@ -39,7 +39,8 @@
         </activity>
         <activity
             android:name=".FacilitiesDetails"
-            android:label="@string/title_activity_activityDetails" >
+            android:label="@string/title_activity_activityDetails"
+            android:theme="@style/Theme.Fac">
         </activity>
 
         <meta-data
