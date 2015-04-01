@@ -27,7 +27,7 @@ public class MyDatabase extends SQLiteAssetHelper {
 		List<Facility> facilities = new LinkedList<Facility>();
 
 		// 1. build the query
-		String query = "SELECT  * FROM Facility";
+		String query = "SELECT * FROM Facility";
 
 		// 2. get reference to writable DB
 		SQLiteDatabase db = this.getWritableDatabase();

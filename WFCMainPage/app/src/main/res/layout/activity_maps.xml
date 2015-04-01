@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/caricon"
+            android:src="@drawable/ic_car"
             android:text="@string/start_navigation_button_text"
             android:textColor="@android:color/white" />
 
@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/ovicon"
+            android:src="@drawable/ic_ov"
             android:text="@string/start_navigation_button_text"
             android:textColor="@android:color/white" />
 
@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/walkicon"
+            android:src="@drawable/ic_walk"
             android:text="@string/start_navigation_button_text"
             android:textColor="@android:color/white" />
 
@@ -70,7 +70,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/bicycleicon"
+            android:src="@drawable/ic_bicycle"
             android:text="@string/start_navigation_button_text"
             android:textColor="@android:color/white" />
 

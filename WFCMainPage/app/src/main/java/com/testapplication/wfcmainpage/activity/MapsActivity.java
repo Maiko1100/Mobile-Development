@@ -1,8 +1,12 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -29,9 +33,13 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 		setTitle(getString(R.string.maps_title_text));
 
 		ImageButton buttonCar = (ImageButton) findViewById(R.id.buttonCar);
+        buttonCar.getDrawable().setColorFilter(Color.parseColor("#FFFFFF"),PorterDuff.Mode.SRC_ATOP);
 		ImageButton buttonWalk = (ImageButton) findViewById(R.id.buttonWalk);
+        buttonWalk.getDrawable().setColorFilter(Color.parseColor("#FFFFFF"),PorterDuff.Mode.SRC_ATOP);
 		ImageButton buttonBicycle = (ImageButton) findViewById(R.id.buttonBicycle);
+        buttonBicycle.getDrawable().setColorFilter(Color.parseColor("#FFFFFF"),PorterDuff.Mode.SRC_ATOP);
 		ImageButton buttonOV = (ImageButton) findViewById(R.id.buttonOV);
+        buttonOV.getDrawable().setColorFilter(Color.parseColor("#FFFFFF"),PorterDuff.Mode.SRC_ATOP);
 
 		buttonCar.setOnClickListener(this);
 		buttonWalk.setOnClickListener(this);
