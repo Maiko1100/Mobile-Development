@@ -68,10 +68,8 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
      * When convertView is not null, we can reuse it directly, there is no need to reinflate it.
      * We only inflate a new View when the convertView supplied by ListView is null.
      * viewHolder provides a ViewHolder and store references to the two children views we want to bind data to.
-     * @param pPosition
-     * @param pConvertView
-     * @param pParent
-     * @return
+     * @param pPosition gets the index of the position.
+     * @return view with searched items
      */
 
     @Override
