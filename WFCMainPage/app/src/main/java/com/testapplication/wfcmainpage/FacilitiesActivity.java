@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -26,17 +25,17 @@ import java.util.List;
 public class FacilitiesActivity extends ActionBarActivity {
 
 	/**
-	 * @param facilityAdapter custom adapter om items uit de array naar list te zetten
-	 * @param facilityList List View volledige pagina
+	 * @param facilityAdapter custom adapter om mItems uit de array naar list te zetten
+	 * @param mFacilityList List View volledige pagina
 	 * @param mFacilities Array van Facilities objects
-	 * @param searchInput edittext object voor de zoekfunctie
+	 * @param mSearchInput edittext object voor de zoekfunctie
 	 */
 	CustomAdapter facilityAdapter;
-	ListView facilityList;
-	ArrayList<Facility> mFacilities= new ArrayList<>();
-	EditText searchInput;
-	private List<Facility> items;
-	private MyDatabase db;
+	private ListView mFacilityList;
+	private ArrayList<Facility> mFacilities= new ArrayList<>();
+	private EditText mSearchInput;
+	private List<Facility> mItems;
+	private MyDatabase mDb;
 
 
 	@Override
@@ -44,13 +43,13 @@ public class FacilitiesActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_facilities);
 
-		//Array voor facility names. vervangen door database items.
+		//Array voor facility names. vervangen door database mItems.
 
-		db = new MyDatabase(this);
-		items = db.getAllFacilities();
+		mDb = new MyDatabase(this);
+		mItems = mDb.getAllFacilities();
 
-		for(int i=1; i<items.size(); i++){
-			mFacilities.add(new Facility(items.get(i).getFacilityNaam(),items.get(i).getTelefoonNummer(),items.get(i).getWebsite(),items.get(i).getTower(),items.get(i).getEtage(),items.get(i).getShowRoom(),items.get(i).getEmail()));
+		for(int i=1; i< mItems.size(); i++){
+			mFacilities.add(new Facility(mItems.get(i).getFacilityNaam(), mItems.get(i).getTelefoonNummer(), mItems.get(i).getWebsite(), mItems.get(i).getTower(), mItems.get(i).getEtage(), mItems.get(i).getShowRoom(), mItems.get(i).getEmail()));
 		}
 
 
@@ -59,35 +58,35 @@ public class FacilitiesActivity extends ActionBarActivity {
 
 		//initialize
 		facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
-		facilityList = (ListView) findViewById(R.id.facilitiesList);
-		searchInput = (EditText)findViewById(R.id.searchInput);
+		mFacilityList = (ListView) findViewById(R.id.facilitiesList);
+		mSearchInput = (EditText)findViewById(R.id.searchInput);
 
-		facilityList.setAdapter(facilityAdapter);
+		mFacilityList.setAdapter(facilityAdapter);
 
-		searchInput.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+		mSearchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-			}
+            }
 
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				facilityAdapter.getFilter().filter(s.toString());
-			}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                facilityAdapter.getFilter().filter(s.toString());
+            }
 
-			@Override
-			public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-			}
-		});
+            }
+        });
 
 
-		facilityList.setOnItemClickListener(
+		mFacilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
 
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-                        Facility facility =(Facility) parent.getItemAtPosition(pPosition);
+                        Facility facility = (Facility) parent.getItemAtPosition(pPosition);
 
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
                         myIntent.putExtra("info", facility.getFacilityNaam());
@@ -97,7 +96,6 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
-
 
 
                         FacilitiesActivity.this.startActivity(myIntent);
@@ -111,7 +109,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds mItems to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_main, menu);
 		return true;
 	}

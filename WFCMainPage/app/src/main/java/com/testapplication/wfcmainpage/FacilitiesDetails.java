@@ -18,7 +18,7 @@ public class FacilitiesDetails extends ActionBarActivity {
         setTitle(getString(R.string.details_actionbar_text));
 
         Intent intent = getIntent();
-        String iInfo = intent.getStringExtra("info");
+        String tWebsite = intent.getStringExtra("website");
         String tTitle = intent.getStringExtra("title");
         String tFoon = intent.getStringExtra("telefoon");
         String tTower = intent.getStringExtra("tower");
@@ -36,7 +36,7 @@ public class FacilitiesDetails extends ActionBarActivity {
         showroom = (TextView) findViewById(R.id.txtShowroom);
         email = (TextView) findViewById(R.id.txtEmail);
 
-        info.setText(iInfo);
+        info.setText(tWebsite);
         title.setText(tTitle);
         foon.setText(tFoon);
         tower.setText(tTower);
