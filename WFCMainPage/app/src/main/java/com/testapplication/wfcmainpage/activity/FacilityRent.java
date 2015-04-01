@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.activity;
 
 /**
  * Created by Maiko on 17-3-2015.

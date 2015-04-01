@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.testapplication.wfcmainpage.R;
 
 
 public class FacilitiesDetails extends ActionBarActivity {

@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.activity;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
@@ -19,6 +19,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import com.testapplication.wfcmainpage.adapters.CustomAdapter;
+import com.testapplication.wfcmainpage.database.MyDatabase;
+import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.models.Facility;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.adapters;
 
 
 /**
@@ -14,6 +14,9 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+
+import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.models.Facility;
 
 import java.util.ArrayList;
 

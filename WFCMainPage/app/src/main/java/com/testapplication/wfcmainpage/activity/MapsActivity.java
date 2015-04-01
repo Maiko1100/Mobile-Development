@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.testapplication.wfcmainpage.R;
 
 public class MapsActivity extends ActionBarActivity implements View.OnClickListener {
 

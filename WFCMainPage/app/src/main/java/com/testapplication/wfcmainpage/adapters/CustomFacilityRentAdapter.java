@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.adapters;
 
 
 /**
@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.activity.FacilityRent;
 
 public class CustomFacilityRentAdapter extends ArrayAdapter<FacilityRent> {
 

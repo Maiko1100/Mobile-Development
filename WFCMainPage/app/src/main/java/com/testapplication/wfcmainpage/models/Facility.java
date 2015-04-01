@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.models;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.

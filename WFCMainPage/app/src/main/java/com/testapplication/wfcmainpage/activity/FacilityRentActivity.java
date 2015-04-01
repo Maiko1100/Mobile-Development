@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage;
+package com.testapplication.wfcmainpage.activity;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.testapplication.wfcmainpage.adapters.CustomFacilityRentAdapter;
+import com.testapplication.wfcmainpage.R;
 
 
 public class FacilityRentActivity extends ActionBarActivity {
