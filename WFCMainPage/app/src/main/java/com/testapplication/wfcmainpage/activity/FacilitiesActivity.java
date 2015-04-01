@@ -83,7 +83,7 @@ public class FacilitiesActivity extends ActionBarActivity {
              * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
              * @param s holds the input from the edittext
              */
-            
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 facilityAdapter.getFilter().filter(s.toString());
