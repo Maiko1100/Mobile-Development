@@ -23,6 +23,12 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter implements Filterable {
 
+    /**
+     * @param mData provides an arraylist for the database items.
+     * @param mFilteredData provides an arraylist for the items after they are filtered.
+     * @param mCustomInflater provides a layoutinflater for the output of the filtered items.
+     * @param mFacilityFilter provides a custom filter to make our search function work.
+     */
 
     private ArrayList<Facility> mData = null;
     private ArrayList<Facility> mFilteredData = null;
