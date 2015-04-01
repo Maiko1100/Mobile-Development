@@ -16,6 +16,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -51,7 +52,6 @@ public class FacilitiesActivity extends ActionBarActivity {
 	private EditText mSearchInput;
 	private TextView mTitle;
 	private boolean mSearchInputMenu;
-	InputMethodManager inputMethodManager;
 
 
 	@Override
@@ -84,8 +84,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 				R.id.facilitiesTitle);
 
 		mSearchInputMenu = false;
-		inputMethodManager = (InputMethodManager) getSystemService(
-				Context.INPUT_METHOD_SERVICE);
+
 
 		mFacilityList.setAdapter(facilityAdapter);
 		mSearchInput.setVisibility(View.GONE);
@@ -146,7 +145,9 @@ public class FacilitiesActivity extends ActionBarActivity {
 			mSearchInputMenu = true;
 			mSearchInput.setVisibility(View.VISIBLE);
 			mTitle.setVisibility(View.GONE);
-			inputMethodManager.showSoftInput(mSearchInput, 0);
+			mSearchInput.requestFocus();
+			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
 		}
 	}
 
@@ -156,6 +157,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 			mSearchInput.setText("");
 			mSearchInput.setVisibility(View.GONE);
 			mTitle.setVisibility(View.VISIBLE);
+			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 			inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
 		}
 	}
