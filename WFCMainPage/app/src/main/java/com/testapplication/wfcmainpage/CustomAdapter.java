@@ -24,6 +24,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 	private ArrayList<Facility> mFilteredData = null;
 	private LayoutInflater customInflater;
 	private FacilityFilter facilityFilter = new FacilityFilter();
+    private CustomAdapter adapter;
 
 
 	public CustomAdapter(Context context, ArrayList<Facility> pData) {
@@ -60,6 +61,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
         Facility filteredResults = mFilteredData.get(position);
         ViewHolder viewHolder;
+
         if (convertView == null) {
             view = customInflater.inflate(R.layout.custom_row, null);
             viewHolder = new ViewHolder();
@@ -67,6 +69,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             viewHolder.mediumRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
             viewHolder.mediumRowText2 = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
             view.setTag(viewHolder);
+
         } else {
             view = convertView;
             viewHolder = ((ViewHolder) view.getTag());
@@ -74,6 +77,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         viewHolder.customRowText.setText(filteredResults.getFacilityNaam());
         viewHolder.mediumRowText.setText(filteredResults.getWebsite());
 		viewHolder.mediumRowText2.setText(filteredResults.getTelefoonNummer());
+
         return view;
 
     }

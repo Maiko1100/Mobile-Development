@@ -83,18 +83,21 @@ public class FacilitiesActivity extends ActionBarActivity {
 
 
 		facilityList.setOnItemClickListener(
-				new AdapterView.OnItemClickListener() {
-					@Override
-					public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-						Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-						myIntent.putExtra("info", mFacilities.get(pPosition).getFacilityNaam());
-                        myIntent.putExtra("telefoon", mFacilities.get(pPosition).getTelefoonNummer());
-						myIntent.putExtra("title", mFacilities.get(pPosition).getWebsite());
+                new AdapterView.OnItemClickListener() {
+                    @Override
 
-						FacilitiesActivity.this.startActivity(myIntent);
-					}
-				}
-		);
+                    public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
+                        Facility facility =(Facility) parent.getItemAtPosition(pPosition);
+
+                        Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
+                        myIntent.putExtra("info", facility.getFacilityNaam());
+                        myIntent.putExtra("telefoon", facility.getTelefoonNummer());
+                        myIntent.putExtra("title", facility.getWebsite());
+
+                        FacilitiesActivity.this.startActivity(myIntent);
+                    }
+                }
+        );
 
 	}
 
