@@ -63,6 +63,17 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         TextView facilityTelNrRowText2;
     }
 
+    /**
+     * Provides a ViewHolder keeps references to children views to avoid unnecessary calls to findViewById() on each row.
+     * When convertView is not null, we can reuse it directly, there is no need to reinflate it.
+     * We only inflate a new View when the convertView supplied by ListView is null.
+     * viewHolder provides a ViewHolder and store references to the two children views we want to bind data to.
+     * @param pPosition
+     * @param pConvertView
+     * @param pParent
+     * @return
+     */
+
     @Override
     public View getView(int pPosition, View pConvertView, ViewGroup pParent) {
         View view;
@@ -96,6 +107,10 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         }
         return mFacilityFilter;
     }
+
+    /**
+     * Provides a custom filter that searches per letter and not for whole words.
+     */
 
     private class FacilityFilter extends Filter {
         @Override
