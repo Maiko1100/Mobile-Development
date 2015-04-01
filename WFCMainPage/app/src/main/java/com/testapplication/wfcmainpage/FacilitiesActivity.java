@@ -36,6 +36,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	private EditText mSearchInput;
 	private List<Facility> mItems;
 	private MyDatabase mDb;
+    private boolean mSearchInputMenu;
 
 
 	@Override
@@ -60,9 +61,12 @@ public class FacilitiesActivity extends ActionBarActivity {
 		facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
 		mFacilityList = (ListView) findViewById(R.id.facilitiesList);
 		mSearchInput = (EditText)findViewById(R.id.searchInput);
+        mSearchInputMenu = false;
 
 		mFacilityList.setAdapter(facilityAdapter);
 
+
+        mSearchInput.setVisibility(View.GONE);
 		mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -105,12 +109,24 @@ public class FacilitiesActivity extends ActionBarActivity {
 
 	}
 
+    public void openSearch(){
+        if (mSearchInputMenu == false) {
+            mSearchInputMenu = true;
+            mSearchInput.setVisibility(View.VISIBLE);
+        }
+    }
 
+    public void closeSearch(){
+        if (mSearchInputMenu == true) {
+            mSearchInputMenu = false;
+            mSearchInput.setVisibility(View.GONE);
+        }
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds mItems to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
+		getMenuInflater().inflate(R.menu.menu_facilities_activity, menu);
 		return true;
 	}
 
@@ -122,10 +138,12 @@ public class FacilitiesActivity extends ActionBarActivity {
 		int id = item.getItemId();
 
 		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_search && !mSearchInputMenu) {
+            openSearch();
 			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
+		}else {
+            closeSearch();
+            return super.onOptionsItemSelected(item);
+        }
 	}
 }
