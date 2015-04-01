@@ -3,7 +3,7 @@ package com.testapplication.wfcmainpage.activity;
 /**
  * Created by Nick Zwaans on 3-3-2015.
  * Provides de facility page met hierin de faciliteiten van het world fashion centre,
- * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker
+ * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker.
  */
 
 import android.content.Context;
@@ -32,17 +32,21 @@ import java.util.List;
 public class FacilitiesActivity extends ActionBarActivity {
 
 	/**
-	 * @param facilityAdapter custom adapter om mItems uit de array naar list te zetten
-	 * @param mFacilityList List View volledige pagina
-	 * @param mFacilities Array van Facilities objects
-	 * @param mSearchInput edittext object voor de zoekfunctie
+	 * @param facilityAdapter Provides a custom adapter to put the items from the database to the list.
+	 * @param mFacilityList Provides a listview for the page.
+	 * @param mFacilities Provides an arraylist in which the Facility items are stored.
+	 * @param mSearchInput Provides and inputfield (Edittext) for searching.
+     * @param mItems Provides a list for the facility items. data gets added from the database.
+     * @param mSearchInputMenu Provides a boolean for opening and closing the searchInput.
+     * @param inputMethodManager Provides a show / hide for the softkeyboard.
 	 */
+
 	CustomAdapter facilityAdapter;
 	private ListView mFacilityList;
 	private ArrayList<Facility> mFacilities= new ArrayList<>();
-	private EditText mSearchInput;
 	private List<Facility> mItems;
 	private MyDatabase mDb;
+    private EditText mSearchInput;
     private boolean mSearchInputMenu;
     InputMethodManager inputMethodManager;
 
@@ -51,8 +55,6 @@ public class FacilitiesActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_facilities);
-
-		//Array voor facility names. vervangen door database mItems.
 
 		mDb = new MyDatabase(this);
 		mItems = mDb.getAllFacilities();
@@ -70,13 +72,17 @@ public class FacilitiesActivity extends ActionBarActivity {
                 Context.INPUT_METHOD_SERVICE);
 
 		mFacilityList.setAdapter(facilityAdapter);
-
         mSearchInput.setVisibility(View.GONE);
+
 		mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
+
+            /**
+             * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
+             * @param s holds the input from the edittext
+             */
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -85,15 +91,18 @@ public class FacilitiesActivity extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
-
 		mFacilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
-                    @Override
 
+                    /**
+                     * Provides a itemClickListener for the listview, registers clicks and
+                     * sends the extra info through to the details activity.
+                     */
+
+                    @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
 
@@ -111,9 +120,11 @@ public class FacilitiesActivity extends ActionBarActivity {
                     }
                 }
         );
-
 	}
 
+    /**
+     * Provides an open method for the actionbar search button and opens the softkeyboard.
+     */
     public void openSearch(){
         if (mSearchInputMenu == false) {
             mSearchInputMenu = true;
@@ -121,6 +132,10 @@ public class FacilitiesActivity extends ActionBarActivity {
             inputMethodManager.showSoftInput(mSearchInput, 0);
         }
     }
+
+    /**
+     * Provides an close method for the actionbar search button and closes the softkeyboard.
+     */
 
     public void closeSearch(){
         if (mSearchInputMenu == true) {
@@ -130,12 +145,24 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * Provides an inflater for the facilities activity menu xml file
+     * @param menu
+     * @return
+     */
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds mItems to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_facilities_activity, menu);
 		return true;
 	}
+
+    /**
+     * Provides the option to open the inputfield for searching through the list.
+     * @param item gets the menu item id
+     * @return
+     */
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

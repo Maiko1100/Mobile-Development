@@ -1,4 +1,4 @@
-package com.testapplication.wfcmainpage.activity;
+package com.testapplication.wfcmainpage.models;
 
 /**
  * Created by Maiko on 17-3-2015.

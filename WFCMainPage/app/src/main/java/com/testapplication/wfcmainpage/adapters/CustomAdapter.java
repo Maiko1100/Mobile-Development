@@ -23,41 +23,42 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter implements Filterable {
 
-	private ArrayList<Facility> mData = null;
-	private ArrayList<Facility> mFilteredData = null;
-	private LayoutInflater mCustomInflater;
-	private FacilityFilter mFacilityFilter = new FacilityFilter();
 
-	public CustomAdapter(Context pContext, ArrayList<Facility> pData) {
-		this.mData= new ArrayList<>();
+    private ArrayList<Facility> mData = null;
+    private ArrayList<Facility> mFilteredData = null;
+    private LayoutInflater mCustomInflater;
+    private FacilityFilter mFacilityFilter = new FacilityFilter();
+
+    public CustomAdapter(Context pContext, ArrayList<Facility> pData) {
+        this.mData = new ArrayList<>();
         mData.addAll(pData);
-		this.mFilteredData=new ArrayList<>();
+        this.mFilteredData = new ArrayList<>();
         mFilteredData.addAll(mData);
-		mCustomInflater = LayoutInflater.from(pContext);
+        mCustomInflater = LayoutInflater.from(pContext);
         getFilter();
-	}
+    }
 
-	public int getCount() {
-		return mFilteredData.size();
-	}
+    public int getCount() {
+        return mFilteredData.size();
+    }
 
-	public Object getItem(int pPosition){
-		return mFilteredData.get(pPosition);
-	}
+    public Object getItem(int pPosition) {
+        return mFilteredData.get(pPosition);
+    }
 
     @Override
     public long getItemId(int pPosition) {
         return pPosition;
     }
 
-    static class ViewHolder{
-		TextView facilityTitleRowText;
-		TextView facilityInfoRowText;
+    static class ViewHolder {
+        TextView facilityTitleRowText;
+        TextView facilityInfoRowText;
         TextView facilityTelNrRowText2;
-	}
+    }
 
-	@Override
-	public View getView(int pPosition, View pConvertView, ViewGroup pParent) {
+    @Override
+    public View getView(int pPosition, View pConvertView, ViewGroup pParent) {
         View view;
 
         Facility filteredResults = mFilteredData.get(pPosition);
@@ -77,25 +78,25 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         }
         viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
         viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
-		viewHolder.facilityTelNrRowText2.setText(filteredResults.getTelefoonNummer());
+        viewHolder.facilityTelNrRowText2.setText(filteredResults.getTelefoonNummer());
 
         return view;
 
     }
 
-	public Filter getFilter(){
-        if (mFacilityFilter == null){
+    public Filter getFilter() {
+        if (mFacilityFilter == null) {
             mFacilityFilter = new FacilityFilter();
         }
-		return mFacilityFilter;
-	}
+        return mFacilityFilter;
+    }
 
-	private class FacilityFilter extends Filter{
-		@Override
-		protected FilterResults performFiltering(CharSequence pConstraint) {
+    private class FacilityFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence pConstraint) {
 
-			String filterString = pConstraint.toString().toLowerCase();
-			FilterResults results = new FilterResults();
+            String filterString = pConstraint.toString().toLowerCase();
+            FilterResults results = new FilterResults();
             if (filterString != null && filterString.length() > 0) {
 
 
@@ -111,22 +112,22 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
                 }
                 results.values = NLIST;
                 results.count = NLIST.size();
-            }else {
+            } else {
 
-                synchronized (this){
+                synchronized (this) {
                     results.values = mData;
                     results.count = mData.size();
                 }
             }
             return results;
-		}
+        }
 
         @SuppressWarnings("unchecked")
-		@Override
-		protected void publishResults(CharSequence pConstraint, FilterResults pResults) {
-			mFilteredData = (ArrayList<Facility>) pResults.values;
-			notifyDataSetChanged();
-		}
-	}
+        @Override
+        protected void publishResults(CharSequence pConstraint, FilterResults pResults) {
+            mFilteredData = (ArrayList<Facility>) pResults.values;
+            notifyDataSetChanged();
+        }
+    }
 
 }

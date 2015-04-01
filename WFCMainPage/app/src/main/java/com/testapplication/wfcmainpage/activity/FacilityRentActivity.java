@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import com.testapplication.wfcmainpage.adapters.CustomFacilityRentAdapter;
 import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.models.FacilityRent;
 
 
 public class FacilityRentActivity extends ActionBarActivity {
