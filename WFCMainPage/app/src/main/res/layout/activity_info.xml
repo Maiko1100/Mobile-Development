@@ -2,21 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="5dp"
+    android:scrollbarStyle="outsideInset"
+    android:paddingRight="-10dp"
     android:background="@drawable/mainpage_background"
     tools:context="com.testapplication.wfcmainpage.activity.InfoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingRight="11dp">
+        android:orientation="vertical">
 
         <TextView
+            style="@style/TextHeader"
             android:id="@+id/historyTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:text="@string/history_title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -27,9 +28,11 @@
             android:text="@string/history_text" />
 
         <TextView
+            style="@style/TextHeader"
             android:id="@+id/mijlpaalTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="30dp"
             android:text="@string/mijlpaal_title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -46,15 +49,16 @@
             android:textSize="14sp" />
 
         <TextView
+            style="@style/TextHeader"
             android:id="@+id/managementTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="30dp"
             android:text="@string/management_title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-
             android:id="@+id/textView6"
             style="@style/TextDefault"
             android:layout_width="wrap_content"
@@ -65,9 +69,11 @@
             android:textSize="14sp" />
 
         <TextView
+            style="@style/TextHeader"
             android:id="@+id/bezoekTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="30dp"
             android:text="@string/bezoekadres_title"
             android:textAppearance="?android:attr/textAppearanceLarge" />

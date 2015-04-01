@@ -2,8 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dp"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:background="@drawable/mainpage_background"
     tools:context=".FacilitiesActivity">
 
@@ -11,10 +9,10 @@
     <EditText
         android:id="@+id/searchInput"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#FFF"
-        />
-
+        android:layout_height="48dp"
+        android:hint="Search facility..."
+        android:paddingLeft="16dp"
+        android:background="@drawable/searchline"/>
 
     <!-- List View for facility items on page-->
     <ListView
@@ -22,6 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/searchInput"
-        />
-
+        android:paddingLeft="8dp"
+        android:scrollbarStyle="outsideInset" />
 </RelativeLayout>

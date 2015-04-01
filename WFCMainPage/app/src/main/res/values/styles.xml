@@ -8,19 +8,22 @@
     <style name="TextDefault">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_color</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
     </style>
+
     <style name="TextHeader">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/headerblack</item>
-
+        <item name="android:paddingRight">16dp</item>
     </style>
 
     <!-- Style InfoActionBar -->
     <style name="Theme.Info" parent="AppTheme">
-    <!-- Set AppCompat’s color theming attrs -->
-    <item name="colorPrimary">@color/info_light_color</item>
-    <item name="colorPrimaryDark">@color/info_dark_color</item>
-    <!-- Other attributes -->
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/info_light_color</item>
+        <item name="colorPrimaryDark">@color/info_dark_color</item>
+        <!-- Other attributes -->
     </style>
 
     <!-- Style NavActionBar -->
