@@ -4,7 +4,8 @@
     tools:context=".FacilitiesActivity">
     <item
         android:id="@+id/action_search"
-        android:title="@string/action_search"
+        android:title="Facilities"
+        android:hint="Search facility"
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="ifRoom"/>
 </menu>

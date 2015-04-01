@@ -5,21 +5,11 @@
     android:background="@drawable/mainpage_background"
     tools:context=".FacilitiesActivity">
 
-    <!-- Search bar voor text input -->
-    <EditText
-        android:id="@+id/searchInput"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Search facility..."
-        android:paddingLeft="16dp"
-        android:background="@drawable/searchline"/>
-
     <!-- List View for facility items on page-->
     <ListView
         android:id="@+id/facilitiesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/searchInput"
         android:paddingLeft="8dp"
         android:scrollbarStyle="outsideInset" />
 </RelativeLayout>
