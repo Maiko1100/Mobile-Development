@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class MyDatabase extends SQLiteAssetHelper {
 
-	private static final String DATABASE_NAME = "Facilitiesv2.db";
+	private static final String DATABASE_NAME = "Facilitiesv3.db";
 	private static final int DATABASE_VERSION = 1;
 
 	public MyDatabase(Context context) {
