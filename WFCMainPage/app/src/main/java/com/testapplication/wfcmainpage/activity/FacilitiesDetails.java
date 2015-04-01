@@ -47,12 +47,29 @@ public class FacilitiesDetails extends ActionBarActivity {
         locatie.setTypeface(face);
 
         facilityName.setText(tFacilityName);
-        website.setText(tWebsite);
-        foon.setText(tFoon);
+        if(tWebsite.isEmpty()){
+            website.setText("Niet Beschikbaar");
+        }
+        else{
+            website.setText(tWebsite);
+        }
+        if(tFoon.isEmpty()) {
+            foon.setText("Niet Beschikbaar");
+        }
+        else{
+            foon.setText(tFoon);
+        }
+        if(tEmail.isEmpty()){
+            email.setText("Niet Beschikbaar");
+        }
+        else{
+            email.setText(tEmail);
+        }
+
         tower.setText(tTower);
         etage.setText(tEtage);
         showroom.setText(tShowroom);
-        email.setText(tEmail);
+
     }
 
 
