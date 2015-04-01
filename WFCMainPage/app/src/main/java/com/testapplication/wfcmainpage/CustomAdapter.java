@@ -3,7 +3,7 @@ package com.testapplication.wfcmainpage;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Deze class wordt toegepast op alle items in de list om de sFacility array te converteren naar een list.
+ * Provides a custom adapter for the facility list items, also holds a custom filter class to search through the list items.
  */
 
 import android.content.Context;
@@ -22,17 +22,15 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
 	private ArrayList<Facility> mData = null;
 	private ArrayList<Facility> mFilteredData = null;
-	private LayoutInflater customInflater;
-	private FacilityFilter facilityFilter = new FacilityFilter();
-    private CustomAdapter adapter;
+	private LayoutInflater mCustomInflater;
+	private FacilityFilter mFacilityFilter = new FacilityFilter();
 
-
-	public CustomAdapter(Context context, ArrayList<Facility> pData) {
+	public CustomAdapter(Context pContext, ArrayList<Facility> pData) {
 		this.mData= new ArrayList<>();
         mData.addAll(pData);
 		this.mFilteredData=new ArrayList<>();
         mFilteredData.addAll(mData);
-		customInflater = LayoutInflater.from(context);
+		mCustomInflater = LayoutInflater.from(pContext);
         getFilter();
 	}
 
@@ -40,60 +38,60 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 		return mFilteredData.size();
 	}
 
-	public Object getItem(int position){
-		return mFilteredData.get(position);
+	public Object getItem(int pPosition){
+		return mFilteredData.get(pPosition);
 	}
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int pPosition) {
+        return pPosition;
     }
 
     static class ViewHolder{
-		TextView customRowText;
-		TextView mediumRowText;
-        TextView mediumRowText2;
+		TextView facilityTitleRowText;
+		TextView facilityInfoRowText;
+        TextView facilityTelNrRowText2;
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int pPosition, View pConvertView, ViewGroup pParent) {
         View view;
 
-        Facility filteredResults = mFilteredData.get(position);
+        Facility filteredResults = mFilteredData.get(pPosition);
         ViewHolder viewHolder;
 
-        if (convertView == null) {
-            view = customInflater.inflate(R.layout.custom_row, null);
+        if (pConvertView == null) {
+            view = mCustomInflater.inflate(R.layout.custom_row, null);
             viewHolder = new ViewHolder();
-            viewHolder.customRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
-            viewHolder.mediumRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
-            viewHolder.mediumRowText2 = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
+            viewHolder.facilityTitleRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
+            viewHolder.facilityInfoRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
+            viewHolder.facilityTelNrRowText2 = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
             view.setTag(viewHolder);
 
         } else {
-            view = convertView;
+            view = pConvertView;
             viewHolder = ((ViewHolder) view.getTag());
         }
-        viewHolder.customRowText.setText(filteredResults.getFacilityNaam());
-        viewHolder.mediumRowText.setText(filteredResults.getWebsite());
-		viewHolder.mediumRowText2.setText(filteredResults.getTelefoonNummer());
+        viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
+        viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
+		viewHolder.facilityTelNrRowText2.setText(filteredResults.getTelefoonNummer());
 
         return view;
 
     }
 
 	public Filter getFilter(){
-        if (facilityFilter == null){
-            facilityFilter = new FacilityFilter();
+        if (mFacilityFilter == null){
+            mFacilityFilter = new FacilityFilter();
         }
-		return facilityFilter;
+		return mFacilityFilter;
 	}
 
 	private class FacilityFilter extends Filter{
 		@Override
-		protected FilterResults performFiltering(CharSequence constraint) {
+		protected FilterResults performFiltering(CharSequence pConstraint) {
 
-			String filterString = constraint.toString().toLowerCase();
+			String filterString = pConstraint.toString().toLowerCase();
 			FilterResults results = new FilterResults();
             if (filterString != null && filterString.length() > 0) {
 
@@ -122,8 +120,8 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
         @SuppressWarnings("unchecked")
 		@Override
-		protected void publishResults(CharSequence constraint, FilterResults results) {
-			mFilteredData = (ArrayList<Facility>) results.values;
+		protected void publishResults(CharSequence pConstraint, FilterResults pResults) {
+			mFilteredData = (ArrayList<Facility>) pResults.values;
 			notifyDataSetChanged();
 		}
 	}
