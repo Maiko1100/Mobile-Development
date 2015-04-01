@@ -50,7 +50,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 		items = db.getAllFacilities();
 
 		for(int i=1; i<items.size(); i++){
-			mFacilities.add(new Facility(items.get(i).getFacilityNaam(),items.get(i).getTelefoonNummer(),items.get(i).getWebsite()));
+			mFacilities.add(new Facility(items.get(i).getFacilityNaam(),items.get(i).getTelefoonNummer(),items.get(i).getWebsite(),items.get(i).getTower(),items.get(i).getEtage(),items.get(i).getShowRoom(),items.get(i).getEmail()));
 		}
 
 
@@ -93,6 +93,12 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("info", facility.getFacilityNaam());
                         myIntent.putExtra("telefoon", facility.getTelefoonNummer());
                         myIntent.putExtra("title", facility.getWebsite());
+                        myIntent.putExtra("tower", facility.getTower());
+                        myIntent.putExtra("etage", facility.getEtage());
+                        myIntent.putExtra("showroom", facility.getShowRoom());
+                        myIntent.putExtra("email", facility.getEmail());
+
+
 
                         FacilitiesActivity.this.startActivity(myIntent);
                     }

@@ -21,16 +21,28 @@ public class FacilitiesDetails extends ActionBarActivity {
         String iInfo = intent.getStringExtra("info");
         String tTitle = intent.getStringExtra("title");
         String tFoon = intent.getStringExtra("telefoon");
+        String tTower = intent.getStringExtra("tower");
+        String tEtage = intent.getStringExtra("etage");
+        String tShowroom = intent.getStringExtra("showroom");
+        String tEmail = intent.getStringExtra("email");
 
-        TextView info,title,foon;
+        TextView info,title,foon,tower,etage,showroom,email;
 
         info = (TextView) findViewById(R.id.txtInfo);
         title = (TextView) findViewById(R.id.txtTitle);
         foon = (TextView) findViewById(R.id.txtFoon);
+        tower = (TextView) findViewById(R.id.txtTower);
+        etage = (TextView) findViewById(R.id.txtEtage);
+        showroom = (TextView) findViewById(R.id.txtShowroom);
+        email = (TextView) findViewById(R.id.txtEmail);
 
         info.setText(iInfo);
         title.setText(tTitle);
         foon.setText(tFoon);
+        tower.setText(tTower);
+        etage.setText(tEtage);
+        showroom.setText(tShowroom);
+        email.setText(tEmail);
     }
 
 

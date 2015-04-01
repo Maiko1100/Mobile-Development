@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class MyDatabase extends SQLiteAssetHelper {
 
-	private static final String DATABASE_NAME = "Facility.db";
+	private static final String DATABASE_NAME = "Facilitiesv2.db";
 	private static final int DATABASE_VERSION = 1;
 
 	public MyDatabase(Context context) {
@@ -27,7 +27,7 @@ public class MyDatabase extends SQLiteAssetHelper {
 		List<Facility> facilities = new LinkedList<Facility>();
 
 		// 1. build the query
-		String query = "SELECT  * FROM facilities";
+		String query = "SELECT  * FROM Facility";
 
 		// 2. get reference to writable DB
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -42,8 +42,11 @@ public class MyDatabase extends SQLiteAssetHelper {
 				Facility.setFacilityNaam(cursor.getString(1));
 				Facility.setTelefoonNummer(cursor.getString(2));
 				Facility.setWebsite(cursor.getString(3));
+                Facility.setTower(cursor.getString(4));
+                Facility.setEtage(cursor.getString(5));
+                Facility.setShowRoom(cursor.getString(6));
+                Facility.setEmail(cursor.getString(7));
 
-				// Add book to books
 				facilities.add(Facility);
 			} while (cursor.moveToNext());
 		}

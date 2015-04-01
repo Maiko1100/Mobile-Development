@@ -10,6 +10,10 @@ public class Facility {
 	private String facilityNaam;
 	private String telefoonNummer;
 	private String website;
+    private String tower;
+    private String etage;
+    private String showRoom;
+    private String email;
 
 	public Facility() {
 	}
@@ -22,9 +26,52 @@ public class Facility {
 		this.website = website;
 	}
 
-	//getters & setters
+    public Facility(String facilityNaam, String telefoonNummer, String website, String tower, String etage, String showRoom, String email) {
+        this.facilityNaam = facilityNaam;
+        this.telefoonNummer = telefoonNummer;
+        this.website = website;
+        this.tower = tower;
+        this.etage = etage;
+        this.showRoom = showRoom;
+        this.email = email;
+    }
 
-	public void setId(int id) {
+//getters & setters
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTower() {
+        return tower;
+    }
+
+    public void setTower(String tower) {
+        this.tower = tower;
+    }
+
+    public String getEtage() {
+        return etage;
+    }
+
+    public void setEtage(String etage) {
+        this.etage = etage;
+    }
+
+    public String getShowRoom() {
+        return showRoom;
+    }
+
+    public void setShowRoom(String showRoom) {
+        this.showRoom = showRoom;
+    }
+
+    public void setId(int id) {
 		this.id = id;
 	}
 
@@ -58,15 +105,19 @@ public class Facility {
 		this.website = website;
 	}
 
-	@Override
-	public String toString() {
-		return "Facility{" +
-				"id=" + id +
-				", facilityNaam='" + facilityNaam + '\'' +
-				", telefoonNummer='" + telefoonNummer + '\'' +
-				", website='" + website + '\'' +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "Facility{" +
+                "id=" + id +
+                ", facilityNaam='" + facilityNaam + '\'' +
+                ", telefoonNummer='" + telefoonNummer + '\'' +
+                ", website='" + website + '\'' +
+                ", tower='" + tower + '\'' +
+                ", etage='" + etage + '\'' +
+                ", showRoom='" + showRoom + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
 
 
