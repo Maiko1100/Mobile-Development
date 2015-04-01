@@ -60,7 +60,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
     static class ViewHolder {
         TextView facilityTitleRowText;
         TextView facilityInfoRowText;
-        TextView facilityTelNrRowText2;
+        TextView facilityTelNrRowText;
     }
 
     /**
@@ -86,7 +86,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             viewHolder = new ViewHolder();
             viewHolder.facilityTitleRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
             viewHolder.facilityInfoRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
-            viewHolder.facilityTelNrRowText2 = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
+            viewHolder.facilityTelNrRowText = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
             view.setTag(viewHolder);
 
         } else {
@@ -95,7 +95,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         }
         viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
         viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
-        viewHolder.facilityTelNrRowText2.setText(filteredResults.getTelefoonNummer());
+        viewHolder.facilityTelNrRowText.setText(filteredResults.getTelefoonNummer());
 
         return view;
 
