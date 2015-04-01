@@ -32,17 +32,21 @@ import java.util.List;
 public class FacilitiesActivity extends ActionBarActivity {
 
 	/**
-	 * @param facilityAdapter custom adapter om mItems uit de array naar list te zetten
-	 * @param mFacilityList List View volledige pagina
-	 * @param mFacilities Array van Facilities objects
-	 * @param mSearchInput edittext object voor de zoekfunctie
+	 * @param facilityAdapter Provides a custom adapter to put the items from the database to the list
+	 * @param mFacilityList Provides a listview for the page
+	 * @param mFacilities Provides an arraylist in which the Facility items are stored
+	 * @param mSearchInput Provides and inputfield (Edittext) for searching
+     * @param mItems Provides a list for the facility items. data gets added from the database
+     * @param mSearchInputMenu Provides a boolean for opening and closing the searchInput
+     * @param inputMethodManager Provides a show / hide for the softkeyboard
 	 */
+
 	CustomAdapter facilityAdapter;
 	private ListView mFacilityList;
 	private ArrayList<Facility> mFacilities= new ArrayList<>();
-	private EditText mSearchInput;
 	private List<Facility> mItems;
 	private MyDatabase mDb;
+    private EditText mSearchInput;
     private boolean mSearchInputMenu;
     InputMethodManager inputMethodManager;
 
@@ -75,7 +79,6 @@ public class FacilitiesActivity extends ActionBarActivity {
 		mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -85,7 +88,6 @@ public class FacilitiesActivity extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
