@@ -6,6 +6,7 @@ package com.testapplication.wfcmainpage;
  * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +15,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -37,6 +39,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	private List<Facility> mItems;
 	private MyDatabase mDb;
     private boolean mSearchInputMenu;
+    InputMethodManager inputMethodManager;
 
 
 	@Override
@@ -53,18 +56,15 @@ public class FacilitiesActivity extends ActionBarActivity {
 			mFacilities.add(new Facility(mItems.get(i).getFacilityNaam(), mItems.get(i).getTelefoonNummer(), mItems.get(i).getWebsite(), mItems.get(i).getTower(), mItems.get(i).getEtage(), mItems.get(i).getShowRoom(), mItems.get(i).getEmail()));
 		}
 
-
-
-
-
 		//initialize
 		facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
 		mFacilityList = (ListView) findViewById(R.id.facilitiesList);
 		mSearchInput = (EditText)findViewById(R.id.searchInput);
         mSearchInputMenu = false;
+        inputMethodManager = (InputMethodManager)getSystemService(
+                Context.INPUT_METHOD_SERVICE);
 
 		mFacilityList.setAdapter(facilityAdapter);
-
 
         mSearchInput.setVisibility(View.GONE);
 		mSearchInput.addTextChangedListener(new TextWatcher() {
@@ -113,6 +113,7 @@ public class FacilitiesActivity extends ActionBarActivity {
         if (mSearchInputMenu == false) {
             mSearchInputMenu = true;
             mSearchInput.setVisibility(View.VISIBLE);
+            inputMethodManager.showSoftInput(mSearchInput, 0);
         }
     }
 
@@ -120,6 +121,7 @@ public class FacilitiesActivity extends ActionBarActivity {
         if (mSearchInputMenu == true) {
             mSearchInputMenu = false;
             mSearchInput.setVisibility(View.GONE);
+            inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
         }
     }
 
