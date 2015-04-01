@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
-import com.testapplication.wfcmainpage.activity.FacilityRent;
+import com.testapplication.wfcmainpage.models.FacilityRent;
 
 public class CustomFacilityRentAdapter extends ArrayAdapter<FacilityRent> {
 
