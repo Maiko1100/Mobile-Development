@@ -93,9 +93,9 @@ public class FacilitiesActivity extends ActionBarActivity {
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
 
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("info", facility.getFacilityNaam());
+                        myIntent.putExtra("facilityname", facility.getFacilityNaam());
                         myIntent.putExtra("telefoon", facility.getTelefoonNummer());
-                        myIntent.putExtra("title", facility.getWebsite());
+                        myIntent.putExtra("website", facility.getWebsite());
                         myIntent.putExtra("tower", facility.getTower());
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());

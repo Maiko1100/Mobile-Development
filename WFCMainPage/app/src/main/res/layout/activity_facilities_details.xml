@@ -10,54 +10,126 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtTitle"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/txtInfo"
+        android:id="@+id/txtFacilityName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ff696969"
+        android:layout_below="@+id/txtFacilityName"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtFoon"
-        android:layout_below="@id/txtInfo"
+        style="@style/TextHeader"
+        android:id="@+id/contacttext"
+        android:text="Contact"
+        android:layout_below="@+id/txtFacilityName"
         android:layout_marginTop="6dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtTower"
-        android:layout_below="@+id/txtFoon" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/txtEtage"
-        android:layout_below="@+id/txtTower"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/txtFoon"
+        android:layout_toRightOf="@+id/foontext"
+        android:layout_below="@id/contacttext"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/txtShowroom"
-        android:layout_below="@+id/txtEtage"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/foontext"
+        android:text="Tel. nummer: "
+        android:layout_below="@+id/contacttext"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/websitetext"
+        android:text="Website: "
+        android:layout_below="@+id/txtFoon"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtWebsite"
+        android:layout_below="@+id/txtFoon"
+        android:layout_toRightOf="@id/websitetext"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textemail"
+        android:text="Email: "
+        android:layout_below="@+id/txtWebsite"
+        android:layout_marginBottom="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/txtEmail"
-        android:layout_below="@+id/txtShowroom"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/txtWebsite"
+        android:layout_toRightOf="@+id/textemail"
+        android:layout_marginBottom="6dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ff696969"
+        android:layout_below="@+id/txtEmail"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextHeader"
+        android:id="@+id/locatietext"
+        android:text="Locatie"
+        android:layout_below="@+id/txtEmail"
+        android:layout_marginTop="6dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/towertext"
+        android:text="Toren: "
+        android:layout_below="@+id/locatietext"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTower"
+        android:layout_below="@+id/locatietext"
+        android:layout_toRightOf="@+id/towertext"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etagetext"
+        android:text="Etage: "
+        android:layout_below="@+id/txtTower"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEtage"
+        android:layout_below="@+id/txtTower"
+        android:layout_toRightOf="@+id/etagetext"/>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtShowroom"
+        android:layout_below="@+id/txtEtage"
+        android:layout_toRightOf="@+id/showroomtext"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showroomtext"
+        android:text="Showroom: "
+        android:layout_below="@+id/txtEtage"/>
+
+
+
 
 
 

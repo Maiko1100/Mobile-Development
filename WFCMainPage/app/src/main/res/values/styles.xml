@@ -9,6 +9,11 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_color</item>
     </style>
+    <style name="TextHeader">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/headerblack</item>
+
+    </style>
 
     <!-- Style InfoActionBar -->
     <style name="Theme.Info" parent="AppTheme">

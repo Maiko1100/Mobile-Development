@@ -1,6 +1,7 @@
 package com.testapplication.wfcmainpage;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,27 +18,34 @@ public class FacilitiesDetails extends ActionBarActivity {
         setContentView(R.layout.activity_facilities_details);
         setTitle(getString(R.string.details_actionbar_text));
 
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
+
         Intent intent = getIntent();
         String tWebsite = intent.getStringExtra("website");
-        String tTitle = intent.getStringExtra("title");
+        String tFacilityName = intent.getStringExtra("facilityname");
         String tFoon = intent.getStringExtra("telefoon");
         String tTower = intent.getStringExtra("tower");
         String tEtage = intent.getStringExtra("etage");
         String tShowroom = intent.getStringExtra("showroom");
         String tEmail = intent.getStringExtra("email");
 
-        TextView info,title,foon,tower,etage,showroom,email;
+        TextView facilityName,website,foon,tower,etage,showroom,email,contact,locatie;
 
-        info = (TextView) findViewById(R.id.txtInfo);
-        title = (TextView) findViewById(R.id.txtTitle);
+        facilityName = (TextView) findViewById(R.id.txtFacilityName);
+        facilityName.setTypeface(face);
+        website = (TextView) findViewById(R.id.txtWebsite);
         foon = (TextView) findViewById(R.id.txtFoon);
         tower = (TextView) findViewById(R.id.txtTower);
         etage = (TextView) findViewById(R.id.txtEtage);
         showroom = (TextView) findViewById(R.id.txtShowroom);
         email = (TextView) findViewById(R.id.txtEmail);
+        contact = (TextView) findViewById(R.id.locatietext);
+        contact.setTypeface(face);
+        locatie = (TextView) findViewById(R.id.contacttext);
+        locatie.setTypeface(face);
 
-        info.setText(tWebsite);
-        title.setText(tTitle);
+        facilityName.setText(tFacilityName);
+        website.setText(tWebsite);
         foon.setText(tFoon);
         tower.setText(tTower);
         etage.setText(tEtage);
