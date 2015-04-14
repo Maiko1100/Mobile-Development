@@ -12,6 +12,11 @@
         android:text="Facilities"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
+    <FrameLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="9dp"
+    android:padding="5dp">
 
     <EditText
         android:id="@+id/searchfield"
@@ -22,4 +27,17 @@
         android:inputType="textFilter">
 
     </EditText>
+        <Button
+            android:id="@+id/clear_text"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="3dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"
+            android:nestedScrollingEnabled="false" />
+
+
+
+    </FrameLayout>
 </LinearLayout>

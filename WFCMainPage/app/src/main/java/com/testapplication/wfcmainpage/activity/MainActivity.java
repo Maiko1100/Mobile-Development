@@ -32,8 +32,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private int mDotsCount;
     private TextView[] mDots;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.main_title_text));

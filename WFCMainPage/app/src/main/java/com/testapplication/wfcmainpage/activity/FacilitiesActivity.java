@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FacilitiesActivity extends ActionBarActivity {
+public class FacilitiesActivity extends ActionBarActivity implements View.OnClickListener {
 
     /**
      * @param facilityAdapter Provides a custom adapter to put the items from the database to the list.
@@ -50,6 +51,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     private MyDatabase mDb;
     private EditText mSearchInput;
     private TextView mTitle;
+    private Button mClearText;
     private boolean mSearchInputMenu;
 
 
@@ -89,12 +91,15 @@ public class FacilitiesActivity extends ActionBarActivity {
                 R.id.searchfield);
         mTitle = (TextView) actionBar.getCustomView().findViewById(
                 R.id.facilitiesTitle);
+        mClearText =(Button)actionBar.getCustomView().findViewById(R.id.clear_text);
 
         mSearchInputMenu = false;
 
 
+        mClearText.setOnClickListener(this);
         mFacilityList.setAdapter(facilityAdapter);
         mSearchInput.setVisibility(View.GONE);
+        mClearText.setVisibility(View.GONE);
 
         mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -151,6 +156,7 @@ public class FacilitiesActivity extends ActionBarActivity {
         if (mSearchInputMenu == false) {
             mSearchInputMenu = true;
             mSearchInput.setVisibility(View.VISIBLE);
+            mClearText.setVisibility(View.VISIBLE);
             mTitle.setVisibility(View.GONE);
             mSearchInput.requestFocus();
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -161,13 +167,26 @@ public class FacilitiesActivity extends ActionBarActivity {
     public void closeSearch() {
         if (mSearchInputMenu == true) {
             mSearchInputMenu = false;
+
             mSearchInput.setText("");
             mSearchInput.setVisibility(View.GONE);
+            mClearText.setVisibility(View.GONE);
             mTitle.setVisibility(View.VISIBLE);
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
         }
     }
+
+
+
+
+
+    public void clearText(View v){
+        mSearchInput.setText("");
+    }
+
+
+
 
     /**
      * Provides an inflater for the facilities activity menu xml file
@@ -206,4 +225,15 @@ public class FacilitiesActivity extends ActionBarActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+
+        switch (id) {
+            case R.id.clear_text:
+                clearText(v);
+                break;
+        }
+    }
+
 }
