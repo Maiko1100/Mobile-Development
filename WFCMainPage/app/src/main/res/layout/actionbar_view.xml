@@ -13,28 +13,28 @@
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <FrameLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/searchfield"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="Search facility"
-        android:inputType="textFilter">
+        <EditText
+            android:id="@+id/searchfield"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/abc_textfield_search_material"
+            android:hint="Search facility"
+            android:inputType="textFilter" >
+        </EditText>
 
-    </EditText>
         <Button
             android:id="@+id/clear_text"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="3dp"
             android:layout_gravity="right|center_vertical"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/abc_ic_clear_mtrl_alpha"
-            android:nestedScrollingEnabled="false" />
-
+            android:nestedScrollingEnabled="false"/>
 
 
     </FrameLayout>
