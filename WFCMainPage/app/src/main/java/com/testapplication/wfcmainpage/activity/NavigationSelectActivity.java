@@ -18,6 +18,12 @@ public class NavigationSelectActivity extends ActionBarActivity implements View.
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navigation_select);
+
+		mBtnIndoor = (Button) findViewById(R.id.btnNavigationSelectIndoor);
+		mBtnOutdoor = (Button) findViewById(R.id.btnNavigationSelectOutdoor);
+
+		mBtnIndoor.setOnClickListener(this);
+		mBtnOutdoor.setOnClickListener(this);
 	}
 
 

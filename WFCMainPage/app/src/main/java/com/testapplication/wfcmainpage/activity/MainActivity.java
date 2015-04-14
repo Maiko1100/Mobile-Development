@@ -121,7 +121,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void showMaps(View v) {
-        Intent showMaps = new Intent(this, MapsActivity.class);
+        Intent showMaps = new Intent(this, NavigationSelectActivity.class);
         startActivity(showMaps);
     }
 
