@@ -46,5 +46,9 @@
     <string name="start_navigation_button_text">Start navigation (Activate your GPS)</string>
     <string name="details_actionbar_text">Details</string>
     <string name="action_search">action_search</string>
+    <string name="title_activity_navigation_indoor">NavigationIndoor</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_navigation_select">NavigationSelectActivity</string>
 
 </resources>

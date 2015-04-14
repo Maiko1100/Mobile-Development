@@ -12,6 +12,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <service
+        android:name="com.estimote.sdk.service.BeaconService"
+        android:exported="false" />
 
     <application
         android:allowBackup="true"
@@ -30,17 +36,17 @@
         <activity
             android:name=".activity.InfoActivity"
             android:label="@string/title_activity_info"
-            android:theme="@style/Theme.Info">
+            android:theme="@style/Theme.Info" >
         </activity>
         <activity
             android:name=".activity.FacilitiesActivity"
             android:label="@string/title_activity_facilities"
-            android:theme="@style/Theme.Fac">
+            android:theme="@style/Theme.Fac" >
         </activity>
         <activity
             android:name=".activity.FacilitiesDetails"
             android:label="@string/title_activity_activityDetails"
-            android:theme="@style/Theme.Fac">
+            android:theme="@style/Theme.Fac" >
         </activity>
 
         <meta-data
@@ -57,12 +63,12 @@
         <activity
             android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/Theme.Nav">
+            android:theme="@style/Theme.Nav" >
         </activity>
         <activity
             android:name=".activity.FacilityRentActivity"
             android:label="@string/title_activity_facility_rent"
-            android:theme="@style/Theme.Rent">
+            android:theme="@style/Theme.Rent" >
         </activity>
         <activity
             android:name=".adapters.CustomFacilityRentAdapter"
@@ -71,6 +77,14 @@
         <activity
             android:name=".activity.FacilitiesRentDetails"
             android:label="@string/title_activity_facilities_rent_details" >
+        </activity>
+        <activity
+            android:name=".activity.NavigationIndoor"
+            android:label="@string/title_activity_navigation_indoor" >
+        </activity>
+        <activity
+            android:name=".activity.NavigationSelectActivity"
+            android:label="@string/title_activity_navigation_select" >
         </activity>
     </application>
 
