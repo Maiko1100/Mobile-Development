@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FacilitiesActivity extends ActionBarActivity implements View.OnClickListener {
+public class FacilitiesActivity extends ActionBarActivity{
 
     /**
      * @param facilityAdapter Provides a custom adapter to put the items from the database to the list.
@@ -91,12 +91,19 @@ public class FacilitiesActivity extends ActionBarActivity implements View.OnClic
                 R.id.searchfield);
         mTitle = (TextView) actionBar.getCustomView().findViewById(
                 R.id.facilitiesTitle);
+
         mClearText =(Button)actionBar.getCustomView().findViewById(R.id.clear_text);
+	    mClearText.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+			    mSearchInput.setText("");
+		    }
+	    });
 
         mSearchInputMenu = false;
 
 
-        mClearText.setOnClickListener(this);
+
         mFacilityList.setAdapter(facilityAdapter);
         mSearchInput.setVisibility(View.GONE);
         mClearText.setVisibility(View.GONE);
@@ -177,17 +184,6 @@ public class FacilitiesActivity extends ActionBarActivity implements View.OnClic
         }
     }
 
-
-
-
-
-    public void clearText(View v){
-        mSearchInput.setText("");
-    }
-
-
-
-
     /**
      * Provides an inflater for the facilities activity menu xml file
      *
@@ -225,15 +221,4 @@ public class FacilitiesActivity extends ActionBarActivity implements View.OnClic
             return super.onOptionsItemSelected(item);
         }
     }
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-
-        switch (id) {
-            case R.id.clear_text:
-                clearText(v);
-                break;
-        }
-    }
-
 }
