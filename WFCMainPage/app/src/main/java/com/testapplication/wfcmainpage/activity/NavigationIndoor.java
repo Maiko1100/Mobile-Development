@@ -16,86 +16,86 @@ import java.util.List;
 
 public class NavigationIndoor extends ActionBarActivity {
 
-	private static final String TAG = "mijnLog";
+    private static final String TAG = "mijnLog";
 
-	private TextView mTvLocation;
-	private static final String ESTIMOTE_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
-	private static final Region ALL_ESTIMOTE_BEACONS = new Region("regionId", ESTIMOTE_PROXIMITY_UUID, null, null);
+    private TextView mTvLocation;
+    private static final String ESTIMOTE_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+    private static final Region ALL_ESTIMOTE_BEACONS = new Region("regionId", ESTIMOTE_PROXIMITY_UUID, null, null);
 
-	private static final String STRING_MAC_BLUE_BEACON1 = "E5:96:E5:68:D9:A7";
-	private static final String STRING_MAC_BLUE_BEACON2 = "D0:89:FA:BD:EB:22";
-	private static final String STRING_MAC_PURPLE_BEACON = "F3:BC:3A:0D:23:24";
+    private static final String STRING_MAC_BLUE_BEACON1 = "E5:96:E5:68:D9:A7";
+    private static final String STRING_MAC_BLUE_BEACON2 = "D0:89:FA:BD:EB:22";
+    private static final String STRING_MAC_PURPLE_BEACON = "F3:BC:3A:0D:23:24";
 
-	private BeaconManager mBeaconManager;
-	BluetoothAdapter mBluetoothAdapter;
+    private BeaconManager mBeaconManager;
+    BluetoothAdapter mBluetoothAdapter;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_navigation_indoor);
-		mTvLocation = (TextView) findViewById(R.id.tvNavigationLocation);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_navigation_indoor);
+        mTvLocation = (TextView) findViewById(R.id.tvNavigationLocation);
 
-		mBeaconManager = new BeaconManager(this);
-		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBeaconManager = new BeaconManager(this);
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-		//enable bluetooth
-		if (!mBluetoothAdapter.isEnabled()) {
-			mBluetoothAdapter.enable();
-		}
-		;
+        //enable bluetooth
+        if (!mBluetoothAdapter.isEnabled()) {
+            mBluetoothAdapter.enable();
+        }
+        ;
 
-		mBeaconManager.setRangingListener(new BeaconManager.RangingListener() {
+        mBeaconManager.setRangingListener(new BeaconManager.RangingListener() {
 
-			@Override
-			public void onBeaconsDiscovered(Region region, List<Beacon> beacons) {
-				for (Beacon b : beacons) {
-					switch (b.getMacAddress()) {
-						case STRING_MAC_BLUE_BEACON1:
-							mTvLocation.setText("You are near beacon 1 (Blue)");
-							break;
-						case STRING_MAC_BLUE_BEACON2:
-							mTvLocation.setText("You are near beacon 2 (Blue)");
-							break;
-						case STRING_MAC_PURPLE_BEACON:
-							mTvLocation.setText("You are near beacon 3(Purple)");
-							break;
-					}
-				}
-			}
-		});
-	}
+            @Override
+            public void onBeaconsDiscovered(Region region, List<Beacon> beacons) {
+                for (Beacon b : beacons) {
+                    switch (b.getMacAddress()) {
+                        case STRING_MAC_BLUE_BEACON1:
+                            mTvLocation.setText("You are near beacon 1 (Blue)");
+                            break;
+                        case STRING_MAC_BLUE_BEACON2:
+                            mTvLocation.setText("You are near beacon 2 (Blue)");
+                            break;
+                        case STRING_MAC_PURPLE_BEACON:
+                            mTvLocation.setText("You are near beacon 3(Purple)");
+                            break;
+                    }
+                }
+            }
+        });
+    }
 
-	@Override
-	protected void onStart() {
-		super.onStart();
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-		mBeaconManager.connect(new BeaconManager.ServiceReadyCallback() {
-			@Override
-			public void onServiceReady() {
-				try {
-					mBeaconManager.startRanging(ALL_ESTIMOTE_BEACONS);
-				} catch (RemoteException e) {
-					Log.e(TAG, "Cannot start ranging", e);
-				}
-			}
-		});
-	}
+        mBeaconManager.connect(new BeaconManager.ServiceReadyCallback() {
+            @Override
+            public void onServiceReady() {
+                try {
+                    mBeaconManager.startRanging(ALL_ESTIMOTE_BEACONS);
+                } catch (RemoteException e) {
+                    Log.e(TAG, "Cannot start ranging", e);
+                }
+            }
+        });
+    }
 
-	@Override
-	protected void onStop() {
-		super.onStop();
+    @Override
+    protected void onStop() {
+        super.onStop();
 
-		try {
-			mBeaconManager.stopRanging(ALL_ESTIMOTE_BEACONS);
-		} catch (RemoteException e) {
-			Log.e(TAG, "Cannot stop but it does not matter now", e);
-		}
-	}
+        try {
+            mBeaconManager.stopRanging(ALL_ESTIMOTE_BEACONS);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Cannot stop but it does not matter now", e);
+        }
+    }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-		mBeaconManager.disconnect();
-	}
+        mBeaconManager.disconnect();
+    }
 }

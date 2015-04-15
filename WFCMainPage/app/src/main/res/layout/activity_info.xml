@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarStyle="outsideInset"
-    android:paddingRight="-10dp"
     android:background="@drawable/mainpage_background"
+    android:paddingRight="-10dp"
+    android:scrollbarStyle="outsideInset"
     tools:context="com.testapplication.wfcmainpage.activity.InfoActivity">
 
     <LinearLayout
@@ -13,8 +13,8 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextHeader"
             android:id="@+id/historyTitle"
+            style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -28,8 +28,8 @@
             android:text="@string/history_text" />
 
         <TextView
-            style="@style/TextHeader"
             android:id="@+id/mijlpaalTitle"
+            style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -49,8 +49,8 @@
             android:textSize="14sp" />
 
         <TextView
-            style="@style/TextHeader"
             android:id="@+id/managementTitle"
+            style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -69,8 +69,8 @@
             android:textSize="14sp" />
 
         <TextView
-            style="@style/TextHeader"
             android:id="@+id/bezoekTitle"
+            style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
