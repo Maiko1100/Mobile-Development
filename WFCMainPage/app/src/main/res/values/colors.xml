@@ -17,4 +17,5 @@
     <color name="fac_dark_color">#97102E</color>
     <color name="headerblack">#1F1F1F</color>
     <color name="white">#ffffffff</color>
+    <color name="white_trans">#BBffffff</color>
 </resources>

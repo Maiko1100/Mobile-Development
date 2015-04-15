@@ -6,16 +6,21 @@
     </style>
 
     <style name="TextDefault">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/text_color</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="TextMenuItem">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color</item>
     </style>
 
     <style name="TextHeader">
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/headerblack</item>
-        <item name="android:paddingRight">16dp</item>
     </style>
 
     <!-- Style InfoActionBar -->

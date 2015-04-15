@@ -1,62 +1,54 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/mainpage_background"
-    android:paddingRight="-10dp"
-    android:scrollbarStyle="outsideInset"
-    tools:context="com.testapplication.wfcmainpage.activity.InfoActivity">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/mainpage_background"
+            android:scrollbarStyle="outsideInset"
+            tools:context="com.testapplication.wfcmainpage.activity.InfoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginLeft="@dimen/spacing_medium"
+        android:layout_marginRight="@dimen/spacing_medium"
+        android:background="@color/white_trans"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/spacing_medium"
+        android:paddingRight="@dimen/spacing_medium">
 
         <TextView
             android:id="@+id/historyTitle"
             style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="@string/history_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="@string/history_title"/>
 
         <TextView
             style="@style/TextDefault"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/history_text" />
+            android:text="@string/history_text"/>
 
         <TextView
             android:id="@+id/mijlpaalTitle"
             style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/mijlpaal_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="@string/mijlpaal_title"/>
 
         <TextView
             android:id="@+id/textView4"
             style="@style/TextDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:lineSpacingMultiplier="1.2"
-            android:text="@string/mijlpaal_text"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="14sp" />
+            android:text="@string/mijlpaal_text"/>
 
         <TextView
             android:id="@+id/managementTitle"
             style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/management_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="@string/management_title"/>
 
         <TextView
             android:id="@+id/textView6"
@@ -64,19 +56,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/management_text"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="14sp" />
+            android:text="@string/management_text"/>
 
         <TextView
             android:id="@+id/bezoekTitle"
             style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/bezoekadres_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="@string/bezoekadres_title"/>
 
         <TextView
             android:id="@+id/textView8"
@@ -84,8 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/bezoekadres_text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="@string/bezoekadres_text"/>
 
     </LinearLayout>
 </ScrollView>

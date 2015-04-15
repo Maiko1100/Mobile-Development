@@ -1,17 +1,19 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
 
 
-public class FacilitiesRentDetails extends ActionBarActivity {
+public class FacilitiesRentDetails extends ActionBarActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class FacilitiesRentDetails extends ActionBarActivity {
         info.setText(iInfo);
         title.setText(tTitle);
         icon.setImageResource(icon2);
+
+	    findViewById(R.id.facilityPhone).setOnClickListener(this);
     }
 
 
@@ -54,4 +58,15 @@ public class FacilitiesRentDetails extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()){
+			case R.id.facilityPhone:
+				Intent callIntent = new Intent(Intent.ACTION_DIAL);
+				callIntent.setData(Uri.parse("Call me maybe?"));
+//				this.startActivity(callIntent);
+				break;
+		}
+	}
 }
