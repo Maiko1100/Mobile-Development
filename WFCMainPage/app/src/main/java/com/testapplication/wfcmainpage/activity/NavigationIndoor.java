@@ -51,14 +51,22 @@ public class NavigationIndoor extends ActionBarActivity {
                 for (Beacon b : beacons) {
                     switch (b.getMacAddress()) {
                         case STRING_MAC_BLUE_BEACON1:
-                            mTvLocation.setText("You are near beacon 1 (Blue)");
+	                        if (b.getRssi() > -60) {
+		                        mTvLocation.setText("You are near our project table");
+	                        }
                             break;
                         case STRING_MAC_BLUE_BEACON2:
-                            mTvLocation.setText("You are near beacon 2 (Blue)");
+	                        if (b.getRssi() > -60) {
+		                        mTvLocation.setText("You are near the coffee table");
+	                        }
                             break;
                         case STRING_MAC_PURPLE_BEACON:
-                            mTvLocation.setText("You are near beacon 3(Purple)");
+	                        if (b.getRssi() > -60) {
+		                        mTvLocation.setText("You are near the exit");
+	                        }
                             break;
+                        default:
+	                        mTvLocation.setText(R.string.no_beacon_text);
                     }
                 }
             }
