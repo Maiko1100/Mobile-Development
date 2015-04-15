@@ -14,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Large Text"
+        android:text="@string/no_beacon_text"
+        android:textSize="20sp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
