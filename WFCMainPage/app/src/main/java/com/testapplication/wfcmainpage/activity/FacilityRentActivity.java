@@ -37,15 +37,15 @@ public class FacilityRentActivity extends ActionBarActivity {
 
         //Array voor facility names. vervangen door database items.
         sRentFacilities = new FacilityRent[]{
-                new FacilityRent(R.drawable.bedrijf2, "Type: Showroom", "Grootte: 109 m2\n" +
+                new FacilityRent(R.mipmap.t1floor11, "Type: Showroom", "Grootte: 109 m2\n" +
                         "VERHUURD"),
-                new FacilityRent(R.drawable.bedrijf3, "Type: Showroom / Kantoor", "Grootte: 406 m2\n" +
+                new FacilityRent(R.mipmap.t2floor5, "Type: Showroom / Kantoor", "Grootte: 406 m2\n" +
                         "Extra: Bijkeuken, conferentie kamer incl. licht, gipsplafond met dimlichten, serverruimte."),
-                new FacilityRent(R.drawable.bedrijf4, "Type: Showroom", "Grootte: 183 m2\n" +
+                new FacilityRent(R.mipmap.t2floor8, "Type: Showroom", "Grootte: 183 m2\n" +
                         "Extra: Keuken, vloerbedekking, 3 aparte kamers incl. licht."),
-                new FacilityRent(R.drawable.bedrijf5, "Type: Showroom", "Grootte: 303 m2\n" +
+                new FacilityRent(R.mipmap.t4floor8, "Type: Showroom", "Grootte: 303 m2\n" +
                         "Extra: Keuken, toonbank, rekken voor kleding, licht."),
-                new FacilityRent(R.drawable.logowfcsmall, "Type: Showroom", "Grootte: 63 m2\n" +
+                new FacilityRent(R.mipmap.t4floor9, "Type: Showroom", "Grootte: 63 m2\n" +
                         "Extra: houten vloer, gesloten keuken met voorraadkast, wandrekken.")
 
         };
