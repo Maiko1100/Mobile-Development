@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.testapplication.wfcmainpage.R;
 
 
-public class FacilitiesRentDetails extends ActionBarActivity implements View.OnClickListener {
+public class FacilitiesRentDetails extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,6 @@ public class FacilitiesRentDetails extends ActionBarActivity implements View.OnC
         info.setText(iInfo);
         title.setText(tTitle);
         icon.setImageResource(icon2);
-
-	    findViewById(R.id.facilityPhone).setOnClickListener(this);
     }
 
 
@@ -59,16 +57,6 @@ public class FacilitiesRentDetails extends ActionBarActivity implements View.OnC
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-			case R.id.facilityPhone:
-				Intent callIntent = new Intent(Intent.ACTION_DIAL);
-				callIntent.setData(Uri.parse("Call me maybe?"));
-//				this.startActivity(callIntent);
-				break;
-		}
-	}
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
