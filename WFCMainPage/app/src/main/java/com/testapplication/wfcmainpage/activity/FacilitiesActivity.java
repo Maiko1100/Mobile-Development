@@ -168,7 +168,7 @@ public class FacilitiesActivity extends ActionBarActivity {
             mClearText.setVisibility(View.VISIBLE);
             mTitle.setVisibility(View.GONE);
             mSearchInput.requestFocus();
-            //	        mActionSearch.setVisibility(View.GONE);
+
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
         }

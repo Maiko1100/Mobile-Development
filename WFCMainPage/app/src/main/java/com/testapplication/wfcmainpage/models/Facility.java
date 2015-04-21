@@ -2,7 +2,7 @@ package com.testapplication.wfcmainpage.models;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Provides een standaard class voor faciliteiten. Array sFacilities uit de main wordt gevult met onderstaande attributen.
+ * Provides een standaard class voor een faciliteit. Array sFacilities uit de main wordt gevult met onderstaande attributen.
  */
 public class Facility {
 
