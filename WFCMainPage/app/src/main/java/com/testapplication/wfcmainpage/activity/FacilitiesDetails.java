@@ -70,6 +70,8 @@ public class FacilitiesDetails extends ActionBarActivity {
         etage.setText(tEtage);
         showroom.setText(tShowroom);
 
+
+
     }
 
 
