@@ -166,16 +166,8 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
                         System.out.println("test");
-                              System.out.println("mode: "+facility.getDamesMode());
                         System.out.println(checkIfExists(facility, "damesMode"));
                         Log.d("test","test");
-
-
-
-
-
-
-
 
 
                         FacilitiesActivity.this.startActivity(myIntent);

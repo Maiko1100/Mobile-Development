@@ -202,7 +202,7 @@ public class Facility {
         this.badMode = badMode;
     }
     public boolean isEmpty(String test) {
-        if (test.isEmpty()) {
+        if (test.equals("")) {
             return true;
         } else {
             return false;
