@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,7 +60,6 @@ public class FacilitiesActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_facilities);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
@@ -82,7 +82,18 @@ public class FacilitiesActivity extends ActionBarActivity {
                             mItems.get(i).getTower(),
                             mItems.get(i).getEtage(),
                             mItems.get(i).getShowRoom(),
-                            mItems.get(i).getEmail()));
+                            mItems.get(i).getEmail(),
+                            mItems.get(i).getDamesMode(),
+                            mItems.get(i).getHerenMode(),
+                            mItems.get(i).getKinderMode(),
+                            mItems.get(i).getAccessoires(),
+                            mItems.get(i).getVoorraad(),
+                            mItems.get(i).getXlDames(),
+                            mItems.get(i).getXlHeren(),
+                            mItems.get(i).getSportKleding(),
+                            mItems.get(i).getBruidsKleding(),
+                            mItems.get(i).getBabySpullen(),
+                            mItems.get(i).getBadMode()));
         }
 
         //initialize
@@ -133,6 +144,8 @@ public class FacilitiesActivity extends ActionBarActivity {
         mFacilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
 
+
+
                     /**
                      * Provides a itemClickListener for the listview, registers clicks and
                      * sends the extra info through to the details activity.
@@ -140,9 +153,11 @@ public class FacilitiesActivity extends ActionBarActivity {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
+
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
 
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
+
                         myIntent.putExtra("facilityname", facility.getFacilityNaam());
                         myIntent.putExtra("telefoon", facility.getTelefoonNummer());
                         myIntent.putExtra("website", facility.getWebsite());
@@ -150,6 +165,17 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
+                        System.out.println("test");
+                              System.out.println("mode: "+facility.getDamesMode());
+                        System.out.println(checkIfExists(facility, "damesMode"));
+                        Log.d("test","test");
+
+
+
+
+
+
+
 
 
                         FacilitiesActivity.this.startActivity(myIntent);
@@ -157,6 +183,15 @@ public class FacilitiesActivity extends ActionBarActivity {
                     }
                 }
         );
+    }
+    public boolean checkIfExists(Facility facility, String mode){
+        if (facility.isEmpty(mode)) {
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     /**
@@ -169,7 +204,7 @@ public class FacilitiesActivity extends ActionBarActivity {
             mClearText.setVisibility(View.VISIBLE);
             mTitle.setVisibility(View.GONE);
             mSearchInput.requestFocus();
-            //	        mActionSearch.setVisibility(View.GONE);
+
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
         }

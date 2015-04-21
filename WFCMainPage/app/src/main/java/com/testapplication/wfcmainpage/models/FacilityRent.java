@@ -8,9 +8,6 @@ public class FacilityRent {
     public int icon;
     public String title;
     public String info;
-  //  public FacilityRent(){
-//        super();
-  //  }
 
     public FacilityRent(int pIcon, String pTitle, String pInfo){
         super();

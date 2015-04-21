@@ -1,16 +1,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/mainpage_background"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            tools:context="com.testapplication.wfcmainpage.activity.FacilitiesDetails">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainpage_background"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="com.testapplication.wfcmainpage.activity.FacilitiesDetails">
 
     <LinearLayout
-        android:background="@color/white_trans"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white_trans"
         android:orientation="vertical">
 
         <TextView
@@ -18,31 +18,31 @@
             style="@style/TextHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Large Text"/>
+            android:text="Large Text" />
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="match_parent"
             android:layout_height="124dp"
-            android:background="@color/nav_light_color"/>
+            android:background="@color/nav_light_color" />
 
         <TextView
-            android:layout_marginTop="@dimen/spacing_small"
             android:id="@+id/txtInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"/>
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="New Text" />
 
         <TextView
             android:id="@+id/facilityPhone"
+            style="@style/TextMenuItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@android:drawable/stat_sys_phone_call"
             android:drawablePadding="8dp"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
-            style="@style/TextMenuItem"
-            android:text="Phone number"/>
+            android:text="Phone number" />
 
     </LinearLayout>
 </ScrollView>

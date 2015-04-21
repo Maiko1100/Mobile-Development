@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".FacilitiesActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context=".FacilitiesActivity">
 
-    <ImageView
-        android:id="@+id/customImageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="5dp"
-        android:contentDescription="@string/customImage_view"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logowfcsmall"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_trans"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/customRowText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/customRowText_Medium"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        />
+        <TextView
+            android:id="@+id/customRowText"
+            style="@style/TextHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/customRowText_Medium" />
 
-    <TextView
-        android:id="@+id/mediumRowText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/customRowText"
-        android:layout_marginLeft="100dp"
-        android:text="@string/customTextRow_Small"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        />
+        <ImageView
+            android:id="@+id/customImageView"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:background="@color/nav_light_color" />
 
+        <TextView
+            android:id="@+id/mediumRowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/customTextRow_Small" />
+
+        <TextView
+            android:id="@+id/facilityPhone"
+            style="@style/TextMenuItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@android:drawable/stat_sys_phone_call"
+            android:drawablePadding="8dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Phone number" />
+    </LinearLayout>
 </RelativeLayout>
