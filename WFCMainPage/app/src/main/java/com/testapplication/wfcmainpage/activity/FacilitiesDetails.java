@@ -3,12 +3,12 @@ package com.testapplication.wfcmainpage.activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
@@ -16,9 +16,9 @@ import com.testapplication.wfcmainpage.R;
 
 public class FacilitiesDetails extends ActionBarActivity implements View.OnClickListener {
 
-	String tFoon;
-	String tEmail;
-	String tWebsite;
+    String tFoon;
+    String tEmail;
+    String tWebsite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
         String tShowroom = intent.getStringExtra("showroom");
         tEmail = intent.getStringExtra("email");
 
-        TextView facilityName,website,foon,tower,etage,showroom,email,contact,locatie;
+        TextView facilityName, website, foon, tower, etage, showroom, email, contact, locatie;
 
         facilityName = (TextView) findViewById(R.id.txtFacilityName);
         facilityName.setTypeface(face);
@@ -53,32 +53,28 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
         locatie.setTypeface(face);
 
         facilityName.setText(tFacilityName);
-        if(tWebsite.isEmpty()){
+        if (tWebsite.isEmpty()) {
             website.setText("Niet Beschikbaar");
-        }
-        else{
+        } else {
             website.setText(tWebsite);
-	        website.setOnClickListener(this);
+            website.setOnClickListener(this);
         }
-        if(tFoon.isEmpty()) {
+        if (tFoon.isEmpty()) {
             foon.setText("Niet Beschikbaar");
-        }
-        else{
+        } else {
             foon.setText(tFoon);
-	        foon.setOnClickListener(this);
+            foon.setOnClickListener(this);
         }
-        if(tEmail.isEmpty()){
+        if (tEmail.isEmpty()) {
             email.setText("Niet Beschikbaar");
-        }
-        else{
+        } else {
             email.setText(tEmail);
-	        email.setOnClickListener(this);
+            email.setOnClickListener(this);
         }
 
         tower.setText(tTower);
         etage.setText(tEtage);
         showroom.setText(tShowroom);
-
 
 
     }
@@ -106,29 +102,30 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-			case R.id.txtFoon:
-				Intent intentPhone = new Intent(Intent.ACTION_DIAL);
-				intentPhone.setData(Uri.parse("tel:" + tFoon));
-				startActivity(intentPhone);
-				break;
-			case R.id.txtEmail:
-				Intent intentEmail = new Intent(Intent.ACTION_SENDTO);
-				intentEmail.setData(Uri.parse("mailto:" + tEmail));
-				startActivity(intentEmail);
-				break;
-			case R.id.txtWebsite:
-				Intent intentWebsite = new Intent(Intent.ACTION_VIEW);
-				intentWebsite.setData(Uri.parse("http://"+tWebsite));
-				startActivity(intentWebsite);
-				break;
-		}
-	}
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txtFoon:
+                Intent intentPhone = new Intent(Intent.ACTION_DIAL);
+                intentPhone.setData(Uri.parse("tel:" + tFoon));
+                startActivity(intentPhone);
+                break;
+            case R.id.txtEmail:
+                Intent intentEmail = new Intent(Intent.ACTION_SENDTO);
+                intentEmail.setData(Uri.parse("mailto:" + tEmail));
+                startActivity(intentEmail);
+                break;
+            case R.id.txtWebsite:
+                Intent intentWebsite = new Intent(Intent.ACTION_VIEW);
+                intentWebsite.setData(Uri.parse("http://" + tWebsite));
+                startActivity(intentWebsite);
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 }

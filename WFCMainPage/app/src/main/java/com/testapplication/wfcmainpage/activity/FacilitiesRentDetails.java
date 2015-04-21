@@ -1,12 +1,10 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,9 +20,9 @@ public class FacilitiesRentDetails extends ActionBarActivity {
         Intent intent = getIntent();
         String iInfo = intent.getStringExtra("info");
         String tTitle = intent.getStringExtra("title");
-        int icon2 = intent.getIntExtra("icon",0);
+        int icon2 = intent.getIntExtra("icon", 0);
 
-        TextView info,title;
+        TextView info, title;
         ImageView icon;
         info = (TextView) findViewById(R.id.txtInfo);
         title = (TextView) findViewById(R.id.txtTitle);
@@ -57,9 +55,9 @@ public class FacilitiesRentDetails extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 }

@@ -51,22 +51,22 @@ public class NavigationIndoor extends ActionBarActivity {
                 for (Beacon b : beacons) {
                     switch (b.getMacAddress()) {
                         case STRING_MAC_BLUE_BEACON1:
-	                        if (b.getRssi() > -60) {
-		                        mTvLocation.setText("You are near our project table");
-	                        }
+                            if (b.getRssi() > -60) {
+                                mTvLocation.setText("You are near our project table");
+                            }
                             break;
                         case STRING_MAC_BLUE_BEACON2:
-	                        if (b.getRssi() > -60) {
-		                        mTvLocation.setText("You are near the coffee table");
-	                        }
+                            if (b.getRssi() > -60) {
+                                mTvLocation.setText("You are near the coffee table");
+                            }
                             break;
                         case STRING_MAC_PURPLE_BEACON:
-	                        if (b.getRssi() > -60) {
-		                        mTvLocation.setText("You are near the exit");
-	                        }
+                            if (b.getRssi() > -60) {
+                                mTvLocation.setText("You are near the exit");
+                            }
                             break;
                         default:
-	                        mTvLocation.setText(R.string.no_beacon_text);
+                            mTvLocation.setText(R.string.no_beacon_text);
                     }
                 }
             }
@@ -106,9 +106,10 @@ public class NavigationIndoor extends ActionBarActivity {
 
         mBeaconManager.disconnect();
     }
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 }
