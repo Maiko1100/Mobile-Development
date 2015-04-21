@@ -66,6 +66,7 @@ public class FacilityRentActivity extends ActionBarActivity {
                         myIntent.putExtra("icon", sRentFacilities[pPosition].icon);
 
                         FacilityRentActivity.this.startActivity(myIntent);
+	                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);    
                     }
                 }
         );
@@ -93,4 +94,10 @@ public class FacilityRentActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+	}
 }

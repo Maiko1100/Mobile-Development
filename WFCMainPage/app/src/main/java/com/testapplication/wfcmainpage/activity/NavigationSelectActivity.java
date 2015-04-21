@@ -56,11 +56,13 @@ public class NavigationSelectActivity extends ActionBarActivity implements View.
     public void showMaps(View v) {
         Intent showMaps = new Intent(this, MapsActivity.class);
         startActivity(showMaps);
+	    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     public void showIndoor(View v) {
         Intent indoorBeacon = new Intent(this, NavigationIndoor.class);
         startActivity(indoorBeacon);
+	    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     @Override
@@ -76,4 +78,10 @@ public class NavigationSelectActivity extends ActionBarActivity implements View.
                 break;
         }
     }
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+	}
 }
