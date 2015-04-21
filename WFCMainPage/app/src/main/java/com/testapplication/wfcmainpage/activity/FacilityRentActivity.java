@@ -15,8 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.testapplication.wfcmainpage.adapters.CustomFacilityRentAdapter;
 import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.adapters.CustomFacilityRentAdapter;
 import com.testapplication.wfcmainpage.models.FacilityRent;
 
 
@@ -66,7 +66,7 @@ public class FacilityRentActivity extends ActionBarActivity {
                         myIntent.putExtra("icon", sRentFacilities[pPosition].icon);
 
                         FacilityRentActivity.this.startActivity(myIntent);
-	                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);    
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 }
         );
@@ -95,9 +95,9 @@ public class FacilityRentActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 }

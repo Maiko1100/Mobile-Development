@@ -2,17 +2,23 @@ package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
 
 
-public class FacilitiesDetails extends ActionBarActivity {
+public class FacilitiesDetails extends ActionBarActivity implements View.OnClickListener {
+
+    String tFoon;
+    String tEmail;
+    String tWebsite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +29,15 @@ public class FacilitiesDetails extends ActionBarActivity {
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
 
         Intent intent = getIntent();
-        String tWebsite = intent.getStringExtra("website");
+        tWebsite = intent.getStringExtra("website");
         String tFacilityName = intent.getStringExtra("facilityname");
-        String tFoon = intent.getStringExtra("telefoon");
+        tFoon = intent.getStringExtra("telefoon");
         String tTower = intent.getStringExtra("tower");
         String tEtage = intent.getStringExtra("etage");
         String tShowroom = intent.getStringExtra("showroom");
-        String tEmail = intent.getStringExtra("email");
+        tEmail = intent.getStringExtra("email");
 
-        TextView facilityName,website,foon,tower,etage,showroom,email,contact,locatie;
+        TextView facilityName, website, foon, tower, etage, showroom, email, contact, locatie;
 
         facilityName = (TextView) findViewById(R.id.txtFacilityName);
         facilityName.setTypeface(face);
@@ -47,29 +53,28 @@ public class FacilitiesDetails extends ActionBarActivity {
         locatie.setTypeface(face);
 
         facilityName.setText(tFacilityName);
-        if(tWebsite.isEmpty()){
+        if (tWebsite.isEmpty()) {
             website.setText("Niet Beschikbaar");
-        }
-        else{
+        } else {
             website.setText(tWebsite);
+            website.setOnClickListener(this);
         }
-        if(tFoon.isEmpty()) {
+        if (tFoon.isEmpty()) {
             foon.setText("Niet Beschikbaar");
-        }
-        else{
+        } else {
             foon.setText(tFoon);
+            foon.setOnClickListener(this);
         }
-        if(tEmail.isEmpty()){
+        if (tEmail.isEmpty()) {
             email.setText("Niet Beschikbaar");
-        }
-        else{
+        } else {
             email.setText(tEmail);
+            email.setOnClickListener(this);
         }
 
         tower.setText(tTower);
         etage.setText(tEtage);
         showroom.setText(tShowroom);
-
 
 
     }
@@ -96,9 +101,31 @@ public class FacilitiesDetails extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txtFoon:
+                Intent intentPhone = new Intent(Intent.ACTION_DIAL);
+                intentPhone.setData(Uri.parse("tel:" + tFoon));
+                startActivity(intentPhone);
+                break;
+            case R.id.txtEmail:
+                Intent intentEmail = new Intent(Intent.ACTION_SENDTO);
+                intentEmail.setData(Uri.parse("mailto:" + tEmail));
+                startActivity(intentEmail);
+                break;
+            case R.id.txtWebsite:
+                Intent intentWebsite = new Intent(Intent.ACTION_VIEW);
+                intentWebsite.setData(Uri.parse("http://" + tWebsite));
+                startActivity(intentWebsite);
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 }

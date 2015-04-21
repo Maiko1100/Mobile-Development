@@ -1,19 +1,17 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
 
 
-public class FacilitiesRentDetails extends ActionBarActivity implements View.OnClickListener {
+public class FacilitiesRentDetails extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +20,9 @@ public class FacilitiesRentDetails extends ActionBarActivity implements View.OnC
         Intent intent = getIntent();
         String iInfo = intent.getStringExtra("info");
         String tTitle = intent.getStringExtra("title");
-        int icon2 = intent.getIntExtra("icon",0);
+        int icon2 = intent.getIntExtra("icon", 0);
 
-        TextView info,title;
+        TextView info, title;
         ImageView icon;
         info = (TextView) findViewById(R.id.txtInfo);
         title = (TextView) findViewById(R.id.txtTitle);
@@ -32,8 +30,6 @@ public class FacilitiesRentDetails extends ActionBarActivity implements View.OnC
         info.setText(iInfo);
         title.setText(tTitle);
         icon.setImageResource(icon2);
-
-	    findViewById(R.id.facilityPhone).setOnClickListener(this);
     }
 
 
@@ -59,19 +55,9 @@ public class FacilitiesRentDetails extends ActionBarActivity implements View.OnC
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-			case R.id.facilityPhone:
-				Intent callIntent = new Intent(Intent.ACTION_DIAL);
-				callIntent.setData(Uri.parse("Call me maybe?"));
-//				this.startActivity(callIntent);
-				break;
-		}
-	}
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 }

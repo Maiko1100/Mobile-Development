@@ -1,137 +1,139 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainpage_background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@drawable/mainpage_background"
     tools:context="com.testapplication.wfcmainpage.activity.FacilitiesDetails">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/txtFacilityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="#ff696969"
-        android:layout_below="@+id/txtFacilityName"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextHeader"
-        android:id="@+id/contacttext"
-        android:text="Contact"
         android:layout_below="@+id/txtFacilityName"
-        android:layout_marginTop="6dp"/>
+        android:background="#ff696969" />
 
     <TextView
+        android:id="@+id/contacttext"
+        style="@style/TextHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtFoon"
-        android:layout_toRightOf="@+id/foontext"
-        android:layout_below="@id/contacttext"/>
+        android:layout_below="@+id/txtFacilityName"
+        android:layout_marginTop="6dp"
+        android:text="Contact" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/foontext"
-        android:text="Tel. nummer: "
-        android:layout_below="@+id/contacttext"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/contacttext"
+        android:text="Tel. nummer: " />
+
+    <TextView
+        android:id="@+id/txtFoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contacttext"
+        android:layout_toRightOf="@+id/foontext"
+        android:autoLink="phone" />
+
+    <TextView
         android:id="@+id/websitetext"
-        android:text="Website: "
-        android:layout_below="@+id/txtFoon"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtWebsite"
         android:layout_below="@+id/txtFoon"
-        android:layout_toRightOf="@id/websitetext"/>
+        android:text="Website: " />
 
     <TextView
+        android:id="@+id/txtWebsite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFoon"
+        android:layout_toRightOf="@id/websitetext"
+        android:autoLink="web" />
+
+    <TextView
         android:id="@+id/textemail"
-        android:text="Email: "
-        android:layout_below="@+id/txtWebsite"
-        android:layout_marginBottom="6dp"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtEmail"
         android:layout_below="@+id/txtWebsite"
+        android:layout_marginBottom="6dp"
+        android:text="Email: " />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWebsite"
+        android:layout_marginBottom="6dp"
         android:layout_toRightOf="@+id/textemail"
-        android:layout_marginBottom="6dp" />
+        android:autoLink="email" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="#ff696969"
-        android:layout_below="@+id/txtEmail"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextHeader"
-        android:id="@+id/locatietext"
-        android:text="Locatie"
         android:layout_below="@+id/txtEmail"
-        android:layout_marginTop="6dp"/>
+        android:background="#ff696969" />
+
     <TextView
+        android:id="@+id/locatietext"
+        style="@style/TextHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEmail"
+        android:layout_marginTop="6dp"
+        android:text="Locatie" />
+
+    <TextView
         android:id="@+id/towertext"
-        android:text="Toren: "
-        android:layout_below="@+id/locatietext"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtTower"
         android:layout_below="@+id/locatietext"
-        android:layout_toRightOf="@+id/towertext"/>
+        android:text="Toren: " />
 
     <TextView
+        android:id="@+id/txtTower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/locatietext"
+        android:layout_toRightOf="@+id/towertext" />
+
+    <TextView
         android:id="@+id/etagetext"
-        android:text="Etage: "
-        android:layout_below="@+id/txtTower"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtEtage"
         android:layout_below="@+id/txtTower"
-        android:layout_toRightOf="@+id/etagetext"/>
-
-
+        android:text="Etage: " />
 
     <TextView
+        android:id="@+id/txtEtage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTower"
+        android:layout_toRightOf="@+id/etagetext" />
+
+    <TextView
         android:id="@+id/txtShowroom"
-        android:layout_below="@+id/txtEtage"
-        android:layout_toRightOf="@+id/showroomtext"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEtage"
+        android:layout_toRightOf="@+id/showroomtext" />
+
+    <TextView
         android:id="@+id/showroomtext"
-        android:text="Showroom: "
-        android:layout_below="@+id/txtEtage"/>
-
-
-
-
-
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEtage"
+        android:text="Showroom: " />
 
 </RelativeLayout>
