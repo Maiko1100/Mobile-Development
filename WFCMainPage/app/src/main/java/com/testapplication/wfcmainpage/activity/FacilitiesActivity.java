@@ -149,7 +149,6 @@ public class FacilitiesActivity extends ActionBarActivity {
                 new AdapterView.OnItemClickListener() {
 
 
-
                     /**
                      * Provides a itemClickListener for the listview, registers clicks and
                      * sends the extra info through to the details activity.
@@ -173,13 +172,21 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
+
                         myIntent.putExtra("mode",facilityMode);
+
+
+
+
+
                         FacilitiesActivity.this.startActivity(myIntent);
-	                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 }
         );
     }
+
+
 
 
     /**
@@ -264,10 +271,10 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
     }
 
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
 
 }
