@@ -38,7 +38,6 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
     private ArrayList<Facility> mFilteredData = null;
     private LayoutInflater mCustomInflater;
     private FacilityFilter mFacilityFilter = new FacilityFilter();
-    private ModeFilter mModeFilter = new ModeFilter();
 
     public CustomAdapter(Context pContext, ArrayList<Facility> pData) {
         this.mData = new ArrayList<>();
@@ -133,12 +132,6 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         return mFacilityFilter;
     }
 
-    public Filter getFilter2() {
-        if (mModeFilter == null) {
-            mModeFilter = new ModeFilter();
-        }
-        return mModeFilter;
-    }
 
     /**
      * Provides a custom filter that searches per letter and not for whole words.
@@ -183,36 +176,6 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             mFilteredData = (ArrayList<Facility>) pResults.values;
             notifyDataSetChanged();
         }
-    }
-    private class ModeFilter extends Filter {
-        @Override
-        protected FilterResults performFiltering(CharSequence pConstraint){
-            String test =pConstraint.toString();
-            int test2 = Integer.parseInt(test);
-
-            FilterResults results = new FilterResults();
-            final ArrayList<Facility> NLIST = new ArrayList<>();
-            Facility filterableString;
-            for (int i = 0; i < mData.size(); i++) {
-                filterableString = mData.get(i);
-                if (!filterableString.isLeeg(test2)) {
-                    NLIST.add(filterableString);
-                }
-            }
-            results.values = NLIST;
-            results.count = NLIST.size();
-            return results;
-
         }
-
-
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected void publishResults(CharSequence pConstraint, FilterResults pResults) {
-            mFilteredData = (ArrayList<Facility>) pResults.values;
-            notifyDataSetChanged();
-        }
-    }
 
 }

@@ -5,7 +5,6 @@ package com.testapplication.wfcmainpage.activity;
  * Provides de facility page met hierin de faciliteiten van het world fashion centre,
  * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker.
  */
-
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
@@ -25,12 +24,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.testapplication.wfcmainpage.R;
 import com.testapplication.wfcmainpage.adapters.CustomAdapter;
 import com.testapplication.wfcmainpage.database.MyDatabase;
 import com.testapplication.wfcmainpage.models.Facility;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,11 +72,8 @@ public class FacilitiesActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.custom_row_navoptions,mModeCategories));
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.custom_row_navoptions, mModeCategories));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
-//        getActionBar().setHomeButtonEnabled(true);
-
         mActionBar = getSupportActionBar();
         mActionBar.setCustomView(R.layout.actionbar_view);
         mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
@@ -145,13 +139,69 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
                         myIntent.putExtra("mode", getModeArray(facility));
-                        System.out.println(facility.getTelefoonNummer() + " " + facility.getWebsite() + " " + facility.getEtage());
                         FacilitiesActivity.this.startActivity(myIntent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 }
         );
-        }
+
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+               // R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+                R.string.drawer_open,  /* "open drawer" description */
+                R.string.drawer_close  /* "close drawer" description */
+        ) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setHomeButtonEnabled(true);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        mDrawerToggle.onConfigurationChanged(newConfig);
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -165,11 +215,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         mFacilities = getModeFacilities(position);
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
         mFacilityList.setAdapter(facilityAdapter);
-
+        mTitle.setText(mModeArray[position]);
         // Highlight the selected item, update the title, and close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(mModeCategories[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
+
     }
 
      /**
@@ -256,6 +306,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search && !mSearchInputMenu) {
