@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,12 +22,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.testapplication.wfcmainpage.R;
 import com.testapplication.wfcmainpage.adapters.CustomAdapter;
 import com.testapplication.wfcmainpage.database.MyDatabase;
 import com.testapplication.wfcmainpage.models.Facility;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +42,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param inputMethodManager Provides a show / hide for the softkeyboard.
      */
 
-    CustomAdapter facilityAdapter;
+    public CustomAdapter facilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
     private List<Facility> mItems;
@@ -55,50 +52,25 @@ public class FacilitiesActivity extends ActionBarActivity {
     private Button mClearText;
     private Menu menu;
     private boolean mSearchInputMenu;
+    private String[] mModeArray = new String[]{"Dames Mode","Heren Mode","Kinder Mode","Accessoires","Voorraad","Grote Maten (Dames)","Grote Maten (Heren)","Sport Kleding","BruidsKleding","BabyKleding/Artikelen","Badmode"};
+    private ArrayList<String> mFacilityMode = new ArrayList<>();
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String[] modeArray = new String[]{"Dames Mode","Heren Mode","Kinder Mode","Accessoires","Voorraad"," Grote Maten (Dames)","Grote Maten (Heren)"," Sport Kleding","BruidsKleding"," BabyKleding/Artikelen","Badmode"};
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
-
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         // add the custom view to the action bar
         actionBar.setCustomView(R.layout.actionbar_view);
-
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
                 | ActionBar.DISPLAY_SHOW_HOME);
 
-
         mDb = new MyDatabase(this);
         mItems = mDb.getAllFacilities();
+        mFacilities = getAllFacilities();
 
-        for (int i = 1; i < mItems.size(); i++) {
-            mFacilities.add(
-                    new Facility(
-                            mItems.get(i).getFacilityNaam(),
-                            mItems.get(i).getTelefoonNummer(),
-                            mItems.get(i).getWebsite(),
-                            mItems.get(i).getTower(),
-                            mItems.get(i).getEtage(),
-                            mItems.get(i).getShowRoom(),
-                            mItems.get(i).getEmail(),
-                            mItems.get(i).getDamesMode(),
-                            mItems.get(i).getHerenMode(),
-                            mItems.get(i).getKinderMode(),
-                            mItems.get(i).getAccessoires(),
-                            mItems.get(i).getVoorraad(),
-                            mItems.get(i).getXlDames(),
-                            mItems.get(i).getXlHeren(),
-                            mItems.get(i).getSportKleding(),
-                            mItems.get(i).getBruidsKleding(),
-                            mItems.get(i).getBabySpullen(),
-                            mItems.get(i).getBadMode()));
-        }
 
         //initialize
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
@@ -107,7 +79,6 @@ public class FacilitiesActivity extends ActionBarActivity {
                 R.id.searchfield);
         mTitle = (TextView) actionBar.getCustomView().findViewById(
                 R.id.facilitiesTitle);
-
 
         mClearText = (Button) actionBar.getCustomView().findViewById(R.id.clear_text);
         mClearText.setOnClickListener(new View.OnClickListener() {
@@ -156,14 +127,9 @@ public class FacilitiesActivity extends ActionBarActivity {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-                        ArrayList<String> facilityMode = new ArrayList<String>();
+
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
-                        for(int i=0; i<=modeArray.length-1; i++){
-                            if(!facility.isLeeg(i)){
-                                facilityMode.add(modeArray[i]);
-                                System.out.println(modeArray[i]);
-                            }
-                        }
+
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
                         myIntent.putExtra("facilityname", facility.getFacilityNaam());
                         myIntent.putExtra("telefoon", facility.getTelefoonNummer());
@@ -172,13 +138,8 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
-
-                        myIntent.putExtra("mode",facilityMode);
-
-
-
-
-
+                        myIntent.putExtra("mode",getModeArray(facility));
+                        System.out.println(facility.getTelefoonNummer()+" "+facility.getWebsite()+" "+facility.getEtage());
                         FacilitiesActivity.this.startActivity(myIntent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
@@ -233,6 +194,22 @@ public class FacilitiesActivity extends ActionBarActivity {
         return true;
     }
 
+
+    /**
+     *
+     * @param facility
+     * @return returns  an Arraylist with all mode categories from the given facility
+     */
+    public ArrayList getModeArray(Facility facility){
+        for(int i=0; i<=mModeArray.length-1; i++){
+            if(!facility.isLeeg(i)){
+                mFacilityMode.add(mModeArray[i]);
+            }
+        }
+        return mFacilityMode;
+    }
+
+
     private void changeIcon(int id, boolean isPressed) {
         MenuItem item = menu.findItem(id);
         if (isPressed) {
@@ -269,6 +246,36 @@ public class FacilitiesActivity extends ActionBarActivity {
 
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
+     * @return returns Arraylist with all facilities
+     */
+    public ArrayList getAllFacilities(){
+        for (int i = 1; i < mItems.size(); i++) {
+            mFacilities.add(
+                    new Facility(
+                            mItems.get(i).getFacilityNaam(),
+                            mItems.get(i).getTelefoonNummer(),
+                            mItems.get(i).getWebsite(),
+                            mItems.get(i).getTower(),
+                            mItems.get(i).getEtage(),
+                            mItems.get(i).getShowRoom(),
+                            mItems.get(i).getEmail(),
+                            mItems.get(i).getDamesMode(),
+                            mItems.get(i).getHerenMode(),
+                            mItems.get(i).getKinderMode(),
+                            mItems.get(i).getAccessoires(),
+                            mItems.get(i).getVoorraad(),
+                            mItems.get(i).getXlDames(),
+                            mItems.get(i).getXlHeren(),
+                            mItems.get(i).getSportKleding(),
+                            mItems.get(i).getBruidsKleding(),
+                            mItems.get(i).getBabySpullen(),
+                            mItems.get(i).getBadMode()));
+        }
+        return mFacilities;
     }
 
     @Override
