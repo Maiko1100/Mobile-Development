@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,11 +36,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	private int[] mImageId;
 	private int mDotsCount;
 	private TextView[] mDots;
-	Intent startActivity;
-	static Button infoButton;
-	static Button facilitiesButton;
-	static Button navigationButton;
-	static Button rentButton;
+	private static Button mInfoButton;
+	private static Button mFacilitiesButton;
+	private static Button mNavigationButton;
+	private static Button mRentButton;
+
 
 
 	@Override
@@ -58,30 +60,34 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		}
 		mResources.recycle();
 
+		//ViewPager and the adapter for it
 		mCustomPagerAdapter = new CustomPagerAdapter(this);
 		ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mCustomPagerAdapter);
 		mViewPager.setOnPageChangeListener(new MyPageChangeListener());
+
+		//font for buttons
 		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
 
+		//Method creating dots below Carroussel
 		setUiPageViewController();
 
 
 		// Declare buttons and add fonts
-		infoButton = (Button) findViewById(R.id.infoButton);
-		infoButton.setTypeface(face);
-		facilitiesButton = (Button) findViewById(R.id.facilitiesButton);
-		facilitiesButton.setTypeface(face);
-		navigationButton = (Button) findViewById(R.id.navigationButton);
-		navigationButton.setTypeface(face);
-		rentButton = (Button) findViewById(R.id.rentButton);
-		rentButton.setTypeface(face);
+	 	mInfoButton = (Button) findViewById(R.id.infoButton);
+		mInfoButton.setTypeface(face);
+		mFacilitiesButton = (Button) findViewById(R.id.facilitiesButton);
+		mFacilitiesButton.setTypeface(face);
+		mNavigationButton = (Button) findViewById(R.id.navigationButton);
+		mNavigationButton.setTypeface(face);
+		mRentButton = (Button) findViewById(R.id.rentButton);
+		mRentButton.setTypeface(face);
 
 		//init onclick listener on buttons
-		infoButton.setOnClickListener(this);
-		facilitiesButton.setOnClickListener(this);
-		navigationButton.setOnClickListener(this);
-		rentButton.setOnClickListener(this);
+		mInfoButton.setOnClickListener(this);
+		mFacilitiesButton.setOnClickListener(this);
+		mNavigationButton.setOnClickListener(this);
+		mRentButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -106,6 +112,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		return super.onOptionsItemSelected(item);
 	}
 
+	/*
+	Method for creating dots in the right amount below the viewpager
+	 */
 	private void setUiPageViewController() {
 		LinearLayout dotsLayout = (LinearLayout) findViewById(R.id.viewPagerCountDots);
 		mDotsCount = mCustomPagerAdapter.getCount();
@@ -121,50 +130,66 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 		mDots[0].setTextColor(getResources().getColor(R.color.dot_selected));
 	}
+	/*
+	Method for reversing the animation
+	This method is called in the onBackPress of the 4 activities the buttons lead to.
+	 */
 
 	public static void animateReverseButtons() {
-		AnimatorSet set = new AnimatorSet();
-		infoButton.setClickable(true);
-		navigationButton.setClickable(true);
-		rentButton.setClickable(true);
-		facilitiesButton.setClickable(true);
 
-		set.playTogether(
-				ObjectAnimator.ofFloat(infoButton, "translationX", -250, 0),
-				ObjectAnimator.ofFloat(infoButton, "translationY", 300, 0),
-				ObjectAnimator.ofFloat(navigationButton, "translationX", 250, 0),
-				ObjectAnimator.ofFloat(navigationButton, "translationY", 300, 0),
-				ObjectAnimator.ofFloat(rentButton, "translationX", -250, 0),
-				ObjectAnimator.ofFloat(rentButton, "translationY", -300, 0),
-				ObjectAnimator.ofFloat(facilitiesButton, "translationX", 250, 0),
-				ObjectAnimator.ofFloat(facilitiesButton, "translationY", -300, 0)
+		// Setting the buttons on the mainpage clickable
+		mInfoButton.setClickable(true);
+		mNavigationButton.setClickable(true);
+		mRentButton.setClickable(true);
+		mFacilitiesButton.setClickable(true);
+
+		// the animation
+		AnimatorSet animations = new AnimatorSet();
+		animations.playTogether(
+				ObjectAnimator.ofFloat(mInfoButton, "translationX", -250, 0),
+				ObjectAnimator.ofFloat(mInfoButton, "translationY", 300, 0),
+				ObjectAnimator.ofFloat(mNavigationButton, "translationX", 250, 0),
+				ObjectAnimator.ofFloat(mNavigationButton, "translationY", 300, 0),
+				ObjectAnimator.ofFloat(mRentButton, "translationX", -250, 0),
+				ObjectAnimator.ofFloat(mRentButton, "translationY", -300, 0),
+				ObjectAnimator.ofFloat(mFacilitiesButton, "translationX", 250, 0),
+				ObjectAnimator.ofFloat(mFacilitiesButton, "translationY", -300, 0)
 		);
-		set.setStartDelay(400);
-		set.setDuration(400).start();
+		animations.setInterpolator(new AccelerateInterpolator(1.8f));
+		animations.setStartDelay(400);
+		animations.setDuration(400).start();
 	}
 
+	/**
+	 *
+	 * @param startActivity the intent of which activity to start
+	 */
 	public void animateButtons(final Intent startActivity) {
-		AnimatorSet set = new AnimatorSet();
-		set.playTogether(
-				ObjectAnimator.ofFloat(infoButton, "translationX", 0, -250),
-				ObjectAnimator.ofFloat(infoButton, "translationY", 0, 300),
-				ObjectAnimator.ofFloat(navigationButton, "translationX", 0, 250),
-				ObjectAnimator.ofFloat(navigationButton, "translationY", 0, 300),
-				ObjectAnimator.ofFloat(rentButton, "translationX", 0, -250),
-				ObjectAnimator.ofFloat(rentButton, "translationY", 0, -300),
-				ObjectAnimator.ofFloat(facilitiesButton, "translationX", 0, 250),
-				ObjectAnimator.ofFloat(facilitiesButton, "translationY", 0, -300)
+		AnimatorSet animations = new AnimatorSet();
+		animations.playTogether(
+				ObjectAnimator.ofFloat(mInfoButton, "translationX", 0, -250),
+				ObjectAnimator.ofFloat(mInfoButton, "translationY", 0, 300),
+				ObjectAnimator.ofFloat(mNavigationButton, "translationX", 0, 250),
+				ObjectAnimator.ofFloat(mNavigationButton, "translationY", 0, 300),
+				ObjectAnimator.ofFloat(mRentButton, "translationX", 0, -250),
+				ObjectAnimator.ofFloat(mRentButton, "translationY", 0, -300),
+				ObjectAnimator.ofFloat(mFacilitiesButton, "translationX", 0, 250),
+				ObjectAnimator.ofFloat(mFacilitiesButton, "translationY", 0, -300)
 		);
-		set.setDuration(400).start();
-		if (set.isRunning()) {
-			infoButton.setClickable(false);
-			navigationButton.setClickable(false);
-			rentButton.setClickable(false);
-			facilitiesButton.setClickable(false);
+
+		animations.setInterpolator(new AccelerateInterpolator(1.8f));
+		animations.setDuration(400).start();
+		// If the animation is running you can't click the buttons
+		if (animations.isRunning()) {
+			mInfoButton.setClickable(false);
+			mNavigationButton.setClickable(false);
+			mRentButton.setClickable(false);
+			mFacilitiesButton.setClickable(false);
 		}
 
 		{
-			set.addListener(new Animator.AnimatorListener() {
+			// a listener on the animationset, If the animation ends it wil start the next activity
+			animations.addListener(new Animator.AnimatorListener() {
 				                @Override
 				                public void onAnimationStart(Animator animation) {
 				                }
