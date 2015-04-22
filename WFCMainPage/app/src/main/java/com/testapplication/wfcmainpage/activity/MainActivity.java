@@ -121,19 +121,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void showMaps(View v) {
         Intent showMaps = new Intent(this, NavigationSelectActivity.class);
         startActivity(showMaps);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
     }
 
     public void showFacilities(View v) {
         Intent showFacilities = new Intent(this, FacilitiesActivity.class);
         startActivity(showFacilities);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
     }
 
     public void showRent(View v) {
         Intent showRentFacilities = new Intent(this, FacilityRentActivity.class);
         startActivity(showRentFacilities);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
     }
 
     @Override
