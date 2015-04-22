@@ -50,6 +50,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     public CustomAdapter facilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
+    private ArrayList<Facility> mFacilityModeList = new ArrayList<>();
     private List<Facility> mItems;
     private MyDatabase mDb;
     private EditText mSearchInput;
@@ -159,11 +160,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
     }
 
-    /** Swaps fragments in the main content view */
     private void selectItem(int position) {
-        String test = Integer.toString(position);
-        facilityAdapter.getFilter2().filter(test);
 
+        mFacilities = getModeFacilities(position);
+        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+        mFacilityList.setAdapter(facilityAdapter);
 
         // Highlight the selected item, update the title, and close the drawer
         mDrawerList.setItemChecked(position, true);
@@ -275,6 +276,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @return returns Arraylist with all facilities
      */
     public ArrayList getAllFacilities() {
+        mFacilities.clear();
         for (int i = 1; i < mItems.size(); i++) {
             mFacilities.add(
                     new Facility(
@@ -298,6 +300,34 @@ public class FacilitiesActivity extends ActionBarActivity {
                             mItems.get(i).getBadMode()));
         }
         return mFacilities;
+    }
+    public ArrayList getModeFacilities(int mode) {
+        mFacilityModeList.clear();
+        for (int i = 1; i < mItems.size(); i++) {
+            if (!mItems.get(i).isLeeg(mode)) {
+                mFacilityModeList.add(
+                        new Facility(
+                                mItems.get(i).getFacilityNaam(),
+                                mItems.get(i).getTelefoonNummer(),
+                                mItems.get(i).getWebsite(),
+                                mItems.get(i).getTower(),
+                                mItems.get(i).getEtage(),
+                                mItems.get(i).getShowRoom(),
+                                mItems.get(i).getEmail(),
+                                mItems.get(i).getDamesMode(),
+                                mItems.get(i).getHerenMode(),
+                                mItems.get(i).getKinderMode(),
+                                mItems.get(i).getAccessoires(),
+                                mItems.get(i).getVoorraad(),
+                                mItems.get(i).getXlDames(),
+                                mItems.get(i).getXlHeren(),
+                                mItems.get(i).getSportKleding(),
+                                mItems.get(i).getBruidsKleding(),
+                                mItems.get(i).getBabySpullen(),
+                                mItems.get(i).getBadMode()));
+            }
+        }
+        return mFacilityModeList;
     }
 
     @Override

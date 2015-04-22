@@ -126,29 +126,6 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
         }
 
-
-    public boolean checkEmptyImage1(ViewHolder holder){
-        if(holder.image1.getDrawable()==null){
-            return true;
-        }
-        else return false;
-    }
-    public boolean checkEmptyImage2(ViewHolder holder){
-        if(holder.image2.getDrawable()==null){
-            return true;
-        }
-        else return false;
-    }
-    public boolean checkEmptyImage3(ViewHolder holder){
-        if(holder.image3.getDrawable()==null){
-            return true;
-        }
-        else return false;
-    }
-
-
-
-
     public Filter getFilter() {
         if (mFacilityFilter == null) {
             mFacilityFilter = new FacilityFilter();
