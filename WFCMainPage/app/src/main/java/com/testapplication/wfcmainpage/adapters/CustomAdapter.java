@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
@@ -61,6 +62,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         TextView facilityTitleRowText;
         TextView facilityInfoRowText;
         TextView facilityTelNrRowText;
+        ImageView womensWear;
+        ImageView childrensWear;
+        ImageView mensWear;
     }
 
     /**
@@ -86,12 +90,30 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             viewHolder.facilityTitleRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
             viewHolder.facilityInfoRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
             viewHolder.facilityTelNrRowText = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
+            viewHolder.womensWear =(ImageView) view.findViewById(R.id.womenswear);
+            viewHolder.mensWear =(ImageView) view.findViewById(R.id.menswear);
+            viewHolder.childrensWear =(ImageView) view.findViewById(R.id.childrenswear);
             view.setTag(viewHolder);
 
         } else {
             view = pConvertView;
             viewHolder = ((ViewHolder) view.getTag());
         }
+
+        viewHolder.womensWear.setVisibility(View.GONE);
+        if(!filteredResults.isLeeg(0)){
+            viewHolder.womensWear.setVisibility(View.VISIBLE);
+        }
+        viewHolder.mensWear.setVisibility(View.GONE);
+        if(!filteredResults.isLeeg(1)){
+            viewHolder.mensWear.setVisibility(View.VISIBLE);
+        }
+        viewHolder.childrensWear.setVisibility(View.GONE);
+        if(!filteredResults.isLeeg(2)){
+            viewHolder.childrensWear.setVisibility(View.VISIBLE);
+        }
+        
+
         viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
         viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
         viewHolder.facilityTelNrRowText.setText(filteredResults.getTelefoonNummer());
