@@ -187,6 +187,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @return returns  an Arraylist with all mode categories from the given facility
      */
     public ArrayList getModeArray(Facility facility) {
+        mFacilityMode.clear();
         for (int i = 0; i <= mModeArray.length - 1; i++) {
             if (!facility.isLeeg(i)) {
                 mFacilityMode.add(mModeArray[i]);
