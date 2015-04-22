@@ -61,6 +61,14 @@
     <item >Dames Mode</item>
     <item>Heren Mode</item>
     <item>Kinder Mode</item>
+    <item>Accesoires</item>
+        <item>   Voorraad</item>
+        <item>   Grote Maten (Dames)</item>
+        <item>   Grote Maten (Heren)</item>
+        <item>   Sport Kleding</item>
+        <item>    BruidsKleding</item>
+        <item>    BabyKleding/Artikelen</item>
+    <item>   Badmode</item>
     </string-array>
     <string name="title_activity_facility_categorie">FacilityCategorie</string>
 
