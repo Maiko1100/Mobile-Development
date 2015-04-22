@@ -7,6 +7,8 @@ package com.testapplication.wfcmainpage.adapters;
  */
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.activity.MainActivity;
 import com.testapplication.wfcmainpage.models.Facility;
 
 import java.util.ArrayList;
@@ -62,9 +65,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         TextView facilityTitleRowText;
         TextView facilityInfoRowText;
         TextView facilityTelNrRowText;
-        ImageView womensWear;
-        ImageView childrensWear;
-        ImageView mensWear;
+        ImageView image1;
+        ImageView image2;
+        ImageView image3;
     }
 
     /**
@@ -90,9 +93,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             viewHolder.facilityTitleRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
             viewHolder.facilityInfoRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
             viewHolder.facilityTelNrRowText = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
-            viewHolder.womensWear =(ImageView) view.findViewById(R.id.womenswear);
-            viewHolder.mensWear =(ImageView) view.findViewById(R.id.menswear);
-            viewHolder.childrensWear =(ImageView) view.findViewById(R.id.childrenswear);
+            viewHolder.image1 = (ImageView) view.findViewById(R.id.womenswear);
+            viewHolder.image2 = (ImageView) view.findViewById(R.id.menswear);
+            viewHolder.image3 = (ImageView) view.findViewById(R.id.childrenswear);
             view.setTag(viewHolder);
 
         } else {
@@ -100,30 +103,77 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             viewHolder = ((ViewHolder) view.getTag());
         }
 
-        viewHolder.womensWear.setVisibility(View.GONE);
+
+        viewHolder.image1.setVisibility(View.GONE);
+        viewHolder.image2.setVisibility(View.GONE);
+        viewHolder.image3.setVisibility(View.GONE);
+//
+//        int[] modeIcons = new int[]{R.drawable.womenswear, R.drawable.menswear, R.drawable.childrenswear};
+//        ArrayList<Integer> modeIconArray = new ArrayList<>();
+//
+//
+//        for (int i = 0; i <= modeIcons.length-1; i++) {
+//            if (!filteredResults.isLeeg(i)) {
+//                modeIconArray.add(modeIcons[i]);
+//                System.out.println(i);
+//            }
+//
+//        }
+//
+//
+//            for (int y = 0; y < modeIconArray.size(); y++) {
+//                if (checkEmptyImage1(viewHolder)) {
+//                    viewHolder.image1.setVisibility(View.VISIBLE);
+//                    viewHolder.image1.setImageResource(modeIconArray.get(y));
+//                } else if (checkEmptyImage2(viewHolder)) {
+//                    viewHolder.image2.setVisibility(View.VISIBLE);
+//                    viewHolder.image2.setImageResource(modeIconArray.get(y));
+//                } else  {
+//                    viewHolder.image3.setVisibility(View.VISIBLE);
+//                    viewHolder.image3.setImageResource(modeIconArray.get(y));
+//                }
+//            }
         if(!filteredResults.isLeeg(0)){
-            viewHolder.womensWear.setVisibility(View.VISIBLE);
+                    viewHolder.image1.setVisibility(View.VISIBLE);
+                    viewHolder.image1.setImageResource(R.drawable.womenswear);
         }
-        viewHolder.mensWear.setVisibility(View.GONE);
         if(!filteredResults.isLeeg(1)){
-            viewHolder.mensWear.setVisibility(View.VISIBLE);
-        }
-        viewHolder.childrensWear.setVisibility(View.GONE);
+                    viewHolder.image2.setVisibility(View.VISIBLE);
+                    viewHolder.image2.setImageResource(R.drawable.menswear);}
         if(!filteredResults.isLeeg(2)){
-            viewHolder.childrensWear.setVisibility(View.VISIBLE);
+            viewHolder.image3.setVisibility(View.VISIBLE);
+            viewHolder.image3.setImageResource(R.drawable.childrenswear);}
+
+
+            viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
+            viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
+            viewHolder.facilityTelNrRowText.setText(filteredResults.getTelefoonNummer());
+
+            return view;
+
         }
-        
-
-        viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
-        viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
-        viewHolder.facilityTelNrRowText.setText(filteredResults.getTelefoonNummer());
 
 
-
-
-        return view;
-
+    public boolean checkEmptyImage1(ViewHolder holder){
+        if(holder.image1.getDrawable()==null){
+            return true;
+        }
+        else return false;
     }
+    public boolean checkEmptyImage2(ViewHolder holder){
+        if(holder.image2.getDrawable()==null){
+            return true;
+        }
+        else return false;
+    }
+    public boolean checkEmptyImage3(ViewHolder holder){
+        if(holder.image3.getDrawable()==null){
+            return true;
+        }
+        else return false;
+    }
+
+
 
     public Filter getFilter() {
         if (mFacilityFilter == null) {
