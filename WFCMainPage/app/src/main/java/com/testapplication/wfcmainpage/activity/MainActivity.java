@@ -32,7 +32,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private int mDotsCount;
     private TextView[] mDots;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,7 +57,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         setUiPageViewController();
 
-
         // Declare buttons and add fonts
         Button infoButton = (Button) findViewById(R.id.infoButton);
         infoButton.setTypeface(face);
@@ -68,7 +66,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         navigationButton.setTypeface(face);
         Button rentButton = (Button) findViewById(R.id.rentButton);
         rentButton.setTypeface(face);
-
 
         //init onclick listener on buttons
         infoButton.setOnClickListener(this);
@@ -118,7 +115,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void showInfo(View v) {
         Intent showInfo = new Intent(this, InfoActivity.class);
         startActivity(showInfo);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
     }
 
     public void showMaps(View v) {
