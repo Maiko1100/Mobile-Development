@@ -38,6 +38,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
     private ArrayList<Facility> mFilteredData = null;
     private LayoutInflater mCustomInflater;
     private FacilityFilter mFacilityFilter = new FacilityFilter();
+    private ModeFilter mModeFilter = new ModeFilter();
 
     public CustomAdapter(Context pContext, ArrayList<Facility> pData) {
         this.mData = new ArrayList<>();
@@ -102,37 +103,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             view = pConvertView;
             viewHolder = ((ViewHolder) view.getTag());
         }
-
-
         viewHolder.image1.setVisibility(View.GONE);
         viewHolder.image2.setVisibility(View.GONE);
         viewHolder.image3.setVisibility(View.GONE);
-//
-//        int[] modeIcons = new int[]{R.drawable.womenswear, R.drawable.menswear, R.drawable.childrenswear};
-//        ArrayList<Integer> modeIconArray = new ArrayList<>();
-//
-//
-//        for (int i = 0; i <= modeIcons.length-1; i++) {
-//            if (!filteredResults.isLeeg(i)) {
-//                modeIconArray.add(modeIcons[i]);
-//                System.out.println(i);
-//            }
-//
-//        }
-//
-//
-//            for (int y = 0; y < modeIconArray.size(); y++) {
-//                if (checkEmptyImage1(viewHolder)) {
-//                    viewHolder.image1.setVisibility(View.VISIBLE);
-//                    viewHolder.image1.setImageResource(modeIconArray.get(y));
-//                } else if (checkEmptyImage2(viewHolder)) {
-//                    viewHolder.image2.setVisibility(View.VISIBLE);
-//                    viewHolder.image2.setImageResource(modeIconArray.get(y));
-//                } else  {
-//                    viewHolder.image3.setVisibility(View.VISIBLE);
-//                    viewHolder.image3.setImageResource(modeIconArray.get(y));
-//                }
-//            }
         if(!filteredResults.isLeeg(0)){
                     viewHolder.image1.setVisibility(View.VISIBLE);
                     viewHolder.image1.setImageResource(R.drawable.womenswear);
@@ -175,11 +148,19 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
 
 
+
     public Filter getFilter() {
         if (mFacilityFilter == null) {
             mFacilityFilter = new FacilityFilter();
         }
         return mFacilityFilter;
+    }
+
+    public Filter getFilter2() {
+        if (mModeFilter == null) {
+            mModeFilter = new ModeFilter();
+        }
+        return mModeFilter;
     }
 
     /**
@@ -214,7 +195,40 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
                 }
             }
             return results;
+
         }
+
+
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence pConstraint, FilterResults pResults) {
+            mFilteredData = (ArrayList<Facility>) pResults.values;
+            notifyDataSetChanged();
+        }
+    }
+    private class ModeFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence pConstraint){
+            String test =pConstraint.toString();
+            int test2 = Integer.parseInt(test);
+
+            FilterResults results = new FilterResults();
+            final ArrayList<Facility> NLIST = new ArrayList<>();
+            Facility filterableString;
+            for (int i = 0; i < mData.size(); i++) {
+                filterableString = mData.get(i);
+                if (!filterableString.isLeeg(test2)) {
+                    NLIST.add(filterableString);
+                }
+            }
+            results.values = NLIST;
+            results.count = NLIST.size();
+            return results;
+
+        }
+
+
 
         @SuppressWarnings("unchecked")
         @Override

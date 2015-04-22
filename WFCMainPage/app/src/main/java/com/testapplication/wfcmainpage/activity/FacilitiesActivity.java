@@ -10,7 +10,9 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -18,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -57,13 +60,25 @@ public class FacilitiesActivity extends ActionBarActivity {
     private String[] mModeArray = new String[]{"Dames Mode", "Heren Mode", "Kinder Mode", "Accessoires", "Voorraad", "Grote Maten (Dames)", "Grote Maten (Heren)", "Sport Kleding", "BruidsKleding", "BabyKleding/Artikelen", "Badmode"};
     private ArrayList<String> mFacilityMode = new ArrayList<>();
     private android.support.v7.app.ActionBar mActionBar;
+    private String[] mModeCategories;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
 
-        // add the custom view to the action bar
+        mModeCategories = getResources().getStringArray(R.array.mode_categories_array);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.custom_row_navoptions,mModeCategories));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setHomeButtonEnabled(true);
+
         mActionBar = getSupportActionBar();
         mActionBar.setCustomView(R.layout.actionbar_view);
         mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
@@ -103,6 +118,7 @@ public class FacilitiesActivity extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 facilityAdapter.getFilter().filter(s.toString());
+
             }
 
             @Override
@@ -134,10 +150,28 @@ public class FacilitiesActivity extends ActionBarActivity {
                     }
                 }
         );
+        }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
     }
 
+    /** Swaps fragments in the main content view */
+    private void selectItem(int position) {
+        String test = Integer.toString(position);
+        facilityAdapter.getFilter2().filter(test);
 
-    /**
+
+        // Highlight the selected item, update the title, and close the drawer
+        mDrawerList.setItemChecked(position, true);
+        setTitle(mModeCategories[position]);
+        mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+     /**
      * Provides an open method for the actionbar search button and opens the softkeyboard.
      */
     public void openSearch() {

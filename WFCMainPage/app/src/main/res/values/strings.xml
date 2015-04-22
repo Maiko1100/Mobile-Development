@@ -55,5 +55,13 @@
     //Strings activity_navigation_indoor
     <string name="title_activity_navigation_indoor">Indoor Navigation</string>
     <string name="no_beacon_text">There are no beacons within range</string>
+    <string name="drawer_open">draweropen</string>
+    <string name="drawer_close">drawer close</string>
+    <string-array name="mode_categories_array">
+    <item >Dames Mode</item>
+    <item>Heren Mode</item>
+    <item>Kinder Mode</item>
+    </string-array>
+    <string name="title_activity_facility_categorie">FacilityCategorie</string>
 
 </resources>
