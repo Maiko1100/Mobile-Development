@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,7 +44,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param inputMethodManager Provides a show / hide for the softkeyboard.
      */
 
-    CustomAdapter facilityAdapter;
+    public CustomAdapter facilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
     private List<Facility> mItems;
@@ -55,70 +54,41 @@ public class FacilitiesActivity extends ActionBarActivity {
     private Button mClearText;
     private Menu menu;
     private boolean mSearchInputMenu;
-
+    private String[] mModeArray = new String[]{"Dames Mode", "Heren Mode", "Kinder Mode", "Accessoires", "Voorraad", "Grote Maten (Dames)", "Grote Maten (Heren)", "Sport Kleding", "BruidsKleding", "BabyKleding/Artikelen", "Badmode"};
+    private ArrayList<String> mFacilityMode = new ArrayList<>();
+    private android.support.v7.app.ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         // add the custom view to the action bar
-        actionBar.setCustomView(R.layout.actionbar_view);
-
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
-                | ActionBar.DISPLAY_SHOW_HOME);
-
+        mActionBar = getSupportActionBar();
+        mActionBar.setCustomView(R.layout.actionbar_view);
+        mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
 
         mDb = new MyDatabase(this);
         mItems = mDb.getAllFacilities();
+        mTitle = (TextView) mActionBar.getCustomView().findViewById(R.id.facilitiesTitle);
 
-        for (int i = 1; i < mItems.size(); i++) {
-            mFacilities.add(
-                    new Facility(
-                            mItems.get(i).getFacilityNaam(),
-                            mItems.get(i).getTelefoonNummer(),
-                            mItems.get(i).getWebsite(),
-                            mItems.get(i).getTower(),
-                            mItems.get(i).getEtage(),
-                            mItems.get(i).getShowRoom(),
-                            mItems.get(i).getEmail(),
-                            mItems.get(i).getDamesMode(),
-                            mItems.get(i).getHerenMode(),
-                            mItems.get(i).getKinderMode(),
-                            mItems.get(i).getAccessoires(),
-                            mItems.get(i).getVoorraad(),
-                            mItems.get(i).getXlDames(),
-                            mItems.get(i).getXlHeren(),
-                            mItems.get(i).getSportKleding(),
-                            mItems.get(i).getBruidsKleding(),
-                            mItems.get(i).getBabySpullen(),
-                            mItems.get(i).getBadMode()));
-        }
-
-        //initialize
+        mFacilities = getAllFacilities();
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
         mFacilityList = (ListView) findViewById(R.id.facilitiesList);
-        mSearchInput = (EditText) actionBar.getCustomView().findViewById(
-                R.id.searchfield);
-        mTitle = (TextView) actionBar.getCustomView().findViewById(
-                R.id.facilitiesTitle);
+        mFacilityList.setAdapter(facilityAdapter);
 
-
-        mClearText = (Button) actionBar.getCustomView().findViewById(R.id.clear_text);
+        mClearText = (Button) mActionBar.getCustomView().findViewById(R.id.clear_text);
         mClearText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSearchInput.setText("");
             }
         });
-
-        mSearchInputMenu = false;
-
-
-        mFacilityList.setAdapter(facilityAdapter);
-        mSearchInput.setVisibility(View.GONE);
         mClearText.setVisibility(View.GONE);
+
+        mSearchInput = (EditText) mActionBar.getCustomView().findViewById(R.id.searchfield);
+        mSearchInput.setVisibility(View.GONE);
+        mSearchInputMenu = false;
 
         mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -133,7 +103,6 @@ public class FacilitiesActivity extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 facilityAdapter.getFilter().filter(s.toString());
-
             }
 
             @Override
@@ -143,20 +112,14 @@ public class FacilitiesActivity extends ActionBarActivity {
 
         mFacilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
-
-
                     /**
                      * Provides a itemClickListener for the listview, registers clicks and
                      * sends the extra info through to the details activity.
                      */
-
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
-
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-
                         myIntent.putExtra("facilityname", facility.getFacilityNaam());
                         myIntent.putExtra("telefoon", facility.getTelefoonNummer());
                         myIntent.putExtra("website", facility.getWebsite());
@@ -164,11 +127,8 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
-                        System.out.println("test");
-                        System.out.println(checkIfExists(facility, "damesMode"));
-                        Log.d("test", "test");
-
-
+                        myIntent.putExtra("mode", getModeArray(facility));
+                        System.out.println(facility.getTelefoonNummer() + " " + facility.getWebsite() + " " + facility.getEtage());
                         FacilitiesActivity.this.startActivity(myIntent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
@@ -176,14 +136,6 @@ public class FacilitiesActivity extends ActionBarActivity {
         );
     }
 
-    public boolean checkIfExists(Facility facility, String mode) {
-        if (facility.isEmpty(mode)) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     /**
      * Provides an open method for the actionbar search button and opens the softkeyboard.
@@ -229,6 +181,22 @@ public class FacilitiesActivity extends ActionBarActivity {
         return true;
     }
 
+
+    /**
+     * @param facility
+     * @return returns  an Arraylist with all mode categories from the given facility
+     */
+    public ArrayList getModeArray(Facility facility) {
+        mFacilityMode.clear();
+        for (int i = 0; i <= mModeArray.length - 1; i++) {
+            if (!facility.isLeeg(i)) {
+                mFacilityMode.add(mModeArray[i]);
+            }
+        }
+        return mFacilityMode;
+    }
+
+
     private void changeIcon(int id, boolean isPressed) {
         MenuItem item = menu.findItem(id);
         if (isPressed) {
@@ -267,10 +235,41 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
+     *
+     * @return returns Arraylist with all facilities
+     */
+    public ArrayList getAllFacilities() {
+        for (int i = 1; i < mItems.size(); i++) {
+            mFacilities.add(
+                    new Facility(
+                            mItems.get(i).getFacilityNaam(),
+                            mItems.get(i).getTelefoonNummer(),
+                            mItems.get(i).getWebsite(),
+                            mItems.get(i).getTower(),
+                            mItems.get(i).getEtage(),
+                            mItems.get(i).getShowRoom(),
+                            mItems.get(i).getEmail(),
+                            mItems.get(i).getDamesMode(),
+                            mItems.get(i).getHerenMode(),
+                            mItems.get(i).getKinderMode(),
+                            mItems.get(i).getAccessoires(),
+                            mItems.get(i).getVoorraad(),
+                            mItems.get(i).getXlDames(),
+                            mItems.get(i).getXlHeren(),
+                            mItems.get(i).getSportKleding(),
+                            mItems.get(i).getBruidsKleding(),
+                            mItems.get(i).getBabySpullen(),
+                            mItems.get(i).getBadMode()));
+        }
+        return mFacilities;
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
     }
 
 }

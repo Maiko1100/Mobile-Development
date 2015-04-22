@@ -40,7 +40,7 @@ public class Facility {
         this.damesMode = damesMode;
         this.herenMode = herenMode;
         this.kinderMode = kinderMode;
-        Accessoires = accessoires;
+        this.Accessoires = accessoires;
         this.voorraad = voorraad;
         this.xlDames = xlDames;
         this.xlHeren = xlHeren;
@@ -201,15 +201,38 @@ public class Facility {
     public void setBadMode(String badMode) {
         this.badMode = badMode;
     }
-    public boolean isEmpty(String test) {
-        if (test.equals("")) {
-            return true;
-        } else {
+
+public boolean isLeeg(int mode) {
+    switch (mode) {
+        case 0:
+            return damesMode.isEmpty();
+        case 1:
+            return herenMode.isEmpty();
+        case 2:
+            return kinderMode.isEmpty();
+        case 3:
+            return Accessoires.isEmpty();
+        case 4:
+            return voorraad.isEmpty();
+        case 5:
+            return xlDames.isEmpty();
+        case 6:
+            return xlHeren.isEmpty();
+        case 7:
+            return sportKleding.isEmpty();
+        case 8:
+            return bruidsKleding.isEmpty();
+        case 9:
+            return babySpullen.isEmpty();
+        case 10:
+            return badMode.isEmpty();
+        default:
             return false;
-        }
-
-
     }
+}
+
+
+
     @Override
     public String toString() {
         return "Facility{" +

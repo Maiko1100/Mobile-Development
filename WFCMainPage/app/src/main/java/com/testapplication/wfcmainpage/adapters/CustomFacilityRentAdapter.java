@@ -22,14 +22,14 @@ public class CustomFacilityRentAdapter extends ArrayAdapter<FacilityRent> {
     private FacilityRent mData[] = null;
 
     public CustomFacilityRentAdapter(Context context, FacilityRent[] pData) {
-        super(context, R.layout.activity_custom_facility_rent_adapter,pData);
+        super(context, R.layout.custom_row_rent,pData);
 	    mData = pData;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater customInflater = LayoutInflater.from(getContext());
-        View customView = customInflater.inflate(R.layout.activity_custom_facility_rent_adapter, parent, false);
+        View customView = customInflater.inflate(R.layout.custom_row_rent, parent, false);
 
         TextView customRowText = (TextView)customView.findViewById(R.id.customRowText);
         ImageView customImage = (ImageView)customView.findViewById(R.id.customImageView);

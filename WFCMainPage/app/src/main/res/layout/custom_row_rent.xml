@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_trans"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_horizontal_margin">
 
         <TextView
             android:id="@+id/customRowText"
@@ -23,8 +24,8 @@
         <ImageView
             android:id="@+id/customImageView"
             android:layout_width="match_parent"
-            android:layout_height="124dp"
-            android:background="@color/nav_light_color" />
+            android:layout_height="wrap_content"
+            android:background="@color/white_trans" />
 
         <TextView
             android:id="@+id/mediumRowText"
@@ -33,15 +34,5 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/customTextRow_Small" />
 
-        <TextView
-            android:id="@+id/facilityPhone"
-            style="@style/TextMenuItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/stat_sys_phone_call"
-            android:drawablePadding="8dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Phone number" />
     </LinearLayout>
 </RelativeLayout>

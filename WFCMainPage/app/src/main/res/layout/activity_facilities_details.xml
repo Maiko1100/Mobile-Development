@@ -133,7 +133,28 @@
         android:id="@+id/showroomtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtEtage"
-        android:text="Showroom: " />
+        android:text="Showroom: "
+        android:layout_below="@+id/txtEtage"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ff696969"
+        android:layout_below="@+id/showroomtext"
+        android:layout_marginBottom="6dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextHeader"
+        android:id="@+id/modetext"
+        android:text="Mode"
+        android:layout_below="@+id/showroomtext"
+        android:layout_marginTop="6dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMode"
+        android:layout_below="@+id/modetext"
+        />
+
 
 </RelativeLayout>
