@@ -177,31 +177,6 @@ public class FacilitiesActivity extends ActionBarActivity {
         mDrawerToggle.syncState();
     }
 
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        mDrawerToggle.onConfigurationChanged(newConfig);
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
@@ -210,15 +185,12 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
     private void selectItem(int position) {
-
         mFacilities = getModeFacilities(position);
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
         mFacilityList.setAdapter(facilityAdapter);
         mTitle.setText(mModeArray[position]);
-        // Highlight the selected item, update the title, and close the drawer
         mDrawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawer(mDrawerList);
-
     }
 
      /**
