@@ -102,37 +102,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             view = pConvertView;
             viewHolder = ((ViewHolder) view.getTag());
         }
-
-
         viewHolder.image1.setVisibility(View.GONE);
         viewHolder.image2.setVisibility(View.GONE);
         viewHolder.image3.setVisibility(View.GONE);
-//
-//        int[] modeIcons = new int[]{R.drawable.womenswear, R.drawable.menswear, R.drawable.childrenswear};
-//        ArrayList<Integer> modeIconArray = new ArrayList<>();
-//
-//
-//        for (int i = 0; i <= modeIcons.length-1; i++) {
-//            if (!filteredResults.isLeeg(i)) {
-//                modeIconArray.add(modeIcons[i]);
-//                System.out.println(i);
-//            }
-//
-//        }
-//
-//
-//            for (int y = 0; y < modeIconArray.size(); y++) {
-//                if (checkEmptyImage1(viewHolder)) {
-//                    viewHolder.image1.setVisibility(View.VISIBLE);
-//                    viewHolder.image1.setImageResource(modeIconArray.get(y));
-//                } else if (checkEmptyImage2(viewHolder)) {
-//                    viewHolder.image2.setVisibility(View.VISIBLE);
-//                    viewHolder.image2.setImageResource(modeIconArray.get(y));
-//                } else  {
-//                    viewHolder.image3.setVisibility(View.VISIBLE);
-//                    viewHolder.image3.setImageResource(modeIconArray.get(y));
-//                }
-//            }
         if(!filteredResults.isLeeg(0)){
                     viewHolder.image1.setVisibility(View.VISIBLE);
                     viewHolder.image1.setImageResource(R.drawable.womenswear);
@@ -153,34 +125,13 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
 
         }
 
-
-    public boolean checkEmptyImage1(ViewHolder holder){
-        if(holder.image1.getDrawable()==null){
-            return true;
-        }
-        else return false;
-    }
-    public boolean checkEmptyImage2(ViewHolder holder){
-        if(holder.image2.getDrawable()==null){
-            return true;
-        }
-        else return false;
-    }
-    public boolean checkEmptyImage3(ViewHolder holder){
-        if(holder.image3.getDrawable()==null){
-            return true;
-        }
-        else return false;
-    }
-
-
-
     public Filter getFilter() {
         if (mFacilityFilter == null) {
             mFacilityFilter = new FacilityFilter();
         }
         return mFacilityFilter;
     }
+
 
     /**
      * Provides a custom filter that searches per letter and not for whole words.
@@ -214,7 +165,10 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
                 }
             }
             return results;
+
         }
+
+
 
         @SuppressWarnings("unchecked")
         @Override
@@ -222,6 +176,6 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
             mFilteredData = (ArrayList<Facility>) pResults.values;
             notifyDataSetChanged();
         }
-    }
+        }
 
 }

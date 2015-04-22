@@ -23,25 +23,28 @@ public class MyDatabase extends SQLiteAssetHelper {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
+
+
+
 	public List<Facility> getAllFacilities() {
 		List<Facility> facilities = new LinkedList<Facility>();
 
-		// 1. build the query
-		String query = "SELECT * FROM Facility";
+        // 1. build the query
+        String query = "SELECT * FROM Facility";
 
-		// 2. get reference to writable DB
-		SQLiteDatabase db = this.getWritableDatabase();
-		Cursor cursor = db.rawQuery(query, null);
+        // 2. get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
 
-		// 3. go over each row, build book and add it to list
-		Facility Facility = null;
-		if (cursor.moveToFirst()) {
-			do {
-				Facility = new Facility();
-				Facility.setId(Integer.parseInt(cursor.getString(0)));
-				Facility.setFacilityNaam(cursor.getString(1));
-				Facility.setTelefoonNummer(cursor.getString(2));
-				Facility.setWebsite(cursor.getString(3));
+        // 3. go over each row, build book and add it to list
+        Facility Facility = null;
+        if (cursor.moveToFirst()) {
+            do {
+                Facility = new Facility();
+                Facility.setId(Integer.parseInt(cursor.getString(0)));
+                Facility.setFacilityNaam(cursor.getString(1));
+                Facility.setTelefoonNummer(cursor.getString(2));
+                Facility.setWebsite(cursor.getString(3));
                 Facility.setTower(cursor.getString(4));
                 Facility.setEtage(cursor.getString(5));
                 Facility.setShowRoom(cursor.getString(6));
@@ -58,13 +61,9 @@ public class MyDatabase extends SQLiteAssetHelper {
                 Facility.setBabySpullen(cursor.getString(17));
                 Facility.setBadMode(cursor.getString(18));
 
-				facilities.add(Facility);
-			} while (cursor.moveToNext());
-		}
-
-		Log.d("getAllFacilities()", facilities.toString());
-
-		// return books
-		return facilities;
+                facilities.add(Facility);
+            } while (cursor.moveToNext());
+        }
+        return facilities;
 	}
 }
