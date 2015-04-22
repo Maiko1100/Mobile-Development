@@ -57,12 +57,16 @@ public class FacilitiesActivity extends ActionBarActivity {
     private boolean mSearchInputMenu;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String[] modeArray = new String[]{"Dames Mode","Heren Mode","Kinder Mode","Accessoires","Voorraad"," Grote Maten (Dames)","Grote Maten (Heren)"," Sport Kleding","BruidsKleding"," BabyKleding/Artikelen","Badmode"};
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         // add the custom view to the action bar
         actionBar.setCustomView(R.layout.actionbar_view);
 
@@ -153,11 +157,15 @@ public class FacilitiesActivity extends ActionBarActivity {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-
+                        ArrayList<String> facilityMode = new ArrayList<String>();
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
-
+                        for(int i=0; i<=modeArray.length-1; i++){
+                            if(!facility.isLeeg(i)){
+                                facilityMode.add(modeArray[i]);
+                                System.out.println(modeArray[i]);
+                            }
+                        }
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-
                         myIntent.putExtra("facilityname", facility.getFacilityNaam());
                         myIntent.putExtra("telefoon", facility.getTelefoonNummer());
                         myIntent.putExtra("website", facility.getWebsite());
@@ -165,26 +173,14 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("etage", facility.getEtage());
                         myIntent.putExtra("showroom", facility.getShowRoom());
                         myIntent.putExtra("email", facility.getEmail());
-                        System.out.println("test");
-                        System.out.println(checkIfExists(facility, "damesMode"));
-                        Log.d("test","test");
-
-
+                        myIntent.putExtra("mode",facilityMode);
                         FacilitiesActivity.this.startActivity(myIntent);
 	                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     }
                 }
         );
     }
-    public boolean checkIfExists(Facility facility, String mode){
-        if (facility.isEmpty(mode)) {
-            return true;
-        }
-        else{
-            return false;
-        }
 
-    }
 
     /**
      * Provides an open method for the actionbar search button and opens the softkeyboard.

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
 
+import java.util.ArrayList;
+
 
 public class FacilitiesDetails extends ActionBarActivity {
 
@@ -30,8 +32,9 @@ public class FacilitiesDetails extends ActionBarActivity {
         String tEtage = intent.getStringExtra("etage");
         String tShowroom = intent.getStringExtra("showroom");
         String tEmail = intent.getStringExtra("email");
+        ArrayList<String> facilityMode = intent.getStringArrayListExtra("mode");
 
-        TextView facilityName,website,foon,tower,etage,showroom,email,contact,locatie;
+        TextView facilityName,website,foon,tower,etage,showroom,email,contact,locatie,mode,modetitle;
 
         facilityName = (TextView) findViewById(R.id.txtFacilityName);
         facilityName.setTypeface(face);
@@ -45,8 +48,16 @@ public class FacilitiesDetails extends ActionBarActivity {
         contact.setTypeface(face);
         locatie = (TextView) findViewById(R.id.contacttext);
         locatie.setTypeface(face);
-
+        mode =(TextView) findViewById(R.id.txtMode);
+        modetitle=(TextView) findViewById(R.id.modetext);
+        modetitle.setTypeface(face);
         facilityName.setText(tFacilityName);
+        String mode2="";
+        for(int i=0;i<facilityMode.size();i++){
+            mode2 = mode2 + facilityMode.get(i)+"\n";
+        }
+        mode.setText(mode2);
+
         if(tWebsite.isEmpty()){
             website.setText("Niet Beschikbaar");
         }

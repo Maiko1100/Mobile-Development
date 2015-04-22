@@ -96,6 +96,9 @@ public class CustomAdapter extends BaseAdapter implements Filterable {
         viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
         viewHolder.facilityTelNrRowText.setText(filteredResults.getTelefoonNummer());
 
+
+
+
         return view;
 
     }
