@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nineoldandroids.animation.Animator;
@@ -35,12 +34,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	private int[] mImageId;
 	private int mDotsCount;
 	private TextView[] mDots;
-	RelativeLayout rlayout;
-	Intent showInfo;
-	Button infoButton;
-	Button facilitiesButton;
-	Button navigationButton;
-	Button rentButton;
+	Intent startActivity;
+	static Button infoButton;
+	static Button facilitiesButton;
+	static Button navigationButton;
+	static Button rentButton;
 
 
 	@Override
@@ -78,8 +76,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		navigationButton.setTypeface(face);
 		rentButton = (Button) findViewById(R.id.rentButton);
 		rentButton.setTypeface(face);
-
-		rlayout = (RelativeLayout) findViewById(R.id.mainPage);
 
 		//init onclick listener on buttons
 		infoButton.setOnClickListener(this);
@@ -126,59 +122,70 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		mDots[0].setTextColor(getResources().getColor(R.color.dot_selected));
 	}
 
-	public void showInfo(View v) {
-		showInfo = new Intent(this, InfoActivity.class);
+	public static void animateReverseButtons() {
+		AnimatorSet set = new AnimatorSet();
+		infoButton.setClickable(true);
+		navigationButton.setClickable(true);
+		rentButton.setClickable(true);
+		facilitiesButton.setClickable(true);
+
+		set.playTogether(
+				ObjectAnimator.ofFloat(infoButton, "translationX", -250, 0),
+				ObjectAnimator.ofFloat(infoButton, "translationY", 300, 0),
+				ObjectAnimator.ofFloat(navigationButton, "translationX", 250, 0),
+				ObjectAnimator.ofFloat(navigationButton, "translationY", 300, 0),
+				ObjectAnimator.ofFloat(rentButton, "translationX", -250, 0),
+				ObjectAnimator.ofFloat(rentButton, "translationY", -300, 0),
+				ObjectAnimator.ofFloat(facilitiesButton, "translationX", 250, 0),
+				ObjectAnimator.ofFloat(facilitiesButton, "translationY", -300, 0)
+		);
+		set.setStartDelay(400);
+		set.setDuration(400).start();
+	}
+
+	public void animateButtons(final Intent startActivity) {
 		AnimatorSet set = new AnimatorSet();
 		set.playTogether(
-				ObjectAnimator.ofFloat(infoButton, "scaleX", 1, 0.1f),
-				ObjectAnimator.ofFloat(infoButton, "scaleY", 1, 0.1f),
 				ObjectAnimator.ofFloat(infoButton, "translationX", 0, -250),
-				ObjectAnimator.ofFloat(infoButton, "translationY", 0, 500),
-				ObjectAnimator.ofFloat(navigationButton, "scaleX", 1, 0.1f),
-				ObjectAnimator.ofFloat(navigationButton, "scaleY", 1, 0.1f),
+				ObjectAnimator.ofFloat(infoButton, "translationY", 0, 300),
 				ObjectAnimator.ofFloat(navigationButton, "translationX", 0, 250),
-				ObjectAnimator.ofFloat(navigationButton, "translationY", 0, 500),
-				ObjectAnimator.ofFloat(rentButton, "scaleX", 1, 0.1f),
-				ObjectAnimator.ofFloat(rentButton, "scaleY", 1, 0.1f),
+				ObjectAnimator.ofFloat(navigationButton, "translationY", 0, 300),
 				ObjectAnimator.ofFloat(rentButton, "translationX", 0, -250),
-				ObjectAnimator.ofFloat(rentButton, "translationY", 0, -500),
-				ObjectAnimator.ofFloat(facilitiesButton, "scaleX", 1, 0.1f),
-				ObjectAnimator.ofFloat(facilitiesButton, "scaleY", 1, 0.1f),
+				ObjectAnimator.ofFloat(rentButton, "translationY", 0, -300),
 				ObjectAnimator.ofFloat(facilitiesButton, "translationX", 0, 250),
-				ObjectAnimator.ofFloat(facilitiesButton, "translationY", 0, -500)
+				ObjectAnimator.ofFloat(facilitiesButton, "translationY", 0, -300)
 		);
-		set.setDuration(1000).start();
-		set.addListener(new Animator.AnimatorListener(){
-			                      @Override public void onAnimationStart(      Animator animation){
-			                      }
-			                      @Override public void onAnimationRepeat(      Animator animation){
-			                      }
-			                      @Override public void onAnimationEnd(      Animator animation){
+		set.setDuration(400).start();
+		if (set.isRunning()) {
+			infoButton.setClickable(false);
+			navigationButton.setClickable(false);
+			rentButton.setClickable(false);
+			facilitiesButton.setClickable(false);
+		}
 
-			                      }
-			                      @Override public void onAnimationCancel(      Animator animation){
-			                      }
-		                      }
-		);
-	}
+		{
+			set.addListener(new Animator.AnimatorListener() {
+				                @Override
+				                public void onAnimationStart(Animator animation) {
+				                }
 
+				                @Override
+				                public void onAnimationRepeat(Animator animation) {
+				                }
 
-	public void showMaps(View v) {
-		Intent showMaps = new Intent(this, NavigationSelectActivity.class);
-		startActivity(showMaps);
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+				                @Override
+				                public void onAnimationEnd(Animator animation) {
+					                startActivity(startActivity);
+					                overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
+				                }
 
-	public void showFacilities(View v) {
-		Intent showFacilities = new Intent(this, FacilitiesActivity.class);
-		startActivity(showFacilities);
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-	}
+				                @Override
+				                public void onAnimationCancel(Animator animation) {
 
-	public void showRent(View v) {
-		Intent showRentFacilities = new Intent(this, FacilityRentActivity.class);
-		startActivity(showRentFacilities);
-		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+				                }
+			                }
+			);
+		}
 	}
 
 	@Override
@@ -187,19 +194,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 		switch (id) {
 			case R.id.infoButton:
-				showInfo(v);
+				animateButtons(new Intent(this, InfoActivity.class));
 				break;
 
 			case R.id.navigationButton:
-				showMaps(v);
+				animateButtons(new Intent(this, NavigationSelectActivity.class));
 				break;
 
 			case R.id.facilitiesButton:
-				showFacilities(v);
+				animateButtons(new Intent(this, FacilitiesActivity.class));
 				break;
 
 			case R.id.rentButton:
-				showRent(v);
+				animateButtons(new Intent(this, FacilityRentActivity.class));
 				break;
 		}
 	}
@@ -265,7 +272,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			// only one selected
 			mDots[position].setTextColor(getResources().getColor(R.color.dot_selected));
 		}
+
+
 	}
+
 }
 
 

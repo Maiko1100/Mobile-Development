@@ -82,6 +82,7 @@ public class NavigationSelectActivity extends ActionBarActivity implements View.
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+	    MainActivity.animateReverseButtons();
         overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
     }
 }

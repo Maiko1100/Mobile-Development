@@ -98,6 +98,7 @@ public class FacilityRentActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+	    MainActivity.animateReverseButtons();
         overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
     }
 }
