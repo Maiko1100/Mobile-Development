@@ -230,7 +230,32 @@ public boolean isLeeg(int mode) {
             return false;
     }
 }
-
+    public boolean isListLeeg(int mode) {
+        switch (mode) {
+            case 1:
+                return damesMode.isEmpty();
+            case 2:
+                return herenMode.isEmpty();
+            case 3:
+                return kinderMode.isEmpty();
+            case 4:
+                return Accessoires.isEmpty();
+            case 5:
+                return xlDames.isEmpty();
+            case 6:
+                return xlHeren.isEmpty();
+            case 7:
+                return sportKleding.isEmpty();
+            case 8:
+                return bruidsKleding.isEmpty();
+            case 9:
+                return babySpullen.isEmpty();
+            case 10:
+                return badMode.isEmpty();
+            default:
+                return false;
+        }
+    }
 
 
     @Override

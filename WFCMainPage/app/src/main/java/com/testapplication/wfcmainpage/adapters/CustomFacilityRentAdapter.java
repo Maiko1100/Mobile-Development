@@ -3,7 +3,7 @@ package com.testapplication.wfcmainpage.adapters;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Deze class wordt toegepast op alle items in de list om de sFacility array te converteren naar een list.
+ * Deze class wordt toegepast op alle items in de list om de rent array te converteren naar een list.
  */
 
 import android.content.Context;

@@ -5,6 +5,7 @@ package com.testapplication.wfcmainpage.activity;
  * Provides de facility page met hierin de faciliteiten van het world fashion centre,
  * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker.
  */
+
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +25,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.testapplication.wfcmainpage.R;
 import com.testapplication.wfcmainpage.adapters.CustomAdapter;
 import com.testapplication.wfcmainpage.database.MyDatabase;
 import com.testapplication.wfcmainpage.models.Facility;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +75,7 @@ public class FacilitiesActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.custom_row_navoptions, mModeCategories));
+        mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.custom_row_navoptions, mModeCategories));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mActionBar = getSupportActionBar();
         mActionBar.setCustomView(R.layout.actionbar_view);
@@ -185,15 +188,26 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
     private void selectItem(int position) {
-        mFacilities = getModeFacilities(position);
-        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
-        mFacilityList.setAdapter(facilityAdapter);
-        mTitle.setText(mModeArray[position]);
-        mDrawerList.setItemChecked(position, true);
-        mDrawerLayout.closeDrawer(mDrawerList);
+        if (position == 0) {
+            System.out.println(position);
+            mFacilities = getAllFacilities();
+            facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+            mTitle.setText(R.string.facilities_button_text);
+            mDrawerList.setItemChecked(position, true);
+            mDrawerLayout.closeDrawer(mDrawerList);
+            mFacilityList.setAdapter(facilityAdapter);
+        } else {
+            System.out.println(position);
+            mFacilities = getModeFacilities(position);
+            facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+            mFacilityList.setAdapter(facilityAdapter);
+            mTitle.setText(mModeCategories[position]);
+            mDrawerList.setItemChecked(position, true);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        }
     }
 
-     /**
+    /**
      * Provides an open method for the actionbar search button and opens the softkeyboard.
      */
     public void openSearch() {
@@ -327,10 +341,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
         return mFacilities;
     }
+
     public ArrayList getModeFacilities(int mode) {
         mFacilityModeList.clear();
         for (int i = 1; i < mItems.size(); i++) {
-            if (!mItems.get(i).isLeeg(mode)) {
+            if (!mItems.get(i).isListLeeg(mode)) {
                 mFacilityModeList.add(
                         new Facility(
                                 mItems.get(i).getFacilityNaam(),
@@ -359,7 +374,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-	    MainActivity.animateReverseButtons();
+        MainActivity.animateReverseButtons();
         overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
     }
 
