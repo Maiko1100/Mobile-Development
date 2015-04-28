@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.estimote.sdk.Beacon;
@@ -19,6 +20,7 @@ public class NavigationIndoor extends ActionBarActivity {
     private static final String TAG = "mijnLog";
 
     private TextView mTvLocation;
+	ImageView ivNavigationIndoor;
     private static final String ESTIMOTE_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
     private static final Region ALL_ESTIMOTE_BEACONS = new Region("regionId", ESTIMOTE_PROXIMITY_UUID, null, null);
 
@@ -34,6 +36,7 @@ public class NavigationIndoor extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_indoor);
         mTvLocation = (TextView) findViewById(R.id.tvNavigationLocation);
+	    ivNavigationIndoor = (ImageView) findViewById(R.id.ivNavigationIndoor);
 
         mBeaconManager = new BeaconManager(this);
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -52,21 +55,22 @@ public class NavigationIndoor extends ActionBarActivity {
                     switch (b.getMacAddress()) {
                         case STRING_MAC_BLUE_BEACON1:
                             if (b.getRssi() > -60) {
-                                mTvLocation.setText("You are near our project table");
+                                mTvLocation.setText("You are near the elevator");
+	                            ivNavigationIndoor.setImageResource(R.drawable.img_liftarea);
                             }
                             break;
                         case STRING_MAC_BLUE_BEACON2:
                             if (b.getRssi() > -60) {
-                                mTvLocation.setText("You are near the coffee table");
+                                mTvLocation.setText("You are near the lunch room");
+	                            ivNavigationIndoor.setImageResource(R.drawable.img_luncharea);
                             }
                             break;
                         case STRING_MAC_PURPLE_BEACON:
                             if (b.getRssi() > -60) {
-                                mTvLocation.setText("You are near the exit");
+                                mTvLocation.setText("You are near the workspace");
+	                            ivNavigationIndoor.setImageResource(R.drawable.img_werkarea);
                             }
                             break;
-                        default:
-                            mTvLocation.setText(R.string.no_beacon_text);
                     }
                 }
             }

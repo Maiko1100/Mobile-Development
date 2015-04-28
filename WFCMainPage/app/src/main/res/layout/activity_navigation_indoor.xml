@@ -18,4 +18,10 @@
         android:textSize="20sp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ivNavigationIndoor"
+        android:layout_below="@+id/tvNavigationLocation"/>
+
 </RelativeLayout>
