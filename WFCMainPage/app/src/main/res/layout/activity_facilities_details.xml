@@ -30,14 +30,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFacilityName"
         android:layout_marginTop="6dp"
-        android:text="Contact" />
+        android:text="@string/contact" />
 
     <TextView
         android:id="@+id/foontext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/contacttext"
-        android:text="Tel. nummer: " />
+        android:text="@string/telnum" />
 
     <TextView
         android:id="@+id/txtFoon"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoon"
-        android:text="Website: " />
+        android:text="@string/website" />
 
     <TextView
         android:id="@+id/txtWebsite"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWebsite"
         android:layout_marginBottom="6dp"
-        android:text="Email: " />
+        android:text="@string/email" />
 
     <TextView
         android:id="@+id/txtEmail"
@@ -92,14 +92,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtEmail"
         android:layout_marginTop="6dp"
-        android:text="Locatie" />
+        android:text="@string/locatie" />
 
     <TextView
         android:id="@+id/towertext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/locatietext"
-        android:text="Toren: " />
+        android:text="@string/toren" />
 
     <TextView
         android:id="@+id/txtTower"
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtTower"
-        android:text="Etage: " />
+        android:text="@string/etage" />
 
     <TextView
         android:id="@+id/txtEtage"
@@ -133,7 +133,7 @@
         android:id="@+id/showroomtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Showroom: "
+        android:text="@string/showroom"
         android:layout_below="@+id/txtEtage"/>
     <View
         android:layout_width="fill_parent"
@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         style="@style/TextHeader"
         android:id="@+id/modetext"
-        android:text="Mode"
+        android:text="@string/mode"
         android:layout_below="@+id/showroomtext"
         android:layout_marginTop="6dp"/>
     <TextView
