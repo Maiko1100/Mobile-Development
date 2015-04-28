@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,7 +39,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	private static Button mFacilitiesButton;
 	private static Button mNavigationButton;
 	private static Button mRentButton;
-
 
 
 	@Override
@@ -74,7 +72,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 
 		// Declare buttons and add fonts
-	 	mInfoButton = (Button) findViewById(R.id.infoButton);
+		mInfoButton = (Button) findViewById(R.id.infoButton);
 		mInfoButton.setTypeface(face);
 		mFacilitiesButton = (Button) findViewById(R.id.facilitiesButton);
 		mFacilitiesButton.setTypeface(face);
@@ -161,7 +159,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 
 	/**
-	 *
 	 * @param startActivity the intent of which activity to start
 	 */
 	public void animateButtons(final Intent startActivity) {
@@ -190,25 +187,25 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		{
 			// a listener on the animationset, If the animation ends it wil start the next activity
 			animations.addListener(new Animator.AnimatorListener() {
-				                @Override
-				                public void onAnimationStart(Animator animation) {
-				                }
+				                       @Override
+				                       public void onAnimationStart(Animator animation) {
+				                       }
 
-				                @Override
-				                public void onAnimationRepeat(Animator animation) {
-				                }
+				                       @Override
+				                       public void onAnimationRepeat(Animator animation) {
+				                       }
 
-				                @Override
-				                public void onAnimationEnd(Animator animation) {
-					                startActivity(startActivity);
-					                overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
-				                }
+				                       @Override
+				                       public void onAnimationEnd(Animator animation) {
+					                       startActivity(startActivity);
+					                       overridePendingTransition(R.anim.zoom_enter, R.anim.hold_screen);
+				                       }
 
-				                @Override
-				                public void onAnimationCancel(Animator animation) {
+				                       @Override
+				                       public void onAnimationCancel(Animator animation) {
 
-				                }
-			                }
+				                       }
+			                       }
 			);
 		}
 	}

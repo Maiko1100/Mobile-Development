@@ -13,76 +13,76 @@ import com.testapplication.wfcmainpage.R;
 
 public class NavigationSelectActivity extends ActionBarActivity implements View.OnClickListener {
 
-    private Button mBtnOutdoor, mBtnIndoor;
+	private Button mBtnOutdoor, mBtnIndoor;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_select);
-        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_navigation_select);
+		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
 
-        mBtnIndoor = (Button) findViewById(R.id.btnNavigationSelectIndoor);
-        mBtnIndoor.setTypeface(face);
-        mBtnOutdoor = (Button) findViewById(R.id.btnNavigationSelectOutdoor);
-        mBtnOutdoor.setTypeface(face);
+		mBtnIndoor = (Button) findViewById(R.id.btnNavigationSelectIndoor);
+		mBtnIndoor.setTypeface(face);
+		mBtnOutdoor = (Button) findViewById(R.id.btnNavigationSelectOutdoor);
+		mBtnOutdoor.setTypeface(face);
 
-        mBtnIndoor.setOnClickListener(this);
-        mBtnOutdoor.setOnClickListener(this);
-    }
+		mBtnIndoor.setOnClickListener(this);
+		mBtnOutdoor.setOnClickListener(this);
+	}
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_navigation_select, menu);
-        return true;
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_navigation_select, menu);
+		return true;
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+		//noinspection SimplifiableIfStatement
+		if (id == R.id.action_settings) {
+			return true;
+		}
 
-        return super.onOptionsItemSelected(item);
-    }
+		return super.onOptionsItemSelected(item);
+	}
 
-    public void showMaps(View v) {
-        Intent showMaps = new Intent(this, MapsActivity.class);
-        startActivity(showMaps);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
+	public void showMaps(View v) {
+		Intent showMaps = new Intent(this, MapsActivity.class);
+		startActivity(showMaps);
+		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+	}
 
-    public void showIndoor(View v) {
-        Intent indoorBeacon = new Intent(this, NavigationIndoor.class);
-        startActivity(indoorBeacon);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
+	public void showIndoor(View v) {
+		Intent indoorBeacon = new Intent(this, NavigationIndoor.class);
+		startActivity(indoorBeacon);
+		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+	}
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
 
-        switch (id) {
-            case R.id.btnNavigationSelectOutdoor:
-                showMaps(v);
-                break;
-            case R.id.btnNavigationSelectIndoor:
-                showIndoor(v);
-                break;
-        }
-    }
+		switch (id) {
+			case R.id.btnNavigationSelectOutdoor:
+				showMaps(v);
+				break;
+			case R.id.btnNavigationSelectIndoor:
+				showIndoor(v);
+				break;
+		}
+	}
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-	    MainActivity.animateReverseButtons();
-        overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
-    }
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		MainActivity.animateReverseButtons();
+		overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
+	}
 }
