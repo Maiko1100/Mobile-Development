@@ -158,11 +158,17 @@ public class FacilitiesActivity extends ActionBarActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
+                hideIcon(R.id.action_search,false);
+
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
+                closeSearch();
+                hideIcon(R.id.action_search,true);
+                changeIcon(R.id.action_search, false);
                 super.onDrawerOpened(drawerView);
+
             }
         };
 
@@ -273,8 +279,16 @@ public class FacilitiesActivity extends ActionBarActivity {
             item.setIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         } else {
             item.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
-
         }
+    }
+    private void hideIcon(int id,boolean visible) {
+        MenuItem item = menu.findItem(id);
+            if(visible) {
+                item.setVisible(false);
+            }else{
+                item.setVisible(true);
+            }
+
     }
 
 
