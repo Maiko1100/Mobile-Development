@@ -80,7 +80,8 @@
         </activity>
         <activity
             android:name=".activity.FacilitiesRentDetails"
-            android:label="@string/title_activity_facilities_rent_details" >
+            android:label="@string/title_activity_facilities_rent_details"
+            android:theme="@style/Theme.Rent">
         </activity>
         <activity
             android:name=".activity.NavigationSelectActivity"

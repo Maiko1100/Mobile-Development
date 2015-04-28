@@ -21,6 +21,7 @@ public class FacilitiesRentDetails extends ActionBarActivity {
         String iInfo = intent.getStringExtra("info");
         String tTitle = intent.getStringExtra("title");
         int icon2 = intent.getIntExtra("icon", 0);
+        setTitle(R.string.details_actionbar_text);
 
         TextView info, title;
         ImageView icon;
