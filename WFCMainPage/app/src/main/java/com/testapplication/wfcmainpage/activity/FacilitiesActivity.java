@@ -148,15 +148,20 @@ public class FacilitiesActivity extends ActionBarActivity {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 hideIcon(R.id.action_search,false);
+	            openSearchIcon = menu.findItem(R.id.action_search);
+	            openSearchIcon.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
+	            closeSearch();
+
 
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
+	            super.onDrawerOpened(drawerView);
                 closeSearch();
                 hideIcon(R.id.action_search,true);
                 changeIcon(R.id.action_search, false);
-                super.onDrawerOpened(drawerView);
+
 
             }
         };
@@ -341,13 +346,6 @@ public class FacilitiesActivity extends ActionBarActivity {
 		}
 	}
 
-
-	/**
-     * Provides an inflater for the facilities activity menu xml file
-     *
-     * @param menu
-     * @return
-     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
