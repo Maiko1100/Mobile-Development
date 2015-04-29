@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/spacing_medium"
-            android:paddingRight="@dimen/spacing_extra_small"
+            android:paddingRight="@dimen/spacing_medium"
             android:scrollbarStyle="outsideInset" />
 
         <!-- The navigation drawer -->
