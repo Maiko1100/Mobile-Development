@@ -80,5 +80,6 @@
     <string name="etage">Etage:</string>
     <string name="showroom">Showroom:</string>
     <string name="mode">Mode</string>
+    <string name="searchFacility">Search facility</string>
 
 </resources>
