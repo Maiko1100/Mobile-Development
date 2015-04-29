@@ -41,16 +41,23 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param facilityAdapter Provides a custom adapter to put the items from the database to the list.
      * @param mFacilityList Provides a listview for the page.
      * @param mFacilities Provides an arraylist in which the Facility items are stored.
+     * @param mFacilityModeCategories Provides an arraylist where all the categories that a store has are specified.
+     * @param mDB Provides an Database where all the facilities are stored in
      * @param mSearchInput Provides and inputfield (Edittext) for searching.
      * @param mItems Provides a list for the facility items. data gets added from the database.
      * @param mSearchInputMenu Provides a boolean for opening and closing the searchInput.
      * @param inputMethodManager Provides a show / hide for the softkeyboard.
+     * @param mClearText Provides a button to clear the text in de inputsearch
+     * @param mModeArray Provides an array with all the mode categories which is used to fill the mFacilityMode.
+     * @param mModeCategories Provides an array with all the drawerlist items.
+     * @param mDrawerList Provides an listview with all the items from the mModeCategories array.
+     * @param mTitle Provides a textview with the title of this activity.
      */
 
     public CustomAdapter facilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
-    private ArrayList<Facility> mFacilityModeList = new ArrayList<>();
+    private ArrayList<Facility> mFacilityModeCategories = new ArrayList<>();
     private List<Facility> mItems;
     private MyDatabase mDb;
     private EditText mSearchInput;
@@ -66,47 +73,17 @@ public class FacilitiesActivity extends ActionBarActivity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
-
-        mModeCategories = getResources().getStringArray(R.array.mode_categories_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-        mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.custom_row_navoptions, mModeCategories));
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mActionBar = getSupportActionBar();
-        mActionBar.setCustomView(R.layout.actionbar_view);
-        mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
-
-        mDb = new MyDatabase(this);
-        mItems = mDb.getAllFacilities();
-        mTitle = (TextView) mActionBar.getCustomView().findViewById(R.id.facilitiesTitle);
-
-        mFacilities = getAllFacilities();
-        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
-        mFacilityList = (ListView) findViewById(R.id.facilitiesList);
-        mFacilityList.setAdapter(facilityAdapter);
-
-        mClearText = (Button) mActionBar.getCustomView().findViewById(R.id.clear_text);
-        mClearText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSearchInput.setText("");
-            }
-        });
-        mClearText.setVisibility(View.GONE);
-
-        mSearchInput = (EditText) mActionBar.getCustomView().findViewById(R.id.searchfield);
-        mSearchInput.setVisibility(View.GONE);
-        mSearchInputMenu = false;
+        declareItems();
 
         mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+                }
 
             /**
              * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
@@ -191,6 +168,41 @@ public class FacilitiesActivity extends ActionBarActivity {
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
         }
+    }
+
+    /** Declares all items used in the onCreate method*/
+    private void declareItems(){
+        mModeCategories = getResources().getStringArray(R.array.mode_categories_array);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.custom_row_navoptions, mModeCategories));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        mActionBar = getSupportActionBar();
+        mActionBar.setCustomView(R.layout.actionbar_view);
+        mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+
+        mDb = new MyDatabase(this);
+        mItems = mDb.getAllFacilities();
+        mTitle = (TextView) mActionBar.getCustomView().findViewById(R.id.facilitiesTitle);
+
+        mFacilities = getAllFacilities();
+        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+        mFacilityList = (ListView) findViewById(R.id.facilitiesList);
+        mFacilityList.setAdapter(facilityAdapter);
+
+        mClearText = (Button) mActionBar.getCustomView().findViewById(R.id.clear_text);
+        mClearText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSearchInput.setText("");
+            }
+        });
+        mClearText.setVisibility(View.GONE);
+
+        mSearchInput = (EditText) mActionBar.getCustomView().findViewById(R.id.searchfield);
+        mSearchInput.setVisibility(View.GONE);
+        mSearchInputMenu = false;
     }
 
     private void selectItem(int position) {
@@ -357,10 +369,10 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
     public ArrayList getModeFacilities(int mode) {
-        mFacilityModeList.clear();
+        mFacilityModeCategories.clear();
         for (int i = 1; i < mItems.size(); i++) {
             if (!mItems.get(i).isListLeeg(mode)) {
-                mFacilityModeList.add(
+                mFacilityModeCategories.add(
                         new Facility(
                                 mItems.get(i).getFacilityNaam(),
                                 mItems.get(i).getTelefoonNummer(),
@@ -382,7 +394,7 @@ public class FacilitiesActivity extends ActionBarActivity {
                                 mItems.get(i).getBadMode()));
             }
         }
-        return mFacilityModeList;
+        return mFacilityModeCategories;
     }
 
     @Override
