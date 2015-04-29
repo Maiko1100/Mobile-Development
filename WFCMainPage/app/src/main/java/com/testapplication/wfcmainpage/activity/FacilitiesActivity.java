@@ -51,7 +51,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param mDB Provides an Database where all the facilities are stored in
      * @param mSearchInput Provides and inputfield (Edittext) for searching.
      * @param mItems Provides a list for the facility items. data gets added from the database.
-     * @param mSearchInputMenu Provides a boolean for opening and closing the searchInput.
+     * @param mIsSearchActive Provides a boolean for opening and closing the searchInput.
      * @param inputMethodManager Provides a show / hide for the softkeyboard.
      * @param mClearText Provides a button to clear the text in de inputsearch
      * @param mModeArray Provides an array with all the mode categories which is used to fill the mFacilityMode.
@@ -60,7 +60,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param mTitle Provides a textview with the title of this activity.
      */
 
-    public CustomAdapter facilityAdapter;
+    private CustomAdapter facilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
     private ArrayList<Facility> mFacilityModeCategories = new ArrayList<>();
@@ -70,23 +70,23 @@ public class FacilitiesActivity extends ActionBarActivity {
     private TextView mTitle;
     private Button mClearText;
     private Menu menu;
-    private boolean mSearchInputMenu;
+    private boolean mIsSearchActive;
     private String[] mModeArray = new String[]{"Dames Mode", "Heren Mode", "Kinder Mode", "Accessoires", "Voorraad", "Grote Maten (Dames)", "Grote Maten (Heren)", "Sport Kleding", "BruidsKleding", "BabyKleding/Artikelen", "Badmode"};
     private ArrayList<String> mFacilityMode = new ArrayList<>();
-    private android.support.v7.app.ActionBar mActionBar;
     private String[] mModeCategories;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 	private TransitionDrawable transitionDrawable;
 	private MenuItem openSearchIcon;
-    private boolean mDrawerIsOpen = false;
+    private boolean mIsDrawerOpen = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities);
+        initActionbar();
         declareItems();
 
 	    Resources res = this.getResources();
@@ -94,27 +94,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	    transitionDrawable.setCrossFadeEnabled(true);
 
 
-	    mSearchInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-            /**
-             * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
-             * @param s holds the input from the edittext
-             */
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                facilityAdapter.getFilter().filter(s.toString());
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
+	    mSearchInput.addTextChangedListener(textWatcher);
         mFacilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     /**
@@ -153,7 +133,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	            openSearchIcon = menu.findItem(R.id.action_search);
 	            openSearchIcon.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
 	            closeSearch();
-                mDrawerIsOpen = false;
+                mIsDrawerOpen = false;
 
 
             }
@@ -164,7 +144,7 @@ public class FacilitiesActivity extends ActionBarActivity {
                 closeSearch();
                 hideIcon(R.id.action_search,true);
                 changeIcon(R.id.action_search, false);
-                mDrawerIsOpen = true;
+                mIsDrawerOpen = true;
 
 
             }
@@ -173,9 +153,26 @@ public class FacilitiesActivity extends ActionBarActivity {
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setHomeButtonEnabled(true);
+
     }
+
+    protected TextWatcher textWatcher = new TextWatcher(){
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            facilityAdapter.getFilter().filter(s.toString());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -196,23 +193,37 @@ public class FacilitiesActivity extends ActionBarActivity {
         mModeCategories = getResources().getStringArray(R.array.mode_categories_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
         mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.custom_row_navoptions, mModeCategories));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mActionBar = getSupportActionBar();
-        mActionBar.setCustomView(R.layout.actionbar_view);
-        mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+
+
 
         mDb = new MyDatabase(this);
         mItems = mDb.getAllFacilities();
-        mTitle = (TextView) mActionBar.getCustomView().findViewById(R.id.facilitiesTitle);
+        mTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.facilitiesTitle);
 
         mFacilities = getAllFacilities();
         facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
         mFacilityList = (ListView) findViewById(R.id.facilitiesList);
         mFacilityList.setAdapter(facilityAdapter);
 
-        mClearText = (Button) mActionBar.getCustomView().findViewById(R.id.clear_text);
+
+    }
+
+    private void initActionbar(){
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setCustomView(R.layout.actionbar_view);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+
+        initSearch(actionBar);
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+    }
+
+    private void initSearch(android.support.v7.app.ActionBar pActionbar){
+        mClearText = (Button) pActionbar.getCustomView().findViewById(R.id.clear_text);
         mClearText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,10 +232,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         });
         mClearText.setVisibility(View.GONE);
 
-        mSearchInput = (EditText) mActionBar.getCustomView().findViewById(R.id.searchfield);
+        mSearchInput = (EditText) pActionbar.getCustomView().findViewById(R.id.searchfield);
         mSearchInput.setVisibility(View.GONE);
-        mSearchInputMenu = false;
+        mIsSearchActive = false;
     }
+
     /**
      *  Checks which drawerItem is selected if the position is 0 the method gets the whole facilitie list
      * when the position isnt 0 the getModeFacility(position) method is used to fill the list with the slected
@@ -254,7 +266,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * it also hides the title.
      */
     public void openSearch() {
-	    if (!mSearchInputMenu) {
+	    if (!mIsSearchActive) {
 		    mSearchInput.setVisibility(View.VISIBLE);
 		    mClearText.setVisibility(View.VISIBLE);
 		    openSearchIcon = menu.findItem(R.id.action_search);
@@ -284,7 +296,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 			                           public void onAnimationEnd(Animator animation) {
 				                           mTitle.setVisibility(View.GONE);
 				                           openSearchIcon.setEnabled(true);
-				                           mSearchInputMenu = true;
+				                           mIsSearchActive = true;
 				                           mSearchInput.requestFocus();
 			                           }
 
@@ -302,7 +314,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
 	public void closeSearch() {
-		if (mSearchInputMenu) {
+		if (mIsSearchActive) {
 			mSearchInput.setText("");
 			openSearchIcon = menu.findItem(R.id.action_search);
 			mTitle.setVisibility(View.VISIBLE);
@@ -333,7 +345,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 					                       mSearchInput.setVisibility(View.GONE);
 					                       mClearText.setVisibility(View.GONE);
 					                       openSearchIcon.setEnabled(true);
-					                       mSearchInputMenu = false;
+					                       mIsSearchActive = false;
 				                       }
 
 				                       @Override
@@ -428,7 +440,7 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search && !mSearchInputMenu) {
+        if (id == R.id.action_search && !mIsSearchActive) {
             changeIcon(R.id.action_search, true);
             openSearch();
             return true;
@@ -507,7 +519,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
 
-        if(mDrawerIsOpen) {
+        if(mIsDrawerOpen) {
             mDrawerLayout.closeDrawers();
         }
         else {
