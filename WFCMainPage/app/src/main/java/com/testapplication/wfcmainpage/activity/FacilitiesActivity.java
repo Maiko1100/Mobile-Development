@@ -79,6 +79,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     private ActionBarDrawerToggle mDrawerToggle;
 	private TransitionDrawable transitionDrawable;
 	private MenuItem openSearchIcon;
+    private boolean mDrawerIsOpen = false;
 
 
     @Override
@@ -151,6 +152,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	            openSearchIcon = menu.findItem(R.id.action_search);
 	            openSearchIcon.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
 	            closeSearch();
+                mDrawerIsOpen = false;
 
 
             }
@@ -161,6 +163,7 @@ public class FacilitiesActivity extends ActionBarActivity {
                 closeSearch();
                 hideIcon(R.id.action_search,true);
                 changeIcon(R.id.action_search, false);
+                mDrawerIsOpen = true;
 
 
             }
@@ -504,9 +507,15 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        MainActivity.animateReverseButtons();
-        overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
+
+        if(mDrawerIsOpen) {
+            mDrawerLayout.closeDrawers();
+        }
+        else {
+            super.onBackPressed();
+            MainActivity.animateReverseButtons();
+            overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);
+        }
     }
 
 }
