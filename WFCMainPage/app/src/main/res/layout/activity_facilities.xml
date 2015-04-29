@@ -26,6 +26,7 @@
             android:paddingRight="@dimen/spacing_medium"
             android:scrollbarStyle="outsideOverlay" />
 
+
         <!-- The navigation drawer -->
         <ListView android:id="@+id/left_drawer"
             android:layout_width="240dp"
