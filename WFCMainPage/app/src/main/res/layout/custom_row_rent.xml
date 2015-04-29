@@ -3,38 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/spacing_medium"
+    android:layout_marginRight="@dimen/spacing_medium"
+    android:background="@color/white_trans"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/spacing_small"
+    android:paddingRight="@dimen/spacing_small"
     tools:context=".FacilitiesRentActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/spacing_medium"
-        android:layout_marginRight="@dimen/spacing_medium"
-        android:background="@color/white_trans"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/spacing_medium"
-        android:paddingRight="@dimen/spacing_medium"
-        android:paddingBottom="@dimen/activity_horizontal_margin">
 
         <TextView
             android:id="@+id/customRowText"
             style="@style/TextHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
             android:text="@string/customRowText_Medium" />
 
         <ImageView
             android:id="@+id/customImageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white_trans" />
+            android:background="@color/white_trans"
+            android:layout_below="@id/customRowText"/>
 
         <TextView
             android:id="@+id/mediumRowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/customTextRow_Small" />
+            android:text="@string/customTextRow_Small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_below="@id/customImageView"/>
 
-    </LinearLayout>
 </RelativeLayout>
