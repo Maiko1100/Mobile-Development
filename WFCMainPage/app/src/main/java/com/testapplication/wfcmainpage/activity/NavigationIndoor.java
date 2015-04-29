@@ -20,7 +20,7 @@ public class NavigationIndoor extends ActionBarActivity {
     private static final String TAG = "mijnLog";
 
     private TextView mTvLocation;
-	ImageView ivNavigationIndoor;
+    ImageView ivNavigationIndoor;
     private static final String ESTIMOTE_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
     private static final Region ALL_ESTIMOTE_BEACONS = new Region("regionId", ESTIMOTE_PROXIMITY_UUID, null, null);
 
@@ -36,7 +36,7 @@ public class NavigationIndoor extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_indoor);
         mTvLocation = (TextView) findViewById(R.id.tvNavigationLocation);
-	    ivNavigationIndoor = (ImageView) findViewById(R.id.ivNavigationIndoor);
+        ivNavigationIndoor = (ImageView) findViewById(R.id.ivNavigationIndoor);
 
         mBeaconManager = new BeaconManager(this);
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -56,19 +56,19 @@ public class NavigationIndoor extends ActionBarActivity {
                         case STRING_MAC_BLUE_BEACON1:
                             if (b.getRssi() > -60) {
                                 mTvLocation.setText("You are near the elevator");
-	                            ivNavigationIndoor.setImageResource(R.drawable.img_liftarea);
+                                ivNavigationIndoor.setImageResource(R.drawable.img_liftarea);
                             }
                             break;
                         case STRING_MAC_BLUE_BEACON2:
                             if (b.getRssi() > -60) {
                                 mTvLocation.setText("You are near the lunch room");
-	                            ivNavigationIndoor.setImageResource(R.drawable.img_luncharea);
+                                ivNavigationIndoor.setImageResource(R.drawable.img_luncharea);
                             }
                             break;
                         case STRING_MAC_PURPLE_BEACON:
                             if (b.getRssi() > -60) {
                                 mTvLocation.setText("You are near the workspace");
-	                            ivNavigationIndoor.setImageResource(R.drawable.img_werkarea);
+                                ivNavigationIndoor.setImageResource(R.drawable.img_werkarea);
                             }
                             break;
                     }
@@ -114,6 +114,6 @@ public class NavigationIndoor extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        overridePendingTransition(R.anim.hold_screen, android.R.anim.slide_out_right);
     }
 }

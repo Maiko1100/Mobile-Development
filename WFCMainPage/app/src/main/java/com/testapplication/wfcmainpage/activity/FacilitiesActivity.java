@@ -132,7 +132,7 @@ public class FacilitiesActivity extends ActionBarActivity {
                         myIntent.putExtra("email", facility.getEmail());
                         myIntent.putExtra("mode", getModeArray(facility));
                         FacilitiesActivity.this.startActivity(myIntent);
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.hold_screen);
                     }
                 }
         );
