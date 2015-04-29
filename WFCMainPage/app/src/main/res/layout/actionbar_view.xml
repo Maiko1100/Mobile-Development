@@ -13,13 +13,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp">
 
         <EditText
             android:id="@+id/searchfield"
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_marginTop="3dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/abc_textfield_search_material"
@@ -28,7 +28,6 @@
         </EditText>
 
         <Button
-            android:layout_marginTop="3dp"
             android:id="@+id/clear_text"
             android:layout_width="25dp"
             android:layout_height="25dp"

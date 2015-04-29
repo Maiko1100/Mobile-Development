@@ -20,6 +20,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -265,7 +266,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 				    ObjectAnimator.ofFloat(mSearchInput, "translationY", -250, 0),
 				    ObjectAnimator.ofFloat(mClearText, "translationY", -250, 0),
 				    ObjectAnimator.ofFloat(mTitle, "translationY", 0, 250));
-
+		    animations.setInterpolator(new AccelerateInterpolator(3f));
 		    animations.setDuration(400).start();
 		    // If the animation is running you can't click the buttons
 		    if (animations.isRunning()) {
@@ -313,7 +314,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 					ObjectAnimator.ofFloat(mSearchInput, "translationY", 0, -250),
 					ObjectAnimator.ofFloat(mClearText, "translationY", 0, -250),
 					ObjectAnimator.ofFloat(mTitle, "translationY", 250, 0));
-
+			animations.setInterpolator(new AccelerateInterpolator(3f));
 			animations.setDuration(400).start();
 			// If the animation is running you can't click the buttons
 			if (animations.isRunning()) {
