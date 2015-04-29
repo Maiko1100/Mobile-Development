@@ -17,7 +17,12 @@ import java.util.ArrayList;
 
 public class FacilitiesDetails extends ActionBarActivity implements View.OnClickListener {
 
-	private String mKledingSoort = "";
+    /**
+     * @param mKledingCategories Provides a string where all modeCategories are stored in
+     * @param mFacilityMode Provides an arraylist to fill mKledingCategories
+     */
+
+	private String mKledingCategories = "";
 	private String mFoon, mEmail, mWebsite, mFacilityName, mTower, mEtage, mShowroom;
 	private ArrayList<String> mFacilityMode;
 	private TextView mTextFacilityName, mTextWebsite, mTextFoon, mTextTower, mTextEtage, mTextShowroom, mTextEmail, mTextContact, mTextLocatie, mTextMode, mTextModetitle;
@@ -61,7 +66,7 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
         mTextFacilityName.setText(mFacilityName);
 
 
-		// Fills mKledingSoort with all mode categories from this facility
+		// Fills mKledingCategories with all mode categories from this facility
         getMode();
 
 		//Checks for empty strings when found changes the string in not availible
@@ -114,8 +119,6 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
             textView.setOnClickListener(this);
         }
     }
-
-
     /**
      * method to check if txtFoon txtEmail or txtWebsite is clicked. when one of these items are clicked
      * this method sends them to the right acitivy in this case the phone,mail or website.
@@ -148,12 +151,12 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
 	}
 
     /**
-     * Fills mKledingSoort with all mode categories from this facility
+     * Fills mKledingCategories with all mode categories from this facility
      */
     public void getMode(){
         for (int i = 0; i < mFacilityMode.size(); i++) {
-            mKledingSoort = mKledingSoort + mFacilityMode.get(i) + "\n";
-            mTextMode.setText(mKledingSoort);
+            mKledingCategories = mKledingCategories + mFacilityMode.get(i) + "\n";
+            mTextMode.setText(mKledingCategories);
         }
 
     }
