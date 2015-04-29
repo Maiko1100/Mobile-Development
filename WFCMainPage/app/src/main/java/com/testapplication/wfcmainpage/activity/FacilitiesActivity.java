@@ -256,7 +256,6 @@ public class FacilitiesActivity extends ActionBarActivity {
      */
     public void openSearch() {
 	    if (!mSearchInputMenu) {
-		    mSearchInput.requestFocus();
 		    mSearchInput.setVisibility(View.VISIBLE);
 		    mClearText.setVisibility(View.VISIBLE);
 		    openSearchIcon = menu.findItem(R.id.action_search);
@@ -287,6 +286,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 				                           mTitle.setVisibility(View.GONE);
 				                           openSearchIcon.setEnabled(true);
 				                           mSearchInputMenu = true;
+				                           mSearchInput.requestFocus();
 			                           }
 
 			                           @Override
