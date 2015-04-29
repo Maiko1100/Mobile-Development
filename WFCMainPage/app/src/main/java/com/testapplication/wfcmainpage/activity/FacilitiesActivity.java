@@ -233,7 +233,6 @@ public class FacilitiesActivity extends ActionBarActivity {
      */
     private void selectDrawerItem(int position) {
         if (position == 0) {
-            System.out.println(position);
             mFacilities = getAllFacilities();
             facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
             mTitle.setText(R.string.facilities_button_text);
@@ -241,7 +240,6 @@ public class FacilitiesActivity extends ActionBarActivity {
             mDrawerLayout.closeDrawer(mDrawerList);
             mFacilityList.setAdapter(facilityAdapter);
         } else {
-            System.out.println(position);
             mFacilities = getModeFacilities(position);
             facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
             mFacilityList.setAdapter(facilityAdapter);
