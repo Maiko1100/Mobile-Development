@@ -166,7 +166,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
+            selectDrawerItem(position);
         }
     }
 
@@ -204,8 +204,13 @@ public class FacilitiesActivity extends ActionBarActivity {
         mSearchInput.setVisibility(View.GONE);
         mSearchInputMenu = false;
     }
-
-    private void selectItem(int position) {
+    /**
+     *  Checks which drawerItem is selected if the position is 0 the method gets the whole facilitie list
+     * when the position isnt 0 the getModeFacility(position) method is used to fill the list with the slected
+     * mode categorie
+     * @param position The position of the selected drawerlist item
+     */
+    private void selectDrawerItem(int position) {
         if (position == 0) {
             System.out.println(position);
             mFacilities = getAllFacilities();
@@ -227,6 +232,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
     /**
      * Provides an open method for the actionbar search button and opens the softkeyboard.
+     * it also hides the title.
      */
     public void openSearch() {
         if (mSearchInputMenu == false) {
@@ -240,7 +246,10 @@ public class FacilitiesActivity extends ActionBarActivity {
             inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
         }
     }
-
+    /**
+     * Provides an close method for the actionbar search button and closes the softkeyboard.
+     * it also shows the title.
+     */
     public void closeSearch() {
         if (mSearchInputMenu == true) {
             mSearchInputMenu = false;
@@ -284,7 +293,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         return mFacilityMode;
     }
 
-
+    /**
+     * @param id defines the menuId from the menuitem that changes
+     * @param isPressed boolean to check of the button is pressed
+     * changes the icon to a X when the search button is pressed
+     */
     private void changeIcon(int id, boolean isPressed) {
         MenuItem item = menu.findItem(id);
         if (isPressed) {
@@ -293,6 +306,14 @@ public class FacilitiesActivity extends ActionBarActivity {
             item.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
         }
     }
+    /**
+     * @param id defines the menuId from the menuitem that changes
+     * @param visible boolean to check if the search icon is visible or not
+     * Hides the Menuitem with the given id.
+     * this method is used when the openDrawer method is used.
+     * we use this method to check if the drawer is open or close. when the drawer opens the search icon is hid
+     * when the drawer closes the search icon is visible
+     */
     private void hideIcon(int id,boolean visible) {
         MenuItem item = menu.findItem(id);
             if(visible) {
@@ -337,9 +358,8 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
     /**
-     * Provides a textwatcher that checks if the input field changes and applies the filter from the CustomAdapter
-     *
-     * @return returns Arraylist with all facilities
+     * Method to fil an arraylist with all the Facilities in the database
+     * @return Arraylist with all the facilities in the db
      */
     public ArrayList getAllFacilities() {
         mFacilities.clear();
@@ -368,6 +388,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         return mFacilities;
     }
 
+    /**
+     * @param mode Id of the modeCategorie you want to search for
+     * Method to fil an arraylist with all the Facilities with the given ModeCategorie
+     * @return Arraylist with all the facilities in the db
+     */
     public ArrayList getModeFacilities(int mode) {
         mFacilityModeCategories.clear();
         for (int i = 1; i < mItems.size(); i++) {
@@ -396,7 +421,6 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
         return mFacilityModeCategories;
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
