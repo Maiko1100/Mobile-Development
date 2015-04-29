@@ -26,65 +26,49 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
 		setContentView(R.layout.activity_facilities_details);
 		setTitle(getString(R.string.details_actionbar_text));
 
-		// Declaratie info previous page
-		Intent intent = getIntent();
-		mWebsite = intent.getStringExtra("website");
-		mFacilityName = intent.getStringExtra("facilityname");
-		mFoon = intent.getStringExtra("telefoon");
-		mTower = intent.getStringExtra("tower");
-		mEtage = intent.getStringExtra("etage");
-		mShowroom = intent.getStringExtra("showroom");
-		mEmail = intent.getStringExtra("email");
-		mFacilityMode = intent.getStringArrayListExtra("mode");
-		mEmail = intent.getStringExtra("email");
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
 
-		// Declaratie Textviews
-		mTextFacilityName = (TextView) findViewById(R.id.txtFacilityName);
-		mTextFacilityName.setTypeface(face);
-		mTextWebsite = (TextView) findViewById(R.id.txtWebsite);
-		mTextFoon = (TextView) findViewById(R.id.txtFoon);
-		mTextTower = (TextView) findViewById(R.id.txtTower);
-		mTextEtage = (TextView) findViewById(R.id.txtEtage);
-		mTextShowroom = (TextView) findViewById(R.id.txtShowroom);
-		mTextEmail = (TextView) findViewById(R.id.txtEmail);
-		mTextContact = (TextView) findViewById(R.id.locatietext);
-		mTextContact.setTypeface(face);
-		mTextLocatie = (TextView) findViewById(R.id.contacttext);
-		mTextLocatie.setTypeface(face);
-		mTextMode = (TextView) findViewById(R.id.txtMode);
-		mTextModetitle = (TextView) findViewById(R.id.modetext);
-		mTextModetitle.setTypeface(face);
-		mTextFacilityName.setText(mFacilityName);
+        Intent intent = getIntent();
+        mWebsite = intent.getStringExtra("website");
+        mFacilityName = intent.getStringExtra("facilityname");
+        mFoon = intent.getStringExtra("telefoon");
+        mTower = intent.getStringExtra("tower");
+        mEtage = intent.getStringExtra("etage");
+        mShowroom = intent.getStringExtra("showroom");
+        mEmail = intent.getStringExtra("email");
+        mFacilityMode = intent.getStringArrayListExtra("mode");
+        mEmail = intent.getStringExtra("email");
+
+        // Declaratie Textviews
+        mTextFacilityName = (TextView) findViewById(R.id.txtFacilityName);
+        mTextFacilityName.setTypeface(face);
+        mTextWebsite = (TextView) findViewById(R.id.txtWebsite);
+        mTextFoon = (TextView) findViewById(R.id.txtFoon);
+        mTextTower = (TextView) findViewById(R.id.txtTower);
+        mTextEtage = (TextView) findViewById(R.id.txtEtage);
+        mTextShowroom = (TextView) findViewById(R.id.txtShowroom);
+        mTextEmail = (TextView) findViewById(R.id.txtEmail);
+        mTextContact = (TextView) findViewById(R.id.locatietext);
+        mTextContact.setTypeface(face);
+        mTextLocatie = (TextView) findViewById(R.id.contacttext);
+        mTextLocatie.setTypeface(face);
+        mTextMode = (TextView) findViewById(R.id.txtMode);
+        mTextModetitle = (TextView) findViewById(R.id.modetext);
+        mTextModetitle.setTypeface(face);
+        mTextFacilityName.setText(mFacilityName);
+
 
 		// Fills mKledingSoort with all mode categories from this facility
-		for (int i = 0; i < mFacilityMode.size(); i++) {
-			mKledingSoort = mKledingSoort + mFacilityMode.get(i) + "\n";
-		}
-		mTextMode.setText(mKledingSoort);
+        getMode();
 
-		//Checks for empty strings when fount changes the string in not availible
-		if (mWebsite.isEmpty()) {
-			mTextWebsite.setText("Niet Beschikbaar");
-		} else {
-			mTextWebsite.setText(mWebsite);
-			mTextWebsite.setOnClickListener(this);
-		}
-		if (mFoon.isEmpty()) {
-			mTextFoon.setText("Niet Beschikbaar");
-		} else {
-			mTextFoon.setText(mFoon);
-			mTextFoon.setOnClickListener(this);
-		}
-		if (mEmail.isEmpty()) {
-			mTextEmail.setText("Niet Beschikbaar");
-		} else {
-			mTextEmail.setText(mEmail);
-			mTextEmail.setOnClickListener(this);
-		}
+		//Checks for empty strings when found changes the string in not availible
+        //also gives the given textvieuws an onclicklistener when the string is not empty
+        setOnTextClick(mTextWebsite,mWebsite);
+        setOnTextClick(mTextFoon,mFoon);
+        setOnTextClick(mTextEmail,mEmail);
 
 		mTextTower.setText(mTower);
 		mTextEtage.setText(mEtage);
@@ -116,6 +100,26 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
 		return super.onOptionsItemSelected(item);
 	}
 
+    /**
+     * @param textView Provides a TextView to store information about the facility and provides an onclicklistener
+     * @param text Provides the text used for the textview
+     * Method to check if the string text is empty if the string is empty it gives him a standard value
+     * else this method gives the given textview the given text + an onclicklistener
+     */
+    public void setOnTextClick(TextView textView,String text){
+        if (text.isEmpty()) {
+            textView.setText("Niet Beschikbaar");
+        } else {
+            textView.setText(text);
+            textView.setOnClickListener(this);
+        }
+    }
+
+
+    /**
+     * method to check if txtFoon txtEmail or txtWebsite is clicked. when one of these items are clicked
+     * this method sends them to the right acitivy in this case the phone,mail or website.
+     */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -142,5 +146,16 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
 		super.onBackPressed();
 		overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 	}
+
+    /**
+     * Fills mKledingSoort with all mode categories from this facility
+     */
+    public void getMode(){
+        for (int i = 0; i < mFacilityMode.size(); i++) {
+            mKledingSoort = mKledingSoort + mFacilityMode.get(i) + "\n";
+            mTextMode.setText(mKledingSoort);
+        }
+
+    }
 
 }
