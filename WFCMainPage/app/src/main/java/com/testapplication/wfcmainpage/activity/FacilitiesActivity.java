@@ -9,6 +9,8 @@ package com.testapplication.wfcmainpage.activity;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -26,6 +28,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
 import com.testapplication.wfcmainpage.R;
 import com.testapplication.wfcmainpage.adapters.CustomAdapter;
 import com.testapplication.wfcmainpage.database.MyDatabase;
@@ -72,6 +77,8 @@ public class FacilitiesActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+	private TransitionDrawable transitionDrawable;
+	private MenuItem openSearchIcon;
 
 
     @Override
@@ -80,7 +87,12 @@ public class FacilitiesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_facilities);
         declareItems();
 
-        mSearchInput.addTextChangedListener(new TextWatcher() {
+	    Resources res = this.getResources();
+	    transitionDrawable = (TransitionDrawable)res.getDrawable(R.drawable.transition_drawable);
+	    transitionDrawable.setCrossFadeEnabled(true);
+
+
+	    mSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 }
@@ -235,35 +247,102 @@ public class FacilitiesActivity extends ActionBarActivity {
      * it also hides the title.
      */
     public void openSearch() {
-        if (mSearchInputMenu == false) {
-            mSearchInputMenu = true;
-            mSearchInput.setVisibility(View.VISIBLE);
-            mClearText.setVisibility(View.VISIBLE);
-            mTitle.setVisibility(View.GONE);
-            mSearchInput.requestFocus();
+	    if (!mSearchInputMenu) {
+		    mSearchInput.requestFocus();
+		    mSearchInput.setVisibility(View.VISIBLE);
+		    mClearText.setVisibility(View.VISIBLE);
+		    openSearchIcon = menu.findItem(R.id.action_search);
 
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
-        }
+		    AnimatorSet animations = new AnimatorSet();
+		    animations.playTogether(
+				    ObjectAnimator.ofFloat(mSearchInput, "translationY", -250, 0),
+				    ObjectAnimator.ofFloat(mClearText, "translationY", -250, 0),
+				    ObjectAnimator.ofFloat(mTitle, "translationY", 0, 250));
+
+		    animations.setDuration(400).start();
+		    // If the animation is running you can't click the buttons
+		    if (animations.isRunning()) {
+			    openSearchIcon.setEnabled(false);
+		    }
+
+		    animations.addListener(new Animator.AnimatorListener() {
+			                           @Override
+			                           public void onAnimationStart(Animator animation) {
+			                           }
+
+			                           @Override
+			                           public void onAnimationRepeat(Animator animation) {
+			                           }
+
+			                           @Override
+			                           public void onAnimationEnd(Animator animation) {
+				                           mTitle.setVisibility(View.GONE);
+				                           openSearchIcon.setEnabled(true);
+				                           mSearchInputMenu = true;
+			                           }
+
+			                           @Override
+			                           public void onAnimationCancel(Animator animation) {
+
+			                           }
+		                           }
+		    );
+
+
+		    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
+	    }
     }
-    /**
-     * Provides an close method for the actionbar search button and closes the softkeyboard.
-     * it also shows the title.
-     */
-    public void closeSearch() {
-        if (mSearchInputMenu == true) {
-            mSearchInputMenu = false;
 
-            mSearchInput.setText("");
-            mSearchInput.setVisibility(View.GONE);
-            mClearText.setVisibility(View.GONE);
-            mTitle.setVisibility(View.VISIBLE);
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
-        }
-    }
+	public void closeSearch() {
+		if (mSearchInputMenu) {
+			mSearchInput.setText("");
+			openSearchIcon = menu.findItem(R.id.action_search);
+			mTitle.setVisibility(View.VISIBLE);
 
-    /**
+			AnimatorSet animations = new AnimatorSet();
+			animations.playTogether(
+					ObjectAnimator.ofFloat(mSearchInput, "translationY", 0, -250),
+					ObjectAnimator.ofFloat(mClearText, "translationY", 0, -250),
+					ObjectAnimator.ofFloat(mTitle, "translationY", 250, 0));
+
+			animations.setDuration(400).start();
+			// If the animation is running you can't click the buttons
+			if (animations.isRunning()) {
+				openSearchIcon.setEnabled(false);
+			}
+
+			animations.addListener(new Animator.AnimatorListener() {
+				                       @Override
+				                       public void onAnimationStart(Animator animation) {
+				                       }
+
+				                       @Override
+				                       public void onAnimationRepeat(Animator animation) {
+				                       }
+
+				                       @Override
+				                       public void onAnimationEnd(Animator animation) {
+					                       mSearchInput.setVisibility(View.GONE);
+					                       mClearText.setVisibility(View.GONE);
+					                       openSearchIcon.setEnabled(true);
+					                       mSearchInputMenu = false;
+				                       }
+
+				                       @Override
+				                       public void onAnimationCancel(Animator animation) {
+
+				                       }
+			                       }
+			);
+
+			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
+		}
+	}
+
+
+	/**
      * Provides an inflater for the facilities activity menu xml file
      *
      * @param menu
@@ -299,14 +378,18 @@ public class FacilitiesActivity extends ActionBarActivity {
      * changes the icon to a X when the search button is pressed
      */
     private void changeIcon(int id, boolean isPressed) {
-        MenuItem item = menu.findItem(id);
-        if (isPressed) {
-            item.setIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-        } else {
-            item.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
-        }
+	    MenuItem item = menu.findItem(id);
+	    if (isPressed) {
+		    item.setIcon(transitionDrawable);
+		    transitionDrawable.startTransition(400);
+
+	    } else {
+		    item.setIcon(transitionDrawable);
+		    transitionDrawable.reverseTransition(400);
+	    }
     }
-    /**
+
+	/**
      * @param id defines the menuId from the menuitem that changes
      * @param visible boolean to check if the search icon is visible or not
      * Hides the Menuitem with the given id.
