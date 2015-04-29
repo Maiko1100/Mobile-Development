@@ -2,8 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dp"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:background="@drawable/mainpage_background"
     tools:context=".FacilityRentActivity">
 
@@ -13,6 +11,8 @@
         android:id="@+id/facilitiesRentList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:paddingLeft="@dimen/spacing_medium"
+        android:paddingRight="@dimen/spacing_extra_small"
+        android:scrollbarStyle="outsideInset"/>
 
 </RelativeLayout>

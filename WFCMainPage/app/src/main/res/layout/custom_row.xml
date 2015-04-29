@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:layout_marginLeft="@dimen/spacing_medium"
+    android:layout_marginRight="@dimen/spacing_medium"
+    android:background="@color/white_trans"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/spacing_small"
+    android:paddingRight="@dimen/spacing_small"
     tools:context=".FacilitiesActivity">
 
     <TextView
@@ -10,8 +16,9 @@
         style="@style/TextHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_micro"
         android:text="@string/customRowText_Medium"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -20,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/customRowText"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="@dimen/spacing_small"
         android:text="@string/customTextRow_Small"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -32,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_below="@+id/mediumRowText"
         android:layout_alignLeft="@+id/mediumRowText"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/spacing_micro"
         android:layout_alignStart="@+id/mediumRowText" />
 
     <ImageView
@@ -41,11 +48,11 @@
         android:id="@+id/womenswear"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_micro"
         android:adjustViewBounds="true"
-        android:maxWidth="15dp"
-        android:maxHeight="15dp"
+        android:maxWidth="@dimen/spacing_medium"
+        android:maxHeight="@dimen/spacing_medium"
         android:scaleType="fitCenter"
 
         />
@@ -55,11 +62,11 @@
         android:id="@+id/menswear"
         android:layout_alignParentRight="true"
         android:layout_below="@id/womenswear"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_micro"
         android:adjustViewBounds="true"
-        android:maxWidth="15dp"
-        android:maxHeight="15dp"
+        android:maxWidth="@dimen/spacing_medium"
+        android:maxHeight="@dimen/spacing_medium"
         android:scaleType="fitCenter"
         />
     <ImageView
@@ -68,11 +75,11 @@
         android:layout_below="@id/menswear"
         android:id="@+id/childrenswear"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_micro"
         android:adjustViewBounds="true"
-        android:maxWidth="15dp"
-        android:maxHeight="15dp"
+        android:maxWidth="@dimen/spacing_medium"
+        android:maxHeight="@dimen/spacing_medium"
         android:scaleType="fitCenter"
         />
 
