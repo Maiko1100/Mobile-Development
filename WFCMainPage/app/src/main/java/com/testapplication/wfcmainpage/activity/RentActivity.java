@@ -99,7 +99,7 @@ public class RentActivity extends ActionBarActivity {
 
     public ArrayList getAllRentables() {
         mRentables.clear();
-        for (int i = 1; i < mItems.size(); i++) {
+        for (int i = 0; i < mItems.size(); i++) {
             mRentables.add(
                     new Rentable(
                             mItems.get(i).getmName(),

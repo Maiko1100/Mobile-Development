@@ -7,6 +7,8 @@ package com.testapplication.wfcmainpage.adapters;
  */
 
 import android.content.Context;
+import android.database.Cursor;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +23,17 @@ import com.testapplication.wfcmainpage.models.Rentable;
 
 import java.util.ArrayList;
 
-public class RentAdapter extends BaseAdapter {
+public class RentAdapter extends BaseAdapter{
 
     private ArrayList<Rentable> mData = null;
     private LayoutInflater mCustomInflater;
-
+    private Context mContext;
     public RentAdapter(Context pContext, ArrayList<Rentable> pData) {
 
         this.mData = new ArrayList<>();
         mData.addAll(pData);
         mCustomInflater = LayoutInflater.from(pContext);
-
+        mContext = pContext;
     }
 
 
@@ -50,21 +52,26 @@ public class RentAdapter extends BaseAdapter {
         return pPosition;
     }
 
+
     @Override
     public View getView(int pPosition, View convertView, ViewGroup parent) {
         View customView;
         customView = mCustomInflater.inflate(R.layout.custom_row_rent, null);
 
 
-
-        TextView customRowText = (TextView)customView.findViewById(R.id.customRowText);
-        ImageView customImage = (ImageView)customView.findViewById(R.id.customImageView);
-        TextView mediumRowText = (TextView) customView.findViewById(R.id.mediumRowText);
+        ImageView imgImage = (ImageView)customView.findViewById(R.id.imgImage);
+        TextView txtType = (TextView)customView.findViewById(R.id.txtType);
+        TextView txtInfo = (TextView) customView.findViewById(R.id.txtInfo);
 
         Rentable rentable = mData.get(pPosition);
-        customRowText.setText(rentable.getmName());
-        //customImage.setImageResource(rentable.getmImage());
-        mediumRowText.setText(rentable.getmInfo());
+        int resId = mContext.getResources().getIdentifier(rentable.getmImage(), "mipmap", mContext.getPackageName());
+
+        txtType.setText(rentable.getmType());
+        txtInfo.setText("Extra: "+rentable.getmInfo());
+        imgImage.setImageResource(resId);
+
         return customView;
     }
+
+
 }

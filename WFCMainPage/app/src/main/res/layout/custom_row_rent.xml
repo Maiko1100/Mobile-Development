@@ -12,7 +12,7 @@
     tools:context=".RentActivity">
 
         <TextView
-            android:id="@+id/customRowText"
+            android:id="@+id/txtType"
             style="@style/TextHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,14 +21,14 @@
             android:text="@string/customRowText_Medium" />
 
         <ImageView
-            android:id="@+id/customImageView"
+            android:id="@+id/imgImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white_trans"
-            android:layout_below="@id/customRowText"/>
+            android:layout_below="@id/txtType"/>
 
         <TextView
-            android:id="@+id/mediumRowText"
+            android:id="@+id/txtInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
@@ -36,6 +36,6 @@
             android:layout_marginLeft="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginBottom="@dimen/spacing_small"
-            android:layout_below="@id/customImageView"/>
+            android:layout_below="@id/imgImage"/>
 
 </RelativeLayout>

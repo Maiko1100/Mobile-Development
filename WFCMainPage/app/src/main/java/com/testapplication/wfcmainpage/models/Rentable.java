@@ -109,4 +109,12 @@ public class Rentable {
     public void setmSiteLink(String mSiteLink) {
         this.mSiteLink = mSiteLink;
     }
+
+    @Override
+    public String toString() {
+        return "Rentable{" +
+                "mName='" + mName + '\'' +
+                ", mId=" + mId +
+                '}';
+    }
 }

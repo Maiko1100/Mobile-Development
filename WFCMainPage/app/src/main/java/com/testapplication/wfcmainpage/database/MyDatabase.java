@@ -93,6 +93,7 @@ public class MyDatabase extends SQLiteAssetHelper {
                 Rentable.setmImage(cursor.getString(8));
                 Rentable.setmSiteLink(cursor.getString(9));
                 rentables.add(Rentable);
+                System.out.println(Rentable.toString());
             } while (cursor.moveToNext());
         }
         return rentables;

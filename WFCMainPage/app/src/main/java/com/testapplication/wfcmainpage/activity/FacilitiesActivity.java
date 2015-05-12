@@ -461,7 +461,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      */
     public ArrayList getAllFacilities() {
         mFacilities.clear();
-        for (int i = 1; i < mItems.size(); i++) {
+        for (int i = 0; i < mItems.size(); i++) {
             mFacilities.add(
                     new Facility(
                             mItems.get(i).getFacilityNaam(),
