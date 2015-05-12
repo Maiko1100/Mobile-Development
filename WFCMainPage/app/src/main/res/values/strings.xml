@@ -6,6 +6,7 @@
     <string name="info_button_text">Information</string>
     <string name="main_title_text">World Fashion Centre</string>
     <string name="maps_title_text">Outdoor Navigation</string>
+    <string name="indoor_maps_title_text">Indoor Navigation Map</string>
     <string name="rent_title_text">Rent</string>
     <string name="info_title_text">Information</string>
     <string name="title_activity_info">InfoActivity</string>
@@ -50,6 +51,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_navigation_select">Navigation</string>
     <string name="indoor_navigation_button_text">Indoor</string>
+    <string name="indoor_navigation_map_button_text">Indoor Map</string>
     <string name="outdoor_navigation_button_text">Outdoor</string>
 
     //Strings activity_navigation_indoor
@@ -81,5 +83,6 @@
     <string name="showroom">Showroom:</string>
     <string name="mode">Mode</string>
     <string name="searchFacility">Search facility</string>
+    <string name="title_activity_navigation_indoor_map">NavigationIndoorMapActivity</string>
 
 </resources>
