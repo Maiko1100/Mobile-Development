@@ -107,14 +107,14 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
         viewHolder.image3.setVisibility(View.GONE);
         if(!filteredResults.isLeeg(0)){
                     viewHolder.image1.setVisibility(View.VISIBLE);
-                    viewHolder.image1.setImageResource(R.drawable.womenswear);
+                    viewHolder.image1.setImageResource(R.drawable.icn_shopvrouwenxxhdpi);
         }
         if(!filteredResults.isLeeg(1)){
                     viewHolder.image2.setVisibility(View.VISIBLE);
-                    viewHolder.image2.setImageResource(R.drawable.menswear);}
+                    viewHolder.image2.setImageResource(R.drawable.icn_shopmannenxxhdpi);}
         if(!filteredResults.isLeeg(2)){
             viewHolder.image3.setVisibility(View.VISIBLE);
-            viewHolder.image3.setImageResource(R.drawable.childrenswear);}
+            viewHolder.image3.setImageResource(R.drawable.icn_shopkinderenxxhdpi);}
 
 
             viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
