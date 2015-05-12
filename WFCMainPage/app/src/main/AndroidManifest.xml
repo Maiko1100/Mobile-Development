@@ -70,16 +70,16 @@
             android:theme="@style/Theme.Nav" >
         </activity>
         <activity
-            android:name=".activity.FacilityRentActivity"
+            android:name=".activity.RentActivity"
             android:label="@string/title_activity_facility_rent"
             android:theme="@style/Theme.Rent" >
         </activity>
         <activity
-            android:name=".adapters.CustomFacilityRentAdapter"
-            android:label="@string/title_activity_custom_facility_rent_adapter" >
+            android:name=".adapters.RentAdapter"
+            android:label="@string/title_activity_rent_adapter" >
         </activity>
         <activity
-            android:name=".activity.FacilitiesRentDetails"
+            android:name=".activity.RentDetails"
             android:label="@string/title_activity_facilities_rent_details"
             android:theme="@style/Theme.Rent">
         </activity>

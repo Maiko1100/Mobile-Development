@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/spacing_small"
     android:paddingRight="@dimen/spacing_small"
-    tools:context=".FacilitiesRentActivity">
+    tools:context=".RentActivity">
 
         <TextView
             android:id="@+id/customRowText"

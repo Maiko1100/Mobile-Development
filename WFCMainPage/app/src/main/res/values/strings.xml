@@ -30,7 +30,7 @@
     <string name="title_activity_facilities">Facilities</string>
     <string name="main_banner_text">WFC App</string>
     <string name="title_activity_facility_rent">FacilityRentActivity</string>
-    <string name="title_activity_custom_facility_rent_adapter">CustomFacilityRentAdapter</string>
+    <string name="title_activity_rent_adapter">RentAdapter</string>
     <string name="title_activity_facilities_rent_details">FacilitiesRentDetails</string>
     <string name="maps_activity_info_banner">
         World Fashion Centre is de plek, waar bestaande en opkomende modemerken/labels zich presenteren.

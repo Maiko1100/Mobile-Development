@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.testapplication.wfcmainpage.models.Facility;
+import com.testapplication.wfcmainpage.models.Rentable;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class MyDatabase extends SQLiteAssetHelper {
 
-	private static final String DATABASE_NAME = "Facilitiesv5.db";
+	private static final String DATABASE_NAME = "Facilitiesv6.db";
 	private static final int DATABASE_VERSION = 1;
 
 	public MyDatabase(Context context) {
@@ -66,4 +67,34 @@ public class MyDatabase extends SQLiteAssetHelper {
         }
         return facilities;
 	}
+    public List<Rentable> getAllRentables() {
+        List<Rentable> rentables = new LinkedList<Rentable>();
+
+        // 1. build the query
+        String query = "SELECT * FROM Rentable";
+
+        // 2. get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        // 3. go over each row, build book and add it to list
+        Rentable Rentable = null;
+        if (cursor.moveToFirst()) {
+            do {
+                Rentable = new Rentable();
+                Rentable.setmId(Integer.parseInt(cursor.getString(0)));
+                Rentable.setmName(cursor.getString(1));
+                Rentable.setmInfo(cursor.getString(2));
+                Rentable.setmType(cursor.getString(3));
+                Rentable.setmSize(cursor.getString(4));
+                Rentable.setmTower(cursor.getString(5));
+                Rentable.setmFloor(cursor.getString(6));
+                Rentable.setmRoom(cursor.getString(7));
+                Rentable.setmImage(cursor.getString(8));
+                Rentable.setmSiteLink(cursor.getString(9));
+                rentables.add(Rentable);
+            } while (cursor.moveToNext());
+        }
+        return rentables;
+    }
 }

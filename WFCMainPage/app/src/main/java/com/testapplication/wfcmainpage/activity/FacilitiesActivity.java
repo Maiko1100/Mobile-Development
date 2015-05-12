@@ -33,7 +33,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.testapplication.wfcmainpage.R;
-import com.testapplication.wfcmainpage.adapters.CustomAdapter;
+import com.testapplication.wfcmainpage.adapters.FacilityAdapter;
 import com.testapplication.wfcmainpage.database.MyDatabase;
 import com.testapplication.wfcmainpage.models.Facility;
 
@@ -60,7 +60,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param mTitle Provides a textview with the title of this activity.
      */
 
-    private CustomAdapter facilityAdapter;
+    private FacilityAdapter facilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
     private ArrayList<Facility> mFacilityModeCategories = new ArrayList<>();
@@ -202,8 +202,11 @@ public class FacilitiesActivity extends ActionBarActivity {
         mItems = mDb.getAllFacilities();
         mTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.facilitiesTitle);
 
+
+
         mFacilities = getAllFacilities();
-        facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+
+        facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
         mFacilityList = (ListView) findViewById(R.id.facilitiesList);
         mFacilityList.setAdapter(facilityAdapter);
 
@@ -246,14 +249,14 @@ public class FacilitiesActivity extends ActionBarActivity {
     private void selectDrawerItem(int position) {
         if (position == 0) {
             mFacilities = getAllFacilities();
-            facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+            facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
             mTitle.setText(R.string.facilities_button_text);
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
             mFacilityList.setAdapter(facilityAdapter);
         } else {
             mFacilities = getModeFacilities(position);
-            facilityAdapter = new CustomAdapter(getBaseContext(), mFacilities);
+            facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
             mFacilityList.setAdapter(facilityAdapter);
             mTitle.setText(mModeCategories[position]);
             mDrawerList.setItemChecked(position, true);

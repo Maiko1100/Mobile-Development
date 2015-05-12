@@ -204,7 +204,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 				break;
 
 			case R.id.rentButton:
-				animateButtons(new Intent(this, FacilityRentActivity.class));
+				animateButtons(new Intent(this, RentActivity.class));
 				break;
 		}
 	}
