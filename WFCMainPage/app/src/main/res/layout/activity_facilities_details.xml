@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFacilityName"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/spacing_extra_small"
         android:text="@string/contact" />
 
     <TextView
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWebsite"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="@dimen/spacing_extra_small"
         android:text="@string/email" />
 
     <TextView
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWebsite"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="@dimen/spacing_extra_small"
         android:layout_toRightOf="@+id/textemail"
         android:autoLink="email" />
 
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtEmail"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/spacing_extra_small"
         android:text="@string/locatie" />
 
     <TextView
@@ -140,7 +140,7 @@
         android:layout_height="1dp"
         android:background="#ff696969"
         android:layout_below="@+id/showroomtext"
-        android:layout_marginBottom="6dp"/>
+        android:layout_marginBottom="@dimen/spacing_extra_small"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -148,13 +148,12 @@
         android:id="@+id/modetext"
         android:text="@string/mode"
         android:layout_below="@+id/showroomtext"
-        android:layout_marginTop="6dp"/>
+        android:layout_marginTop="@dimen/spacing_extra_small"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtMode"
         android:layout_below="@+id/modetext"
         />
-
 
 </RelativeLayout>

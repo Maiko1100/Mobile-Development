@@ -1,88 +1,105 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainpage_background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.testapplication.wfcmainpage.activity.FacilitiesDetails">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txtType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtType"
+        android:background="#ff696969" />
+
+    <ImageView
+        android:id="@+id/imgImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white_trans"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtType"
+        android:layout_marginTop="@dimen/spacing_extra_small"/>
 
-        <TextView
-            android:id="@+id/txtTitle"
-            style="@style/TextHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Large Text" />
+    <TextView
+        android:id="@+id/txtExtra"
+        style="@style/TextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgImage"
+        android:layout_marginTop="@dimen/spacing_extra_small"
+        android:text="@string/extra_text"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <ImageView
-            android:id="@+id/imgImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white_trans" />
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtExtra"/>
 
-        <TextView
-            android:id="@+id/txtInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="New Text" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtInfo"
+        android:background="#ff696969" />
 
-        <TextView
-            android:id="@+id/txtType"
-            style="@style/TextMenuItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/stat_sys_phone_call"
-            android:drawablePadding="8dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Phone number" />
-        <TextView
-            android:id="@+id/txtFloor"
-            style="@style/TextMenuItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/stat_sys_phone_call"
-            android:drawablePadding="8dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Phone number" />
-        <TextView
-            android:id="@+id/txtRoom"
-            style="@style/TextMenuItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/stat_sys_phone_call"
-            android:drawablePadding="8dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Phone number" />
-        <TextView
-            android:id="@+id/txtSite"
-            style="@style/TextMenuItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/stat_sys_phone_call"
-            android:drawablePadding="8dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Phone number" />
-        <TextView
-            android:id="@+id/txtTower"
-            style="@style/TextMenuItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/stat_sys_phone_call"
-            android:drawablePadding="8dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Phone number" />
+    <TextView
+        android:id="@+id/locatietext"
+        style="@style/TextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtInfo"
+        android:layout_marginTop="@dimen/spacing_extra_small"
+        android:text="@string/locatie" />
 
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/txtTower"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locatietext" />
+
+    <TextView
+        android:id="@+id/txtFloor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTower" />
+
+    <TextView
+        android:id="@+id/txtRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFloor" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtRoom"
+        android:background="#ff696969" />
+
+    <TextView
+        android:id="@+id/meerInfo"
+        style="@style/TextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRoom"
+        android:layout_marginTop="@dimen/spacing_extra_small"
+        android:text="@string/meer_info"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/txtSite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meerInfo"
+        android:autoLink="web" />
+
+</RelativeLayout>

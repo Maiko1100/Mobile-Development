@@ -45,7 +45,6 @@ public class FacilitiesDetails extends ActionBarActivity implements View.OnClick
         mShowroom = intent.getStringExtra("showroom");
         mEmail = intent.getStringExtra("email");
         mFacilityMode = intent.getStringArrayListExtra("mode");
-        mEmail = intent.getStringExtra("email");
 
         // Declaratie Textviews
         mTextFacilityName = (TextView) findViewById(R.id.txtFacilityName);

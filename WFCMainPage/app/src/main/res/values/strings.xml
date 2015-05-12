@@ -81,5 +81,7 @@
     <string name="showroom">Showroom:</string>
     <string name="mode">Mode</string>
     <string name="searchFacility">Search facility</string>
+    <string name="extra_text">Extra</string>
+    <string name="meer_info">Meer Info</string>
 
 </resources>
