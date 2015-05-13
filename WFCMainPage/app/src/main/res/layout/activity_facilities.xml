@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainpage_background"
-    tools:context=".FacilitiesActivity">
+    tools:context="com.testapplication.wfcmainpage.activity.FacilitiesActivity">
 
     <!-- List View for facility items on page-->
 

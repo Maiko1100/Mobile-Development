@@ -9,7 +9,7 @@
         android:id="@+id/facilitiesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Facilities"
+        android:text="@string/title_activity_facilities"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <FrameLayout
