@@ -90,9 +90,9 @@ public class RentDetails extends ActionBarActivity implements View.OnClickListen
         overridePendingTransition(R.anim.hold_screen, android.R.anim.slide_out_right);
     }
 
-    public void setOnTextClick(TextView textView,String text){
-            textView.setText(text);
-            textView.setOnClickListener(this);
+    public void setOnTextClick(TextView textView, String text) {
+        textView.setText(text);
+        textView.setOnClickListener(this);
     }
 
     @Override

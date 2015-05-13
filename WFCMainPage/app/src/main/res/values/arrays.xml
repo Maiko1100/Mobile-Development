@@ -13,4 +13,18 @@
         <item>@drawable/image10</item>
     </integer-array>
 
+    <string-array name="mode_categories_array">
+        <item>Alle Faciliteiten</item>
+        <item>Dames Mode</item>
+        <item>Heren Mode</item>
+        <item>Kinder Mode</item>
+        <item>Accesoires</item>
+        <item>Grote Maten (Dames)</item>
+        <item>Grote Maten (Heren)</item>
+        <item>Sport Kleding</item>
+        <item>Bruids Kleding</item>
+        <item>BabyKleding/Artikelen</item>
+        <item>Badmode</item>
+    </string-array>
+
 </resources>
