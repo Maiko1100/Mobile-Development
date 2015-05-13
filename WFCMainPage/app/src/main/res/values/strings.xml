@@ -69,9 +69,9 @@
     <string name="mEtage">Floor:&#160;</string>
     <string name="showroom">Showroom:&#160;</string>
     <string name="mode">Fashion</string>
-    <string name="searchFacility">Search facility</string>
+    <string name="searchFacility">Search facility...</string>
     <string name="extra_text">Extra</string>
-    <string name="meer_info">More info</string>
+    <string name="meer_info">More Info</string>
 
     <string name="url_viewpager_case_zero">http://bedrijven.worldfashioncentre.nl/WFCCatalogus/#</string>
     <string name="url_viewpager_case_one">http://www.worldfashioncentre.nl/nl-nl/exhibitors/worldfashiontoday.aspx</string>
