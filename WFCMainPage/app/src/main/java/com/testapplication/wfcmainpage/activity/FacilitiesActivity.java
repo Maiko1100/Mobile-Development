@@ -44,7 +44,7 @@ import java.util.List;
 public class FacilitiesActivity extends ActionBarActivity {
 
     /**
-     * @param facilityAdapter Provides a custom adapter to put the items from the database to the list.
+     * @param mFacilityAdapter Provides a custom adapter to put the items from the database to the list.
      * @param mFacilityList Provides a listview for the page.
      * @param mFacilities Provides an arraylist in which the Facility items are stored.
      * @param mFacilityModeCategories Provides an arraylist where all the categories that a store has are specified.
@@ -60,7 +60,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param mTitle Provides a textview with the title of this activity.
      */
 
-    private FacilityAdapter facilityAdapter;
+    private FacilityAdapter mFacilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
     private ArrayList<Facility> mFacilityModeCategories = new ArrayList<>();
@@ -77,8 +77,8 @@ public class FacilitiesActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-	private TransitionDrawable transitionDrawable;
-	private MenuItem openSearchIcon;
+	private TransitionDrawable mTransitionDrawable;
+	private MenuItem mOpenSearchItem;
     private boolean mIsDrawerOpen = false;
 
 
@@ -90,8 +90,8 @@ public class FacilitiesActivity extends ActionBarActivity {
         declareItems();
 
 	    Resources res = this.getResources();
-	    transitionDrawable = (TransitionDrawable)res.getDrawable(R.drawable.transition_drawable);
-	    transitionDrawable.setCrossFadeEnabled(true);
+	    mTransitionDrawable = (TransitionDrawable)res.getDrawable(R.drawable.transition_drawable);
+	    mTransitionDrawable.setCrossFadeEnabled(true);
 
 
 	    mSearchInput.addTextChangedListener(textWatcher);
@@ -130,8 +130,8 @@ public class FacilitiesActivity extends ActionBarActivity {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 hideIcon(R.id.action_search,false);
-	            openSearchIcon = menu.findItem(R.id.action_search);
-	            openSearchIcon.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
+	            mOpenSearchItem = menu.findItem(R.id.action_search);
+	            mOpenSearchItem.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
 	            closeSearch();
                 mIsDrawerOpen = false;
 
@@ -165,7 +165,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            facilityAdapter.getFilter().filter(s.toString());
+            mFacilityAdapter.getFilter().filter(s.toString());
         }
 
         @Override
@@ -206,9 +206,9 @@ public class FacilitiesActivity extends ActionBarActivity {
 
         mFacilities = getAllFacilities();
 
-        facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
+        mFacilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
         mFacilityList = (ListView) findViewById(R.id.facilitiesList);
-        mFacilityList.setAdapter(facilityAdapter);
+        mFacilityList.setAdapter(mFacilityAdapter);
 
 
     }
@@ -249,15 +249,15 @@ public class FacilitiesActivity extends ActionBarActivity {
     private void selectDrawerItem(int position) {
         if (position == 0) {
             mFacilities = getAllFacilities();
-            facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
+            mFacilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
             mTitle.setText(R.string.facilities_button_text);
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
-            mFacilityList.setAdapter(facilityAdapter);
+            mFacilityList.setAdapter(mFacilityAdapter);
         } else {
             mFacilities = getModeFacilities(position);
-            facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
-            mFacilityList.setAdapter(facilityAdapter);
+            mFacilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
+            mFacilityList.setAdapter(mFacilityAdapter);
             mTitle.setText(mModeCategories[position]);
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
@@ -272,7 +272,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	    if (!mIsSearchActive) {
 		    mSearchInput.setVisibility(View.VISIBLE);
 		    mClearText.setVisibility(View.VISIBLE);
-		    openSearchIcon = menu.findItem(R.id.action_search);
+		    mOpenSearchItem = menu.findItem(R.id.action_search);
 
 		    AnimatorSet animations = new AnimatorSet();
 		    animations.playTogether(
@@ -283,7 +283,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 		    animations.setDuration(400).start();
 		    // If the animation is running you can't click the buttons
 		    if (animations.isRunning()) {
-			    openSearchIcon.setEnabled(false);
+			    mOpenSearchItem.setEnabled(false);
 		    }
 
 		    animations.addListener(new Animator.AnimatorListener() {
@@ -298,7 +298,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 			                           @Override
 			                           public void onAnimationEnd(Animator animation) {
 				                           mTitle.setVisibility(View.GONE);
-				                           openSearchIcon.setEnabled(true);
+				                           mOpenSearchItem.setEnabled(true);
 				                           mIsSearchActive = true;
 				                           mSearchInput.requestFocus();
 			                           }
@@ -319,7 +319,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	public void closeSearch() {
 		if (mIsSearchActive) {
 			mSearchInput.setText("");
-			openSearchIcon = menu.findItem(R.id.action_search);
+			mOpenSearchItem = menu.findItem(R.id.action_search);
 			mTitle.setVisibility(View.VISIBLE);
 
 			AnimatorSet animations = new AnimatorSet();
@@ -331,7 +331,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 			animations.setDuration(400).start();
 			// If the animation is running you can't click the buttons
 			if (animations.isRunning()) {
-				openSearchIcon.setEnabled(false);
+				mOpenSearchItem.setEnabled(false);
 			}
 
 			animations.addListener(new Animator.AnimatorListener() {
@@ -347,7 +347,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 				                       public void onAnimationEnd(Animator animation) {
 					                       mSearchInput.setVisibility(View.GONE);
 					                       mClearText.setVisibility(View.GONE);
-					                       openSearchIcon.setEnabled(true);
+					                       mOpenSearchItem.setEnabled(true);
 					                       mIsSearchActive = false;
 				                       }
 
@@ -395,12 +395,12 @@ public class FacilitiesActivity extends ActionBarActivity {
     private void changeIcon(int id, boolean isPressed) {
 	    MenuItem item = menu.findItem(id);
 	    if (isPressed) {
-		    item.setIcon(transitionDrawable);
-		    transitionDrawable.startTransition(400);
+		    item.setIcon(mTransitionDrawable);
+		    mTransitionDrawable.startTransition(400);
 
 	    } else {
-		    item.setIcon(transitionDrawable);
-		    transitionDrawable.reverseTransition(400);
+		    item.setIcon(mTransitionDrawable);
+		    mTransitionDrawable.reverseTransition(400);
 	    }
     }
 
