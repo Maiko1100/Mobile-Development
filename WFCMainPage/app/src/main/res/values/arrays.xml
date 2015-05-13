@@ -15,8 +15,8 @@
 
     <string-array name="mode_categories_array">
         <item>All facilities</item>
-        <item>Women's Fashion</item>
-        <item>Men's Fashion</item>
+        <item>Women\'s Fashion</item>
+        <item>Men\'s Fashion</item>
         <item>Children fashion</item>
         <item>Accessories</item>
         <item>Plus size women</item>
