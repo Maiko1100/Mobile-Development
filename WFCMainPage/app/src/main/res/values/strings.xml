@@ -61,13 +61,13 @@
 
     <string name="title_activity_facility_categorie">FacilityCategorie</string>
     <string name="contact">Contact</string>
-    <string name="telnum">Tel. nummer:</string>
-    <string name="mWebsite">Website:</string>
-    <string name="mEmail">Email:</string>
+    <string name="telnum">Tel. nummer: </string>
+    <string name="mWebsite">Website: </string>
+    <string name="mEmail">Email: </string>
     <string name="locatie">Location</string>
-    <string name="toren">Tower:</string>
-    <string name="mEtage">Floor:</string>
-    <string name="showroom">Showroom:</string>
+    <string name="toren">Tower: </string>
+    <string name="mEtage">Floor: </string>
+    <string name="showroom">Showroom: </string>
     <string name="mode">Fashion</string>
     <string name="searchFacility">Search facility</string>
     <string name="extra_text">Extra</string>
