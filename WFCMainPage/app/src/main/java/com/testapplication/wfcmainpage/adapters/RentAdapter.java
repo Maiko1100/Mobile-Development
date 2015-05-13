@@ -7,18 +7,14 @@ package com.testapplication.wfcmainpage.adapters;
  */
 
 import android.content.Context;
-import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
-import com.testapplication.wfcmainpage.models.FacilityRent;
 import com.testapplication.wfcmainpage.models.Rentable;
 
 import java.util.ArrayList;

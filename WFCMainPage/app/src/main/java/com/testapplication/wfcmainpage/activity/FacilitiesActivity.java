@@ -105,13 +105,13 @@ public class FacilitiesActivity extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("facilityname", facility.getFacilityNaam());
-                        myIntent.putExtra("telefoon", facility.getTelefoonNummer());
-                        myIntent.putExtra("website", facility.getWebsite());
-                        myIntent.putExtra("tower", facility.getTower());
-                        myIntent.putExtra("etage", facility.getEtage());
-                        myIntent.putExtra("showroom", facility.getShowRoom());
-                        myIntent.putExtra("email", facility.getEmail());
+                        myIntent.putExtra("facilityname", facility.getmFacilityName());
+                        myIntent.putExtra("telefoon", facility.getmTelefoonNummer());
+                        myIntent.putExtra("website", facility.getmWebsite());
+                        myIntent.putExtra("tower", facility.getmTower());
+                        myIntent.putExtra("etage", facility.getmEtage());
+                        myIntent.putExtra("showroom", facility.getmShowRoom());
+                        myIntent.putExtra("email", facility.getmEmail());
                         myIntent.putExtra("mode", getModeArray(facility));
                         FacilitiesActivity.this.startActivity(myIntent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.hold_screen);
@@ -464,24 +464,24 @@ public class FacilitiesActivity extends ActionBarActivity {
         for (int i = 0; i < mItems.size(); i++) {
             mFacilities.add(
                     new Facility(
-                            mItems.get(i).getFacilityNaam(),
-                            mItems.get(i).getTelefoonNummer(),
-                            mItems.get(i).getWebsite(),
-                            mItems.get(i).getTower(),
-                            mItems.get(i).getEtage(),
-                            mItems.get(i).getShowRoom(),
-                            mItems.get(i).getEmail(),
-                            mItems.get(i).getDamesMode(),
-                            mItems.get(i).getHerenMode(),
-                            mItems.get(i).getKinderMode(),
-                            mItems.get(i).getAccessoires(),
-                            mItems.get(i).getVoorraad(),
-                            mItems.get(i).getXlDames(),
-                            mItems.get(i).getXlHeren(),
-                            mItems.get(i).getSportKleding(),
-                            mItems.get(i).getBruidsKleding(),
-                            mItems.get(i).getBabySpullen(),
-                            mItems.get(i).getBadMode()));
+                            mItems.get(i).getmFacilityName(),
+                            mItems.get(i).getmTelefoonNummer(),
+                            mItems.get(i).getmWebsite(),
+                            mItems.get(i).getmTower(),
+                            mItems.get(i).getmEtage(),
+                            mItems.get(i).getmShowRoom(),
+                            mItems.get(i).getmEmail(),
+                            mItems.get(i).getmDamesMode(),
+                            mItems.get(i).getmHerenMode(),
+                            mItems.get(i).getmKinderMode(),
+                            mItems.get(i).getmAccessoires(),
+                            mItems.get(i).getmVoorraad(),
+                            mItems.get(i).getmXlDames(),
+                            mItems.get(i).getmXlHeren(),
+                            mItems.get(i).getmSportKleding(),
+                            mItems.get(i).getmBruidsKleding(),
+                            mItems.get(i).getmBabySpullen(),
+                            mItems.get(i).getmBadMode()));
         }
         return mFacilities;
     }
@@ -497,24 +497,24 @@ public class FacilitiesActivity extends ActionBarActivity {
             if (!mItems.get(i).isListLeeg(mode)) {
                 mFacilityModeCategories.add(
                         new Facility(
-                                mItems.get(i).getFacilityNaam(),
-                                mItems.get(i).getTelefoonNummer(),
-                                mItems.get(i).getWebsite(),
-                                mItems.get(i).getTower(),
-                                mItems.get(i).getEtage(),
-                                mItems.get(i).getShowRoom(),
-                                mItems.get(i).getEmail(),
-                                mItems.get(i).getDamesMode(),
-                                mItems.get(i).getHerenMode(),
-                                mItems.get(i).getKinderMode(),
-                                mItems.get(i).getAccessoires(),
-                                mItems.get(i).getVoorraad(),
-                                mItems.get(i).getXlDames(),
-                                mItems.get(i).getXlHeren(),
-                                mItems.get(i).getSportKleding(),
-                                mItems.get(i).getBruidsKleding(),
-                                mItems.get(i).getBabySpullen(),
-                                mItems.get(i).getBadMode()));
+                                mItems.get(i).getmFacilityName(),
+                                mItems.get(i).getmTelefoonNummer(),
+                                mItems.get(i).getmWebsite(),
+                                mItems.get(i).getmTower(),
+                                mItems.get(i).getmEtage(),
+                                mItems.get(i).getmShowRoom(),
+                                mItems.get(i).getmEmail(),
+                                mItems.get(i).getmDamesMode(),
+                                mItems.get(i).getmHerenMode(),
+                                mItems.get(i).getmKinderMode(),
+                                mItems.get(i).getmAccessoires(),
+                                mItems.get(i).getmVoorraad(),
+                                mItems.get(i).getmXlDames(),
+                                mItems.get(i).getmXlHeren(),
+                                mItems.get(i).getmSportKleding(),
+                                mItems.get(i).getmBruidsKleding(),
+                                mItems.get(i).getmBabySpullen(),
+                                mItems.get(i).getmBadMode()));
             }
         }
         return mFacilityModeCategories;

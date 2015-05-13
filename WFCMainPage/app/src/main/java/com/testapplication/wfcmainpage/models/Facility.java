@@ -7,47 +7,47 @@ package com.testapplication.wfcmainpage.models;
 public class Facility {
 
 	private int id;
-	private String facilityNaam;
-	private String telefoonNummer;
-	private String website;
-    private String tower;
-    private String etage;
-    private String showRoom;
-    private String email;
-    private String damesMode;
-    private String herenMode;
-    private String kinderMode;
-    private String Accessoires;
-    private String voorraad;
-    private String xlDames;
-    private String xlHeren;
-    private String sportKleding;
-    private String bruidsKleding;
-    private String babySpullen;
-    private String badMode;
+	private String mFacilityName;
+	private String mTelefoonNummer;
+	private String mWebsite;
+    private String mTower;
+    private String mEtage;
+    private String mShowRoom;
+    private String mEmail;
+    private String mDamesMode;
+    private String mHerenMode;
+    private String mKinderMode;
+    private String mAccessoires;
+    private String mVoorraad;
+    private String mXlDames;
+    private String mXlHeren;
+    private String mSportKleding;
+    private String mBruidsKleding;
+    private String mBabySpullen;
+    private String mBadMode;
 
 	public Facility() {
 	}
 
-    public Facility(String facilityNaam, String telefoonNummer, String website, String tower, String etage, String showRoom, String email, String damesMode, String herenMode, String kinderMode, String accessoires, String voorraad, String xlDames, String xlHeren, String sportKleding, String bruidsKleding, String babySpullen, String badMode) {
-        this.facilityNaam = facilityNaam;
-        this.telefoonNummer = telefoonNummer;
-        this.website = website;
-        this.tower = tower;
-        this.etage = etage;
-        this.showRoom = showRoom;
-        this.email = email;
-        this.damesMode = damesMode;
-        this.herenMode = herenMode;
-        this.kinderMode = kinderMode;
-        this.Accessoires = accessoires;
-        this.voorraad = voorraad;
-        this.xlDames = xlDames;
-        this.xlHeren = xlHeren;
-        this.sportKleding = sportKleding;
-        this.bruidsKleding = bruidsKleding;
-        this.babySpullen = babySpullen;
-        this.badMode = badMode;
+    public Facility(String mFacilityName, String mTelefoonNummer, String mWebsite, String mTower, String mEtage, String mShowRoom, String mEmail, String mDamesMode, String mHerenMode, String mKinderMode, String accessoires, String voorraad, String xlDames, String mXlHeren, String mSportKleding, String mBruidsKleding, String mBabySpullen, String mBadMode) {
+        this.mFacilityName = mFacilityName;
+        this.mTelefoonNummer = mTelefoonNummer;
+        this.mWebsite = mWebsite;
+        this.mTower = mTower;
+        this.mEtage = mEtage;
+        this.mShowRoom = mShowRoom;
+        this.mEmail = mEmail;
+        this.mDamesMode = mDamesMode;
+        this.mHerenMode = mHerenMode;
+        this.mKinderMode = mKinderMode;
+        this.mAccessoires = accessoires;
+        this.mVoorraad = voorraad;
+        this.mXlDames = xlDames;
+        this.mXlHeren = mXlHeren;
+        this.mSportKleding = mSportKleding;
+        this.mBruidsKleding = mBruidsKleding;
+        this.mBabySpullen = mBabySpullen;
+        this.mBadMode = mBadMode;
     }
 
     public int getId() {
@@ -58,174 +58,174 @@ public class Facility {
         this.id = id;
     }
 
-    public String getFacilityNaam() {
-        return facilityNaam;
+    public String getmFacilityName() {
+        return mFacilityName;
     }
 
-    public void setFacilityNaam(String facilityNaam) {
-        this.facilityNaam = facilityNaam;
+    public void setmFacilityName(String mFacilityName) {
+        this.mFacilityName = mFacilityName;
     }
 
-    public String getTelefoonNummer() {
-        return telefoonNummer;
+    public String getmTelefoonNummer() {
+        return mTelefoonNummer;
     }
 
-    public void setTelefoonNummer(String telefoonNummer) {
-        this.telefoonNummer = telefoonNummer;
+    public void setmTelefoonNummer(String mTelefoonNummer) {
+        this.mTelefoonNummer = mTelefoonNummer;
     }
 
-    public String getWebsite() {
-        return website;
+    public String getmWebsite() {
+        return mWebsite;
     }
 
-    public void setWebsite(String website) {
-        this.website = website;
+    public void setmWebsite(String mWebsite) {
+        this.mWebsite = mWebsite;
     }
 
-    public String getTower() {
-        return tower;
+    public String getmTower() {
+        return mTower;
     }
 
-    public void setTower(String tower) {
-        this.tower = tower;
+    public void setmTower(String mTower) {
+        this.mTower = mTower;
     }
 
-    public String getEtage() {
-        return etage;
+    public String getmEtage() {
+        return mEtage;
     }
 
-    public void setEtage(String etage) {
-        this.etage = etage;
+    public void setmEtage(String mEtage) {
+        this.mEtage = mEtage;
     }
 
-    public String getShowRoom() {
-        return showRoom;
+    public String getmShowRoom() {
+        return mShowRoom;
     }
 
-    public void setShowRoom(String showRoom) {
-        this.showRoom = showRoom;
+    public void setmShowRoom(String mShowRoom) {
+        this.mShowRoom = mShowRoom;
     }
 
-    public String getEmail() {
-        return email;
+    public String getmEmail() {
+        return mEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setmEmail(String mEmail) {
+        this.mEmail = mEmail;
     }
 
-    public String getDamesMode() {
-        return damesMode;
+    public String getmDamesMode() {
+        return mDamesMode;
     }
 
-    public void setDamesMode(String damesMode) {
-        this.damesMode = damesMode;
+    public void setmDamesMode(String mDamesMode) {
+        this.mDamesMode = mDamesMode;
     }
 
-    public String getHerenMode() {
-        return herenMode;
+    public String getmHerenMode() {
+        return mHerenMode;
     }
 
-    public void setHerenMode(String herenMode) {
-        this.herenMode = herenMode;
+    public void setmHerenMode(String mHerenMode) {
+        this.mHerenMode = mHerenMode;
     }
 
-    public String getKinderMode() {
-        return kinderMode;
+    public String getmKinderMode() {
+        return mKinderMode;
     }
 
-    public void setKinderMode(String kinderMode) {
-        this.kinderMode = kinderMode;
+    public void setmKinderMode(String mKinderMode) {
+        this.mKinderMode = mKinderMode;
     }
 
-    public String getAccessoires() {
-        return Accessoires;
+    public String getmAccessoires() {
+        return mAccessoires;
     }
 
-    public void setAccessoires(String accessoires) {
-        Accessoires = accessoires;
+    public void setmAccessoires(String mAccessoires) {
+        this.mAccessoires = mAccessoires;
     }
 
-    public String getVoorraad() {
-        return voorraad;
+    public String getmVoorraad() {
+        return mVoorraad;
     }
 
-    public void setVoorraad(String voorraad) {
-        this.voorraad = voorraad;
+    public void setmVoorraad(String mVoorraad) {
+        this.mVoorraad = mVoorraad;
     }
 
-    public String getXlDames() {
-        return xlDames;
+    public String getmXlDames() {
+        return mXlDames;
     }
 
-    public void setXlDames(String xlDames) {
-        this.xlDames = xlDames;
+    public void setmXlDames(String mXlDames) {
+        this.mXlDames = mXlDames;
     }
 
-    public String getXlHeren() {
-        return xlHeren;
+    public String getmXlHeren() {
+        return mXlHeren;
     }
 
-    public void setXlHeren(String xlHeren) {
-        this.xlHeren = xlHeren;
+    public void setmXlHeren(String mXlHeren) {
+        this.mXlHeren = mXlHeren;
     }
 
-    public String getSportKleding() {
-        return sportKleding;
+    public String getmSportKleding() {
+        return mSportKleding;
     }
 
-    public void setSportKleding(String sportKleding) {
-        this.sportKleding = sportKleding;
+    public void setmSportKleding(String mSportKleding) {
+        this.mSportKleding = mSportKleding;
     }
 
-    public String getBruidsKleding() {
-        return bruidsKleding;
+    public String getmBruidsKleding() {
+        return mBruidsKleding;
     }
 
-    public void setBruidsKleding(String bruidsKleding) {
-        this.bruidsKleding = bruidsKleding;
+    public void setmBruidsKleding(String mBruidsKleding) {
+        this.mBruidsKleding = mBruidsKleding;
     }
 
-    public String getBabySpullen() {
-        return babySpullen;
+    public String getmBabySpullen() {
+        return mBabySpullen;
     }
 
-    public void setBabySpullen(String babySpullen) {
-        this.babySpullen = babySpullen;
+    public void setmBabySpullen(String mBabySpullen) {
+        this.mBabySpullen = mBabySpullen;
     }
 
-    public String getBadMode() {
-        return badMode;
+    public String getmBadMode() {
+        return mBadMode;
     }
 
-    public void setBadMode(String badMode) {
-        this.badMode = badMode;
+    public void setmBadMode(String mBadMode) {
+        this.mBadMode = mBadMode;
     }
 
 public boolean isLeeg(int mode) {
     switch (mode) {
         case 0:
-            return damesMode.isEmpty();
+            return mDamesMode.isEmpty();
         case 1:
-            return herenMode.isEmpty();
+            return mHerenMode.isEmpty();
         case 2:
-            return kinderMode.isEmpty();
+            return mKinderMode.isEmpty();
         case 3:
-            return Accessoires.isEmpty();
+            return mAccessoires.isEmpty();
         case 4:
-            return voorraad.isEmpty();
+            return mVoorraad.isEmpty();
         case 5:
-            return xlDames.isEmpty();
+            return mXlDames.isEmpty();
         case 6:
-            return xlHeren.isEmpty();
+            return mXlHeren.isEmpty();
         case 7:
-            return sportKleding.isEmpty();
+            return mSportKleding.isEmpty();
         case 8:
-            return bruidsKleding.isEmpty();
+            return mBruidsKleding.isEmpty();
         case 9:
-            return babySpullen.isEmpty();
+            return mBabySpullen.isEmpty();
         case 10:
-            return badMode.isEmpty();
+            return mBadMode.isEmpty();
         default:
             return false;
     }
@@ -233,25 +233,25 @@ public boolean isLeeg(int mode) {
     public boolean isListLeeg(int mode) {
         switch (mode) {
             case 1:
-                return damesMode.isEmpty();
+                return mDamesMode.isEmpty();
             case 2:
-                return herenMode.isEmpty();
+                return mHerenMode.isEmpty();
             case 3:
-                return kinderMode.isEmpty();
+                return mKinderMode.isEmpty();
             case 4:
-                return Accessoires.isEmpty();
+                return mAccessoires.isEmpty();
             case 5:
-                return xlDames.isEmpty();
+                return mXlDames.isEmpty();
             case 6:
-                return xlHeren.isEmpty();
+                return mXlHeren.isEmpty();
             case 7:
-                return sportKleding.isEmpty();
+                return mSportKleding.isEmpty();
             case 8:
-                return bruidsKleding.isEmpty();
+                return mBruidsKleding.isEmpty();
             case 9:
-                return babySpullen.isEmpty();
+                return mBabySpullen.isEmpty();
             case 10:
-                return badMode.isEmpty();
+                return mBadMode.isEmpty();
             default:
                 return false;
         }
@@ -261,24 +261,24 @@ public boolean isLeeg(int mode) {
     @Override
     public String toString() {
         return "Facility{" +
-                "badMode='" + badMode + '\'' +
-                ", babySpullen='" + babySpullen + '\'' +
-                ", bruidsKleding='" + bruidsKleding + '\'' +
-                ", sportKleding='" + sportKleding + '\'' +
-                ", xlHeren='" + xlHeren + '\'' +
-                ", xlDames='" + xlDames + '\'' +
-                ", voorraad='" + voorraad + '\'' +
-                ", Accessoires='" + Accessoires + '\'' +
-                ", kinderMode='" + kinderMode + '\'' +
-                ", herenMode='" + herenMode + '\'' +
-                ", damesMode='" + damesMode + '\'' +
-                ", email='" + email + '\'' +
-                ", showRoom='" + showRoom + '\'' +
-                ", etage='" + etage + '\'' +
-                ", tower='" + tower + '\'' +
-                ", website='" + website + '\'' +
-                ", telefoonNummer='" + telefoonNummer + '\'' +
-                ", facilityNaam='" + facilityNaam + '\'' +
+                "mBadMode='" + mBadMode + '\'' +
+                ", mBabySpullen='" + mBabySpullen + '\'' +
+                ", mBruidsKleding='" + mBruidsKleding + '\'' +
+                ", mSportKleding='" + mSportKleding + '\'' +
+                ", mXlHeren='" + mXlHeren + '\'' +
+                ", mXlDames='" + mXlDames + '\'' +
+                ", mVoorraad='" + mVoorraad + '\'' +
+                ", mAccessoires='" + mAccessoires + '\'' +
+                ", mKinderMode='" + mKinderMode + '\'' +
+                ", mHerenMode='" + mHerenMode + '\'' +
+                ", mDamesMode='" + mDamesMode + '\'' +
+                ", mEmail='" + mEmail + '\'' +
+                ", mShowRoom='" + mShowRoom + '\'' +
+                ", mEtage='" + mEtage + '\'' +
+                ", mTower='" + mTower + '\'' +
+                ", mWebsite='" + mWebsite + '\'' +
+                ", mTelefoonNummer='" + mTelefoonNummer + '\'' +
+                ", mFacilityName='" + mFacilityName + '\'' +
                 ", id=" + id +
                 '}';
     }

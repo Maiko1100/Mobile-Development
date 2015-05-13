@@ -73,11 +73,11 @@
     <string name="title_activity_facility_categorie">FacilityCategorie</string>
     <string name="contact">Contact</string>
     <string name="telnum">Tel. nummer:</string>
-    <string name="website">Website:</string>
-    <string name="email">Email:</string>
+    <string name="mWebsite">Website:</string>
+    <string name="mEmail">Email:</string>
     <string name="locatie">Locatie</string>
     <string name="toren">Toren:</string>
-    <string name="etage">Etage:</string>
+    <string name="mEtage">Etage:</string>
     <string name="showroom">Showroom:</string>
     <string name="mode">Mode</string>
     <string name="searchFacility">Zoek faciliteit</string>

@@ -12,13 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.testapplication.wfcmainpage.R;
 import com.testapplication.wfcmainpage.adapters.RentAdapter;
 import com.testapplication.wfcmainpage.database.MyDatabase;
-import com.testapplication.wfcmainpage.models.FacilityRent;
 import com.testapplication.wfcmainpage.models.Rentable;
 
 import java.util.ArrayList;

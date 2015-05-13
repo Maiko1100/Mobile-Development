@@ -7,8 +7,6 @@ package com.testapplication.wfcmainpage.adapters;
  */
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
-import com.testapplication.wfcmainpage.activity.MainActivity;
 import com.testapplication.wfcmainpage.models.Facility;
 
 import java.util.ArrayList;
@@ -117,9 +114,9 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
             viewHolder.image3.setImageResource(R.drawable.icn_shopkinderenxxhdpi);}
 
 
-            viewHolder.facilityTitleRowText.setText(filteredResults.getFacilityNaam());
-            viewHolder.facilityInfoRowText.setText(filteredResults.getWebsite());
-            viewHolder.facilityTelNrRowText.setText(filteredResults.getTelefoonNummer());
+            viewHolder.facilityTitleRowText.setText(filteredResults.getmFacilityName());
+            viewHolder.facilityInfoRowText.setText(filteredResults.getmWebsite());
+            viewHolder.facilityTelNrRowText.setText(filteredResults.getmTelefoonNummer());
 
             return view;
 
@@ -151,7 +148,7 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
 
                 for (int i = 0; i < mData.size(); i++) {
                     filterableString = mData.get(i);
-                    if (filterableString.getFacilityNaam().toLowerCase().contains(filterString)) {
+                    if (filterableString.getmFacilityName().toLowerCase().contains(filterString)) {
                         NLIST.add(filterableString);
                     }
                 }
