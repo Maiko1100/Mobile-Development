@@ -26,7 +26,7 @@
         android:layout_alignLeft="@+id/nextbutton"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="90dp"
-        android:background="@drawable/prevbuttonimage"/>
+        android:background="@drawable/prevbuttonimg"/>
 
     <ImageButton
         android:id="@+id/nextbutton"
