@@ -14,17 +14,17 @@
     </integer-array>
 
     <string-array name="mode_categories_array">
-        <item>Alle Faciliteiten</item>
-        <item>Dames Mode</item>
-        <item>Heren Mode</item>
-        <item>Kinder Mode</item>
-        <item>Accesoires</item>
-        <item>Grote Maten (Dames)</item>
-        <item>Grote Maten (Heren)</item>
-        <item>Sport Kleding</item>
-        <item>Bruids Kleding</item>
-        <item>BabyKleding/Artikelen</item>
-        <item>Badmode</item>
+        <item>All facilities</item>
+        <item>Women's Fashion</item>
+        <item>Men's Fashion</item>
+        <item>Children fashion</item>
+        <item>Accessories</item>
+        <item>Plus size women</item>
+        <item>Plus size men</item>
+        <item>Sportswear</item>
+        <item>Bridal wear</item>
+        <item>Baby clothes</item>
+        <item>Swimwear</item>
     </string-array>
 
 </resources>
