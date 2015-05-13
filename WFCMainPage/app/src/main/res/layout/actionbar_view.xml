@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/abc_textfield_search_material"
-            android:hint="Search facility"
+            android:hint="@string/search_facility_bar_placeholder"
             android:inputType="textFilter" >
         </EditText>
 

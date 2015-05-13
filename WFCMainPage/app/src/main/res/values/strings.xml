@@ -83,5 +83,6 @@
     <string name="searchFacility">Zoek faciliteit</string>
     <string name="extra_text">Extra</string>
     <string name="meer_info">Meer Info</string>
+    <string name="search_facility_bar_placeholder">Zoek faciliteit</string>
 
 </resources>
