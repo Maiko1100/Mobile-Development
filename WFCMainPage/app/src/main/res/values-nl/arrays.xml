@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="carrouselImages">
+        <item>@drawable/image1</item>
+        <item>@drawable/image2</item>
+        <item>@drawable/image3</item>
+        <item>@drawable/image4</item>
+        <item>@drawable/image5</item>
+        <item>@drawable/image6</item>
+        <item>@drawable/image7</item>
+        <item>@drawable/image8</item>
+        <item>@drawable/image9</item>
+        <item>@drawable/image10</item>
+    </integer-array>
+
+    <string-array name="mode_categories_array">
+        <item>Alle Faciliteiten</item>
+        <item>Dames Mode</item>
+        <item>Heren Mode</item>
+        <item>Kinder Mode</item>
+        <item>Accesoires</item>
+        <item>Grote Maten (Dames)</item>
+        <item>Grote Maten (Heren)</item>
+        <item>Sport Kleding</item>
+        <item>Bruids Kleding</item>
+        <item>BabyKleding/Artikelen</item>
+        <item>Badmode</item>
+    </string-array>
+
+</resources>
