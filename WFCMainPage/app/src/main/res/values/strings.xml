@@ -58,19 +58,7 @@
     <string name="no_beacon_text">There are no beacons within range</string>
     <string name="drawer_open">draweropen</string>
     <string name="drawer_close">drawer close</string>
-    <string-array name="mode_categories_array">
-        <item>Alle Faciliteiten</item>
-        <item>Dames Mode</item>
-        <item>Heren Mode</item>
-        <item>Kinder Mode</item>
-        <item>Accesoires</item>
-        <item>Grote Maten (Dames)</item>
-        <item>Grote Maten (Heren)</item>
-        <item>Sport Kleding</item>
-        <item>Bruids Kleding</item>
-        <item>BabyKleding/Artikelen</item>
-        <item>Badmode</item>
-    </string-array>
+
     <string name="title_activity_facility_categorie">FacilityCategorie</string>
     <string name="contact">Contact</string>
     <string name="telnum">Tel. nummer:</string>

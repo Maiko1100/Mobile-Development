@@ -77,8 +77,8 @@ public class FacilitiesActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-	private TransitionDrawable mTransitionDrawable;
-	private MenuItem mOpenSearchItem;
+    private TransitionDrawable mTransitionDrawable;
+    private MenuItem mOpenSearchItem;
     private boolean mIsDrawerOpen = false;
 
 
@@ -89,12 +89,12 @@ public class FacilitiesActivity extends ActionBarActivity {
         initActionbar();
         declareItems();
 
-	    Resources res = this.getResources();
-	    mTransitionDrawable = (TransitionDrawable)res.getDrawable(R.drawable.transition_drawable);
-	    mTransitionDrawable.setCrossFadeEnabled(true);
+        Resources res = this.getResources();
+        mTransitionDrawable = (TransitionDrawable) res.getDrawable(R.drawable.transition_drawable);
+        mTransitionDrawable.setCrossFadeEnabled(true);
 
 
-	    mSearchInput.addTextChangedListener(textWatcher);
+        mSearchInput.addTextChangedListener(textWatcher);
         mFacilityList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     /**
@@ -129,10 +129,10 @@ public class FacilitiesActivity extends ActionBarActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                hideIcon(R.id.action_search,false);
-	            mOpenSearchItem = menu.findItem(R.id.action_search);
-	            mOpenSearchItem.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
-	            closeSearch();
+                hideIcon(R.id.action_search, false);
+                mOpenSearchItem = menu.findItem(R.id.action_search);
+                mOpenSearchItem.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
+                closeSearch();
                 mIsDrawerOpen = false;
 
 
@@ -140,9 +140,9 @@ public class FacilitiesActivity extends ActionBarActivity {
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
-	            super.onDrawerOpened(drawerView);
+                super.onDrawerOpened(drawerView);
                 closeSearch();
-                hideIcon(R.id.action_search,true);
+                hideIcon(R.id.action_search, true);
                 changeIcon(R.id.action_search, false);
                 mIsDrawerOpen = true;
 
@@ -156,7 +156,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
     }
 
-    protected TextWatcher textWatcher = new TextWatcher(){
+    protected TextWatcher textWatcher = new TextWatcher() {
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -188,8 +188,10 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
     }
 
-    /** Declares all items used in the onCreate method*/
-    private void declareItems(){
+    /**
+     * Declares all items used in the onCreate method
+     */
+    private void declareItems() {
         mModeCategories = getResources().getStringArray(R.array.mode_categories_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -197,11 +199,9 @@ public class FacilitiesActivity extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 
-
         mDb = new MyDatabase(this);
         mItems = mDb.getAllFacilities();
         mTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.facilitiesTitle);
-
 
 
         mFacilities = getAllFacilities();
@@ -213,7 +213,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
     }
 
-    private void initActionbar(){
+    private void initActionbar() {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.actionbar_view);
@@ -225,7 +225,7 @@ public class FacilitiesActivity extends ActionBarActivity {
         actionBar.setHomeButtonEnabled(true);
     }
 
-    private void initSearch(android.support.v7.app.ActionBar pActionbar){
+    private void initSearch(android.support.v7.app.ActionBar pActionbar) {
         mClearText = (Button) pActionbar.getCustomView().findViewById(R.id.clear_text);
         mClearText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,9 +241,10 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
     /**
-     *  Checks which drawerItem is selected if the position is 0 the method gets the whole facilitie list
+     * Checks which drawerItem is selected if the position is 0 the method gets the whole facilitie list
      * when the position isnt 0 the getModeFacility(position) method is used to fill the list with the slected
      * mode categorie
+     *
      * @param position The position of the selected drawerlist item
      */
     private void selectDrawerItem(int position) {
@@ -269,99 +270,99 @@ public class FacilitiesActivity extends ActionBarActivity {
      * it also hides the title.
      */
     public void openSearch() {
-	    if (!mIsSearchActive) {
-		    mSearchInput.setVisibility(View.VISIBLE);
-		    mClearText.setVisibility(View.VISIBLE);
-		    mOpenSearchItem = menu.findItem(R.id.action_search);
+        if (!mIsSearchActive) {
+            mSearchInput.setVisibility(View.VISIBLE);
+            mClearText.setVisibility(View.VISIBLE);
+            mOpenSearchItem = menu.findItem(R.id.action_search);
 
-		    AnimatorSet animations = new AnimatorSet();
-		    animations.playTogether(
-				    ObjectAnimator.ofFloat(mSearchInput, "translationY", -250, 0),
-				    ObjectAnimator.ofFloat(mClearText, "translationY", -250, 0),
-				    ObjectAnimator.ofFloat(mTitle, "translationY", 0, 250));
-		    animations.setInterpolator(new AccelerateInterpolator(3f));
-		    animations.setDuration(400).start();
-		    // If the animation is running you can't click the buttons
-		    if (animations.isRunning()) {
-			    mOpenSearchItem.setEnabled(false);
-		    }
+            AnimatorSet animations = new AnimatorSet();
+            animations.playTogether(
+                    ObjectAnimator.ofFloat(mSearchInput, "translationY", -250, 0),
+                    ObjectAnimator.ofFloat(mClearText, "translationY", -250, 0),
+                    ObjectAnimator.ofFloat(mTitle, "translationY", 0, 250));
+            animations.setInterpolator(new AccelerateInterpolator(3f));
+            animations.setDuration(400).start();
+            // If the animation is running you can't click the buttons
+            if (animations.isRunning()) {
+                mOpenSearchItem.setEnabled(false);
+            }
 
-		    animations.addListener(new Animator.AnimatorListener() {
-			                           @Override
-			                           public void onAnimationStart(Animator animation) {
-			                           }
+            animations.addListener(new Animator.AnimatorListener() {
+                                       @Override
+                                       public void onAnimationStart(Animator animation) {
+                                       }
 
-			                           @Override
-			                           public void onAnimationRepeat(Animator animation) {
-			                           }
+                                       @Override
+                                       public void onAnimationRepeat(Animator animation) {
+                                       }
 
-			                           @Override
-			                           public void onAnimationEnd(Animator animation) {
-				                           mTitle.setVisibility(View.GONE);
-				                           mOpenSearchItem.setEnabled(true);
-				                           mIsSearchActive = true;
-				                           mSearchInput.requestFocus();
-			                           }
+                                       @Override
+                                       public void onAnimationEnd(Animator animation) {
+                                           mTitle.setVisibility(View.GONE);
+                                           mOpenSearchItem.setEnabled(true);
+                                           mIsSearchActive = true;
+                                           mSearchInput.requestFocus();
+                                       }
 
-			                           @Override
-			                           public void onAnimationCancel(Animator animation) {
+                                       @Override
+                                       public void onAnimationCancel(Animator animation) {
 
-			                           }
-		                           }
-		    );
+                                       }
+                                   }
+            );
 
 
-		    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
-	    }
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
+        }
     }
 
-	public void closeSearch() {
-		if (mIsSearchActive) {
-			mSearchInput.setText("");
-			mOpenSearchItem = menu.findItem(R.id.action_search);
-			mTitle.setVisibility(View.VISIBLE);
+    public void closeSearch() {
+        if (mIsSearchActive) {
+            mSearchInput.setText("");
+            mOpenSearchItem = menu.findItem(R.id.action_search);
+            mTitle.setVisibility(View.VISIBLE);
 
-			AnimatorSet animations = new AnimatorSet();
-			animations.playTogether(
-					ObjectAnimator.ofFloat(mSearchInput, "translationY", 0, -250),
-					ObjectAnimator.ofFloat(mClearText, "translationY", 0, -250),
-					ObjectAnimator.ofFloat(mTitle, "translationY", 250, 0));
-			animations.setInterpolator(new AccelerateInterpolator(3f));
-			animations.setDuration(400).start();
-			// If the animation is running you can't click the buttons
-			if (animations.isRunning()) {
-				mOpenSearchItem.setEnabled(false);
-			}
+            AnimatorSet animations = new AnimatorSet();
+            animations.playTogether(
+                    ObjectAnimator.ofFloat(mSearchInput, "translationY", 0, -250),
+                    ObjectAnimator.ofFloat(mClearText, "translationY", 0, -250),
+                    ObjectAnimator.ofFloat(mTitle, "translationY", 250, 0));
+            animations.setInterpolator(new AccelerateInterpolator(3f));
+            animations.setDuration(400).start();
+            // If the animation is running you can't click the buttons
+            if (animations.isRunning()) {
+                mOpenSearchItem.setEnabled(false);
+            }
 
-			animations.addListener(new Animator.AnimatorListener() {
-				                       @Override
-				                       public void onAnimationStart(Animator animation) {
-				                       }
+            animations.addListener(new Animator.AnimatorListener() {
+                                       @Override
+                                       public void onAnimationStart(Animator animation) {
+                                       }
 
-				                       @Override
-				                       public void onAnimationRepeat(Animator animation) {
-				                       }
+                                       @Override
+                                       public void onAnimationRepeat(Animator animation) {
+                                       }
 
-				                       @Override
-				                       public void onAnimationEnd(Animator animation) {
-					                       mSearchInput.setVisibility(View.GONE);
-					                       mClearText.setVisibility(View.GONE);
-					                       mOpenSearchItem.setEnabled(true);
-					                       mIsSearchActive = false;
-				                       }
+                                       @Override
+                                       public void onAnimationEnd(Animator animation) {
+                                           mSearchInput.setVisibility(View.GONE);
+                                           mClearText.setVisibility(View.GONE);
+                                           mOpenSearchItem.setEnabled(true);
+                                           mIsSearchActive = false;
+                                       }
 
-				                       @Override
-				                       public void onAnimationCancel(Animator animation) {
+                                       @Override
+                                       public void onAnimationCancel(Animator animation) {
 
-				                       }
-			                       }
-			);
+                                       }
+                                   }
+            );
 
-			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-			inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
-		}
-	}
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(mSearchInput.getWindowToken(), 0);
+        }
+    }
 
 
     @Override
@@ -388,37 +389,37 @@ public class FacilitiesActivity extends ActionBarActivity {
     }
 
     /**
-     * @param id defines the menuId from the menuitem that changes
+     * @param id        defines the menuId from the menuitem that changes
      * @param isPressed boolean to check of the button is pressed
-     * changes the icon to a X when the search button is pressed
+     *                  changes the icon to a X when the search button is pressed
      */
     private void changeIcon(int id, boolean isPressed) {
-	    MenuItem item = menu.findItem(id);
-	    if (isPressed) {
-		    item.setIcon(mTransitionDrawable);
-		    mTransitionDrawable.startTransition(400);
+        MenuItem item = menu.findItem(id);
+        if (isPressed) {
+            item.setIcon(mTransitionDrawable);
+            mTransitionDrawable.startTransition(400);
 
-	    } else {
-		    item.setIcon(mTransitionDrawable);
-		    mTransitionDrawable.reverseTransition(400);
-	    }
+        } else {
+            item.setIcon(mTransitionDrawable);
+            mTransitionDrawable.reverseTransition(400);
+        }
     }
 
-	/**
-     * @param id defines the menuId from the menuitem that changes
+    /**
+     * @param id      defines the menuId from the menuitem that changes
      * @param visible boolean to check if the search icon is visible or not
-     * Hides the Menuitem with the given id.
-     * this method is used when the openDrawer method is used.
-     * we use this method to check if the drawer is open or close. when the drawer opens the search icon is hid
-     * when the drawer closes the search icon is visible
+     *                Hides the Menuitem with the given id.
+     *                this method is used when the openDrawer method is used.
+     *                we use this method to check if the drawer is open or close. when the drawer opens the search icon is hid
+     *                when the drawer closes the search icon is visible
      */
-    private void hideIcon(int id,boolean visible) {
+    private void hideIcon(int id, boolean visible) {
         MenuItem item = menu.findItem(id);
-            if(visible) {
-                item.setVisible(false);
-            }else{
-                item.setVisible(true);
-            }
+        if (visible) {
+            item.setVisible(false);
+        } else {
+            item.setVisible(true);
+        }
 
     }
 
@@ -457,6 +458,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
     /**
      * Method to fil an arraylist with all the Facilities in the database
+     *
      * @return Arraylist with all the facilities in the db
      */
     public ArrayList getAllFacilities() {
@@ -488,7 +490,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
     /**
      * @param mode Id of the modeCategorie you want to search for
-     * Method to fil an arraylist with all the Facilities with the given ModeCategorie
+     *             Method to fil an arraylist with all the Facilities with the given ModeCategorie
      * @return Arraylist with all the facilities in the db
      */
     public ArrayList getModeFacilities(int mode) {
@@ -519,13 +521,13 @@ public class FacilitiesActivity extends ActionBarActivity {
         }
         return mFacilityModeCategories;
     }
+
     @Override
     public void onBackPressed() {
 
-        if(mIsDrawerOpen) {
+        if (mIsDrawerOpen) {
             mDrawerLayout.closeDrawers();
-        }
-        else {
+        } else {
             super.onBackPressed();
             MainActivity.animateReverseButtons();
             overridePendingTransition(R.anim.hold_screen, R.anim.zoom_exit);

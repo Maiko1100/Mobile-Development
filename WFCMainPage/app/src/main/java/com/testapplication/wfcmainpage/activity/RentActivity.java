@@ -46,29 +46,27 @@ public class RentActivity extends ActionBarActivity {
         mRentList.setAdapter(rentAdapter);
 
 
-
-
-              mRentList.setOnItemClickListener(
-        new AdapterView.OnItemClickListener() {
-            /**
-             * Provides a itemClickListener for the listview, registers clicks and
-             * sends the extra info through to the details activity.
-             */
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
-                Rentable rentable = (Rentable) parent.getItemAtPosition(pPosition);
-                Intent myIntent = new Intent(RentActivity.this, RentDetails.class);
-                myIntent.putExtra("info", rentable.getmInfo());
-                myIntent.putExtra("type", rentable.getmType());
-                myIntent.putExtra("tower", rentable.getmTower());
-                myIntent.putExtra("floor", rentable.getmFloor());
-                myIntent.putExtra("room", rentable.getmRoom());
-                myIntent.putExtra("site", rentable.getmSiteLink());
-                myIntent.putExtra("image", rentable.getmImage());
-                RentActivity.this.startActivity(myIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.hold_screen);
-            }
-        });
+        mRentList.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    /**
+                     * Provides a itemClickListener for the listview, registers clicks and
+                     * sends the extra info through to the details activity.
+                     */
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
+                        Rentable rentable = (Rentable) parent.getItemAtPosition(pPosition);
+                        Intent myIntent = new Intent(RentActivity.this, RentDetails.class);
+                        myIntent.putExtra("info", rentable.getmInfo());
+                        myIntent.putExtra("type", rentable.getmType());
+                        myIntent.putExtra("tower", rentable.getmTower());
+                        myIntent.putExtra("floor", rentable.getmFloor());
+                        myIntent.putExtra("room", rentable.getmRoom());
+                        myIntent.putExtra("site", rentable.getmSiteLink());
+                        myIntent.putExtra("image", rentable.getmImage());
+                        RentActivity.this.startActivity(myIntent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.hold_screen);
+                    }
+                });
 
 
     }
@@ -109,7 +107,7 @@ public class RentActivity extends ActionBarActivity {
                             mItems.get(i).getmRoom(),
                             mItems.get(i).getmImage(),
                             mItems.get(i).getmSiteLink()));
-                                    }
+        }
         return mRentables;
     }
 
