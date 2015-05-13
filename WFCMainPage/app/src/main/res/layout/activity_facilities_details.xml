@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoon"
-        android:text="@string/website" />
+        android:text="@string/mWebsite" />
 
     <TextView
         android:id="@+id/txtWebsite"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWebsite"
         android:layout_marginBottom="@dimen/spacing_extra_small"
-        android:text="@string/email" />
+        android:text="@string/mEmail" />
 
     <TextView
         android:id="@+id/txtEmail"
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtTower"
-        android:text="@string/etage" />
+        android:text="@string/mEtage" />
 
     <TextView
         android:id="@+id/txtEtage"

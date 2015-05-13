@@ -44,7 +44,7 @@ import java.util.List;
 public class FacilitiesActivity extends ActionBarActivity {
 
     /**
-     * @param facilityAdapter Provides a custom adapter to put the items from the database to the list.
+     * @param mFacilityAdapter Provides a custom adapter to put the items from the database to the list.
      * @param mFacilityList Provides a listview for the page.
      * @param mFacilities Provides an arraylist in which the Facility items are stored.
      * @param mFacilityModeCategories Provides an arraylist where all the categories that a store has are specified.
@@ -60,7 +60,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      * @param mTitle Provides a textview with the title of this activity.
      */
 
-    private FacilityAdapter facilityAdapter;
+    private FacilityAdapter mFacilityAdapter;
     private ListView mFacilityList;
     private ArrayList<Facility> mFacilities = new ArrayList<>();
     private ArrayList<Facility> mFacilityModeCategories = new ArrayList<>();
@@ -77,8 +77,8 @@ public class FacilitiesActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-	private TransitionDrawable transitionDrawable;
-	private MenuItem openSearchIcon;
+	private TransitionDrawable mTransitionDrawable;
+	private MenuItem mOpenSearchItem;
     private boolean mIsDrawerOpen = false;
 
 
@@ -90,8 +90,8 @@ public class FacilitiesActivity extends ActionBarActivity {
         declareItems();
 
 	    Resources res = this.getResources();
-	    transitionDrawable = (TransitionDrawable)res.getDrawable(R.drawable.transition_drawable);
-	    transitionDrawable.setCrossFadeEnabled(true);
+	    mTransitionDrawable = (TransitionDrawable)res.getDrawable(R.drawable.transition_drawable);
+	    mTransitionDrawable.setCrossFadeEnabled(true);
 
 
 	    mSearchInput.addTextChangedListener(textWatcher);
@@ -105,13 +105,13 @@ public class FacilitiesActivity extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
                         Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
-                        myIntent.putExtra("facilityname", facility.getFacilityNaam());
-                        myIntent.putExtra("telefoon", facility.getTelefoonNummer());
-                        myIntent.putExtra("website", facility.getWebsite());
-                        myIntent.putExtra("tower", facility.getTower());
-                        myIntent.putExtra("etage", facility.getEtage());
-                        myIntent.putExtra("showroom", facility.getShowRoom());
-                        myIntent.putExtra("email", facility.getEmail());
+                        myIntent.putExtra("facilityname", facility.getmFacilityName());
+                        myIntent.putExtra("telefoon", facility.getmTelefoonNummer());
+                        myIntent.putExtra("website", facility.getmWebsite());
+                        myIntent.putExtra("tower", facility.getmTower());
+                        myIntent.putExtra("etage", facility.getmEtage());
+                        myIntent.putExtra("showroom", facility.getmShowRoom());
+                        myIntent.putExtra("email", facility.getmEmail());
                         myIntent.putExtra("mode", getModeArray(facility));
                         FacilitiesActivity.this.startActivity(myIntent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.hold_screen);
@@ -130,8 +130,8 @@ public class FacilitiesActivity extends ActionBarActivity {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 hideIcon(R.id.action_search,false);
-	            openSearchIcon = menu.findItem(R.id.action_search);
-	            openSearchIcon.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
+	            mOpenSearchItem = menu.findItem(R.id.action_search);
+	            mOpenSearchItem.setIcon(R.drawable.abc_ic_search_api_mtrl_alpha);
 	            closeSearch();
                 mIsDrawerOpen = false;
 
@@ -165,7 +165,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            facilityAdapter.getFilter().filter(s.toString());
+            mFacilityAdapter.getFilter().filter(s.toString());
         }
 
         @Override
@@ -206,9 +206,9 @@ public class FacilitiesActivity extends ActionBarActivity {
 
         mFacilities = getAllFacilities();
 
-        facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
+        mFacilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
         mFacilityList = (ListView) findViewById(R.id.facilitiesList);
-        mFacilityList.setAdapter(facilityAdapter);
+        mFacilityList.setAdapter(mFacilityAdapter);
 
 
     }
@@ -249,15 +249,15 @@ public class FacilitiesActivity extends ActionBarActivity {
     private void selectDrawerItem(int position) {
         if (position == 0) {
             mFacilities = getAllFacilities();
-            facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
+            mFacilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
             mTitle.setText(R.string.facilities_button_text);
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
-            mFacilityList.setAdapter(facilityAdapter);
+            mFacilityList.setAdapter(mFacilityAdapter);
         } else {
             mFacilities = getModeFacilities(position);
-            facilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
-            mFacilityList.setAdapter(facilityAdapter);
+            mFacilityAdapter = new FacilityAdapter(getBaseContext(), mFacilities);
+            mFacilityList.setAdapter(mFacilityAdapter);
             mTitle.setText(mModeCategories[position]);
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
@@ -272,7 +272,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	    if (!mIsSearchActive) {
 		    mSearchInput.setVisibility(View.VISIBLE);
 		    mClearText.setVisibility(View.VISIBLE);
-		    openSearchIcon = menu.findItem(R.id.action_search);
+		    mOpenSearchItem = menu.findItem(R.id.action_search);
 
 		    AnimatorSet animations = new AnimatorSet();
 		    animations.playTogether(
@@ -283,7 +283,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 		    animations.setDuration(400).start();
 		    // If the animation is running you can't click the buttons
 		    if (animations.isRunning()) {
-			    openSearchIcon.setEnabled(false);
+			    mOpenSearchItem.setEnabled(false);
 		    }
 
 		    animations.addListener(new Animator.AnimatorListener() {
@@ -298,7 +298,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 			                           @Override
 			                           public void onAnimationEnd(Animator animation) {
 				                           mTitle.setVisibility(View.GONE);
-				                           openSearchIcon.setEnabled(true);
+				                           mOpenSearchItem.setEnabled(true);
 				                           mIsSearchActive = true;
 				                           mSearchInput.requestFocus();
 			                           }
@@ -319,7 +319,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 	public void closeSearch() {
 		if (mIsSearchActive) {
 			mSearchInput.setText("");
-			openSearchIcon = menu.findItem(R.id.action_search);
+			mOpenSearchItem = menu.findItem(R.id.action_search);
 			mTitle.setVisibility(View.VISIBLE);
 
 			AnimatorSet animations = new AnimatorSet();
@@ -331,7 +331,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 			animations.setDuration(400).start();
 			// If the animation is running you can't click the buttons
 			if (animations.isRunning()) {
-				openSearchIcon.setEnabled(false);
+				mOpenSearchItem.setEnabled(false);
 			}
 
 			animations.addListener(new Animator.AnimatorListener() {
@@ -347,7 +347,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 				                       public void onAnimationEnd(Animator animation) {
 					                       mSearchInput.setVisibility(View.GONE);
 					                       mClearText.setVisibility(View.GONE);
-					                       openSearchIcon.setEnabled(true);
+					                       mOpenSearchItem.setEnabled(true);
 					                       mIsSearchActive = false;
 				                       }
 
@@ -395,12 +395,12 @@ public class FacilitiesActivity extends ActionBarActivity {
     private void changeIcon(int id, boolean isPressed) {
 	    MenuItem item = menu.findItem(id);
 	    if (isPressed) {
-		    item.setIcon(transitionDrawable);
-		    transitionDrawable.startTransition(400);
+		    item.setIcon(mTransitionDrawable);
+		    mTransitionDrawable.startTransition(400);
 
 	    } else {
-		    item.setIcon(transitionDrawable);
-		    transitionDrawable.reverseTransition(400);
+		    item.setIcon(mTransitionDrawable);
+		    mTransitionDrawable.reverseTransition(400);
 	    }
     }
 
@@ -464,24 +464,24 @@ public class FacilitiesActivity extends ActionBarActivity {
         for (int i = 0; i < mItems.size(); i++) {
             mFacilities.add(
                     new Facility(
-                            mItems.get(i).getFacilityNaam(),
-                            mItems.get(i).getTelefoonNummer(),
-                            mItems.get(i).getWebsite(),
-                            mItems.get(i).getTower(),
-                            mItems.get(i).getEtage(),
-                            mItems.get(i).getShowRoom(),
-                            mItems.get(i).getEmail(),
-                            mItems.get(i).getDamesMode(),
-                            mItems.get(i).getHerenMode(),
-                            mItems.get(i).getKinderMode(),
-                            mItems.get(i).getAccessoires(),
-                            mItems.get(i).getVoorraad(),
-                            mItems.get(i).getXlDames(),
-                            mItems.get(i).getXlHeren(),
-                            mItems.get(i).getSportKleding(),
-                            mItems.get(i).getBruidsKleding(),
-                            mItems.get(i).getBabySpullen(),
-                            mItems.get(i).getBadMode()));
+                            mItems.get(i).getmFacilityName(),
+                            mItems.get(i).getmTelefoonNummer(),
+                            mItems.get(i).getmWebsite(),
+                            mItems.get(i).getmTower(),
+                            mItems.get(i).getmEtage(),
+                            mItems.get(i).getmShowRoom(),
+                            mItems.get(i).getmEmail(),
+                            mItems.get(i).getmDamesMode(),
+                            mItems.get(i).getmHerenMode(),
+                            mItems.get(i).getmKinderMode(),
+                            mItems.get(i).getmAccessoires(),
+                            mItems.get(i).getmVoorraad(),
+                            mItems.get(i).getmXlDames(),
+                            mItems.get(i).getmXlHeren(),
+                            mItems.get(i).getmSportKleding(),
+                            mItems.get(i).getmBruidsKleding(),
+                            mItems.get(i).getmBabySpullen(),
+                            mItems.get(i).getmBadMode()));
         }
         return mFacilities;
     }
@@ -497,24 +497,24 @@ public class FacilitiesActivity extends ActionBarActivity {
             if (!mItems.get(i).isListLeeg(mode)) {
                 mFacilityModeCategories.add(
                         new Facility(
-                                mItems.get(i).getFacilityNaam(),
-                                mItems.get(i).getTelefoonNummer(),
-                                mItems.get(i).getWebsite(),
-                                mItems.get(i).getTower(),
-                                mItems.get(i).getEtage(),
-                                mItems.get(i).getShowRoom(),
-                                mItems.get(i).getEmail(),
-                                mItems.get(i).getDamesMode(),
-                                mItems.get(i).getHerenMode(),
-                                mItems.get(i).getKinderMode(),
-                                mItems.get(i).getAccessoires(),
-                                mItems.get(i).getVoorraad(),
-                                mItems.get(i).getXlDames(),
-                                mItems.get(i).getXlHeren(),
-                                mItems.get(i).getSportKleding(),
-                                mItems.get(i).getBruidsKleding(),
-                                mItems.get(i).getBabySpullen(),
-                                mItems.get(i).getBadMode()));
+                                mItems.get(i).getmFacilityName(),
+                                mItems.get(i).getmTelefoonNummer(),
+                                mItems.get(i).getmWebsite(),
+                                mItems.get(i).getmTower(),
+                                mItems.get(i).getmEtage(),
+                                mItems.get(i).getmShowRoom(),
+                                mItems.get(i).getmEmail(),
+                                mItems.get(i).getmDamesMode(),
+                                mItems.get(i).getmHerenMode(),
+                                mItems.get(i).getmKinderMode(),
+                                mItems.get(i).getmAccessoires(),
+                                mItems.get(i).getmVoorraad(),
+                                mItems.get(i).getmXlDames(),
+                                mItems.get(i).getmXlHeren(),
+                                mItems.get(i).getmSportKleding(),
+                                mItems.get(i).getmBruidsKleding(),
+                                mItems.get(i).getmBabySpullen(),
+                                mItems.get(i).getmBadMode()));
             }
         }
         return mFacilityModeCategories;
