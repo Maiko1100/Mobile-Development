@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="90dp"
-        android:background="@drawable/nextbuttonimage" />
+        android:background="@drawable/nextbuttonimg" />
 
     <RelativeLayout
         android:id="@+id/viewPagerIndicator"

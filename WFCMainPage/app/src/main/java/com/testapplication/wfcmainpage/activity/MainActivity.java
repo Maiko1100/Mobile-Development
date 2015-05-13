@@ -2,7 +2,6 @@ package com.testapplication.wfcmainpage.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SyncStatusObserver;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -12,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnticipateOvershootInterpolator;
@@ -26,8 +24,6 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.testapplication.wfcmainpage.R;
-
-import java.sql.SQLOutput;
 
 
 /**
@@ -281,13 +277,32 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
             ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
             imageView.setImageResource(mImageId[position]);
+
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String url = "http://www.example.com";
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(url));
-                    startActivity(i);
+                    int currentItem = mViewPager.getCurrentItem();
+
+                    if (currentItem == 0) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("http://bedrijven.worldfashioncentre.nl/WFCCatalogus/#"));
+                        startActivity(i);
+                    }
+                    if (currentItem == 1) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("http://www.worldfashioncentre.nl/nl-nl/exhibitors/worldfashiontoday.aspx"));
+                        startActivity(i);
+                    }
+                    if (currentItem == 4) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("http://www.worldfashioncentre.com/nl-nl/exhibitors/tehuur.aspx"));
+                        startActivity(i);
+                    }
+                    if (currentItem == 7) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("http://www.worldfashioncentre.nl/nl-nl/exhibitors/nieuwshuurders.aspx?udt_595_param_detail=4005"));
+                        startActivity(i);
+                    }
                 }
             });
 
