@@ -6,73 +6,16 @@
                 android:gravity="center"
                 tools:context="com.testapplication.wfcmainpage.activity.NavigationIndoorMapActivity">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.MapFragment"
+    <ImageView
+        android:id="@+id/showIndoorMap"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="true"/>
+        android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageButton
-            android:id="@+id/buttonCar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/ic_car"
-            android:text="@string/start_navigation_button_text"
-            android:textColor="@android:color/white"/>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="fill_parent"
-            android:background="#ffd3d3d3"/>
-
-        <ImageButton
-            android:id="@+id/buttonOV"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/ic_ov"
-            android:text="@string/start_navigation_button_text"
-            android:textColor="@android:color/white"/>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="fill_parent"
-            android:background="#ffd3d3d3"/>
-
-        <ImageButton
-            android:id="@+id/buttonWalk"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/ic_walk"
-            android:text="@string/start_navigation_button_text"
-            android:textColor="@android:color/white"/>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="fill_parent"
-            android:background="#ffd3d3d3"/>
-
-        <ImageButton
-            android:id="@+id/buttonBicycle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_navigation_background"
-            android:src="@drawable/ic_bicycle"
-            android:text="@string/start_navigation_button_text"
-            android:textColor="@android:color/white"/>
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/showBlueDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:src="@drawable/bluedot"/>
 </RelativeLayout>

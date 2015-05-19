@@ -1,38 +1,42 @@
 package com.testapplication.wfcmainpage.activity;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.widget.ImageButton;
+import android.util.Log;
+import android.widget.ImageView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
+import com.indooratlas.android.CalibrationState;
+import com.indooratlas.android.FloorPlan;
+import com.indooratlas.android.FutureResult;
+import com.indooratlas.android.ImagePoint;
 import com.indooratlas.android.IndoorAtlas;
+import com.indooratlas.android.IndoorAtlasException;
+import com.indooratlas.android.IndoorAtlasFactory;
+import com.indooratlas.android.IndoorAtlasListener;
+import com.indooratlas.android.ResultCallback;
+import com.indooratlas.android.ServiceState;
 import com.testapplication.wfcmainpage.R;
 
-public class NavigationIndoorMapActivity extends ActionBarActivity implements View.OnClickListener {
+import java.io.IOException;
+
+
+public class NavigationIndoorMapActivity extends ActionBarActivity implements IndoorAtlasListener {
 
 	String mApiKey = "0ffdc6fa-5af1-4b36-8898-f132b9b27ea1";
 	String mApiSecret = "8x!XaLPUCDx4DSNlKi6&flJPHpXLKmX&)7IMFn(yy2TcrQRzsuQZvVT%aJwKWop7pwqGN)Bsvlm8zyf%db(dOZZhc82lI22nxM8XVJ7eY5GFw)GZp4sEBEeyGmIyhO6R";
 
 	private IndoorAtlas mIndoorAtlas;
+	private final String TAG = "MijnTag";
+	private boolean mIsPositioning;
+	private FloorPlan mFloorPlan;
+	ImageView image;
+	ImageView imgPoint;
 
 	String mVenueId = "b2f56148-7faa-4ce4-b543-32c67c01b015";
 	String mFloorId = "ce808d5e-6410-4c1e-9796-66b115673eeb";
-	String mFloorPlanId = "dc895a7c-fbb7-43d4-b6e2-7552ad6abab0";
-
-	private final LatLngBounds mMobiBounds = new LatLngBounds(new LatLng(52.3713710997303, 4.88609969615936), new LatLng(52.371600, 4.886524));
-	private final String LOCATION_MOBI_STRING = "Herengracht 266 1016 BV Amsterdam";
+	String mFloorPlanId = "f1b92acd-7a57-4bdd-8395-6f9a4cb84724";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,106 +44,277 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements Vi
 		setContentView(R.layout.activity_navigation_indoor_map);
 		setTitle(getString(R.string.indoor_maps_title_text));
 
-		ImageButton buttonCar = (ImageButton) findViewById(R.id.buttonCar);
-		buttonCar.getDrawable().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP);
-		ImageButton buttonWalk = (ImageButton) findViewById(R.id.buttonWalk);
-		buttonWalk.getDrawable().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP);
-		ImageButton buttonBicycle = (ImageButton) findViewById(R.id.buttonBicycle);
-		buttonBicycle.getDrawable().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP);
-		ImageButton buttonOV = (ImageButton) findViewById(R.id.buttonOV);
-		buttonOV.getDrawable().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP);
-
-		buttonCar.setOnClickListener(this);
-		buttonWalk.setOnClickListener(this);
-		buttonBicycle.setOnClickListener(this);
-		buttonOV.setOnClickListener(this);
+		image = (ImageView) findViewById(R.id.showIndoorMap);
+		imgPoint = (ImageView) findViewById(R.id.showBlueDot);
 
 
-		GoogleMap mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+		initIndoorAtlas();
 
-		// Zoom on location on start
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mMobiBounds.getCenter(), 20));
+		FutureResult<FloorPlan> result = mIndoorAtlas.fetchFloorPlan(mFloorPlanId);
+		result.setCallback(new ResultCallback<FloorPlan>() {
 
-		// Set custom marker text
-		mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 			@Override
-			public View getInfoWindow(Marker marker) {
-				return null;
+			public void onResult(final FloorPlan result) {
+				mFloorPlan = result;
+				loadFloorPlanImage(result);
+
 			}
 
 			@Override
-			public View getInfoContents(Marker pMarker) {
-				// Getting view from the layout file info_window_layout
-				View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
+			public void onSystemError(IOException e) {
 
-				return v;
 			}
+
+			@Override
+			public void onApplicationError(IndoorAtlasException e) {
+
+			}
+			// handle error conditions too
 		});
 
-		// Show custom marker
-		GroundOverlayOptions mMobiMap = new GroundOverlayOptions().image(BitmapDescriptorFactory.fromResource(R.drawable.plattegrond)).positionFromBounds(mMobiBounds);
-		mMap.addGroundOverlay(mMobiMap);
+		startPositioning();
 
-//		mIndoorAtlas = IndoorAtlasFactory.createIndoorAtlas(getApplicationContext(),this,mApiKey,mApiSecret);
-
-
-		mIndoorAtlas.startPositioning(mVenueId, mFloorId, mFloorPlanId);
 	}
 
 
-	//Start navigation
-	public void startCar(View v) {
-		//Start Google Maps Drive, Navigate immediately
-		Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_MOBI_STRING + "&mode=d");
-		Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-		mapIntent.setPackage("com.google.android.apps.maps");
-		startActivity(mapIntent);
+	void loadFloorPlanImage(FloorPlan floorPlan) {
+		BitmapFactory.Options options = createBitmapOptions(floorPlan);
+		FutureResult<Bitmap> result = mIndoorAtlas.fetchFloorPlanImage(floorPlan, options);
+		result.setCallback(new ResultCallback<Bitmap>() {
+			@Override
+			public void onResult(final Bitmap result) {
+				// now you have floor plan bitmap, do something with it
+
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						image.setImageBitmap(result);
+					}
+				});
+
+			}
+
+			@Override
+			public void onSystemError(IOException e) {
+
+			}
+
+			@Override
+			public void onApplicationError(IndoorAtlasException e) {
+
+			}
+			// handle error conditions too
+		});
 	}
 
-	public void startWalk(View v) {
-		//Start Google Maps Walk, Navigate immediately
-		Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_MOBI_STRING + "&mode=w");
-		Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-		mapIntent.setPackage("com.google.android.apps.maps");
-		startActivity(mapIntent);
+
+	private BitmapFactory.Options createBitmapOptions(FloorPlan floorPlan) {
+
+		BitmapFactory.Options options = new BitmapFactory.Options();
+
+		int reqWidth = 2048;
+		int reqHeight = 2048;
+		final int width = (int) floorPlan.dimensions[0];
+		final int height = (int) floorPlan.dimensions[1];
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+			final int halfHeight = height / 2;
+			final int halfWidth = width / 2;
+			while ((halfHeight / inSampleSize) > reqHeight
+					&& (halfWidth / inSampleSize) > reqWidth) {
+				inSampleSize *= 2;
+			}
+		}
+		options.inSampleSize = inSampleSize;
+		return options;
 	}
 
-	public void startBicycle(View v) {
-		//Start Google Maps Bike, Navigate immediately
-		Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_MOBI_STRING + "&mode=b");
-		Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-		mapIntent.setPackage("com.google.android.apps.maps");
-		startActivity(mapIntent);
+	private void initIndoorAtlas() {
+
+		try {
+
+
+			// obtain instance to positioning service, note that calibrating might begin instantly
+			mIndoorAtlas = IndoorAtlasFactory.createIndoorAtlas(
+					getApplicationContext(),
+					this, // IndoorAtlasListener
+					mApiKey,
+					mApiSecret);
+
+
+			togglePositioning();
+
+		} catch (IndoorAtlasException ex) {
+			Log.e("IndoorAtlas", "init failed", ex);
+			Log.e("IndoorAtlas", "init IndoorAtlas failed, " + ex.toString());
+		}
+
 	}
 
-	public void startOV(View v) {
-		//Start Google Maps Public Transport, Navigate immediately
-		Uri gmmIntentUri = Uri.parse("google.navigation:q=" + LOCATION_MOBI_STRING + "&mode=r");
-		Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-		mapIntent.setPackage("com.google.android.apps.maps");
-		startActivity(mapIntent);
+	private void stopPositioning() {
+		mIsPositioning = false;
+		if (mIndoorAtlas != null) {
+			Log.e(TAG, "Stop positioning");
+			mIndoorAtlas.stopPositioning();
+		}
+	}
+
+	private void startPositioning() {
+		if (mIndoorAtlas != null) {
+			Log.e(TAG, String.format("startPositioning, venueId: %s, floorId: %s, floorPlanId: %s",
+					mVenueId,
+					mFloorId,
+					mFloorPlanId));
+			try {
+				mIndoorAtlas.startPositioning(mVenueId, mFloorId, mFloorPlanId);
+				mIsPositioning = true;
+			} catch (IndoorAtlasException e) {
+				Log.e(TAG, "startPositioning failed: " + e);
+			}
+		} else {
+			Log.e(TAG, "calibration not ready, cannot start positioning");
+		}
+	}
+
+	private void togglePositioning() {
+		if (mIsPositioning) {
+			stopPositioning();
+		} else {
+			startPositioning();
+		}
+	}
+
+	private void tearDown() {
+		if (mIndoorAtlas != null) {
+			mIndoorAtlas.tearDown();
+		}
+	}
+	
+	/* IndoorAtlasListener interface */
+
+	/**
+	 * This is where you will handle location updates.
+	 */
+	public void onServiceUpdate(ServiceState state) {
+		setImagePoint(state.getImagePoint());
+		System.out.println(state.getImagePoint());
+	}
+
+	private void setImagePoint(final ImagePoint imgPt) {
+
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+
+				imgPoint.setX(imgPt.getI());
+				imgPoint.setY(imgPt.getJ());
+			}
+		});
+	}
+
+
+	@Override
+	public void onServiceFailure(int errorCode, String reason) {
+		Log.e(TAG, "onServiceFailure: reason : " + reason);
 	}
 
 	@Override
-	public void onClick(View v) {
-		int id = v.getId();
-
-		switch (id) {
-			case R.id.buttonCar:
-				startCar(v);
-				break;
-			case R.id.buttonWalk:
-				startWalk(v);
-				break;
-			case R.id.buttonBicycle:
-				startBicycle(v);
-				break;
-			case R.id.buttonOV:
-				startOV(v);
-				break;
-		}
+	public void onServiceInitializing() {
+		Log.e(TAG, "onServiceInitializing");
 	}
+
+	@Override
+	public void onServiceInitialized() {
+		Log.e(TAG, "onServiceInitialized");
+	}
+
+	@Override
+	public void onInitializationFailed(final String reason) {
+		Log.e(TAG, "onInitializationFailed: " + reason);
+	}
+
+	@Override
+	public void onServiceStopped() {
+		Log.e(TAG, "onServiceStopped");
+	}
+
+	@Override
+	public void onCalibrationStatus(CalibrationState calibrationState) {
+		Log.e(TAG, "onCalibrationStatus, percentage: " + calibrationState.getPercentage());
+	}
+
+	/**
+	 * Notification that calibration has reached level of quality that provides best possible
+	 * positioning accuracy.
+	 */
+	@Override
+	public void onCalibrationReady() {
+		Log.e(TAG, "onCalibrationReady");
+	}
+
+	@Override
+	public void onNetworkChangeComplete(boolean success) {
+	}
+
+	/**
+	 * @deprecated this callback is deprecated as of version 1.4
+	 */
+	@Override
+	public void onCalibrationInvalid() {
+	}
+
+	/**
+	 * @deprecated this callback is deprecated as of version 1.4
+	 */
+	@Override
+	public void onCalibrationFailed(String reason) {
+	}
+
+//	static class LogAdapter extends BaseAdapter {
+//
+//		private ArrayList<String> mLines = new ArrayList<>();
+//		private LayoutInflater mInflater;
+//
+//		public LogAdapter(Context context) {
+//			mInflater = LayoutInflater.from(context);
+//		}
+//
+//		@Override
+//		public int getCount() {
+//			return mLines.size();
+//		}
+//
+//		@Override
+//		public Object getItem(int position) {
+//			return position;
+//		}
+//
+//		@Override
+//		public long getItemId(int position) {
+//			return position;
+//		}
+//
+//		@Override
+//		public View getView(int position, View convertView, ViewGroup parent) {
+//			TextView text = (TextView) convertView;
+//			if (convertView == null) {
+//				text = (TextView) mInflater.inflate(android.R.layout.simple_list_item_1, parent,
+//						false);
+//			}
+//			text.setText(mLines.get(position));
+//			return text;
+//		}
+//
+//		public void add(String line) {
+//			mLines.add(0, line);
+//		}
+//
+//		public void clear() {
+//			mLines.clear();
+//			notifyDataSetChanged();
+//		}
+//	}
 
 	@Override
 	public void onBackPressed() {
