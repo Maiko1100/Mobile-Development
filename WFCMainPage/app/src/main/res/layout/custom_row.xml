@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="match_parent"
+    android:minHeight="70dp"
     android:layout_marginLeft="@dimen/spacing_medium"
     android:layout_marginRight="@dimen/spacing_medium"
     android:background="@color/white_trans"
@@ -17,71 +18,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/spacing_small"
-        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_micro"
         android:text="@string/customRowText_Medium"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/mediumRowText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/customRowText"
-        android:layout_marginLeft="@dimen/spacing_small"
-        android:text="@string/customTextRow_Small"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/mediumRowText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/customTextRow_Small"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_below="@+id/mediumRowText"
-        android:layout_alignLeft="@+id/mediumRowText"
-        android:layout_marginBottom="@dimen/spacing_micro"
-        android:layout_alignStart="@+id/mediumRowText" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/womenswear"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/spacing_micro"
-        android:layout_marginLeft="@dimen/spacing_micro"
-        android:adjustViewBounds="true"
-        android:maxWidth="@dimen/spacing_medium"
-        android:maxHeight="@dimen/spacing_medium"
-        android:scaleType="fitCenter"
-
-        />
-    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
+
+    <ImageView
         android:id="@+id/menswear"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/womenswear"
-        android:layout_marginTop="@dimen/spacing_micro"
-        android:layout_marginLeft="@dimen/spacing_micro"
-        android:adjustViewBounds="true"
-        android:maxWidth="@dimen/spacing_medium"
-        android:maxHeight="@dimen/spacing_medium"
-        android:scaleType="fitCenter"
-        />
-    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/menswear"
-        android:id="@+id/childrenswear"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/spacing_micro"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
         android:layout_marginLeft="@dimen/spacing_micro"
+        android:layout_toRightOf="@id/womenswear"
         android:adjustViewBounds="true"
-        android:maxWidth="@dimen/spacing_medium"
         android:maxHeight="@dimen/spacing_medium"
-        android:scaleType="fitCenter"
-        />
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
 
+    <ImageView
+        android:id="@+id/childrenswear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_micro"
+        android:layout_toRightOf="@id/menswear"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
 
 </RelativeLayout>
