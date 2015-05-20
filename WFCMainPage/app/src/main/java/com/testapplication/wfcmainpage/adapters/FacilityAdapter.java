@@ -60,8 +60,6 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
 
     static class ViewHolder {
         TextView facilityTitleRowText;
-        TextView facilityInfoRowText;
-        TextView facilityTelNrRowText;
         ImageView image1;
         ImageView image2;
         ImageView image3;
@@ -88,8 +86,6 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
             view = mCustomInflater.inflate(R.layout.custom_row, null);
             viewHolder = new ViewHolder();
             viewHolder.facilityTitleRowText = (TextView) view.findViewById(R.id.customRowText);//facilityTitle
-            viewHolder.facilityInfoRowText = (TextView) view.findViewById(R.id.mediumRowText);//facilitytext
-            viewHolder.facilityTelNrRowText = (TextView) view.findViewById(R.id.mediumRowText2);//facility telnr
             viewHolder.image1 = (ImageView) view.findViewById(R.id.womenswear);
             viewHolder.image2 = (ImageView) view.findViewById(R.id.menswear);
             viewHolder.image3 = (ImageView) view.findViewById(R.id.childrenswear);
@@ -102,25 +98,25 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
         viewHolder.image1.setVisibility(View.GONE);
         viewHolder.image2.setVisibility(View.GONE);
         viewHolder.image3.setVisibility(View.GONE);
-        if(!filteredResults.isLeeg(0)){
-                    viewHolder.image1.setVisibility(View.VISIBLE);
-                    viewHolder.image1.setImageResource(R.drawable.icn_shopvrouwenxxhdpi);
+        if (!filteredResults.isLeeg(0)) {
+            viewHolder.image1.setVisibility(View.VISIBLE);
+            viewHolder.image1.setImageResource(R.drawable.icn_shopvrouwenxxhdpi);
         }
-        if(!filteredResults.isLeeg(1)){
-                    viewHolder.image2.setVisibility(View.VISIBLE);
-                    viewHolder.image2.setImageResource(R.drawable.icn_shopmannenxxhdpi);}
-        if(!filteredResults.isLeeg(2)){
+        if (!filteredResults.isLeeg(1)) {
+            viewHolder.image2.setVisibility(View.VISIBLE);
+            viewHolder.image2.setImageResource(R.drawable.icn_shopmannenxxhdpi);
+        }
+        if (!filteredResults.isLeeg(2)) {
             viewHolder.image3.setVisibility(View.VISIBLE);
-            viewHolder.image3.setImageResource(R.drawable.icn_shopkinderenxxhdpi);}
-
-
-            viewHolder.facilityTitleRowText.setText(filteredResults.getmFacilityName());
-            viewHolder.facilityInfoRowText.setText(filteredResults.getmWebsite());
-            viewHolder.facilityTelNrRowText.setText(filteredResults.getmTelefoonNummer());
-
-            return view;
-
+            viewHolder.image3.setImageResource(R.drawable.icn_shopkinderenxxhdpi);
         }
+
+
+        viewHolder.facilityTitleRowText.setText(filteredResults.getmFacilityName());
+
+        return view;
+
+    }
 
     public Filter getFilter() {
         if (mFacilityFilter == null) {
@@ -128,7 +124,6 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
         }
         return mFacilityFilter;
     }
-
 
     /**
      * Provides a custom filter that searches per letter and not for whole words.
@@ -162,10 +157,7 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
                 }
             }
             return results;
-
         }
-
-
 
         @SuppressWarnings("unchecked")
         @Override
@@ -173,6 +165,5 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
             mFilteredData = (ArrayList<Facility>) pResults.values;
             notifyDataSetChanged();
         }
-        }
-
+    }
 }

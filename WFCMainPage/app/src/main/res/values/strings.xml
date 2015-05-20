@@ -43,7 +43,7 @@
     <string name="content_previous_button_carrousel">Previous Button Carrousel</string>
 
     //strings activity_maps
-    <string name="bezoekadres_maps_text"><b>World Fashion Center</b>\nKoningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
+    <string name="bezoekadres_maps_text"><b>World Fashion Center</b>\nKoningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands\n+31 (0) 20 511 01 73</string>
     <string name="start_navigation_button_text">Start navigation (Activate your GPS)</string>
     <string name="details_actionbar_text">Details</string>
     <string name="action_search">action_search</string>
