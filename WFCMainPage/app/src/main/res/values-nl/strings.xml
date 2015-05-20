@@ -45,6 +45,7 @@
     //strings activity_maps
     <string name="bezoekadres_maps_text"><b>World Fashion Center</b>\nKoningin Wilhelminaplein 13\n1062 HH  Amsterdam\nThe Netherlands</string>
     <string name="bezoekadres_maps_phone">+31 (0) 20 511 01 73</string>
+    <string name="tel_number">tel: +31 20 511 01 73</string>
     <string name="start_navigation_button_text">Start navigatie (Activate your GPS)</string>
     <string name="details_actionbar_text">Details</string>
     <string name="action_search">action_search</string>
@@ -82,6 +83,4 @@
     <string name="url_viewpager_case_one">http://www.worldfashioncentre.nl/nl-nl/exhibitors/worldfashiontoday.aspx</string>
     <string name="url_viewpager_case_four">http://www.worldfashioncentre.com/nl-nl/exhibitors/tehuur.aspx</string>
     <string name="url_viewpager_case_seven">http://www.worldfashioncentre.nl/nl-nl/exhibitors/nieuwshuurders.aspx?udt_595_param_detail=4005</string>
-    <string name="tel_number">tel: +31 (0) 20 511 01 73</string>
-
 </resources>
