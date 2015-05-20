@@ -34,9 +34,9 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	ImageView image;
 	ImageView imgPoint;
 
-	String mVenueId = "b2f56148-7faa-4ce4-b543-32c67c01b015";
-	String mFloorId = "ce808d5e-6410-4c1e-9796-66b115673eeb";
 	String mFloorPlanId = "f1b92acd-7a57-4bdd-8395-6f9a4cb84724";
+	String mFloorId = "ce808d5e-6410-4c1e-9796-66b115673eeb";
+	String mVenueId = "b2f56148-7faa-4ce4-b543-32c67c01b015";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,6 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		});
 
 		startPositioning();
-
 	}
 
 
