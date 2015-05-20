@@ -1,13 +1,19 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,6 +24,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.testapplication.wfcmainpage.R;
+
+import org.apache.http.io.SessionOutputBuffer;
 
 
 public class MapsActivity extends ActionBarActivity implements View.OnClickListener {
@@ -30,6 +38,9 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maps);
 		setTitle(getString(R.string.maps_title_text));
+
+
+
 
 		ImageButton buttonCar = (ImageButton) findViewById(R.id.buttonCar);
 		buttonCar.getDrawable().setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP);
@@ -48,6 +59,9 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 		GoogleMap mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
+
+
+
 		// Zoom on location on start
 		CameraUpdate start = CameraUpdateFactory.newLatLngZoom(LOCATION_WFC, 18);
 		mMap.animateCamera(start);
@@ -62,7 +76,17 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 			@Override
 			public View getInfoContents(Marker pMarker) {
 				// Getting view from the layout file info_window_layout
+				System.out.println("dsdfdfsdf");
 				View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
+				v.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						System.out.println("balblabl");
+						Intent intentPhone = new Intent(Intent.ACTION_DIAL);
+						intentPhone.setData(Uri.parse("tel:"));
+						startActivity(intentPhone);
+					}
+				});
 				return v;
 			}
 		});
@@ -73,7 +97,20 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 		Marker mMarker = mMap.addMarker(mMarkerOptions);
 		mMarker.showInfoWindow();
 		mMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.kleinlogo));
+
+		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+
+			@Override
+			public void onInfoWindowClick(Marker marker) {
+				Intent intentPhone = new Intent(Intent.ACTION_DIAL);
+				intentPhone.setData(Uri.parse(getString(R.string.tel_number)));
+				startActivity(intentPhone);
+			}
+		});
+
 	}
+
+
 
 	//Start navigation
 	public void startCar(View v) {
@@ -124,6 +161,11 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 				break;
 			case R.id.buttonOV:
 				startOV(v);
+				break;
+			case R.id.tv_info_window_phone:
+				Intent intentPhone = new Intent(Intent.ACTION_DIAL);
+				intentPhone.setData(Uri.parse("tel:"));
+				startActivity(intentPhone);
 				break;
 		}
 	}
