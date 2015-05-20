@@ -104,7 +104,7 @@ public class FacilitiesActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int pPosition, long pId) {
                         Facility facility = (Facility) parent.getItemAtPosition(pPosition);
-                        Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetails.class);
+                        Intent myIntent = new Intent(FacilitiesActivity.this, FacilitiesDetailsActivity.class);
                         myIntent.putExtra("facilityname", facility.getmFacilityName());
                         myIntent.putExtra("telefoon", facility.getmTelefoonNummer());
                         myIntent.putExtra("website", facility.getmWebsite());

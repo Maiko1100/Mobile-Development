@@ -48,10 +48,11 @@
     <string name="details_actionbar_text">Details</string>
     <string name="action_search">action_search</string>
 
-    <string name="hello_world">Hello world!</string>
+    //Strings activity_navigation_select
     <string name="title_activity_navigation_select">Navigation</string>
     <string name="indoor_navigation_button_text">Indoor</string>
     <string name="outdoor_navigation_button_text">Outdoor</string>
+    <string name="indoor_navigation_map_button_text">Indoor Map</string>
 
     //Strings activity_navigation_indoor
     <string name="title_activity_navigation_indoor">Indoor Navigation</string>
@@ -73,9 +74,13 @@
     <string name="extra_text">Extra</string>
     <string name="meer_info">More Info</string>
 
+    //Strings activity_navigation_indoor_map
+    <string name="indoor_maps_title_text">Indoor Map</string>
+
     <string name="url_viewpager_case_zero">http://bedrijven.worldfashioncentre.nl/WFCCatalogus/#</string>
     <string name="url_viewpager_case_one">http://www.worldfashioncentre.nl/nl-nl/exhibitors/worldfashiontoday.aspx</string>
     <string name="url_viewpager_case_four">http://www.worldfashioncentre.com/nl-nl/exhibitors/tehuur.aspx</string>
     <string name="url_viewpager_case_seven">http://www.worldfashioncentre.nl/nl-nl/exhibitors/nieuwshuurders.aspx?udt_595_param_detail=4005</string>
+    <string name="title_activity_navigation_indoor_map">NavigationIndoorMapActivity</string>
 
 </resources>
