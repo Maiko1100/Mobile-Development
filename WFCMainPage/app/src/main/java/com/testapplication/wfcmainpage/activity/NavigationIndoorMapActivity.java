@@ -1,11 +1,13 @@
 package com.testapplication.wfcmainpage.activity;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.indooratlas.android.CalibrationState;
 import com.indooratlas.android.FloorPlan;
@@ -250,6 +252,12 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	@Override
 	public void onCalibrationReady() {
 		Log.e(TAG, "onCalibrationReady");
+		Context context = getApplicationContext();
+		CharSequence text = "Calibration is ready";
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
 	}
 
 	@Override
@@ -273,6 +281,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
+		tearDown();
 		overridePendingTransition(R.anim.hold_screen, android.R.anim.slide_out_right);
 	}
 }
