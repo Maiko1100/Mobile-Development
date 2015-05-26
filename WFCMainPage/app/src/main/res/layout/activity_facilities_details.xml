@@ -32,50 +32,91 @@
         android:layout_marginTop="@dimen/spacing_extra_small"
         android:text="@string/contact" />
 
+    <ImageView
+        android:id="@+id/phoneIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/contacttext"
+        android:layout_marginRight="@dimen/spacing_extra_small"
+        android:layout_marginBottom="@dimen/spacing_extra_small"
+        android:background="@drawable/call_contact"/>
+
     <TextView
         android:id="@+id/foontext"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/contacttext"
+        android:layout_toRightOf="@+id/phoneIcon"
+        android:layout_marginBottom="@dimen/spacing_small"
+
         android:text="@string/telnum" />
 
     <TextView
         android:id="@+id/txtFoon"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/contacttext"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:layout_toRightOf="@+id/foontext"
         android:autoLink="phone" />
 
+    <ImageView
+        android:id="@+id/webIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/txtFoon"
+        android:layout_marginRight="@dimen/spacing_extra_small"
+        android:layout_marginBottom="@dimen/spacing_extra_small"
+        android:background="@drawable/sym_action_web"/>
+
     <TextView
         android:id="@+id/websitetext"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoon"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:layout_toRightOf="@id/webIcon"
         android:text="@string/mWebsite" />
 
     <TextView
         android:id="@+id/txtWebsite"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFoon"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:layout_toRightOf="@id/websitetext"
         android:autoLink="web" />
 
+    <ImageView
+        android:id="@+id/emailIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/txtWebsite"
+        android:layout_marginRight="@dimen/spacing_extra_small"
+        android:layout_marginBottom="@dimen/spacing_extra_small"
+        android:background="@drawable/sym_action_email"/>
+
     <TextView
         android:id="@+id/textemail"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWebsite"
-        android:layout_marginBottom="@dimen/spacing_extra_small"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:layout_toRightOf="@+id/emailIcon"
         android:text="@string/mEmail" />
 
     <TextView
         android:id="@+id/txtEmail"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWebsite"
-        android:layout_marginBottom="@dimen/spacing_extra_small"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:layout_toRightOf="@+id/textemail"
         android:autoLink="email" />
 
@@ -96,6 +137,7 @@
 
     <TextView
         android:id="@+id/towertext"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/locatietext"
@@ -103,6 +145,7 @@
 
     <TextView
         android:id="@+id/txtTower"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/locatietext"
@@ -110,6 +153,7 @@
 
     <TextView
         android:id="@+id/etagetext"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtTower"
@@ -117,6 +161,7 @@
 
     <TextView
         android:id="@+id/txtEtage"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtTower"
@@ -124,36 +169,42 @@
 
     <TextView
         android:id="@+id/txtShowroom"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtEtage"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:layout_toRightOf="@+id/showroomtext" />
 
     <TextView
         android:id="@+id/showroomtext"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/showroom"
-        android:layout_below="@+id/txtEtage"/>
+        android:layout_below="@+id/txtEtage"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:text="@string/showroom" />
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="#ff696969"
         android:layout_below="@+id/showroomtext"
-        android:layout_marginBottom="@dimen/spacing_extra_small"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextHeader"
-        android:id="@+id/modetext"
-        android:text="@string/mode"
-        android:layout_below="@+id/showroomtext"
-        android:layout_marginTop="@dimen/spacing_extra_small"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtMode"
-        android:layout_below="@+id/modetext"
-        />
+        android:layout_marginBottom="@dimen/spacing_extra_small"
+        android:background="#ff696969" />
 
+    <TextView
+        android:id="@+id/modetext"
+        style="@style/TextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showroomtext"
+        android:layout_marginTop="@dimen/spacing_extra_small"
+        android:text="@string/mode" />
+
+    <TextView
+        android:id="@+id/txtMode"
+        style="@style/TextDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/modetext" />
 </RelativeLayout>
