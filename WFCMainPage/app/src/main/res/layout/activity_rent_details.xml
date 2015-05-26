@@ -42,9 +42,11 @@
 
     <TextView
         android:id="@+id/txtInfo"
+        style="@style/TextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtExtra"/>
+        android:layout_below="@+id/txtExtra"
+        android:layout_marginBottom="@dimen/spacing_small"/>
 
     <View
         android:layout_width="fill_parent"
@@ -62,22 +64,44 @@
         android:text="@string/locatie" />
 
     <TextView
+        android:id="@+id/towertext"
+        style="@style/TextDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locatietext"
+        android:text="@string/toren" />
+
+    <TextView
         android:id="@+id/txtTower"
+        style="@style/TextDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/locatietext" />
+        android:layout_below="@+id/locatietext"
+        android:layout_toRightOf="@+id/towertext" />
+
+    <TextView
+        android:id="@+id/etagetext"
+        style="@style/TextDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTower"
+        android:text="@string/mEtage"/>
 
     <TextView
         android:id="@+id/txtFloor"
+        style="@style/TextDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtTower" />
+        android:layout_below="@+id/txtTower"
+        android:layout_toRightOf="@+id/etagetext" />
 
     <TextView
         android:id="@+id/txtRoom"
+        style="@style/TextDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtFloor" />
+        android:layout_below="@+id/txtFloor"
+        android:layout_marginBottom="@dimen/spacing_small" />
 
     <View
         android:layout_width="fill_parent"
@@ -97,9 +121,11 @@
 
     <TextView
         android:id="@+id/txtSite"
+        style="@style/TextDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/meerInfo"
-        android:autoLink="web" />
+        android:autoLink="web"
+        android:layout_marginBottom="@dimen/spacing_small" />
 
 </RelativeLayout>
