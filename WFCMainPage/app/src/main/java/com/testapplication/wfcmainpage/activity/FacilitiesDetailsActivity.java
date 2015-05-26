@@ -87,7 +87,7 @@ public class FacilitiesDetailsActivity extends ActionBarActivity implements View
      */
     public void setOnTextClick(TextView textView, String text) {
         if (text.isEmpty()) {
-            textView.setText("Niet Beschikbaar");
+            textView.setText(getString(R.string.niet_beschikbaar));
         } else {
             textView.setText(text);
             textView.setOnClickListener(this);

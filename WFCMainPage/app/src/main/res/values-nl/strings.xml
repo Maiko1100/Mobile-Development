@@ -83,4 +83,5 @@
     <string name="url_viewpager_case_one">http://www.worldfashioncentre.nl/nl-nl/exhibitors/worldfashiontoday.aspx</string>
     <string name="url_viewpager_case_four">http://www.worldfashioncentre.com/nl-nl/exhibitors/tehuur.aspx</string>
     <string name="url_viewpager_case_seven">http://www.worldfashioncentre.nl/nl-nl/exhibitors/nieuwshuurders.aspx?udt_595_param_detail=4005</string>
+    <string name="niet_beschikbaar">Niet beschikbaar</string>
 </resources>
