@@ -76,12 +76,10 @@ public class MapsActivity extends ActionBarActivity implements View.OnClickListe
 			@Override
 			public View getInfoContents(Marker pMarker) {
 				// Getting view from the layout file info_window_layout
-				System.out.println("dsdfdfsdf");
 				View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
 				v.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						System.out.println("balblabl");
 						Intent intentPhone = new Intent(Intent.ACTION_DIAL);
 						intentPhone.setData(Uri.parse("tel:"));
 						startActivity(intentPhone);
