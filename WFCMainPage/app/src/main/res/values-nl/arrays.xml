@@ -27,4 +27,18 @@
         <item>Badmode</item>
     </string-array>
 
+    <string-array name="mMode_array">
+        <item>Alle Faciliteiten</item>
+        <item>Damesmode</item>
+        <item>Herenmode</item>
+        <item>Kindermode</item>
+        <item>Accessoires</item>
+        <item>Voorraad</item>
+        <item>Grote Maten (Dames)</item>
+        <item>Grote Maten (Heren)</item>
+        <item>Sport Kleding</item>
+        <item>Bruids Kleding</item>
+        <item>BabyKleding/Artikelen</item>
+        <item>Badmode</item>
+    </string-array>
 </resources>
