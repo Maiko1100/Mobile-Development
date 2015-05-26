@@ -16,18 +16,16 @@ import java.util.List;
  */
 public class MyDatabase extends SQLiteAssetHelper {
 
-	private static final String DATABASE_NAME = "Facilitiesv7.db";
-	private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Facilitiesv7.db";
+    private static final int DATABASE_VERSION = 1;
 
-	public MyDatabase(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-	}
-
-
+    public MyDatabase(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
 
-	public List<Facility> getAllFacilities() {
-		List<Facility> facilities = new LinkedList<Facility>();
+    public List<Facility> getAllFacilities() {
+        List<Facility> facilities = new LinkedList<Facility>();
 
         // 1. build the query
         String query = "SELECT * FROM Facility";
@@ -65,7 +63,8 @@ public class MyDatabase extends SQLiteAssetHelper {
             } while (cursor.moveToNext());
         }
         return facilities;
-	}
+    }
+
     public List<Rentable> getAllRentables() {
         List<Rentable> rentables = new LinkedList<Rentable>();
 

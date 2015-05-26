@@ -37,9 +37,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/contacttext"
-        android:layout_marginRight="@dimen/spacing_extra_small"
         android:layout_marginBottom="@dimen/spacing_extra_small"
-        android:background="@drawable/call_contact"/>
+        android:layout_marginRight="@dimen/spacing_extra_small"
+        android:background="@drawable/call_contact" />
 
     <TextView
         android:id="@+id/foontext"
@@ -47,8 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/contacttext"
-        android:layout_toRightOf="@+id/phoneIcon"
         android:layout_marginBottom="@dimen/spacing_small"
+        android:layout_toRightOf="@+id/phoneIcon"
 
         android:text="@string/telnum" />
 
@@ -67,9 +67,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/txtFoon"
-        android:layout_marginRight="@dimen/spacing_extra_small"
         android:layout_marginBottom="@dimen/spacing_extra_small"
-        android:background="@drawable/sym_action_web"/>
+        android:layout_marginRight="@dimen/spacing_extra_small"
+        android:background="@drawable/sym_action_web" />
 
     <TextView
         android:id="@+id/websitetext"
@@ -96,9 +96,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/txtWebsite"
-        android:layout_marginRight="@dimen/spacing_extra_small"
         android:layout_marginBottom="@dimen/spacing_extra_small"
-        android:background="@drawable/sym_action_email"/>
+        android:layout_marginRight="@dimen/spacing_extra_small"
+        android:background="@drawable/sym_action_email" />
 
     <TextView
         android:id="@+id/textemail"
@@ -207,4 +207,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/modetext" />
+
 </RelativeLayout>

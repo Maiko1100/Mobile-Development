@@ -6,10 +6,10 @@ package com.testapplication.wfcmainpage.models;
  */
 public class Facility {
 
-	private int id;
-	private String mFacilityName;
-	private String mTelefoonNummer;
-	private String mWebsite;
+    private int id;
+    private String mFacilityName;
+    private String mTelefoonNummer;
+    private String mWebsite;
     private String mTower;
     private String mEtage;
     private String mShowRoom;
@@ -26,8 +26,8 @@ public class Facility {
     private String mBabySpullen;
     private String mBadMode;
 
-	public Facility() {
-	}
+    public Facility() {
+    }
 
     public Facility(String mFacilityName, String mTelefoonNummer, String mWebsite, String mTower, String mEtage, String mShowRoom, String mEmail, String mDamesMode, String mHerenMode, String mKinderMode, String accessoires, String voorraad, String xlDames, String mXlHeren, String mSportKleding, String mBruidsKleding, String mBabySpullen, String mBadMode) {
         this.mFacilityName = mFacilityName;
@@ -202,34 +202,35 @@ public class Facility {
         this.mBadMode = mBadMode;
     }
 
-public boolean isLeeg(int mode) {
-    switch (mode) {
-        case 0:
-            return mDamesMode.isEmpty();
-        case 1:
-            return mHerenMode.isEmpty();
-        case 2:
-            return mKinderMode.isEmpty();
-        case 3:
-            return mAccessoires.isEmpty();
-        case 4:
-            return mVoorraad.isEmpty();
-        case 5:
-            return mXlDames.isEmpty();
-        case 6:
-            return mXlHeren.isEmpty();
-        case 7:
-            return mSportKleding.isEmpty();
-        case 8:
-            return mBruidsKleding.isEmpty();
-        case 9:
-            return mBabySpullen.isEmpty();
-        case 10:
-            return mBadMode.isEmpty();
-        default:
-            return false;
+    public boolean isLeeg(int mode) {
+        switch (mode) {
+            case 0:
+                return mDamesMode.isEmpty();
+            case 1:
+                return mHerenMode.isEmpty();
+            case 2:
+                return mKinderMode.isEmpty();
+            case 3:
+                return mAccessoires.isEmpty();
+            case 4:
+                return mVoorraad.isEmpty();
+            case 5:
+                return mXlDames.isEmpty();
+            case 6:
+                return mXlHeren.isEmpty();
+            case 7:
+                return mSportKleding.isEmpty();
+            case 8:
+                return mBruidsKleding.isEmpty();
+            case 9:
+                return mBabySpullen.isEmpty();
+            case 10:
+                return mBadMode.isEmpty();
+            default:
+                return false;
+        }
     }
-}
+
     public boolean isListLeeg(int mode) {
         switch (mode) {
             case 1:

@@ -3,8 +3,6 @@ package com.testapplication.wfcmainpage.activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;

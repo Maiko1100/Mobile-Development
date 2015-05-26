@@ -19,11 +19,12 @@ import com.testapplication.wfcmainpage.models.Rentable;
 
 import java.util.ArrayList;
 
-public class RentAdapter extends BaseAdapter{
+public class RentAdapter extends BaseAdapter {
 
     private ArrayList<Rentable> mData = null;
     private LayoutInflater mCustomInflater;
     private Context mContext;
+
     public RentAdapter(Context pContext, ArrayList<Rentable> pData) {
 
         this.mData = new ArrayList<>();
@@ -55,15 +56,15 @@ public class RentAdapter extends BaseAdapter{
         customView = mCustomInflater.inflate(R.layout.custom_row_rent, null);
 
 
-        ImageView imgImage = (ImageView)customView.findViewById(R.id.imgImage);
-        TextView txtType = (TextView)customView.findViewById(R.id.txtType);
+        ImageView imgImage = (ImageView) customView.findViewById(R.id.imgImage);
+        TextView txtType = (TextView) customView.findViewById(R.id.txtType);
         TextView txtInfo = (TextView) customView.findViewById(R.id.txtInfo);
 
         Rentable rentable = mData.get(pPosition);
         int resId = mContext.getResources().getIdentifier(rentable.getmImage(), "mipmap", mContext.getPackageName());
 
         txtType.setText(rentable.getmType());
-        txtInfo.setText("Extra: "+rentable.getmInfo());
+        txtInfo.setText("Extra: " + rentable.getmInfo());
         imgImage.setImageResource(resId);
 
         return customView;
