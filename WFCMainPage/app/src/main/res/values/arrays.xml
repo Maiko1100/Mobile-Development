@@ -27,4 +27,18 @@
         <item>Swimwear</item>
     </string-array>
 
+    <string-array name="mMode_array">
+        <item>Women\'s Fashion</item>
+        <item>Men\'s Fashion</item>
+        <item>Children fashion</item>
+        <item>Accessories</item>
+        <item>Stock</item>
+        <item>Plus size women</item>
+        <item>Plus size men</item>
+        <item>Sportswear</item>
+        <item>Bridal wear</item>
+        <item>Baby clothes</item>
+        <item>Swimwear</item>
+    </string-array>
+
 </resources>

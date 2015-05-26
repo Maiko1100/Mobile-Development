@@ -71,7 +71,7 @@ public class FacilitiesActivity extends ActionBarActivity {
     private Button mClearText;
     private Menu menu;
     private boolean mIsSearchActive;
-    private String[] mModeArray = new String[]{"Dames Mode", "Heren Mode", "Kinder Mode", "Accessoires", "Voorraad", "Grote Maten (Dames)", "Grote Maten (Heren)", "Sport Kleding", "BruidsKleding", "BabyKleding/Artikelen", "Badmode"};
+    private String[] mModeArray;
     private ArrayList<String> mFacilityMode = new ArrayList<>();
     private String[] mModeCategories;
     private DrawerLayout mDrawerLayout;
@@ -193,6 +193,7 @@ public class FacilitiesActivity extends ActionBarActivity {
      */
     private void declareItems() {
         mModeCategories = getResources().getStringArray(R.array.mode_categories_array);
+        mModeArray = getResources().getStringArray(R.array.mMode_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.custom_row_navoptions, mModeCategories));
