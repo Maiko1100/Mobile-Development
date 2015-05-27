@@ -63,6 +63,11 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
         ImageView image1;
         ImageView image2;
         ImageView image3;
+        ImageView image4;
+        ImageView image5;
+        ImageView image6;
+        ImageView image7;
+        ImageView image8;
     }
 
     /**
@@ -89,6 +94,12 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
             viewHolder.image1 = (ImageView) view.findViewById(R.id.womenswear);
             viewHolder.image2 = (ImageView) view.findViewById(R.id.menswear);
             viewHolder.image3 = (ImageView) view.findViewById(R.id.childrenswear);
+            viewHolder.image4 = (ImageView) view.findViewById(R.id.designer);
+            viewHolder.image5 = (ImageView) view.findViewById(R.id.diversen);
+            viewHolder.image6 = (ImageView) view.findViewById(R.id.quickresponse);
+            viewHolder.image7 = (ImageView) view.findViewById(R.id.collection);
+            viewHolder.image8 = (ImageView) view.findViewById(R.id.onAppointment);
+
             view.setTag(viewHolder);
 
         } else {
@@ -98,6 +109,11 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
         viewHolder.image1.setVisibility(View.GONE);
         viewHolder.image2.setVisibility(View.GONE);
         viewHolder.image3.setVisibility(View.GONE);
+        viewHolder.image4.setVisibility(View.GONE);
+        viewHolder.image5.setVisibility(View.GONE);
+        viewHolder.image6.setVisibility(View.GONE);
+        viewHolder.image7.setVisibility(View.GONE);
+        viewHolder.image8.setVisibility(View.GONE);
         if (!filteredResults.isLeeg(0)) {
             viewHolder.image1.setVisibility(View.VISIBLE);
             viewHolder.image1.setImageResource(R.drawable.icn_shopvrouwenxxhdpi);
@@ -109,6 +125,26 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
         if (!filteredResults.isLeeg(2)) {
             viewHolder.image3.setVisibility(View.VISIBLE);
             viewHolder.image3.setImageResource(R.drawable.icn_shopkinderenxxhdpi);
+        }
+        if (!filteredResults.isLeeg(3)) {
+            viewHolder.image4.setVisibility(View.VISIBLE);
+            viewHolder.image4.setImageResource(R.drawable.icn_shopontwerpersxxhdpi);
+        }
+        if (!filteredResults.isLeeg(4)) {
+            viewHolder.image5.setVisibility(View.VISIBLE);
+            viewHolder.image5.setImageResource(R.drawable.icn_shopdiversenxxhdpi);
+        }
+        if (!filteredResults.isLeeg(5)) {
+            viewHolder.image6.setVisibility(View.VISIBLE);
+            viewHolder.image6.setImageResource(R.drawable.icn_shopquickresponsexxhdpi);
+        }
+        if (!filteredResults.isLeeg(6)) {
+            viewHolder.image7.setVisibility(View.VISIBLE);
+            viewHolder.image7.setImageResource(R.drawable.icn_shopcollectiexxhdpi);
+        }
+        if (!filteredResults.isLeeg(7)) {
+            viewHolder.image8.setVisibility(View.VISIBLE);
+            viewHolder.image8.setImageResource(R.drawable.icn_shopopafspraakxxhdpi);
         }
 
 

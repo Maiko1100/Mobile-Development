@@ -62,4 +62,69 @@
         android:maxWidth="@dimen/spacing_medium"
         android:scaleType="fitCenter" />
 
+    <ImageView
+        android:id="@+id/designer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_toRightOf="@id/childrenswear"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/diversen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_toRightOf="@id/designer"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/quickresponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_toRightOf="@id/diversen"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_toRightOf="@id/quickresponse"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/onAppointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customRowText"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_toRightOf="@id/collection"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/spacing_medium"
+        android:maxWidth="@dimen/spacing_medium"
+        android:scaleType="fitCenter" />
+
 </RelativeLayout>

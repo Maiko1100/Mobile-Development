@@ -18,6 +18,11 @@
         <item>Damesmode</item>
         <item>Herenmode</item>
         <item>Kindermode</item>
+        <item>Ontwerper</item>
+        <item>Diversen</item>
+        <item>Quick response</item>
+        <item>Collectie</item>
+        <item>Op afspraak</item>
         <item>Accessoires</item>
         <item>Grote Maten (Dames)</item>
         <item>Grote Maten (Heren)</item>
@@ -31,6 +36,11 @@
         <item>Damesmode</item>
         <item>Herenmode</item>
         <item>Kindermode</item>
+        <item>Ontwerper</item>
+        <item>Diversen</item>
+        <item>Quick response</item>
+        <item>Collectie</item>
+        <item>Op afspraak</item>
         <item>Accessoires</item>
         <item>Voorraad</item>
         <item>Grote Maten (Dames)</item>
@@ -39,9 +49,5 @@
         <item>Bruids Kleding</item>
         <item>BabyKleding/Artikelen</item>
         <item>Badmode</item>
-        <item>Diversen</item>
-        <item>Quick response</item>
-        <item>Collectie</item>
-        <item>Op afspraak</item>
     </string-array>
 </resources>

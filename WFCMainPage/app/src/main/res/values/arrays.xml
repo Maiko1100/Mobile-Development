@@ -18,6 +18,11 @@
         <item>Women\'s Fashion</item>
         <item>Men\'s Fashion</item>
         <item>Children fashion</item>
+        <item>Designer</item>
+        <item>Miscellaneous</item>
+        <item>Quick response</item>
+        <item>Collection</item>
+        <item>On appointment</item>
         <item>Accessories</item>
         <item>Plus size women</item>
         <item>Plus size men</item>
@@ -25,16 +30,17 @@
         <item>Bridal wear</item>
         <item>Baby clothes</item>
         <item>Swimwear</item>
-        <item>Miscellaneous</item>
-        <item>Quick response</item>
-        <item>Collection</item>
-        <item>On appointment</item>
     </string-array>
 
     <string-array name="mMode_array">
         <item>Women\'s Fashion</item>
         <item>Men\'s Fashion</item>
         <item>Children fashion</item>
+        <item>Designer</item>
+        <item>Miscellaneous</item>
+        <item>Quick response</item>
+        <item>Collection</item>
+        <item>On appointment</item>
         <item>Accessories</item>
         <item>Stock</item>
         <item>Plus size women</item>
@@ -43,11 +49,6 @@
         <item>Bridal wear</item>
         <item>Baby clothes</item>
         <item>Swimwear</item>
-        <item>Designer</item>
-        <item>Miscellaneous</item>
-        <item>Quick response</item>
-        <item>Collection</item>
-        <item>On appointment</item>
     </string-array>
 
 </resources>
