@@ -25,6 +25,10 @@
         <item>Bridal wear</item>
         <item>Baby clothes</item>
         <item>Swimwear</item>
+        <item>Miscellaneous</item>
+        <item>Quick response</item>
+        <item>Collection</item>
+        <item>On appointment</item>
     </string-array>
 
     <string-array name="mMode_array">
@@ -39,6 +43,11 @@
         <item>Bridal wear</item>
         <item>Baby clothes</item>
         <item>Swimwear</item>
+        <item>Designer</item>
+        <item>Miscellaneous</item>
+        <item>Quick response</item>
+        <item>Collection</item>
+        <item>On appointment</item>
     </string-array>
 
 </resources>
