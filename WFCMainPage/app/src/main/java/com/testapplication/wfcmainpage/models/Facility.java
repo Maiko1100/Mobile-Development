@@ -25,11 +25,11 @@ public class Facility {
     private String mBruidsKleding;
     private String mBabySpullen;
     private String mBadMode;
-    private String mDiversen;
-    private String mOpAfspraak;
     private String mOntwerper;
+    private String mDiversen;
     private String mQuickResponse;
     private String mCollectie;
+    private String mOpAfspraak;
 
     public Facility() {
     }

@@ -58,6 +58,11 @@ public class MyDatabase extends SQLiteAssetHelper {
                 Facility.setmBruidsKleding(cursor.getString(16));
                 Facility.setmBabySpullen(cursor.getString(17));
                 Facility.setmBadMode(cursor.getString(18));
+                Facility.setmOntwerper(cursor.getString(19));
+                Facility.setmDiversen(cursor.getString(20));
+                Facility.setmQuickResponse(cursor.getString(21));
+                Facility.setmCollectie(cursor.getString(22));
+                Facility.setmOpAfspraak(cursor.getString(23));
 
                 facilities.add(Facility);
             } while (cursor.moveToNext());
