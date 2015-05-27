@@ -96,12 +96,22 @@
         android:layout_toRightOf="@+id/etagetext" />
 
     <TextView
+        android:id="@+id/showroomtext"
+        style="@style/TextDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFloor"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:text="@string/showroom" />
+
+    <TextView
         android:id="@+id/txtRoom"
         style="@style/TextDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtFloor"
-        android:layout_marginBottom="@dimen/spacing_small" />
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:layout_toRightOf="@+id/showroomtext" />
 
     <View
         android:layout_width="fill_parent"
