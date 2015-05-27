@@ -39,7 +39,8 @@
         android:layout_below="@+id/contacttext"
         android:layout_marginBottom="@dimen/spacing_extra_small"
         android:layout_marginRight="@dimen/spacing_extra_small"
-        android:background="@drawable/call_contact" />
+        android:background="@drawable/call_contact"
+        android:contentDescription="@string/phoneIcon_string" />
 
     <TextView
         android:id="@+id/foontext"
@@ -69,7 +70,8 @@
         android:layout_below="@+id/txtFoon"
         android:layout_marginBottom="@dimen/spacing_extra_small"
         android:layout_marginRight="@dimen/spacing_extra_small"
-        android:background="@drawable/sym_action_web" />
+        android:background="@drawable/sym_action_web"
+        android:contentDescription="@string/webIcon_string" />
 
     <TextView
         android:id="@+id/websitetext"
@@ -98,7 +100,8 @@
         android:layout_below="@+id/txtWebsite"
         android:layout_marginBottom="@dimen/spacing_extra_small"
         android:layout_marginRight="@dimen/spacing_extra_small"
-        android:background="@drawable/sym_action_email" />
+        android:background="@drawable/sym_action_email"
+        android:contentDescription="@string/emailIcon_string" />
 
     <TextView
         android:id="@+id/textemail"

@@ -85,4 +85,7 @@
     <string name="url_viewpager_case_seven">http://www.worldfashioncentre.nl/nl-nl/exhibitors/nieuwshuurders.aspx?udt_595_param_detail=4005</string>
     <string name="title_activity_navigation_indoor_map">NavigationIndoorMapActivity</string>
     <string name="niet_beschikbaar">Not available</string>
+    <string name="emailIcon_string">emailIcon</string>
+    <string name="webIcon_string">webIcon</string>
+    <string name="phoneIcon_string">phoneIcon</string>
 </resources>
