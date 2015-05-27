@@ -484,7 +484,12 @@ public class FacilitiesActivity extends ActionBarActivity {
                             mItems.get(i).getmSportKleding(),
                             mItems.get(i).getmBruidsKleding(),
                             mItems.get(i).getmBabySpullen(),
-                            mItems.get(i).getmBadMode()));
+                            mItems.get(i).getmBadMode(),
+                            mItems.get(i).getmOntwerper(),
+                            mItems.get(i).getmDiversen(),
+                            mItems.get(i).getmQuickResponse(),
+                            mItems.get(i).getmCollectie(),
+                            mItems.get(i).getmOpAfspraak()));
         }
         return mFacilities;
     }
@@ -517,7 +522,12 @@ public class FacilitiesActivity extends ActionBarActivity {
                                 mItems.get(i).getmSportKleding(),
                                 mItems.get(i).getmBruidsKleding(),
                                 mItems.get(i).getmBabySpullen(),
-                                mItems.get(i).getmBadMode()));
+                                mItems.get(i).getmBadMode(),
+                                mItems.get(i).getmOntwerper(),
+                                mItems.get(i).getmDiversen(),
+                                mItems.get(i).getmQuickResponse(),
+                                mItems.get(i).getmCollectie(),
+                                mItems.get(i).getmOpAfspraak()));
             }
         }
         return mFacilityModeCategories;

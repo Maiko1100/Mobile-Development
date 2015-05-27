@@ -25,11 +25,20 @@ public class Facility {
     private String mBruidsKleding;
     private String mBabySpullen;
     private String mBadMode;
+    private String mDiversen;
+    private String mOpAfspraak;
+    private String mOntwerper;
+    private String mQuickResponse;
+    private String mCollectie;
 
     public Facility() {
     }
 
-    public Facility(String mFacilityName, String mTelefoonNummer, String mWebsite, String mTower, String mEtage, String mShowRoom, String mEmail, String mDamesMode, String mHerenMode, String mKinderMode, String accessoires, String voorraad, String xlDames, String mXlHeren, String mSportKleding, String mBruidsKleding, String mBabySpullen, String mBadMode) {
+    public Facility(String mFacilityName, String mTelefoonNummer, String mWebsite, String mTower, String mEtage,
+                    String mShowRoom, String mEmail, String mDamesMode, String mHerenMode, String mKinderMode,
+                    String accessoires, String voorraad, String xlDames, String mXlHeren, String mSportKleding,
+                    String mBruidsKleding, String mBabySpullen, String mBadMode, String mOntwerper, String mDiversen,
+                    String mQuickResponse, String mCollectie, String mOpAfspraak) {
         this.mFacilityName = mFacilityName;
         this.mTelefoonNummer = mTelefoonNummer;
         this.mWebsite = mWebsite;
@@ -48,6 +57,11 @@ public class Facility {
         this.mBruidsKleding = mBruidsKleding;
         this.mBabySpullen = mBabySpullen;
         this.mBadMode = mBadMode;
+        this.mOntwerper = mOntwerper;
+        this.mDiversen = mDiversen;
+        this.mQuickResponse = mQuickResponse;
+        this.mCollectie = mCollectie;
+        this.mOpAfspraak = mOpAfspraak;
     }
 
     public int getId() {
@@ -202,6 +216,27 @@ public class Facility {
         this.mBadMode = mBadMode;
     }
 
+    public String getmOntwerper (){ return mOntwerper; }
+
+    public void setmOntwerper (String mOntwerper){ this.mOntwerper = mOntwerper; }
+
+    public String getmDiversen (){ return mDiversen; }
+
+    public void setmDiversen (String mDiversen){ this.mDiversen = mDiversen; }
+
+    public String getmQuickResponse (){ return mQuickResponse; }
+
+    public void setmQuickResponse (String mQuickResponse){ this.mQuickResponse = mQuickResponse; }
+
+    public String getmCollectie (){ return mCollectie; }
+
+    public void setmCollectie (String mCollectie){ this.mCollectie = mCollectie; }
+
+    public String getmOpAfspraak (){ return mOpAfspraak; }
+
+    public void setmOpAfspraak (String mOpAfspraak){ this.mOpAfspraak = mOpAfspraak; }
+
+
     public boolean isLeeg(int mode) {
         switch (mode) {
             case 0:
@@ -226,6 +261,16 @@ public class Facility {
                 return mBabySpullen.isEmpty();
             case 10:
                 return mBadMode.isEmpty();
+            case 11:
+                return mOntwerper.isEmpty();
+            case 12:
+                return mDiversen.isEmpty();
+            case 13:
+                return mQuickResponse.isEmpty();
+            case 14:
+                return mCollectie.isEmpty();
+            case 15:
+                return mOpAfspraak.isEmpty();
             default:
                 return false;
         }
@@ -253,6 +298,16 @@ public class Facility {
                 return mBabySpullen.isEmpty();
             case 10:
                 return mBadMode.isEmpty();
+            case 11:
+                return mOntwerper.isEmpty();
+            case 12:
+                return mDiversen.isEmpty();
+            case 13:
+                return mQuickResponse.isEmpty();
+            case 14:
+                return mCollectie.isEmpty();
+            case 15:
+                return mOpAfspraak.isEmpty();
             default:
                 return false;
         }

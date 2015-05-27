@@ -75,3 +75,6 @@ local.properties
 AndroidManifest.out.xml
 com_crashlytics_export_strings.xml
 screenshot_*
+WFCMainPage/.idea/gradle.xml
+WFCMainPage/.idea/misc.xml
+WFCMainPage/.idea/misc.xml
