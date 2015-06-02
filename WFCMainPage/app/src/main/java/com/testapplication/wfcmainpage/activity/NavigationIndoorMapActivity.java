@@ -1,10 +1,12 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,7 +22,6 @@ import com.indooratlas.android.MetricPoint;
 import com.indooratlas.android.ResultCallback;
 import com.indooratlas.android.ServiceState;
 import com.testapplication.wfcmainpage.R;
-import com.testapplication.wfcmainpage.models.CustomView;
 
 import java.io.IOException;
 
@@ -40,7 +41,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	ImageView image, blueDot;
 
 	private final String TAG = "MijnTag";
-	double B;
+	double B, fpx, fpy;
 
 
 	@Override
@@ -62,7 +63,11 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 			public void onResult(final FloorPlan result) {
 				mFloorPlan = result;
 				B = mFloorPlan.metricToPixelConversion;
+				fpx = mFloorPlan.dimensions[0];
+				fpy = mFloorPlan.dimensions[1];
 				loadFloorPlanImage(result);
+
+				Log.e(TAG, "Metric to pixel: " + B + " Normal X: " + fpx + " Scaled X: " + (fpx / B) + " Normal Y: ." + fpy + " Scaled Y: " + (fpy / B));
 
 			}
 
@@ -80,6 +85,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 
 	}
+
 
 	private void initIndoorAtlas() {
 
@@ -136,22 +142,23 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 		BitmapFactory.Options options = new BitmapFactory.Options();
 
-		int reqWidth = 2048;
-		int reqHeight = 2048;
-		final int width = (int) floorPlan.dimensions[0];
-		final int height = (int) floorPlan.dimensions[1];
-		int inSampleSize = 1;
-
-		if (height > reqHeight || width > reqWidth) {
-			final int halfHeight = height / 2;
-			final int halfWidth = width / 2;
-			while ((halfHeight / inSampleSize) > reqHeight
-					&& (halfWidth / inSampleSize) > reqWidth) {
-				inSampleSize *= 2;
-			}
-		}
-
-		options.inSampleSize = inSampleSize;
+//		int reqWidth = 2048;
+//		int reqHeight = 2048;
+//		final int width = (int) floorPlan.dimensions[0];
+//		final int height = (int) floorPlan.dimensions[1];
+//		int inSampleSize = 1;
+//
+//		if (height > reqHeight || width > reqWidth) {
+//			final int halfHeight = height / 2;
+//			final int halfWidth = width / 2;
+//			while ((halfHeight / inSampleSize) > reqHeight
+//					&& (halfWidth / inSampleSize) > reqWidth) {
+//				inSampleSize *= 2;
+//			}
+//		}
+//
+//
+//		options.inSampleSize = inSampleSize;
 		return options;
 	}
 
@@ -196,13 +203,25 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	 */
 	public void onServiceUpdate(ServiceState state) {
 		setImagePoint(state.getMetricPoint());
+
 	}
 
 	private double getMetricCalculatedScale(Double metr) {
-		metr = metr * B + 150;
+		metr = (metr * B);
+
+//		float res = convertPixelsToDp(metr.floatValue(), this);
+//
+//		metr = (double) res;
 		return metr;
 	}
 
+
+	public static float convertPixelsToDp(float px, Context context) {
+		Resources resources = context.getResources();
+		DisplayMetrics metrics = resources.getDisplayMetrics();
+		float dp = px / (metrics.densityDpi / 160f);
+		return dp;
+	}
 
 	private void setImagePoint(final MetricPoint imgPt) {
 
@@ -212,11 +231,11 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		float y = (float) getMetricCalculatedScale(imgPt.getY());
 
 
-
 		blueDot.setX(x);
 		blueDot.setY(y);
 
-		Log.e(TAG, "Filleerrrrrr" +"\nFloat Output Y: " + y + " Float Output X: " + x + " \nDouble output Y: " + dy + " Double output X: " + dx);
+
+		Log.e(TAG, "Print" + "\nFloat Output Y: " + y + " Float Output X: " + x + " \nDouble output Y: " + dy + " Double output X: " + dx + " image X: " + image.getX());
 
 	}
 
