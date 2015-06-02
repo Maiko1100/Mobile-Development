@@ -12,14 +12,15 @@ import android.widget.Toast;
 import com.indooratlas.android.CalibrationState;
 import com.indooratlas.android.FloorPlan;
 import com.indooratlas.android.FutureResult;
-import com.indooratlas.android.ImagePoint;
 import com.indooratlas.android.IndoorAtlas;
 import com.indooratlas.android.IndoorAtlasException;
 import com.indooratlas.android.IndoorAtlasFactory;
 import com.indooratlas.android.IndoorAtlasListener;
+import com.indooratlas.android.MetricPoint;
 import com.indooratlas.android.ResultCallback;
 import com.indooratlas.android.ServiceState;
 import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.models.CustomView;
 
 import java.io.IOException;
 
@@ -28,17 +29,19 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 	String mApiKey = "0ffdc6fa-5af1-4b36-8898-f132b9b27ea1";
 	String mApiSecret = "8x!XaLPUCDx4DSNlKi6&flJPHpXLKmX&)7IMFn(yy2TcrQRzsuQZvVT%aJwKWop7pwqGN)Bsvlm8zyf%db(dOZZhc82lI22nxM8XVJ7eY5GFw)GZp4sEBEeyGmIyhO6R";
-
-	private IndoorAtlas mIndoorAtlas;
-	private final String TAG = "MijnTag";
-	private boolean mIsPositioning;
-	private FloorPlan mFloorPlan;
-	ImageView image;
-	ImageView imgPoint;
-
 	String mFloorPlanId = "f1b92acd-7a57-4bdd-8395-6f9a4cb84724";
 	String mFloorId = "ce808d5e-6410-4c1e-9796-66b115673eeb";
 	String mVenueId = "b2f56148-7faa-4ce4-b543-32c67c01b015";
+
+	private IndoorAtlas mIndoorAtlas;
+	private boolean mIsPositioning;
+	private FloorPlan mFloorPlan;
+
+	ImageView image, blueDot;
+
+	private final String TAG = "MijnTag";
+	double B;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		setTitle(getString(R.string.indoor_maps_title_text));
 
 		image = (ImageView) findViewById(R.id.showIndoorMap);
-		imgPoint = (ImageView) findViewById(R.id.showBlueDot);
+		blueDot = (ImageView) findViewById(R.id.showBlueDot);
 
 
 		initIndoorAtlas();
@@ -58,6 +61,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 			@Override
 			public void onResult(final FloorPlan result) {
 				mFloorPlan = result;
+				B = mFloorPlan.metricToPixelConversion;
 				loadFloorPlanImage(result);
 
 			}
@@ -71,12 +75,85 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 			public void onApplicationError(IndoorAtlasException e) {
 
 			}
-			// handle error conditions too
 		});
-
 		startPositioning();
+
+
 	}
 
+	private void initIndoorAtlas() {
+
+		try {
+			// obtain instance to positioning service, note that calibrating might begin instantly
+			mIndoorAtlas = IndoorAtlasFactory.createIndoorAtlas(
+					getApplicationContext(),
+					this, // IndoorAtlasListener
+					mApiKey,
+					mApiSecret);
+			togglePositioning();
+
+		} catch (IndoorAtlasException ex) {
+			Log.e("IndoorAtlas", "init failed", ex);
+			Log.e("IndoorAtlas", "init IndoorAtlas failed, " + ex.toString());
+		}
+
+	}
+
+	private void togglePositioning() {
+		if (mIsPositioning) {
+			stopPositioning();
+		} else {
+			startPositioning();
+		}
+	}
+
+	private void startPositioning() {
+		if (mIndoorAtlas != null) {
+			Log.e(TAG, String.format("startPositioning, venueId: %s, floorId: %s, floorPlanId: %s",
+					mVenueId,
+					mFloorId,
+					mFloorPlanId));
+			try {
+				mIndoorAtlas.startPositioning(mVenueId, mFloorId, mFloorPlanId);
+				mIsPositioning = true;
+			} catch (IndoorAtlasException e) {
+				Log.e(TAG, "startPositioning failed: " + e);
+			}
+		} else {
+			Log.e(TAG, "calibration not ready, cannot start positioning");
+		}
+	}
+
+	private void stopPositioning() {
+		mIsPositioning = false;
+		if (mIndoorAtlas != null) {
+			Log.e(TAG, "Stop positioning");
+			mIndoorAtlas.stopPositioning();
+		}
+	}
+
+	private BitmapFactory.Options createBitmapOptions(FloorPlan floorPlan) {
+
+		BitmapFactory.Options options = new BitmapFactory.Options();
+
+		int reqWidth = 2048;
+		int reqHeight = 2048;
+		final int width = (int) floorPlan.dimensions[0];
+		final int height = (int) floorPlan.dimensions[1];
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+			final int halfHeight = height / 2;
+			final int halfWidth = width / 2;
+			while ((halfHeight / inSampleSize) > reqHeight
+					&& (halfWidth / inSampleSize) > reqWidth) {
+				inSampleSize *= 2;
+			}
+		}
+
+		options.inSampleSize = inSampleSize;
+		return options;
+	}
 
 	void loadFloorPlanImage(FloorPlan floorPlan) {
 		BitmapFactory.Options options = createBitmapOptions(floorPlan);
@@ -84,8 +161,6 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		result.setCallback(new ResultCallback<Bitmap>() {
 			@Override
 			public void onResult(final Bitmap result) {
-				// now you have floor plan bitmap, do something with it
-
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
@@ -108,84 +183,6 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		});
 	}
 
-
-	private BitmapFactory.Options createBitmapOptions(FloorPlan floorPlan) {
-
-		BitmapFactory.Options options = new BitmapFactory.Options();
-
-		int reqWidth = 2048;
-		int reqHeight = 2048;
-		final int width = (int) floorPlan.dimensions[0];
-		final int height = (int) floorPlan.dimensions[1];
-		int inSampleSize = 1;
-
-		if (height > reqHeight || width > reqWidth) {
-			final int halfHeight = height / 2;
-			final int halfWidth = width / 2;
-			while ((halfHeight / inSampleSize) > reqHeight
-					&& (halfWidth / inSampleSize) > reqWidth) {
-				inSampleSize *= 2;
-			}
-		}
-		options.inSampleSize = inSampleSize;
-		return options;
-	}
-
-	private void initIndoorAtlas() {
-
-		try {
-
-
-			// obtain instance to positioning service, note that calibrating might begin instantly
-			mIndoorAtlas = IndoorAtlasFactory.createIndoorAtlas(
-					getApplicationContext(),
-					this, // IndoorAtlasListener
-					mApiKey,
-					mApiSecret);
-
-
-			togglePositioning();
-
-		} catch (IndoorAtlasException ex) {
-			Log.e("IndoorAtlas", "init failed", ex);
-			Log.e("IndoorAtlas", "init IndoorAtlas failed, " + ex.toString());
-		}
-
-	}
-
-	private void stopPositioning() {
-		mIsPositioning = false;
-		if (mIndoorAtlas != null) {
-			Log.e(TAG, "Stop positioning");
-			mIndoorAtlas.stopPositioning();
-		}
-	}
-
-	private void startPositioning() {
-		if (mIndoorAtlas != null) {
-			Log.e(TAG, String.format("startPositioning, venueId: %s, floorId: %s, floorPlanId: %s",
-					mVenueId,
-					mFloorId,
-					mFloorPlanId));
-			try {
-				mIndoorAtlas.startPositioning(mVenueId, mFloorId, mFloorPlanId);
-				mIsPositioning = true;
-			} catch (IndoorAtlasException e) {
-				Log.e(TAG, "startPositioning failed: " + e);
-			}
-		} else {
-			Log.e(TAG, "calibration not ready, cannot start positioning");
-		}
-	}
-
-	private void togglePositioning() {
-		if (mIsPositioning) {
-			stopPositioning();
-		} else {
-			startPositioning();
-		}
-	}
-
 	private void tearDown() {
 		if (mIndoorAtlas != null) {
 			mIndoorAtlas.tearDown();
@@ -198,20 +195,29 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	 * This is where you will handle location updates.
 	 */
 	public void onServiceUpdate(ServiceState state) {
-		setImagePoint(state.getImagePoint());
-		System.out.println(state.getImagePoint());
+		setImagePoint(state.getMetricPoint());
 	}
 
-	private void setImagePoint(final ImagePoint imgPt) {
+	private double getMetricCalculatedScale(Double metr) {
+		metr = metr * B + 150;
+		return metr;
+	}
 
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
 
-				imgPoint.setX(imgPt.getI());
-				imgPoint.setY(imgPt.getJ());
-			}
-		});
+	private void setImagePoint(final MetricPoint imgPt) {
+
+		double dx = getMetricCalculatedScale(imgPt.getX());
+		double dy = getMetricCalculatedScale(imgPt.getY());
+		float x = (float) getMetricCalculatedScale(imgPt.getX());
+		float y = (float) getMetricCalculatedScale(imgPt.getY());
+
+
+
+		blueDot.setX(x);
+		blueDot.setY(y);
+
+		Log.e(TAG, "Filleerrrrrr" +"\nFloat Output Y: " + y + " Float Output X: " + x + " \nDouble output Y: " + dy + " Double output X: " + dx);
+
 	}
 
 
