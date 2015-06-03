@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.indooratlas.android.CalibrationState;
 import com.indooratlas.android.FloorPlan;
 import com.indooratlas.android.FutureResult;
+import com.indooratlas.android.ImagePoint;
 import com.indooratlas.android.IndoorAtlas;
 import com.indooratlas.android.IndoorAtlasException;
 import com.indooratlas.android.IndoorAtlasFactory;
@@ -62,7 +63,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 			@Override
 			public void onResult(final FloorPlan result) {
 				mFloorPlan = result;
-				B = mFloorPlan.metricToPixelConversion;
+				B = mFloorPlan.pixelToMetricConversion;
 				fpx = mFloorPlan.dimensions[0];
 				fpy = mFloorPlan.dimensions[1];
 				loadFloorPlanImage(result);
@@ -142,23 +143,23 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 		BitmapFactory.Options options = new BitmapFactory.Options();
 
-//		int reqWidth = 2048;
-//		int reqHeight = 2048;
-//		final int width = (int) floorPlan.dimensions[0];
-//		final int height = (int) floorPlan.dimensions[1];
-//		int inSampleSize = 1;
-//
-//		if (height > reqHeight || width > reqWidth) {
-//			final int halfHeight = height / 2;
-//			final int halfWidth = width / 2;
-//			while ((halfHeight / inSampleSize) > reqHeight
-//					&& (halfWidth / inSampleSize) > reqWidth) {
-//				inSampleSize *= 2;
-//			}
-//		}
-//
-//
-//		options.inSampleSize = inSampleSize;
+		int reqWidth = 2048;
+		int reqHeight = 2048;
+		final int width = (int) floorPlan.dimensions[0];
+		final int height = (int) floorPlan.dimensions[1];
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+			final int halfHeight = height / 2;
+			final int halfWidth = width / 2;
+			while ((halfHeight / inSampleSize) > reqHeight
+					&& (halfWidth / inSampleSize) > reqWidth) {
+				inSampleSize *= 2;
+			}
+		}
+
+
+		options.inSampleSize = inSampleSize;
 		return options;
 	}
 
@@ -202,7 +203,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	 * This is where you will handle location updates.
 	 */
 	public void onServiceUpdate(ServiceState state) {
-		setImagePoint(state.getMetricPoint());
+		setImagePoint(state.getImagePoint());
 
 	}
 
@@ -223,19 +224,19 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		return dp;
 	}
 
-	private void setImagePoint(final MetricPoint imgPt) {
+	private void setImagePoint(final ImagePoint imgPt) {
 
-		double dx = getMetricCalculatedScale(imgPt.getX());
-		double dy = getMetricCalculatedScale(imgPt.getY());
-		float x = (float) getMetricCalculatedScale(imgPt.getX());
-		float y = (float) getMetricCalculatedScale(imgPt.getY());
-
-
-		blueDot.setX(x);
-		blueDot.setY(y);
+		double dx = getMetricCalculatedScale((double) imgPt.getI());
+		double dy = getMetricCalculatedScale((double)imgPt.getJ());
+//		float x = getMetricCalculatedScale(imgPt.getI());
+//		float y = getMetricCalculatedScale(imgPt.getJ());
 
 
-		Log.e(TAG, "Print" + "\nFloat Output Y: " + y + " Float Output X: " + x + " \nDouble output Y: " + dy + " Double output X: " + dx + " image X: " + image.getX());
+		blueDot.setX((float)dx);
+		blueDot.setY((float)dy);
+
+
+		Log.e(TAG, "Print" +  " \nDouble output Y: " + dy + " Double output X: " + dx + " image X: " + image.getX());
 
 	}
 
