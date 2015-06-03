@@ -4,13 +4,17 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.style.ScaleXSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.fitness.data.Device;
 import com.indooratlas.android.CalibrationState;
 import com.indooratlas.android.FloorPlan;
 import com.indooratlas.android.FutureResult;
@@ -225,8 +229,8 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 	private void setImagePoint(final MetricPoint imgPt) {
 
-		double dx = getMetricCalculatedScale(imgPt.getX());
-		double dy = getMetricCalculatedScale(imgPt.getY());
+//		double dx = getMetricCalculatedScale(imgPt.getX());
+//		double dy = getMetricCalculatedScale(imgPt.getY());
 		float x = (float) getMetricCalculatedScale(imgPt.getX());
 		float y = (float) getMetricCalculatedScale(imgPt.getY());
 
@@ -235,7 +239,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		blueDot.setY(y);
 
 
-		Log.e(TAG, "Print" + "\nFloat Output Y: " + y + " Float Output X: " + x + " \nDouble output Y: " + dy + " Double output X: " + dx + " image X: " + image.getX());
+		Log.e(TAG, "Print" + "\nFloat Output Y: " + y + " Float Output X: " + " image X: " + image.getX());
 
 	}
 
