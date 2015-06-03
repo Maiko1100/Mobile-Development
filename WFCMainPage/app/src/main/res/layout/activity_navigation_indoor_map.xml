@@ -4,8 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:scaleX="1.5"
-    android:scaleY="1.5"
     tools:context="com.testapplication.wfcmainpage.activity.NavigationIndoorMapActivity">
 
     <ImageView
