@@ -1,13 +1,18 @@
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/mainpage_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.testapplication.wfcmainpage.activity.FacilitiesDetailsActivity">
+
 
     <TextView
         android:id="@+id/txtFacilityName"
@@ -18,7 +23,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/txtFacilityName"
         android:background="@color/text_color" />
@@ -124,7 +129,7 @@
         android:autoLink="email" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/txtEmail"
         android:background="@color/text_color" />
@@ -189,7 +194,7 @@
         android:layout_toRightOf="@+id/showroomtext" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/showroomtext"
         android:layout_marginBottom="@dimen/spacing_extra_small"
@@ -212,3 +217,4 @@
         android:layout_below="@+id/modetext" />
 
 </RelativeLayout>
+</ScrollView>

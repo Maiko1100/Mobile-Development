@@ -18,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/txtType"
         android:background="@color/text_color" />
@@ -49,7 +49,7 @@
         android:layout_marginBottom="@dimen/spacing_small" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/txtInfo"
         android:background="@color/text_color" />
@@ -114,7 +114,7 @@
         android:layout_toRightOf="@+id/showroomtext" />
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/txtRoom"
         android:background="@color/text_color" />

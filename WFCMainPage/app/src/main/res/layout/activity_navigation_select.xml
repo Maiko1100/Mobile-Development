@@ -17,7 +17,7 @@
 
         <Button
             android:id="@+id/btnNavigationSelectIndoor"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parentt"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="0.5"
@@ -28,7 +28,7 @@
 
         <Button
             android:id="@+id/btnNavigationSelectIndoorMap"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parentt"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="0.5"
@@ -39,7 +39,7 @@
 
         <Button
             android:id="@+id/btnNavigationSelectOutdoor"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parentt"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="0.5"

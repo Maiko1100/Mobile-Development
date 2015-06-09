@@ -31,7 +31,7 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="#ffd3d3d3" />
 
         <ImageButton
@@ -46,7 +46,7 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="#ffd3d3d3" />
 
         <ImageButton
@@ -61,7 +61,7 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="#ffd3d3d3" />
 
         <ImageButton
