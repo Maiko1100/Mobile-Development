@@ -3,7 +3,7 @@ package com.testapplication.wfcmainpage.activity;
 /**
  * Created by Nick Zwaans on 3-3-2015.
  * Provides de facility page met hierin de faciliteiten van het world fashion centre,
- * deze bevat ook een zoekfunctie om het vinden van faciliteiten makkelijker te maken voor de gebruiker.
+ * Also holds the search filter.
  */
 
 import android.app.ActionBar;
