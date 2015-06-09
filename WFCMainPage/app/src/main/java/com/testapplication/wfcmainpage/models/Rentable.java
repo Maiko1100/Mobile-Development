@@ -18,16 +18,16 @@ public class Rentable {
 	public Rentable() {
 	}
 
-	public Rentable(String mName, String mInfo, String mType, String mSize, String mTower, String mFloor, String mRoom, String mImage, String mSiteLink) {
-		this.mName = mName;
-		this.mInfo = mInfo;
-		this.mType = mType;
-		this.mSize = mSize;
-		this.mTower = mTower;
-		this.mFloor = mFloor;
-		this.mRoom = mRoom;
-		this.mImage = mImage;
-		this.mSiteLink = mSiteLink;
+	public Rentable(String pName, String pInfo, String pType, String pSize, String pTower, String pFloor, String pRoom, String pImage, String pSiteLink) {
+		mName = pName;
+		mInfo = pInfo;
+		mType = pType;
+		mSize = pSize;
+		mTower = pTower;
+		mFloor = pFloor;
+		mRoom = pRoom;
+		mImage = pImage;
+		mSiteLink = pSiteLink;
 	}
 
 	public int getmId() {
