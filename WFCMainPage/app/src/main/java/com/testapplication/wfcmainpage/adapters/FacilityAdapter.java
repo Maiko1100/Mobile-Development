@@ -116,35 +116,35 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
 		viewHolder.image8.setVisibility(View.GONE);
 		if (!filteredResults.isLeeg(0)) {
 			viewHolder.image1.setVisibility(View.VISIBLE);
-			viewHolder.image1.setImageResource(R.drawable.icn_shopvrouwenxxhdpi);
+			viewHolder.image1.setImageResource(R.drawable.ic_shopvrouwen);
 		}
 		if (!filteredResults.isLeeg(1)) {
 			viewHolder.image2.setVisibility(View.VISIBLE);
-			viewHolder.image2.setImageResource(R.drawable.icn_shopmannenxxhdpi);
+			viewHolder.image2.setImageResource(R.drawable.ic_shopmannen);
 		}
 		if (!filteredResults.isLeeg(2)) {
 			viewHolder.image3.setVisibility(View.VISIBLE);
-			viewHolder.image3.setImageResource(R.drawable.icn_shopkinderenxxhdpi);
+			viewHolder.image3.setImageResource(R.drawable.ic_shopkinderen);
 		}
 		if (!filteredResults.isLeeg(3)) {
 			viewHolder.image4.setVisibility(View.VISIBLE);
-			viewHolder.image4.setImageResource(R.drawable.icn_shopontwerpersxxhdpi);
+			viewHolder.image4.setImageResource(R.drawable.ic_shopontwerpers);
 		}
 		if (!filteredResults.isLeeg(4)) {
 			viewHolder.image5.setVisibility(View.VISIBLE);
-			viewHolder.image5.setImageResource(R.drawable.icn_shopdiversenxxhdpi);
+			viewHolder.image5.setImageResource(R.drawable.ic_shopdiversen);
 		}
 		if (!filteredResults.isLeeg(5)) {
 			viewHolder.image6.setVisibility(View.VISIBLE);
-			viewHolder.image6.setImageResource(R.drawable.icn_shopquickresponsexxhdpi);
+			viewHolder.image6.setImageResource(R.drawable.ic_shopquickresponse);
 		}
 		if (!filteredResults.isLeeg(6)) {
 			viewHolder.image7.setVisibility(View.VISIBLE);
-			viewHolder.image7.setImageResource(R.drawable.icn_shopcollectiexxhdpi);
+			viewHolder.image7.setImageResource(R.drawable.ic_shopcollectie);
 		}
 		if (!filteredResults.isLeeg(7)) {
 			viewHolder.image8.setVisibility(View.VISIBLE);
-			viewHolder.image8.setImageResource(R.drawable.icn_shopopafspraakxxhdpi);
+			viewHolder.image8.setImageResource(R.drawable.ic_shopopafspraak);
 		}
 
 

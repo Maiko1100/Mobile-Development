@@ -56,7 +56,6 @@
             android:layout_below="@+id/contacttext"
             android:layout_marginBottom="@dimen/spacing_small"
             android:layout_toRightOf="@+id/phoneIcon"
-
             android:text="@string/telnum"/>
 
         <TextView
