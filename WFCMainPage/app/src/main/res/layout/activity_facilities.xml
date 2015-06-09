@@ -1,16 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/mainpage_background"
-    tools:context="com.testapplication.wfcmainpage.activity.FacilitiesActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/mainpage_background"
+                tools:context="com.testapplication.wfcmainpage.activity.FacilitiesActivity">
 
     <!-- List View for facility items on page-->
 
 
     <android.support.v4.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/drawer_layout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <!-- The main content view -->
@@ -18,23 +18,25 @@
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
         <ListView
             android:id="@+id/facilitiesList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/spacing_medium"
             android:paddingRight="@dimen/spacing_medium"
-            android:scrollbarStyle="outsideOverlay" />
+            android:scrollbarStyle="outsideOverlay"/>
 
         <!-- The navigation drawer -->
-        <ListView android:id="@+id/left_drawer"
+        <ListView
+            android:id="@+id/left_drawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/fac_light_color"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
-            android:background="@color/fac_light_color"
             />
     </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>

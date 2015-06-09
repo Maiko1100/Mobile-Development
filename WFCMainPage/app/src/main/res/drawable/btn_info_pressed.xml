@@ -7,13 +7,12 @@
 
         <shape
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="rectangle"
-            >
+            android:shape="rectangle">
 
             <gradient
                 android:angle="270"
-                android:startColor="@color/info_dark_color"
                 android:endColor="@color/info_light_color"
+                android:startColor="@color/info_dark_color"
                 android:type="linear"
                 />
         </shape>

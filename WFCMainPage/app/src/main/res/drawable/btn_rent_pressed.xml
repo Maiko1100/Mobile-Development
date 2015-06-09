@@ -12,8 +12,8 @@
 
             <gradient
                 android:angle="270"
-                android:startColor="@color/rent_dark_color"
                 android:endColor="@color/rent_light_color"
+                android:startColor="@color/rent_dark_color"
                 android:type="linear"
                 />
         </shape>

@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/abc_textfield_search_material"
             android:hint="@string/search_facility_bar_placeholder"
-            android:inputType="textFilter" >
+            android:inputType="textFilter">
         </EditText>
 
         <Button
