@@ -34,34 +34,34 @@ public class Facility {
     public Facility() {
     }
 
-    public Facility(String mFacilityName, String mTelefoonNummer, String mWebsite, String mTower, String mEtage,
-                    String mShowRoom, String mEmail, String mDamesMode, String mHerenMode, String mKinderMode,
-                    String accessoires, String voorraad, String xlDames, String mXlHeren, String mSportKleding,
-                    String mBruidsKleding, String mBabySpullen, String mBadMode, String mOntwerper, String mDiversen,
-                    String mQuickResponse, String mCollectie, String mOpAfspraak) {
-        this.mFacilityName = mFacilityName;
-        this.mTelefoonNummer = mTelefoonNummer;
-        this.mWebsite = mWebsite;
-        this.mTower = mTower;
-        this.mEtage = mEtage;
-        this.mShowRoom = mShowRoom;
-        this.mEmail = mEmail;
-        this.mDamesMode = mDamesMode;
-        this.mHerenMode = mHerenMode;
-        this.mKinderMode = mKinderMode;
-        this.mAccessoires = accessoires;
-        this.mVoorraad = voorraad;
-        this.mXlDames = xlDames;
-        this.mXlHeren = mXlHeren;
-        this.mSportKleding = mSportKleding;
-        this.mBruidsKleding = mBruidsKleding;
-        this.mBabySpullen = mBabySpullen;
-        this.mBadMode = mBadMode;
-        this.mOntwerper = mOntwerper;
-        this.mDiversen = mDiversen;
-        this.mQuickResponse = mQuickResponse;
-        this.mCollectie = mCollectie;
-        this.mOpAfspraak = mOpAfspraak;
+    public Facility(String pFacilityName, String pTelefoonNummer, String pWebsite, String pTower, String pEtage,
+                    String pShowRoom, String pEmail, String pDamesMode, String pHerenMode, String pKinderMode,
+                    String pAccesoires, String pVoorraad, String pXlDames, String pXlHeren, String pSportKleding,
+                    String pBruidsKleding, String pBabySpullen, String pBadMode, String pOntwerper, String pDiversen,
+                    String pQuickResponse, String pCollectie, String pOpAfspraak) {
+        mFacilityName = pFacilityName;
+        mTelefoonNummer = pTelefoonNummer;
+        mWebsite = pWebsite;
+        mTower = pTower;
+        mEtage = pEtage;
+        mShowRoom = pShowRoom;
+        mEmail = pEmail;
+        mDamesMode = pDamesMode;
+        mHerenMode = pHerenMode;
+        mKinderMode = pKinderMode;
+        mAccessoires = pAccesoires;
+        mVoorraad = pVoorraad;
+        mXlDames = pXlDames;
+        mXlHeren = pXlHeren;
+        mSportKleding = pSportKleding;
+        mBruidsKleding = pBruidsKleding;
+        mBabySpullen = pBabySpullen;
+        mBadMode = pBadMode;
+        mOntwerper = pOntwerper;
+        mDiversen = pDiversen;
+        mQuickResponse = pQuickResponse;
+        mCollectie = pCollectie;
+        mOpAfspraak = pOpAfspraak;
     }
 
     public int getId() {

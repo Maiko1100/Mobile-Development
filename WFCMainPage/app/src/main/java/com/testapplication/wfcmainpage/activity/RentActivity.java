@@ -2,7 +2,7 @@ package com.testapplication.wfcmainpage.activity;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Deze class is de main van de facilities page.
+ * Deze class is de main van de rent page.
  */
 
 import android.content.Intent;
