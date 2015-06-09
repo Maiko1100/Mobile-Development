@@ -34,8 +34,8 @@ public class MyDatabase extends SQLiteAssetHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(query, null);
 
-		// 3. go over each row, build book and add it to list
-		Facility Facility = null;
+		// 3. go over each row, build facility and add it to list
+		Facility Facility;
 		if (cursor.moveToFirst()) {
 			do {
 				Facility = new Facility();
@@ -80,8 +80,8 @@ public class MyDatabase extends SQLiteAssetHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(query, null);
 
-		// 3. go over each row, build book and add it to list
-		Rentable Rentable = null;
+		// 3. go over each row, build rentable and add it to list
+		Rentable Rentable;
 		if (cursor.moveToFirst()) {
 			do {
 				Rentable = new Rentable();

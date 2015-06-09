@@ -222,7 +222,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 				break;
 
 			case R.id.prevbutton:
-
 				prevPage();
 				break;
 		}
