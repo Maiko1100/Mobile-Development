@@ -45,7 +45,7 @@ public class NavigationIndoorActivity extends ActionBarActivity {
         if (!mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.enable();
         }
-        ;
+
 
         mBeaconManager.setRangingListener(new BeaconManager.RangingListener() {
 
@@ -55,19 +55,19 @@ public class NavigationIndoorActivity extends ActionBarActivity {
                     switch (b.getMacAddress()) {
                         case STRING_MAC_BLUE_BEACON1:
                             if (b.getRssi() > -60) {
-                                mTvLocation.setText("You are near the elevator");
+                                mTvLocation.setText(getString(R.string.beacon_elevator_text));
                                 ivNavigationIndoor.setImageResource(R.drawable.img_liftarea);
                             }
                             break;
                         case STRING_MAC_BLUE_BEACON2:
                             if (b.getRssi() > -60) {
-                                mTvLocation.setText("You are near the lunch room");
+                                mTvLocation.setText(getString(R.string.beacon_lunch_text));
                                 ivNavigationIndoor.setImageResource(R.drawable.img_luncharea);
                             }
                             break;
                         case STRING_MAC_PURPLE_BEACON:
                             if (b.getRssi() > -60) {
-                                mTvLocation.setText("You are near the workspace");
+                                mTvLocation.setText(getString(R.string.beacon_workspace_text));
                                 ivNavigationIndoor.setImageResource(R.drawable.img_werkarea);
                             }
                             break;

@@ -91,6 +91,7 @@ public class FacilitiesActivity extends ActionBarActivity {
 
         Resources res = this.getResources();
         mTransitionDrawable = (TransitionDrawable) res.getDrawable(R.drawable.transition_drawable);
+        assert mTransitionDrawable != null;
         mTransitionDrawable.setCrossFadeEnabled(true);
 
 

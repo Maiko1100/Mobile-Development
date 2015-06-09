@@ -88,4 +88,7 @@
     <string name="emailIcon_string">emailIcon</string>
     <string name="webIcon_string">webIcon</string>
     <string name="phoneIcon_string">phoneIcon</string>
+    <string name="beacon_elevator_text">You are near the elevator</string>
+    <string name="beacon_lunch_text">You are near the lunch room</string>
+    <string name="beacon_workspace_text">You are near the workspace</string>
 </resources>
