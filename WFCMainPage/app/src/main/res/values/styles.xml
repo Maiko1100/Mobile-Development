@@ -17,10 +17,32 @@
     </style>
 
     <style name="TextHeader">
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="fontFace">@string/font_futura_book</item>
+        <item name="android:layout_marginBottom">4dp</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/headerblack</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="fontFace">@string/font_futura_light</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/headerblack</item>
+    </style>
+
+    <style name="WFCButtonMain" parent="android:Widget.Button">
+        <item name="fontFace">@string/font_futura_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="WFCButtonNavigation" parent="android:Widget.Button">
+        <item name="fontFace">@string/font_futura_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@drawable/btn_navigation_background</item>
     </style>
 
     <!-- Style InfoActionBar -->

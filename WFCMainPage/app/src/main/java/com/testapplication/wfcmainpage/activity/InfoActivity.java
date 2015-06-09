@@ -19,20 +19,6 @@ public class InfoActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
 
-		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
-
-		TextView historyTitle = (TextView) findViewById(R.id.historyTitle);
-		historyTitle.setTypeface(face);
-
-		TextView mijlpaalTitle = (TextView) findViewById(R.id.mijlpaalTitle);
-		mijlpaalTitle.setTypeface(face);
-
-		TextView managementTitle = (TextView) findViewById(R.id.managementTitle);
-		managementTitle.setTypeface(face);
-
-		TextView bezoekTitle = (TextView) findViewById(R.id.bezoekTitle);
-		bezoekTitle.setTypeface(face);
-
 		setTitle(getString(R.string.info_title_text));
 	}
 

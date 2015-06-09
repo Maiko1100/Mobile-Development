@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="font_futura_light">futura_light.ttf</string>
+    <string name="font_futura_book">futura_book.ttf</string>
+    <string name="font_futura_extra_bold">futura_extra_bold.ttf</string>
+</resources>

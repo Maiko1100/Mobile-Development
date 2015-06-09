@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="fontFace" format="string"/>
+
+    <!-- BetterTextView -->
+    <declare-styleable name="BetterTextView">
+        <attr name="fakeFocused" format="boolean"/>
+        <attr name="fontFace"/>
+    </declare-styleable>
+
+    <!-- BetterEditText -->
+    <declare-styleable name="BetterEditText">
+        <attr name="fontFace"/>
+    </declare-styleable>
+
+    <!-- BetterButton -->
+    <declare-styleable name="BetterButton">
+        <attr name="fontFace"/>
+    </declare-styleable>
+
+</resources>

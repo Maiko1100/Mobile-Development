@@ -1,76 +1,125 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/mainpage_background"
-            tools:context="com.testapplication.wfcmainpage.activity.InfoActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainpage_background"
+    tools:context="com.testapplication.wfcmainpage.activity.InfoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_medium"
-        android:layout_marginRight="@dimen/spacing_medium"
         android:background="@color/white_trans"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/spacing_medium"
-        android:paddingRight="@dimen/spacing_medium">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/historyTitle"
-            style="@style/TextHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/history_title"/>
-
-        <TextView
-            style="@style/TextDefault"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/history_text"/>
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/spacing_medium"
+            android:paddingRight="@dimen/spacing_medium">
 
-        <TextView
-            android:id="@+id/mijlpaalTitle"
-            style="@style/TextHeader"
-            android:layout_width="wrap_content"
+            <com.testapplication.wfcmainpage.views.BetterTextView
+                android:id="@+id/historyTitle"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@string/history_title" />
+
+            <TextView
+                style="@style/TextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/history_text" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mijlpaal_title"/>
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/spacing_medium"
+            android:paddingRight="@dimen/spacing_medium">
 
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/TextDefault"
-            android:layout_width="wrap_content"
+            <com.testapplication.wfcmainpage.views.BetterTextView
+                android:id="@+id/mijlpaalTitle"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mijlpaal_title" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/TextDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mijlpaal_text" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mijlpaal_text"/>
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/spacing_medium"
+            android:paddingRight="@dimen/spacing_medium">
 
-        <TextView
-            android:id="@+id/managementTitle"
-            style="@style/TextHeader"
-            android:layout_width="wrap_content"
+            <com.testapplication.wfcmainpage.views.BetterTextView
+                android:id="@+id/managementTitle"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/management_title" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/TextDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/management_text" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/management_title"/>
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/spacing_medium"
+            android:paddingRight="@dimen/spacing_medium">
 
-        <TextView
-            android:id="@+id/textView6"
-            style="@style/TextDefault"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/management_text"/>
+            <com.testapplication.wfcmainpage.views.BetterTextView
+                android:id="@+id/bezoekTitle"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bezoekadres_title" />
 
-        <TextView
-            android:id="@+id/bezoekTitle"
-            style="@style/TextHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bezoekadres_title"/>
-
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/TextDefault"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/bezoekadres_text"/>
-
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/TextDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/bezoekadres_text" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
