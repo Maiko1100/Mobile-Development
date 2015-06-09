@@ -3,7 +3,9 @@ package com.testapplication.wfcmainpage.adapters;
 
 /**
  * Created by Nick Zwaans on 3-3-2015.
- * Deze class wordt toegepast op alle items in de list om de rent array te converteren naar een list.
+ * Provides an adapter for the rent database that converts the rent data to an arraylist and fills the listview with the
+ * rent data.
+ * The RentAdapter gets the data through pData from the RentActivity.
  */
 
 import android.content.Context;
