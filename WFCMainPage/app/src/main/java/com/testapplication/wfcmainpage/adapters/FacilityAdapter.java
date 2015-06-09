@@ -162,7 +162,8 @@ public class FacilityAdapter extends BaseAdapter implements Filterable {
 	}
 
 	/**
-	 * Provides a custom filter that searches per letter and not for whole words.
+	 * Provides a custom filter that searches per letter and not for whole words. Compares the constraint to the facility names.
+	 * If the facility name contains a letter from the constraint it gets added to the filtered list.
 	 */
 
 	private class FacilityFilter extends Filter {
