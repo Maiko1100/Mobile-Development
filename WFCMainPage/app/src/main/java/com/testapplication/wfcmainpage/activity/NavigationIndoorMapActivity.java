@@ -30,6 +30,8 @@ import java.io.IOException;
  */
 public class NavigationIndoorMapActivity extends ActionBarActivity implements IndoorAtlasListener {
 
+	private final String LOG_TAG = "MIJN_TAG";
+
 	/* Keys necessary to load Floorplan and indoor positioning details */
 	String mApiKey = "0ffdc6fa-5af1-4b36-8898-f132b9b27ea1";
 	String mApiSecret = "8x!XaLPUCDx4DSNlKi6&flJPHpXLKmX&)7IMFn(yy2TcrQRzsuQZvVT%aJwKWop7pwqGN)Bsvlm8zyf%db(dOZZhc82lI22nxM8XVJ7eY5GFw)GZp4sEBEeyGmIyhO6R";
@@ -43,9 +45,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 	ImageView ivFloorPLan, blueDot;
 
-	private final String LOG_TAG = "MIJN_TAG";
 	double mConversion;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -166,6 +166,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 	/**
 	 * Scale down the floorplan image if the size is too big
+	 *
 	 * @param floorPlan
 	 * @return
 	 */
@@ -211,6 +212,7 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 	/**
 	 * Method that scales metric points to floorplan image size and displays the blue dot
+	 *
 	 * @param mMetricPoint
 	 */
 	private void setMetricPoint(final MetricPoint mMetricPoint) {
