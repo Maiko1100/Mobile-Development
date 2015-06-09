@@ -84,7 +84,6 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 
 	}
 
-
 	private void initIndoorAtlas() {
 
 		try {
@@ -136,9 +135,9 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 		}
 	}
 
-	void loadFloorPlanImage(FloorPlan floorPlan) {
-		BitmapFactory.Options options = createBitmapOptions(floorPlan);
-		FutureResult<Bitmap> result = mIndoorAtlas.fetchFloorPlanImage(floorPlan, options);
+	void loadFloorPlanImage(FloorPlan pFloorPlan) {
+		BitmapFactory.Options options = createBitmapOptions(pFloorPlan);
+		FutureResult<Bitmap> result = mIndoorAtlas.fetchFloorPlanImage(pFloorPlan, options);
 		result.setCallback(new ResultCallback<Bitmap>() {
 			@Override
 			public void onResult(final Bitmap result) {
@@ -167,18 +166,18 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	/**
 	 * Scale down the floorplan image if the size is too big
 	 *
-	 * @param floorPlan
+	 * @param pFloorPlan
 	 * @return
 	 */
 
-	private BitmapFactory.Options createBitmapOptions(FloorPlan floorPlan) {
+	private BitmapFactory.Options createBitmapOptions(FloorPlan pFloorPlan) {
 
 		BitmapFactory.Options options = new BitmapFactory.Options();
 
 		int reqWidth = 2048;
 		int reqHeight = 2048;
-		final int width = (int) floorPlan.dimensions[0];
-		final int height = (int) floorPlan.dimensions[1];
+		final int width = (int) pFloorPlan.dimensions[0];
+		final int height = (int) pFloorPlan.dimensions[1];
 		int inSampleSize = 1;
 
 		if (height > reqHeight || width > reqWidth) {
@@ -213,12 +212,12 @@ public class NavigationIndoorMapActivity extends ActionBarActivity implements In
 	/**
 	 * Method that scales metric points to floorplan image size and displays the blue dot
 	 *
-	 * @param mMetricPoint
+	 * @param pMetricPoint
 	 */
-	private void setMetricPoint(final MetricPoint mMetricPoint) {
+	private void setMetricPoint(final MetricPoint pMetricPoint) {
 
-		float x = (float) (mMetricPoint.getX() * mConversion);
-		float y = (float) (mMetricPoint.getY() * mConversion);
+		float x = (float) (pMetricPoint.getX() * mConversion);
+		float y = (float) (pMetricPoint.getY() * mConversion);
 
 		blueDot.setX(x);
 		blueDot.setY(y);
