@@ -30,23 +30,14 @@ public class RentDetailsActivity extends ActionBarActivity implements View.OnCli
 		String iImage = intent.getStringExtra("image");
 		setTitle(R.string.details_actionbar_text);
 
-		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
-
 		TextView info, type, tower, floor, room, site, mTextLocatie, extra, meerinfo;
 		ImageView imgImage;
 		info = (TextView) findViewById(R.id.txtInfo);
 		type = (TextView) findViewById(R.id.txtType);
-		type.setTypeface(face);
 		tower = (TextView) findViewById(R.id.txtTower);
 		floor = (TextView) findViewById(R.id.txtFloor);
 		room = (TextView) findViewById(R.id.txtRoom);
 		site = (TextView) findViewById(R.id.txtSite);
-		extra = (TextView) findViewById(R.id.txtExtra);
-		extra.setTypeface(face);
-		mTextLocatie = (TextView) findViewById(R.id.locatietext);
-		mTextLocatie.setTypeface(face);
-		meerinfo = (TextView) findViewById(R.id.meerInfo);
-		meerinfo.setTypeface(face);
 		imgImage = (ImageView) findViewById(R.id.imgImage);
 		int resId = getResources().getIdentifier(iImage, "mipmap", getPackageName());
 		info.setText(iInfo);

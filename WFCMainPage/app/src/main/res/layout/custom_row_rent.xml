@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/spacing_medium"
-                android:layout_marginRight="@dimen/spacing_medium"
-                android:background="@color/white_trans"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/spacing_small"
-                android:paddingRight="@dimen/spacing_small"
-                tools:context=".RentActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_trans"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/spacing_medium"
+    android:paddingLeft="@dimen/spacing_small"
+    android:paddingRight="@dimen/spacing_small"
+    android:paddingTop="@dimen/spacing_medium"
+    tools:context=".RentActivity">
 
-    <TextView
+    <com.testapplication.wfcmainpage.views.BetterTextView
         android:id="@+id/txtType"
         style="@style/TextHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginRight="@dimen/spacing_small"
-        android:text="@string/customRowText_Medium"/>
+
+        android:text="@string/customRowText_Medium" />
 
     <ImageView
         android:id="@+id/imgImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtType"
-        android:background="@color/white_trans"/>
+        android:background="@color/white_trans"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/imgt1f11r5" />
 
     <TextView
         android:id="@+id/txtInfo"
@@ -36,6 +39,6 @@
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginRight="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_small"
-        android:text="@string/customTextRow_Small"/>
+        android:text="@string/customTextRow_Small" />
 
 </RelativeLayout>

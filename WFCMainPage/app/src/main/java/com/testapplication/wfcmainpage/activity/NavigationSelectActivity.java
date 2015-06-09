@@ -17,14 +17,10 @@ public class NavigationSelectActivity extends ActionBarActivity implements View.
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navigation_select);
-		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
 
 		mBtnIndoor = (Button) findViewById(R.id.btnNavigationSelectIndoor);
-		mBtnIndoor.setTypeface(face);
 		mBtnIndoorMap = (Button) findViewById(R.id.btnNavigationSelectIndoorMap);
-		mBtnIndoorMap.setTypeface(face);
 		mBtnOutdoor = (Button) findViewById(R.id.btnNavigationSelectOutdoor);
-		mBtnOutdoor.setTypeface(face);
 
 		mBtnIndoor.setOnClickListener(this);
 		mBtnIndoorMap.setOnClickListener(this);

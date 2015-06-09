@@ -3,7 +3,6 @@ package com.testapplication.wfcmainpage.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -67,22 +66,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		mViewPager.setAdapter(mCustomPagerAdapter);
 		mViewPager.setOnPageChangeListener(new MyPageChangeListener());
 
-		//font for buttons
-		Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura (Light).ttf");
-
 		//Method creating dots below Carroussel
 		setUiPageViewController();
 
 
 		// Declare buttons and add fonts
 		mInfoButton = (Button) findViewById(R.id.infoButton);
-		mInfoButton.setTypeface(face);
 		mFacilitiesButton = (Button) findViewById(R.id.facilitiesButton);
-		mFacilitiesButton.setTypeface(face);
 		mNavigationButton = (Button) findViewById(R.id.navigationButton);
-		mNavigationButton.setTypeface(face);
 		mRentButton = (Button) findViewById(R.id.rentButton);
-		mRentButton.setTypeface(face);
 		mNextButton = (ImageButton) findViewById(R.id.nextbutton);
 		mPrevButton = (ImageButton) findViewById(R.id.prevbutton);
 

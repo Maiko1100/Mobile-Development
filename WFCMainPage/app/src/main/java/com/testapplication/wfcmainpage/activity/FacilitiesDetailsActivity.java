@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
@@ -26,14 +27,13 @@ public class FacilitiesDetailsActivity extends ActionBarActivity implements View
     private ArrayList<String> mFacilityMode;
     private TextView mTextFacilityName, mTextWebsite, mTextFoon, mTextTower, mTextEtage, mTextShowroom, mTextEmail, mTextContact, mTextLocatie, mTextMode, mTextModetitle;
 
+    private LinearLayout mRowPhone, mRowWeb, mRowEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities_details);
         setTitle(getString(R.string.details_actionbar_text));
-
-        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Futura Extra Bold.ttf");
 
         Intent intent = getIntent();
         mWebsite = intent.getStringExtra("website");
@@ -47,7 +47,6 @@ public class FacilitiesDetailsActivity extends ActionBarActivity implements View
 
         // Declaratie Textviews
         mTextFacilityName = (TextView) findViewById(R.id.txtFacilityName);
-        mTextFacilityName.setTypeface(face);
         mTextWebsite = (TextView) findViewById(R.id.txtWebsite);
         mTextFoon = (TextView) findViewById(R.id.txtFoon);
         mTextTower = (TextView) findViewById(R.id.txtTower);
@@ -55,14 +54,15 @@ public class FacilitiesDetailsActivity extends ActionBarActivity implements View
         mTextShowroom = (TextView) findViewById(R.id.txtShowroom);
         mTextEmail = (TextView) findViewById(R.id.txtEmail);
         mTextContact = (TextView) findViewById(R.id.locatietext);
-        mTextContact.setTypeface(face);
         mTextLocatie = (TextView) findViewById(R.id.contacttext);
-        mTextLocatie.setTypeface(face);
         mTextMode = (TextView) findViewById(R.id.txtMode);
         mTextModetitle = (TextView) findViewById(R.id.modetext);
-        mTextModetitle.setTypeface(face);
         mTextFacilityName.setText(mFacilityName);
 
+        // Declare rows
+        findViewById(R.id.row_phone).setOnClickListener(this);
+        findViewById(R.id.row_web).setOnClickListener(this);
+        findViewById(R.id.row_email).setOnClickListener(this);
 
         // Fills mKledingCategories with all mode categories from this facility
         getMode();
@@ -102,17 +102,18 @@ public class FacilitiesDetailsActivity extends ActionBarActivity implements View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.txtFoon:
+            case R.id.row_phone:
                 Intent intentPhone = new Intent(Intent.ACTION_DIAL);
                 intentPhone.setData(Uri.parse("tel:" + mFoon));
                 startActivity(intentPhone);
                 break;
-            case R.id.txtEmail:
+
+            case R.id.row_email:
                 Intent intentEmail = new Intent(Intent.ACTION_SENDTO);
                 intentEmail.setData(Uri.parse("mailto:" + mEmail));
                 startActivity(intentEmail);
                 break;
-            case R.id.txtWebsite:
+            case R.id.row_web:
                 Intent intentWebsite = new Intent(Intent.ACTION_VIEW);
                 intentWebsite.setData(Uri.parse("http://" + mWebsite));
                 startActivity(intentWebsite);
