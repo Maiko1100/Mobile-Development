@@ -91,4 +91,5 @@
     <string name="beacon_elevator_text">You are near the elevator</string>
     <string name="beacon_lunch_text">You are near the lunch room</string>
     <string name="beacon_workspace_text">You are near the workspace</string>
+    <string name="dot_carrousel"><![CDATA[&#8226;]]></string>
 </resources>

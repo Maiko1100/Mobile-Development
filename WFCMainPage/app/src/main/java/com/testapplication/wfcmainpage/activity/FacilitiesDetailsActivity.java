@@ -1,6 +1,7 @@
 package com.testapplication.wfcmainpage.activity;
 
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -130,10 +131,9 @@ public class FacilitiesDetailsActivity extends ActionBarActivity implements View
      */
     public void getMode() {
         for (int i = 0; i < mFacilityMode.size(); i++) {
-            mKledingCategories = mKledingCategories + mFacilityMode.get(i) + "\n";
-            mTextMode.setText(mKledingCategories);
+                mKledingCategories += mFacilityMode.get(i) + "\n";
+                mTextMode.setText(mKledingCategories);
         }
-
     }
 
 }

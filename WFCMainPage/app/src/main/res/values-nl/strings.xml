@@ -90,4 +90,5 @@
     <string name="beacon_elevator_text">Je bent bij de lift</string>
     <string name="beacon_lunch_text">Je bent bij de lunch kamer</string>
     <string name="beacon_workspace_text">Je bent bij de werkruimte</string>
+    <string name="dot_carrousel"><![CDATA[&#8226;]]></string>
 </resources>
