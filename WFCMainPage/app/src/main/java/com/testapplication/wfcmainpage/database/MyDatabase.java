@@ -66,6 +66,7 @@ public class MyDatabase extends SQLiteAssetHelper {
 
 				facilities.add(Facility);
 			} while (cursor.moveToNext());
+			cursor.close();
 		}
 		return facilities;
 	}

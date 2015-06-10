@@ -33,7 +33,6 @@
             android:id="@+id/mediumRowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/customRowText"
             android:layout_marginLeft="16dp"
             android:text="@string/customTextRow_Small"
             android:textAppearance="?android:attr/textAppearanceSmall" />

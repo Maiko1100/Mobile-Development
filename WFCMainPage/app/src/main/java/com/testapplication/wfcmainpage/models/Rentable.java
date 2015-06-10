@@ -1,9 +1,11 @@
 package com.testapplication.wfcmainpage.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Maiko on 12-5-2015.
  */
-public class Rentable {
+public class Rentable implements Serializable{
 	private int mId;
 	private String mName;
 	private String mInfo;

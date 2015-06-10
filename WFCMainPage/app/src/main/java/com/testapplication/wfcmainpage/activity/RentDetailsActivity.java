@@ -10,55 +10,47 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testapplication.wfcmainpage.R;
+import com.testapplication.wfcmainpage.models.Rentable;
 
 
 public class RentDetailsActivity extends ActionBarActivity implements View.OnClickListener {
 
-	String iSite;
+	private String iSite;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rent_details);
 		Intent intent = getIntent();
-		String iInfo = intent.getStringExtra("info");
-		String iType = intent.getStringExtra("type");
-		String iTower = intent.getStringExtra("tower");
-		String iFloor = intent.getStringExtra("floor");
-		String iRoom = intent.getStringExtra("room");
-		iSite = intent.getStringExtra("site");
-		String iImage = intent.getStringExtra("image");
+		Bundle bundle = intent.getBundleExtra("Bundle");
+		Rentable rentable = (Rentable) bundle.getSerializable("Rentable");
+
+		String iInfo = rentable.getmInfo();
+		String iType = rentable.getmType();
+		String iTower = rentable.getmTower();
+		String iFloor = rentable.getmFloor();
+		String iRoom = rentable.getmRoom();
+		iSite = rentable.getmSiteLink();
+		String iImage = rentable.getmImage();
+
 		setTitle(R.string.details_actionbar_text);
 
-		TextView info, type, tower, floor, room, site, mTextLocatie, extra, meerinfo;
-		ImageView imgImage;
-		info = (TextView) findViewById(R.id.txtInfo);
-		type = (TextView) findViewById(R.id.txtType);
-		tower = (TextView) findViewById(R.id.txtTower);
-		floor = (TextView) findViewById(R.id.txtFloor);
-		room = (TextView) findViewById(R.id.txtRoom);
-		site = (TextView) findViewById(R.id.txtSite);
-		imgImage = (ImageView) findViewById(R.id.imgImage);
-		int resId = getResources().getIdentifier(iImage, "mipmap", getPackageName());
-		info.setText(iInfo);
-		type.setText(iType);
-		tower.setText(iTower);
-		floor.setText(iFloor);
-		room.setText(iRoom);
-		imgImage.setImageResource(resId);
+		((TextView) findViewById(R.id.txtInfo)).setText(iInfo);
+		((TextView) findViewById(R.id.txtType)).setText(iType);
+		((TextView) findViewById(R.id.txtTower)).setText(iTower);
+		((TextView) findViewById(R.id.txtFloor)).setText(iFloor);
+		((TextView) findViewById(R.id.txtRoom)).setText(iRoom);
+		((TextView) findViewById(R.id.txtSite)).setText(iSite);
+		findViewById(R.id.txtSite).setOnClickListener(this);
 
-		setOnTextClick(site, iSite);
+		int resId = getResources().getIdentifier(iImage, "mipmap", getPackageName());
+		((ImageView) findViewById(R.id.imgImage)).setImageResource(resId);
 	}
 
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		overridePendingTransition(R.anim.hold_screen, android.R.anim.slide_out_right);
-	}
-
-	public void setOnTextClick(TextView textView, String text) {
-		textView.setText(text);
-		textView.setOnClickListener(this);
 	}
 
 	@Override
