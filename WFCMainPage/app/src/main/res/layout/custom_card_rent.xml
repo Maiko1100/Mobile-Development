@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingEnd="@dimen/spacing_medium"
-    android:paddingStart="@dimen/spacing_medium"
+    android:paddingEnd="@dimen/spacing_small"
+    android:paddingStart="@dimen/spacing_small"
     tools:background="@drawable/background"
     tools:context=".RentActivity">
 
@@ -18,9 +18,10 @@
         android:layout_gravity="center"
         android:paddingBottom="@dimen/spacing_medium"
         android:paddingTop="@dimen/spacing_medium"
-        card_view:cardBackgroundColor="@color/white_trans"
+        android:foreground="?android:attr/selectableItemBackground"
         card_view:cardCornerRadius="4dp"
         card_view:cardUseCompatPadding="true"
+        android:background="@drawable/btn_white_background"
         tools:background="@color/white_trans">
 
         <LinearLayout

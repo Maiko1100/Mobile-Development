@@ -7,7 +7,6 @@ package com.testapplication.wfcmainpage.adapters;
  * rent data.
  * The RentAdapter gets the data through pData from the RentActivity.
  */
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
 import com.testapplication.wfcmainpage.R;
-import com.testapplication.wfcmainpage.activity.RentActivity;
 import com.testapplication.wfcmainpage.activity.RentDetailsActivity;
 import com.testapplication.wfcmainpage.models.Rentable;
 
@@ -31,7 +29,6 @@ public class RentAdapter extends RecyclerView.Adapter<RentAdapter.ViewHolder> {
     protected Context mContext;
 
     public RentAdapter(ArrayList<Rentable> pData) {
-
         this.mData = new ArrayList<>();
         mData.addAll(pData);
     }
@@ -52,11 +49,8 @@ public class RentAdapter extends RecyclerView.Adapter<RentAdapter.ViewHolder> {
     @Override
     public RentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        // create a new view
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.custom_card_rent, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }

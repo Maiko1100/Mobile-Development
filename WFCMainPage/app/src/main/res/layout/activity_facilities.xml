@@ -23,8 +23,8 @@
             android:id="@+id/facilitiesList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="@dimen/spacing_medium"
-            android:paddingRight="@dimen/spacing_medium"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
             android:scrollbarStyle="outsideOverlay"/>
 
         <!-- The navigation drawer -->
